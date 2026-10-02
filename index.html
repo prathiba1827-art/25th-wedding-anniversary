@@ -4,18 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>25th Wedding Anniversary | GA Arokiaraj ravi & A Mary Francina</title>
+<title>25th Wedding Anniversary</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   BASIC
-========================================================= */
 
 * {
     margin: 0;
@@ -29,18 +25,14 @@ html {
 
 body {
     background: #fbf4ec;
-    color: #6f5a65;
+    color: #594750;
     font-family: "Cormorant Garamond", serif;
-    overflow-x: hidden;
-}
-
-body.invitation-open {
     overflow-x: hidden;
 }
 
 
 /* =========================================================
-   INTRO / ENVELOPE
+   ENVELOPE
 ========================================================= */
 
 #intro {
@@ -55,9 +47,7 @@ body.invitation-open {
     background:
         radial-gradient(circle at center, #fffaf5 0%, #f8eee5 55%, #f2dfd5 100%);
 
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
 #intro.hide {
@@ -87,14 +77,11 @@ body.invitation-open {
     box-shadow:
         0 25px 65px rgba(95, 65, 70, 0.22);
 
-    overflow: visible;
-
     transform-style: preserve-3d;
 }
 
 .envelope::before {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -105,13 +92,10 @@ body.invitation-open {
             #d4b6aa 50%,
             transparent 50.5%
         );
-
-    border-radius: 4px;
 }
 
 .envelope::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
@@ -122,8 +106,6 @@ body.invitation-open {
             #d4b6aa 50%,
             transparent 50.5%
         );
-
-    border-radius: 4px;
 }
 
 .flap {
@@ -194,7 +176,7 @@ body.invitation-open {
     font-family: "Great Vibes", cursive;
     font-size: 45px;
 
-    color: #765f6d;
+    color: #604952;
 }
 
 .envelope-subtitle {
@@ -204,12 +186,13 @@ body.invitation-open {
     font-size: 9px;
     letter-spacing: 4px;
 
-    color: #a3828b;
+    color: #725963;
+    font-weight: 500;
 }
 
 
 /* =========================================================
-   FLORAL EFFECT
+   FLOWER LAYER
 ========================================================= */
 
 .flower-layer {
@@ -224,200 +207,25 @@ body.invitation-open {
 }
 
 
-/* ---------- falling elements ---------- */
+/* =========================================================
+   FALLING PETALS
+========================================================= */
 
-.falling-flower,
 .falling-petal {
     position: absolute;
 
-    top: -80px;
-    left: 0;
+    top: -50px;
 
-    pointer-events: none;
-
-    will-change: transform, opacity;
-
-    animation:
-        gentleFall linear forwards;
-}
-
-.falling-petal {
     width: 11px;
     height: 17px;
 
     border-radius: 80% 20% 80% 20%;
 
-    opacity: .78;
+    pointer-events: none;
+
+    animation:
+        gentleFall linear forwards;
 }
-
-
-/* ---------- different flower styles ---------- */
-
-.flower {
-    position: relative;
-
-    width: 28px;
-    height: 28px;
-
-    transform-origin: center;
-}
-
-
-/* 5-petal flower */
-
-.flower-five::before {
-    content: "";
-
-    position: absolute;
-
-    width: 12px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #e6a1ad;
-
-    top: 0;
-    left: 8px;
-
-    box-shadow:
-        0 16px 0 #e6a1ad,
-        8px 8px 0 #e6a1ad,
-        -8px 8px 0 #e6a1ad;
-}
-
-.flower-five::after {
-    content: "";
-
-    position: absolute;
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #d2a35f;
-
-    left: 10px;
-    top: 10px;
-}
-
-
-/* 6-petal flower */
-
-.flower-six::before {
-    content: "";
-
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-
-    background: #d8a3c0;
-
-    top: 2px;
-    left: 9px;
-
-    box-shadow:
-        0 14px 0 #d8a3c0,
-        12px 7px 0 #d8a3c0,
-        -12px 7px 0 #d8a3c0,
-        7px 3px 0 #d8a3c0,
-        -7px 3px 0 #d8a3c0;
-}
-
-.flower-six::after {
-    content: "";
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: #d3a35d;
-
-    left: 11px;
-    top: 11px;
-}
-
-
-/* large rose-style flower */
-
-.flower-rose::before {
-    content: "✿";
-
-    position: absolute;
-
-    font-size: 34px;
-    line-height: 28px;
-
-    color: #c97f91;
-
-    text-shadow:
-        0 0 1px #a85f73;
-}
-
-.flower-rose::after {
-    content: "•";
-
-    position: absolute;
-
-    left: 12px;
-    top: 7px;
-
-    font-size: 13px;
-
-    color: #d7a15d;
-}
-
-
-/* small flower */
-
-.flower-small::before {
-    content: "✽";
-
-    position: absolute;
-
-    font-size: 25px;
-
-    color: #e0a3ae;
-}
-
-.flower-small::after {
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #d0a15c;
-
-    left: 10px;
-    top: 10px;
-}
-
-
-/* star-like flower */
-
-.flower-star::before {
-    content: "✾";
-
-    position: absolute;
-
-    font-size: 27px;
-
-    color: #d9a0ad;
-}
-
-
-/* ---------- falling animation ---------- */
 
 @keyframes gentleFall {
 
@@ -453,18 +261,16 @@ body.invitation-open {
     left: 50%;
     top: 50%;
 
-    width: var(--size);
-    height: var(--size);
-
     transform:
         translate(-50%, -50%)
-        rotate(0deg)
-        scale(.2);
+        scale(.1);
 
     opacity: 0;
 
     animation:
-        blastFlower var(--duration) cubic-bezier(.12,.75,.25,1) forwards;
+        blastFlower var(--duration)
+        cubic-bezier(.12,.75,.25,1)
+        forwards;
 }
 
 .blast-flower::before {
@@ -568,7 +374,9 @@ main.show {
 
     text-transform: uppercase;
 
-    color: #a3838d;
+    color: #725963;
+
+    font-weight: 600;
 
     margin-bottom: 25px;
 }
@@ -582,7 +390,7 @@ main.show {
 
     line-height: 1;
 
-    color: #765f6d;
+    color: #604952;
 }
 
 .hero-names {
@@ -596,7 +404,9 @@ main.show {
 
     letter-spacing: 2px;
 
-    color: #685561;
+    color: #514049;
+
+    font-weight: 600;
 }
 
 .hero-date {
@@ -608,7 +418,9 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #987b85;
+    color: #634d56;
+
+    font-weight: 600;
 }
 
 .scroll-text {
@@ -622,7 +434,9 @@ main.show {
 
     text-transform: uppercase;
 
-    color: #b0929b;
+    color: #725963;
+
+    font-weight: 500;
 }
 
 
@@ -647,7 +461,9 @@ main.show {
 
     text-transform: uppercase;
 
-    color: #ae8c96;
+    color: #725963;
+
+    font-weight: 600;
 
     margin-bottom: 20px;
 }
@@ -660,7 +476,7 @@ main.show {
 
     font-weight: 400;
 
-    color: #765f6d;
+    color: #604952;
 }
 
 .save-date-date {
@@ -670,7 +486,9 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #725c66;
+    color: #634d56;
+
+    font-weight: 600;
 }
 
 .save-date-time {
@@ -682,7 +500,9 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #9b7e88;
+    color: #634d56;
+
+    font-weight: 600;
 }
 
 
@@ -717,9 +537,9 @@ main.show {
 .time-number {
     font-size: 52px;
 
-    font-weight: 300;
+    font-weight: 600;
 
-    color: #765f6d;
+    color: #604952;
 }
 
 .time-label {
@@ -729,7 +549,9 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #a48790;
+    color: #725963;
+
+    font-weight: 600;
 }
 
 
@@ -752,7 +574,7 @@ main.show {
 
     font-weight: 400;
 
-    color: #765f6d;
+    color: #604952;
 
     margin-bottom: 50px;
 }
@@ -804,7 +626,9 @@ main.show {
 
     letter-spacing: 4px;
 
-    color: #735b66;
+    color: #634d56;
+
+    font-weight: 600;
 }
 
 .venue-address {
@@ -816,7 +640,9 @@ main.show {
 
     line-height: 1.7;
 
-    color: #816b74;
+    color: #66515a;
+
+    font-weight: 500;
 }
 
 .directions {
@@ -826,11 +652,11 @@ main.show {
 
     padding: 14px 28px;
 
-    border: 1px solid #b99aa2;
+    border: 1px solid #a98791;
 
     text-decoration: none;
 
-    color: #765f6d;
+    color: #634d56;
 
     font-family: "Montserrat", sans-serif;
 
@@ -838,11 +664,13 @@ main.show {
 
     letter-spacing: 2px;
 
+    font-weight: 600;
+
     transition: .3s ease;
 }
 
 .directions:hover {
-    background: #765f6d;
+    background: #634d56;
 
     color: white;
 }
@@ -867,7 +695,7 @@ main.show {
 
     font-weight: 400;
 
-    color: #765f6d;
+    color: #604952;
 
     margin-bottom: 30px;
 }
@@ -893,7 +721,9 @@ main.show {
 
     letter-spacing: 2px;
 
-    color: #9b7e88;
+    color: #725963;
+
+    font-weight: 600;
 }
 
 
@@ -912,7 +742,7 @@ main.show {
 .cross {
     font-size: 31px;
 
-    color: #9a7883;
+    color: #725563;
 
     margin-bottom: 25px;
 }
@@ -924,23 +754,32 @@ main.show {
 
     font-weight: 400;
 
-    color: #765f6d;
+    color: #604952;
 }
 
+
+/* BIBLE VERSE - DARKER + BOLDER */
+
 .bible-verse {
-    max-width: 650px;
+    max-width: 680px;
 
     margin: 30px auto 0;
 
-    font-size: 23px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 24px;
 
     line-height: 1.7;
 
-    color: #79636d;
+    color: #55434c;
+
+    font-weight: 600;
+
+    letter-spacing: .2px;
 }
 
 .verse-reference {
-    margin-top: 15px;
+    margin-top: 18px;
 
     font-family: "Montserrat", sans-serif;
 
@@ -948,12 +787,14 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #a2848d;
+    color: #6b515b;
+
+    font-weight: 600;
 }
 
 
 /* =========================================================
-   FINAL CLOSING
+   CLOSING
 ========================================================= */
 
 .closing-section {
@@ -972,7 +813,7 @@ main.show {
 .closing-cross {
     font-size: 29px;
 
-    color: #8b6f7d;
+    color: #725563;
 
     margin: 15px 0 35px;
 }
@@ -986,7 +827,9 @@ main.show {
 
     line-height: 1.8;
 
-    color: #76616b;
+    color: #62505a;
+
+    font-weight: 500;
 }
 
 .closing-regards {
@@ -1004,7 +847,9 @@ main.show {
 
     font-size: 36px;
 
-    color: #8b6f7d;
+    color: #725563;
+
+    font-weight: 500;
 }
 
 .closing-regards strong {
@@ -1012,11 +857,11 @@ main.show {
 
     font-size: 25px;
 
-    font-weight: 500;
+    font-weight: 600;
 
     letter-spacing: 1px;
 
-    color: #604d59;
+    color: #503d46;
 }
 
 .closing-line {
@@ -1024,7 +869,7 @@ main.show {
 
     height: 1px;
 
-    background: #c9a9a9;
+    background: #b9929e;
 
     margin: 0 auto 30px;
 }
@@ -1034,9 +879,11 @@ main.show {
 
     letter-spacing: 2px;
 
-    color: #765f69;
+    color: #594650;
 
     margin-bottom: 14px;
+
+    font-weight: 600;
 }
 
 .closing-date {
@@ -1046,7 +893,9 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #9a7c86;
+    color: #634d56;
+
+    font-weight: 600;
 }
 
 
@@ -1069,7 +918,9 @@ footer p {
 
     letter-spacing: 3px;
 
-    color: #a4868f;
+    color: #725963;
+
+    font-weight: 600;
 }
 
 
@@ -1135,6 +986,7 @@ footer p {
         font-size: 16px;
         letter-spacing: 1px;
     }
+
 }
 
 </style>
@@ -1143,9 +995,10 @@ footer p {
 
 <body>
 
-<!-- =======================================================
+
+<!-- =========================================================
      ENVELOPE
-======================================================= -->
+========================================================= -->
 
 <div id="intro">
 
@@ -1174,270 +1027,269 @@ footer p {
 </div>
 
 
-<!-- =======================================================
+<!-- =========================================================
      FLOWER LAYER
-======================================================= -->
+========================================================= -->
 
 <div id="flowerLayer" class="flower-layer"></div>
 
 
-<!-- =======================================================
+<!-- =========================================================
      MUSIC
-======================================================= -->
+========================================================= -->
 
 <audio id="music" preload="auto">
     <source src="Music.mp3.mpeg" type="audio/mpeg">
 </audio>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
+<!-- =========================================================
+     MAIN WEBSITE
+========================================================= -->
 
 <main id="main">
 
 
-    <!-- HERO -->
+<!-- HERO -->
 
-    <section class="hero">
+<section class="hero">
 
-        <div class="small-heading">
-            A Celebration of Love
+    <div class="small-heading">
+        A Celebration of Love
+    </div>
+
+    <h1>
+        25 Years
+    </h1>
+
+    <div class="hero-names">
+        GA Arokiaraj Ravi<br>
+        &amp;<br>
+        A Mary Francina
+    </div>
+
+    <div class="hero-date">
+        18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
+    </div>
+
+    <div class="scroll-text">
+        Scroll to discover
+    </div>
+
+</section>
+
+
+<!-- SAVE THE DATE -->
+
+<section class="save-date">
+
+    <div class="section-label">
+        Save the Date
+    </div>
+
+    <h2>
+        Twenty Five Years
+    </h2>
+
+    <div class="save-date-date">
+        18 OCTOBER 2026
+    </div>
+
+    <div class="save-date-time">
+        6:00 PM ONWARDS
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+    <div class="section-label">
+        Until We Celebrate
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <div class="time-number" id="days">00</div>
+            <div class="time-label">DAYS</div>
         </div>
 
-        <h1>
-            25 Years
-        </h1>
-
-        <div class="hero-names">
-            GA Arokiaraj ravi<br>
-            &amp;<br>
-            A Mary Francina
+        <div class="time-box">
+            <div class="time-number" id="hours">00</div>
+            <div class="time-label">HOURS</div>
         </div>
 
-        <div class="hero-date">
-            18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
+        <div class="time-box">
+            <div class="time-number" id="minutes">00</div>
+            <div class="time-label">MINUTES</div>
         </div>
 
-        <div class="scroll-text">
-            Scroll to discover
+        <div class="time-box">
+            <div class="time-number" id="seconds">00</div>
+            <div class="time-label">SECONDS</div>
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- SAVE THE DATE -->
+<!-- INVITATION -->
 
-    <section class="save-date">
+<section class="invitation">
 
-        <div class="section-label">
-            Save the Date
-        </div>
+    <div class="invitation-title">
+        You Are Invited
+    </div>
 
-        <h2>
-            Twenty Five Years
-        </h2>
-
-        <div class="save-date-date">
-            18 OCTOBER 2026
-        </div>
-
-        <div class="save-date-time">
-            6:00 PM ONWARDS
-        </div>
-
-    </section>
-
-
-    <!-- COUNTDOWN -->
-
-    <section class="countdown-section">
-
-        <div class="section-label">
-            Until We Celebrate
-        </div>
-
-        <div class="countdown">
-
-            <div class="time-box">
-                <div class="time-number" id="days">00</div>
-                <div class="time-label">DAYS</div>
-            </div>
-
-            <div class="time-box">
-                <div class="time-number" id="hours">00</div>
-                <div class="time-label">HOURS</div>
-            </div>
-
-            <div class="time-box">
-                <div class="time-number" id="minutes">00</div>
-                <div class="time-label">MINUTES</div>
-            </div>
-
-            <div class="time-box">
-                <div class="time-number" id="seconds">00</div>
-                <div class="time-label">SECONDS</div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- INVITATION -->
-
-    <section class="invitation">
-
-        <div class="invitation-title">
-            You Are Invited
-        </div>
-
-        <div class="invitation-card">
-
-            <img
-                class="invitation-image"
-                src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
-                alt="25th Wedding Anniversary Invitation"
-            >
-
-        </div>
-
-    </section>
-
-
-    <!-- VENUE -->
-
-    <section class="venue">
-
-        <div class="section-label">
-            The Celebration
-        </div>
-
-        <h2>
-            Venue
-        </h2>
-
-        <div class="venue-name">
-            ARIMA THUMBI
-        </div>
-
-        <div class="venue-address">
-            1/38, N Parade Rd,<br>
-            Chakrapani Colony,<br>
-            Ramapuram, St. Thomas Mount,<br>
-            Tamil Nadu 600016
-        </div>
-
-        <a
-            class="directions"
-            href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
-            target="_blank"
-            rel="noopener"
-        >
-            GET DIRECTIONS
-        </a>
-
-    </section>
-
-
-    <!-- QR -->
-
-    <section class="qr-section">
-
-        <h3>
-            Find Us
-        </h3>
+    <div class="invitation-card">
 
         <img
-            class="qr-code"
-            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
-            alt="Venue QR Code"
+            class="invitation-image"
+            src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
+            alt="25th Wedding Anniversary Invitation"
         >
 
-        <div class="qr-text">
-            SCAN TO OPEN THE VENUE LOCATION
-        </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- CHRISTIAN MESSAGE -->
+<!-- VENUE -->
 
-    <section class="christian">
+<section class="venue">
 
-        <div class="cross">
-            ✝
-        </div>
+    <div class="section-label">
+        The Celebration
+    </div>
 
-        <h2>
-            With Grateful Hearts
-        </h2>
+    <h2>
+        Venue
+    </h2>
 
-        <div class="bible-verse">
-            “Give thanks to the Lord, for He is good;
-            His love endures forever.”
-        </div>
+    <div class="venue-name">
+        ARIMA THUMBI
+    </div>
 
-        <div class="verse-reference">
-            PSALM 107:1
-        </div>
+    <div class="venue-address">
+        1/38, N Parade Rd,<br>
+        Chakrapani Colony,<br>
+        Ramapuram, St. Thomas Mount,<br>
+        Tamil Nadu 600016
+    </div>
 
-    </section>
+    <a
+        class="directions"
+        href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
+        target="_blank"
+        rel="noopener"
+    >
+        GET DIRECTIONS
+    </a>
 
-
-    <!-- ===================================================
-         FINAL CLOSING
-    =================================================== -->
-
-    <section class="closing-section">
-
-        <div class="closing-cross">
-            ✝
-        </div>
-
-        <p class="closing-message">
-            With grateful hearts, we thank you for being
-            a part of this beautiful celebration.
-        </p>
-
-        <div class="closing-regards">
-
-            <span>
-                With Regards,
-            </span>
-
-            <strong>
-                Mary Princy A &amp; Mary Prathiba A
-            </strong>
-
-        </div>
-
-        <div class="closing-line"></div>
-
-        <p class="closing-names">
-            GA Arokiaraj ravi &amp; A Mary Francina
-        </p>
-
-        <p class="closing-date">
-            18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
-        </p>
-
-        <div class="closing-cross">
-            ✝
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- FOOTER -->
+<!-- QR -->
 
-    <footer>
+<section class="qr-section">
 
-        <p>
-            GA AROKIARAJ RAVI &nbsp;•&nbsp; A MARY FRANCINA
-        </p>
+    <h3>
+        Find Us
+    </h3>
 
-    </footer>
+    <img
+        class="qr-code"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
+        alt="Venue QR Code"
+    >
+
+    <div class="qr-text">
+        SCAN TO OPEN THE VENUE LOCATION
+    </div>
+
+</section>
+
+
+<!-- CHRISTIAN MESSAGE -->
+
+<section class="christian">
+
+    <div class="cross">
+        ✝
+    </div>
+
+    <h2>
+        With Grateful Hearts
+    </h2>
+
+    <div class="bible-verse">
+        “Give thanks to the Lord, for He is good;
+        His love endures forever.”
+    </div>
+
+    <div class="verse-reference">
+        PSALM 107:1
+    </div>
+
+</section>
+
+
+<!-- FINAL CLOSING -->
+
+<section class="closing-section">
+
+    <div class="closing-cross">
+        ✝
+    </div>
+
+    <p class="closing-message">
+        With grateful hearts, we thank you for being
+        a part of this beautiful celebration.
+    </p>
+
+    <div class="closing-regards">
+
+        <span>
+            With Regards,
+        </span>
+
+        <strong>
+            Mary Princy A &amp; Mary Prathiba A
+        </strong>
+
+    </div>
+
+    <div class="closing-line"></div>
+
+    <p class="closing-names">
+        GA Arokiaraj Ravi &amp; A Mary Francina
+    </p>
+
+    <p class="closing-date">
+        18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
+    </p>
+
+    <div class="closing-cross">
+        ✝
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        GA AROKIARAJ RAVI &nbsp;•&nbsp; A MARY FRANCINA
+    </p>
+
+</footer>
+
 
 </main>
 
@@ -1467,9 +1319,6 @@ function openInvitation() {
 
     envelope.classList.add("open");
 
-    document.body.classList.add("invitation-open");
-
-    /* Start music immediately after user tap */
     music.volume = 0.8;
 
     music.play().catch(function(error) {
@@ -1477,45 +1326,30 @@ function openInvitation() {
     });
 
 
-    /*
-       BIG FLOWER BLAST
-       starts exactly when envelope is opened
-    */
+    /* BIG FLOWER BLAST */
 
     createFlowerBlast();
 
 
-    /*
-       Show main page
-    */
+    /* SHOW WEBSITE */
 
     setTimeout(function() {
-
         main.classList.add("show");
+    }, 450);
 
-    }, 500);
 
-
-    /*
-       Hide envelope after opening
-    */
+    /* HIDE ENVELOPE */
 
     setTimeout(function() {
-
         intro.classList.add("hide");
-
     }, 1300);
 
 
-    /*
-       Start continuous floral rain
-    */
+    /* START CONTINUOUS FLOWERS */
 
     setTimeout(function() {
-
         startContinuousFlowers();
-
-    }, 700);
+    }, 500);
 
 }
 
@@ -1528,96 +1362,97 @@ const flowerTypes = [
 
     {
         symbol: "✿",
-        color: "#d8899a",
-        size: 28
+        color: "#d8899a"
     },
 
     {
         symbol: "✽",
-        color: "#e3a0ae",
-        size: 25
+        color: "#e3a0ae"
     },
 
     {
         symbol: "❀",
-        color: "#d9a1b4",
-        size: 27
+        color: "#d9a1b4"
     },
 
     {
         symbol: "✾",
-        color: "#c98c9e",
-        size: 28
+        color: "#c98c9e"
     },
 
     {
         symbol: "❁",
-        color: "#e0a9b4",
-        size: 26
+        color: "#e0a9b4"
     },
 
     {
         symbol: "✻",
-        color: "#d7a0ad",
-        size: 24
+        color: "#d7a0ad"
     }
+
 ];
 
 
 /* =========================================================
-   FLOWER BLAST
+   BIG FLOWER BLAST
 ========================================================= */
 
 function createFlowerBlast() {
 
-    /*
-       Large central explosion.
-       100 flowers + 70 petals.
-    */
-
-    const flowerCount = 100;
-    const petalCount = 70;
+    const flowerCount = 120;
+    const petalCount = 100;
 
 
-    /* ---------- FLOWERS ---------- */
+    /* FLOWERS */
 
     for (let i = 0; i < flowerCount; i++) {
 
         setTimeout(function() {
 
-            const flower = document.createElement("div");
+            const flower =
+                document.createElement("div");
 
-            flower.className = "blast-flower";
+            flower.className =
+                "blast-flower";
+
 
             const type =
                 flowerTypes[
                     Math.floor(
-                        Math.random() * flowerTypes.length
+                        Math.random() *
+                        flowerTypes.length
                     )
                 ];
 
-            const angle =
-                Math.random() * Math.PI * 2;
 
-            /*
-               Large radius so flowers
-               explode outward across screen.
-            */
+            const angle =
+                Math.random() *
+                Math.PI * 2;
+
 
             const radius =
-                180 + Math.random() * 700;
+                180 +
+                Math.random() * 800;
+
 
             const x =
-                Math.cos(angle) * radius;
+                Math.cos(angle) *
+                radius;
+
 
             const y =
-                Math.sin(angle) * radius;
+                Math.sin(angle) *
+                radius;
+
 
             const size =
-                18 + Math.random() * 28;
+                18 +
+                Math.random() * 30;
+
 
             const duration =
-                1700 + Math.random() * 1900;
+                1600 +
+                Math.random() * 2200;
 
 
             flower.style.setProperty(
@@ -1631,13 +1466,8 @@ function createFlowerBlast() {
             );
 
             flower.style.setProperty(
-                "--size",
-                size + "px"
-            );
-
-            flower.style.setProperty(
                 "--font-size",
-                (size * 1.35) + "px"
+                size + "px"
             );
 
             flower.style.setProperty(
@@ -1647,7 +1477,7 @@ function createFlowerBlast() {
 
             flower.style.setProperty(
                 "--rotation",
-                (Math.random() * 900 - 450) + "deg"
+                (Math.random() * 1000 - 500) + "deg"
             );
 
             flower.style.setProperty(
@@ -1665,18 +1495,16 @@ function createFlowerBlast() {
 
 
             setTimeout(function() {
-
                 flower.remove();
+            }, duration + 300);
 
-            }, duration + 200);
 
-
-        }, i * 12);
+        }, i * 9);
 
     }
 
 
-    /* ---------- PETAL BLAST ---------- */
+    /* PETALS */
 
     for (let i = 0; i < petalCount; i++) {
 
@@ -1685,22 +1513,34 @@ function createFlowerBlast() {
             const petal =
                 document.createElement("div");
 
-            petal.className = "falling-petal";
+            petal.className =
+                "falling-petal";
+
 
             const angle =
-                Math.random() * Math.PI * 2;
+                Math.random() *
+                Math.PI * 2;
+
 
             const radius =
-                150 + Math.random() * 600;
+                150 +
+                Math.random() * 750;
+
 
             const x =
-                Math.cos(angle) * radius;
+                Math.cos(angle) *
+                radius;
+
 
             const y =
-                Math.sin(angle) * radius;
+                Math.sin(angle) *
+                radius;
+
 
             const size =
-                8 + Math.random() * 10;
+                8 +
+                Math.random() * 10;
+
 
             const colors = [
                 "#e7a4b0",
@@ -1709,13 +1549,6 @@ function createFlowerBlast() {
                 "#d99aaa",
                 "#c98596"
             ];
-
-            const color =
-                colors[
-                    Math.floor(
-                        Math.random() * colors.length
-                    )
-                ];
 
 
             petal.style.left = "50%";
@@ -1727,8 +1560,15 @@ function createFlowerBlast() {
             petal.style.height =
                 (size * 1.45) + "px";
 
+
             petal.style.background =
-                color;
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ];
+
 
             petal.style.setProperty(
                 "--drift",
@@ -1740,20 +1580,21 @@ function createFlowerBlast() {
                 (Math.random() * 1000 - 500) + "deg"
             );
 
+
             petal.style.animationDuration =
-                (2200 + Math.random() * 2200) + "ms";
+                (2200 + Math.random() * 2500) +
+                "ms";
 
 
             flowerLayer.appendChild(petal);
 
 
             setTimeout(function() {
-
                 petal.remove();
+            }, 5500);
 
-            }, 5000);
 
-        }, i * 15);
+        }, i * 10);
 
     }
 
@@ -1761,7 +1602,7 @@ function createFlowerBlast() {
 
 
 /* =========================================================
-   CONTINUOUS FALLING FLOWERS
+   CONTINUOUS FLOWERS
 ========================================================= */
 
 function createContinuousFlower() {
@@ -1769,42 +1610,80 @@ function createContinuousFlower() {
     const flower =
         document.createElement("div");
 
-    const type =
-        Math.floor(Math.random() * 5);
+
+    const styles = [
+        "✿",
+        "✽",
+        "❀",
+        "✾",
+        "❁",
+        "✻"
+    ];
+
+
+    const colors = [
+        "#d8899a",
+        "#e3a0ae",
+        "#d9a1b4",
+        "#c98c9e",
+        "#e0a9b4",
+        "#d7a0ad"
+    ];
+
+
+    const index =
+        Math.floor(
+            Math.random() *
+            styles.length
+        );
+
 
     flower.className =
-        "falling-flower flower-" +
-        [
-            "five",
-            "six",
-            "rose",
-            "small",
-            "star"
-        ][type];
+        "blast-flower";
 
-
-    /*
-       Spread flowers across entire screen.
-    */
 
     flower.style.left =
-        (Math.random() * 105 - 2) + "vw";
+        (Math.random() * 100) + "vw";
 
     flower.style.top =
-        "-60px";
-
-
-    const scale =
-        .55 + Math.random() * 1.1;
-
-    flower.style.transform =
-        "scale(" + scale + ")";
+        "-40px";
 
 
     flower.style.setProperty(
-        "--drift",
+        "--symbol",
+        '"' + styles[index] + '"'
+    );
+
+
+    flower.style.setProperty(
+        "--flower-color",
+        colors[index]
+    );
+
+
+    flower.style.setProperty(
+        "--font-size",
+        (18 + Math.random() * 20) + "px"
+    );
+
+
+    flower.style.setProperty(
+        "--x",
         (Math.random() * 300 - 150) + "px"
     );
+
+
+    flower.style.setProperty(
+        "--y",
+        "120vh"
+    );
+
+
+    flower.style.setProperty(
+        "--duration",
+        (7500 + Math.random() * 5000) + "ms"
+    );
+
 
     flower.style.setProperty(
         "--rotation",
@@ -1812,17 +1691,11 @@ function createContinuousFlower() {
     );
 
 
-    flower.style.animationDuration =
-        (7000 + Math.random() * 6000) + "ms";
-
-
     flowerLayer.appendChild(flower);
 
 
     setTimeout(function() {
-
         flower.remove();
-
     }, 14000);
 
 }
@@ -1837,12 +1710,14 @@ function createContinuousPetal() {
     const petal =
         document.createElement("div");
 
+
     petal.className =
         "falling-petal";
 
 
     petal.style.left =
         Math.random() * 100 + "vw";
+
 
     petal.style.top =
         "-40px";
@@ -1856,10 +1731,12 @@ function createContinuousPetal() {
         "#c98596"
     ];
 
+
     petal.style.background =
         colors[
             Math.floor(
-                Math.random() * colors.length
+                Math.random() *
+                colors.length
             )
         ];
 
@@ -1869,6 +1746,7 @@ function createContinuousPetal() {
         (Math.random() * 300 - 150) + "px"
     );
 
+
     petal.style.setProperty(
         "--rotation",
         (Math.random() * 900 - 450) + "deg"
@@ -1876,51 +1754,44 @@ function createContinuousPetal() {
 
 
     petal.style.animationDuration =
-        (7000 + Math.random() * 7000) + "ms";
+        (7000 + Math.random() * 7000) +
+        "ms";
 
 
     flowerLayer.appendChild(petal);
 
 
     setTimeout(function() {
-
         petal.remove();
-
     }, 15000);
 
 }
 
 
 /* =========================================================
-   START CONTINUOUS FLOWERS
+   CONTINUOUS FLOWER RAIN
 ========================================================= */
 
 function startContinuousFlowers() {
 
     /*
-       First few seconds:
-       still quite full.
+       Heavy floral rain at the beginning
     */
 
     let flowerInterval =
         setInterval(function() {
-
             createContinuousFlower();
-
-        }, 260);
+        }, 230);
 
 
     let petalInterval =
         setInterval(function() {
-
             createContinuousPetal();
-
-        }, 180);
+        }, 160);
 
 
     /*
-       After the initial excitement,
-       gradually slow the rate.
+       Gradually becomes gentle
     */
 
     setTimeout(function() {
@@ -1931,27 +1802,17 @@ function startContinuousFlowers() {
 
         flowerInterval =
             setInterval(function() {
-
                 createContinuousFlower();
-
-            }, 700);
+            }, 650);
 
 
         petalInterval =
             setInterval(function() {
-
                 createContinuousPetal();
-
-            }, 450);
+            }, 420);
 
 
     }, 6500);
-
-
-    /*
-       Keep the gentle flower/petal effect
-       running until the page is closed.
-    */
 
 }
 
@@ -1970,6 +1831,7 @@ function updateCountdown() {
 
     const now =
         new Date().getTime();
+
 
     const difference =
         targetDate - now;
@@ -1992,17 +1854,20 @@ function updateCountdown() {
             (1000 * 60 * 60 * 24)
         );
 
+
     const hours =
         Math.floor(
             (difference /
             (1000 * 60 * 60)) % 24
         );
 
+
     const minutes =
         Math.floor(
             (difference /
             (1000 * 60)) % 60
         );
+
 
     const seconds =
         Math.floor(
@@ -2013,11 +1878,14 @@ function updateCountdown() {
     document.getElementById("days").innerText =
         String(days).padStart(2, "0");
 
+
     document.getElementById("hours").innerText =
         String(hours).padStart(2, "0");
 
+
     document.getElementById("minutes").innerText =
         String(minutes).padStart(2, "0");
+
 
     document.getElementById("seconds").innerText =
         String(seconds).padStart(2, "0");
