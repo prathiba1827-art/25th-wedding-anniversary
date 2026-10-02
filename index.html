@@ -46,23 +46,126 @@ img{
 
 
 /* =========================================================
-   FLOWERS / PETALS
+   PINK PETALS
 ========================================================= */
 
-.falling-flower{
+.falling-petal{
+
   position:fixed;
-  top:-70px;
+
+  top:-60px;
+
   z-index:9999;
+
   pointer-events:none;
-  animation-name:flowerFall;
-  animation-timing-function:linear;
-  animation-fill-mode:forwards;
+
+  width:var(--size);
+  height:calc(var(--size) * 1.35);
+
+  background:var(--pink);
+
+  border-radius:
+    75% 25% 65% 35%
+    / 60% 40% 60% 40%;
+
+  opacity:0;
+
+  box-shadow:
+    0 1px 3px rgba(150,70,90,.08);
+
+  animation:
+    petalFall
+    var(--duration)
+    linear
+    forwards;
 }
 
-@keyframes flowerFall{
+@keyframes petalFall{
 
   0%{
-    transform:translate3d(0,-80px,0) rotate(0deg);
+
+    transform:
+      translate3d(0,-70px,0)
+      rotate(var(--start-rotation))
+      scale(.7);
+
+    opacity:0;
+  }
+
+  8%{
+    opacity:.92;
+  }
+
+  45%{
+
+    transform:
+      translate3d(
+        var(--middle-drift),
+        45vh,
+        0
+      )
+      rotate(var(--middle-rotation))
+      scale(1);
+  }
+
+  100%{
+
+    transform:
+      translate3d(
+        var(--drift),
+        110vh,
+        0
+      )
+      rotate(var(--rotation))
+      scale(.8);
+
+    opacity:.5;
+  }
+}
+
+
+/* =========================================================
+   PETAL EXPLOSION
+========================================================= */
+
+.burst-petal{
+
+  position:fixed;
+
+  left:50%;
+  top:50%;
+
+  z-index:10000;
+
+  pointer-events:none;
+
+  width:var(--size);
+  height:calc(var(--size) * 1.35);
+
+  background:var(--pink);
+
+  border-radius:
+    var(--shape);
+
+  box-shadow:
+    0 1px 4px rgba(140,65,85,.12);
+
+  animation:
+    petalBurst
+    var(--burst-duration)
+    cubic-bezier(.12,.7,.25,1)
+    forwards;
+}
+
+@keyframes petalBurst{
+
+  0%{
+
+    transform:
+      translate(-50%,-50%)
+      scale(.1)
+      rotate(0deg);
+
     opacity:0;
   }
 
@@ -71,36 +174,7 @@ img{
   }
 
   100%{
-    transform:
-      translate3d(var(--drift),110vh,0)
-      rotate(var(--rotation));
-    opacity:.85;
-  }
 
-}
-
-.burst-flower{
-  position:fixed;
-  left:50%;
-  top:50%;
-  z-index:10000;
-  pointer-events:none;
-  font-size:22px;
-  animation:burst 2.6s ease-out forwards;
-}
-
-@keyframes burst{
-
-  0%{
-    transform:translate(-50%,-50%) scale(.2) rotate(0deg);
-    opacity:0;
-  }
-
-  12%{
-    opacity:1;
-  }
-
-  100%{
     transform:
       translate(
         calc(-50% + var(--x)),
@@ -108,9 +182,9 @@ img{
       )
       scale(var(--scale))
       rotate(var(--rotation));
+
     opacity:0;
   }
-
 }
 
 
@@ -121,7 +195,9 @@ img{
 #opening{
 
   position:fixed;
+
   inset:0;
+
   z-index:5000;
 
   background:
@@ -133,6 +209,7 @@ img{
     );
 
   display:flex;
+
   justify-content:center;
   align-items:center;
 
@@ -144,26 +221,36 @@ img{
 }
 
 #opening.hide{
+
   opacity:0;
+
   visibility:hidden;
+
   pointer-events:none;
 }
 
 .opening-content{
+
   width:min(92%,760px);
+
   text-align:center;
+
   padding:35px 15px;
 }
 
 
-/* OPENING VERSE */
+/* =========================================================
+   OPENING VERSE
+========================================================= */
 
 .wedding-verse{
 
   max-width:620px;
+
   margin:0 auto 18px;
 
   font-size:27px;
+
   line-height:1.35;
 
   font-weight:600;
@@ -178,6 +265,7 @@ img{
   font-family:"Montserrat",sans-serif;
 
   font-size:12px;
+
   letter-spacing:3px;
 
   font-weight:600;
@@ -188,6 +276,7 @@ img{
 .opening-divider{
 
   width:100px;
+
   height:1px;
 
   background:#d99c91;
@@ -205,6 +294,7 @@ img{
   position:relative;
 
   width:390px;
+
   max-width:90vw;
 
   margin:auto;
@@ -215,6 +305,7 @@ img{
   position:relative;
 
   width:100%;
+
   height:245px;
 
   cursor:pointer;
@@ -230,6 +321,7 @@ img{
 .envelope-back{
 
   position:absolute;
+
   inset:0;
 
   background:#fff8f1;
@@ -263,11 +355,14 @@ img{
   z-index:2;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 }
 
 .inner-card-content{
+
   text-align:center;
 }
 
@@ -276,6 +371,7 @@ img{
   font-family:"Montserrat",sans-serif;
 
   font-size:10px;
+
   letter-spacing:3px;
 
   color:#9b706d;
@@ -286,6 +382,7 @@ img{
 .inner-25{
 
   font-size:70px;
+
   line-height:.9;
 
   color:#b77d7d;
@@ -310,15 +407,18 @@ img{
 .envelope-bottom{
 
   position:absolute;
+
   z-index:4;
 }
 
 .envelope-left{
 
   left:0;
+
   bottom:0;
 
   width:50%;
+
   height:100%;
 
   background:#f3ded7;
@@ -334,9 +434,11 @@ img{
 .envelope-right{
 
   right:0;
+
   bottom:0;
 
   width:50%;
+
   height:100%;
 
   background:#f0d9d3;
@@ -352,9 +454,11 @@ img{
 .envelope-bottom{
 
   left:0;
+
   bottom:0;
 
   width:100%;
+
   height:65%;
 
   background:#efd7d1;
@@ -368,16 +472,18 @@ img{
 }
 
 
-/* ENVELOPE TOP */
+/* ENVELOPE FLAP */
 
 .envelope-top{
 
   position:absolute;
 
   left:0;
+
   top:0;
 
   width:100%;
+
   height:60%;
 
   background:#dbaea9;
@@ -410,6 +516,7 @@ img{
 .envelope-border{
 
   position:absolute;
+
   inset:7px;
 
   border:
@@ -422,7 +529,7 @@ img{
 }
 
 
-/* HOLY FAMILY SEAL */
+/* HOLY FAMILY */
 
 .seal{
 
@@ -431,9 +538,11 @@ img{
   z-index:10;
 
   left:50%;
+
   top:50%;
 
   width:78px;
+
   height:78px;
 
   transform:
@@ -447,7 +556,10 @@ img{
     4px solid #fffaf6;
 
   box-shadow:
-    0 5px 16px rgba(80,50,50,.2),
+
+    0 5px 16px
+    rgba(80,50,50,.2),
+
     0 0 0 2px #d59b91;
 
   transition:
@@ -459,6 +571,7 @@ img{
 .seal img{
 
   width:100%;
+
   height:100%;
 
   object-fit:cover;
@@ -552,6 +665,7 @@ img{
 #main.show{
 
   opacity:1;
+
   visibility:visible;
 }
 
@@ -565,7 +679,9 @@ img{
   min-height:100vh;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   text-align:center;
@@ -590,6 +706,7 @@ img{
 }
 
 .hero-inner{
+
   max-width:900px;
 }
 
@@ -643,6 +760,7 @@ img{
 .divider{
 
   width:110px;
+
   height:1px;
 
   background:#d99c91;
@@ -655,6 +773,7 @@ img{
   display:flex;
 
   justify-content:center;
+
   align-items:center;
 
   gap:20px;
@@ -701,7 +820,7 @@ img{
 
 
 /* =========================================================
-   CHRISTIAN / MARRIAGE
+   CHRISTIAN MARRIAGE
 ========================================================= */
 
 .christian{
@@ -1001,6 +1120,7 @@ img{
 .qr-container img{
 
   width:160px;
+
   height:160px;
 
   margin:auto;
@@ -1144,7 +1264,7 @@ img{
 }
 
 
-/* COUNTDOWN BOXES */
+/* BOXES */
 
 .countdown-boxes{
 
@@ -1246,7 +1366,7 @@ img{
 
 
 /* =========================================================
-   FINAL CLOSING
+   FINAL CHRISTIAN CLOSING
 ========================================================= */
 
 .final-closing{
@@ -1647,6 +1767,7 @@ img{
         Tap to Open
       </div>
 
+
       <div class="tap-subtext">
         A celebration of 25 beautiful years
       </div>
@@ -1667,9 +1788,7 @@ img{
 <div id="main">
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -2028,7 +2147,7 @@ img{
 
 
 <!-- =====================================================
-     FINAL CHRISTIAN CLOSING
+     FINAL CLOSING
 ===================================================== -->
 
 <section class="final-closing">
@@ -2192,7 +2311,7 @@ envelope.addEventListener(
     envelope.classList.add("open");
 
 
-    /* MUSIC */
+    /* START MUSIC */
 
     music.volume = 0.8;
 
@@ -2205,14 +2324,14 @@ envelope.addEventListener(
     });
 
 
-    /* BIG FLOWER BLAST */
+    /* HUGE PINK PETAL BLAST */
 
-    flowerExplosion();
+    petalExplosion();
 
 
-    /* CONTINUOUS FLOWERS */
+    /* CONTINUOUS PETAL FALL */
 
-    startFlowerRain();
+    startPetalRain();
 
 
     /* SHOW MAIN */
@@ -2234,156 +2353,84 @@ envelope.addEventListener(
 );
 
 
-
 /* =========================================================
-   FLOWER EXPLOSION
+   PETAL SHAPES
 ========================================================= */
 
-function flowerExplosion(){
+function getPetalShape(){
 
-  const flowers = [
+  const shapes = [
 
-    "🌸",
-    "🌺",
-    "🌷",
-    "🌹",
-    "🌼",
-    "🌻",
-    "💐",
-    "❀",
-    "✿",
-    "❁",
-    "✽"
+    "75% 25% 65% 35% / 60% 40% 60% 40%",
+
+    "55% 45% 75% 25% / 65% 35% 65% 35%",
+
+    "80% 20% 55% 45% / 55% 45% 70% 30%",
+
+    "65% 35% 80% 20% / 45% 55% 45% 55%",
+
+    "50% 50% 65% 35% / 75% 25% 75% 25%",
+
+    "70% 30% 50% 50% / 60% 40% 80% 20%"
+
+  ];
+
+  return shapes[
+    Math.floor(
+      Math.random()*shapes.length
+    )
+  ];
+
+}
+
+
+/* =========================================================
+   PINK PETAL EXPLOSION
+========================================================= */
+
+function petalExplosion(){
+
+  const pinks = [
+
+    "#f9e3e8",
+
+    "#f6d1da",
+
+    "#f2becb",
+
+    "#edacbd",
+
+    "#e49aaa",
+
+    "#d98799",
+
+    "#f7d9e0",
+
+    "#eab4c1"
 
   ];
 
 
-  const petals = [
+  /* MAIN PETALS */
 
-    "🌸",
-    "🌺",
-    "🌷",
-    "🌹",
-    "❀",
-    "✿",
-    "❁"
-
-  ];
-
-
-  /* FLOWERS */
-
-  for(let i=0;i<140;i++){
-
-    const flower =
-      document.createElement("div");
-
-
-    flower.className =
-      "burst-flower";
-
-
-    flower.textContent =
-      flowers[
-        Math.floor(
-          Math.random() *
-          flowers.length
-        )
-      ];
-
-
-    const angle =
-      Math.random() *
-      Math.PI *
-      2;
-
-
-    const distance =
-      180 +
-      Math.random()*620;
-
-
-    flower.style.setProperty(
-      "--x",
-      Math.cos(angle)*distance+"px"
-    );
-
-
-    flower.style.setProperty(
-      "--y",
-      Math.sin(angle)*distance+"px"
-    );
-
-
-    flower.style.setProperty(
-      "--rotation",
-      (
-        Math.random()*720-360
-      )+"deg"
-    );
-
-
-    flower.style.setProperty(
-      "--scale",
-      .5 +
-      Math.random()*1.5
-    );
-
-
-    flower.style.animationDuration =
-      (
-        1.7 +
-        Math.random()*1.2
-      )+"s";
-
-
-    document.body.appendChild(
-      flower
-    );
-
-
-    setTimeout(
-      function(){
-
-        flower.remove();
-
-      },
-      3000
-    );
-
-  }
-
-
-  /* EXTRA PETALS */
-
-  for(let i=0;i<120;i++){
+  for(let i=0;i<220;i++){
 
     const petal =
       document.createElement("div");
 
 
     petal.className =
-      "burst-flower";
-
-
-    petal.textContent =
-      petals[
-        Math.floor(
-          Math.random() *
-          petals.length
-        )
-      ];
+      "burst-petal";
 
 
     const angle =
       Math.random() *
-      Math.PI *
-      2;
+      Math.PI * 2;
 
 
     const distance =
-      100 +
-      Math.random()*500;
+      170 +
+      Math.random()*680;
 
 
     petal.style.setProperty(
@@ -2399,25 +2446,49 @@ function flowerExplosion(){
 
 
     petal.style.setProperty(
-      "--rotation",
-      (
-        Math.random()*600-300
-      )+"deg"
+      "--pink",
+      pinks[
+        Math.floor(
+          Math.random()*pinks.length
+        )
+      ]
+    );
+
+
+    petal.style.setProperty(
+      "--size",
+      (5+Math.random()*13)+"px"
     );
 
 
     petal.style.setProperty(
       "--scale",
-      .4 +
-      Math.random()*1.2
+      .65+
+      Math.random()*1.5
     );
 
 
-    petal.style.animationDuration =
+    petal.style.setProperty(
+      "--rotation",
       (
-        1.5 +
-        Math.random()*1.5
-      )+"s";
+        Math.random()*1000-500
+      )+"deg"
+    );
+
+
+    petal.style.setProperty(
+      "--shape",
+      getPetalShape()
+    );
+
+
+    petal.style.setProperty(
+      "--burst-duration",
+      (
+        1.8+
+        Math.random()*1.6
+      )+"s"
+    );
 
 
     document.body.appendChild(
@@ -2431,7 +2502,104 @@ function flowerExplosion(){
         petal.remove();
 
       },
-      3200
+      3800
+    );
+
+  }
+
+
+  /* LARGER PETALS */
+
+  for(let i=0;i<80;i++){
+
+    const petal =
+      document.createElement("div");
+
+
+    petal.className =
+      "burst-petal";
+
+
+    const angle =
+      Math.random() *
+      Math.PI * 2;
+
+
+    const distance =
+      220+
+      Math.random()*580;
+
+
+    petal.style.setProperty(
+      "--x",
+      Math.cos(angle)*distance+"px"
+    );
+
+
+    petal.style.setProperty(
+      "--y",
+      Math.sin(angle)*distance+"px"
+    );
+
+
+    petal.style.setProperty(
+      "--pink",
+      pinks[
+        Math.floor(
+          Math.random()*pinks.length
+        )
+      ]
+    );
+
+
+    petal.style.setProperty(
+      "--size",
+      (10+Math.random()*18)+"px"
+    );
+
+
+    petal.style.setProperty(
+      "--scale",
+      .7+
+      Math.random()*1.3
+    );
+
+
+    petal.style.setProperty(
+      "--rotation",
+      (
+        Math.random()*800-400
+      )+"deg"
+    );
+
+
+    petal.style.setProperty(
+      "--shape",
+      getPetalShape()
+    );
+
+
+    petal.style.setProperty(
+      "--burst-duration",
+      (
+        2+
+        Math.random()*1.5
+      )+"s"
+    );
+
+
+    document.body.appendChild(
+      petal
+    );
+
+
+    setTimeout(
+      function(){
+
+        petal.remove();
+
+      },
+      4000
     );
 
   }
@@ -2439,113 +2607,145 @@ function flowerExplosion(){
 }
 
 
-
 /* =========================================================
-   CONTINUOUS FLOWER RAIN
+   CREATE FALLING PETAL
 ========================================================= */
 
-function createFallingFlower(){
+function createFallingPetal(){
 
-  const flowers = [
+  const petal =
+    document.createElement("div");
 
-    "🌸",
-    "🌺",
-    "🌷",
-    "🌹",
-    "🪻",
-    "🌼",
-    "🌻",
-    "❀",
-    "✿",
-    "❁",
-    "✽"
+
+  petal.className =
+    "falling-petal";
+
+
+  const pinks = [
+
+    "#f9e3e8",
+
+    "#f6d1da",
+
+    "#f2becb",
+
+    "#edacbd",
+
+    "#e49aaa",
+
+    "#d98799",
+
+    "#f7d9e0",
+
+    "#eab4c1"
 
   ];
 
 
-  const flower =
-    document.createElement("div");
-
-
-  flower.className =
-    "falling-flower";
-
-
-  flower.textContent =
-    flowers[
+  petal.style.setProperty(
+    "--pink",
+    pinks[
       Math.floor(
-        Math.random() *
-        flowers.length
+        Math.random()*pinks.length
       )
-    ];
+    ]
+  );
 
 
-  flower.style.left =
-    Math.random()*100+"vw";
+  petal.style.setProperty(
+    "--size",
+    (5+Math.random()*13)+"px"
+  );
 
 
-  flower.style.fontSize =
-    (
-      12 +
-      Math.random()*22
-    )+"px";
-
-
-  flower.style.setProperty(
+  petal.style.setProperty(
     "--drift",
     (
-      Math.random()*240-120
+      Math.random()*280-140
     )+"px"
   );
 
 
-  flower.style.setProperty(
+  petal.style.setProperty(
+    "--middle-drift",
+    (
+      Math.random()*170-85
+    )+"px"
+  );
+
+
+  petal.style.setProperty(
+    "--start-rotation",
+    Math.random()*360+"deg"
+  );
+
+
+  petal.style.setProperty(
+    "--middle-rotation",
+    Math.random()*600+"deg"
+  );
+
+
+  petal.style.setProperty(
     "--rotation",
     (
-      Math.random()*720-360
+      Math.random()*1000-500
     )+"deg"
   );
 
 
-  flower.style.animationDuration =
+  petal.style.setProperty(
+    "--duration",
     (
-      4 +
-      Math.random()*5
-    )+"s";
+      5+
+      Math.random()*6
+    )+"s"
+  );
+
+
+  petal.style.borderRadius =
+    getPetalShape();
+
+
+  petal.style.left =
+    Math.random()*100+"vw";
 
 
   document.body.appendChild(
-    flower
+    petal
   );
 
 
   setTimeout(
     function(){
 
-      flower.remove();
+      petal.remove();
 
     },
-    10000
+    13000
   );
 
 }
 
 
+/* =========================================================
+   PETAL RAIN
+========================================================= */
 
-function startFlowerRain(){
+function startPetalRain(){
 
 
-  /* FIRST FAST BLAST */
+  /* IMMEDIATE MASS OF PETALS */
 
-  for(let i=0;i<200;i++){
+  for(let i=0;i<220;i++){
 
     setTimeout(
       function(){
 
-        createFallingFlower();
+        createFallingPetal();
 
       },
-      i*40
+      i*35
     );
 
   }
@@ -2559,25 +2759,29 @@ function startFlowerRain(){
 
         if(!opened){
 
-          clearInterval(fastRain);
+          clearInterval(
+            fastRain
+          );
 
           return;
 
         }
 
-        createFallingFlower();
+        createFallingPetal();
 
       },
       40
     );
 
 
-  /* MEDIUM */
+  /* SLOW DOWN */
 
   setTimeout(
     function(){
 
-      clearInterval(fastRain);
+      clearInterval(
+        fastRain
+      );
 
 
       const mediumRain =
@@ -2594,14 +2798,14 @@ function startFlowerRain(){
 
             }
 
-            createFallingFlower();
+            createFallingPetal();
 
           },
-          110
+          115
         );
 
 
-      /* SLOW */
+      /* EVEN SLOWER */
 
       setTimeout(
         function(){
@@ -2625,14 +2829,14 @@ function startFlowerRain(){
 
                 }
 
-                createFallingFlower();
+                createFallingPetal();
 
               },
-              210
+              220
             );
 
 
-          /* GENTLE CONTINUOUS */
+          /* GENTLE CONTINUOUS PETALS */
 
           setTimeout(
             function(){
@@ -2647,12 +2851,12 @@ function startFlowerRain(){
 
                   if(opened){
 
-                    createFallingFlower();
+                    createFallingPetal();
 
                   }
 
                 },
-                340
+                360
               );
 
             },
@@ -2670,14 +2874,14 @@ function startFlowerRain(){
   );
 
 
-  /* EXTRA FLOWER */
+  /* EXTRA GENTLE PETALS */
 
   setInterval(
     function(){
 
       if(opened){
 
-        createFallingFlower();
+        createFallingPetal();
 
       }
 
@@ -2686,7 +2890,6 @@ function startFlowerRain(){
   );
 
 }
-
 
 
 /* =========================================================
@@ -2709,7 +2912,7 @@ function updateCountdown(){
     eventDate-now;
 
 
-  if(difference <= 0){
+  if(difference<=0){
 
     document.getElementById(
       "days"
@@ -2734,7 +2937,7 @@ function updateCountdown(){
 
   const days =
     Math.floor(
-      difference /
+      difference/
       (1000*60*60*24)
     );
 
@@ -2742,9 +2945,9 @@ function updateCountdown(){
   const hours =
     Math.floor(
       (
-        difference %
+        difference%
         (1000*60*60*24)
-      ) /
+      )/
       (1000*60*60)
     );
 
@@ -2752,9 +2955,9 @@ function updateCountdown(){
   const minutes =
     Math.floor(
       (
-        difference %
+        difference%
         (1000*60*60)
-      ) /
+      )/
       (1000*60)
     );
 
@@ -2762,9 +2965,9 @@ function updateCountdown(){
   const seconds =
     Math.floor(
       (
-        difference %
+        difference%
         (1000*60)
-      ) /
+      )/
       1000
     );
 
@@ -2797,11 +3000,11 @@ function updateCountdown(){
 
 updateCountdown();
 
+
 setInterval(
   updateCountdown,
   1000
 );
-
 
 
 /* =========================================================
@@ -2895,7 +3098,6 @@ END:VCALENDAR`;
   );
 
 
-
 /* =========================================================
    SHARE INVITATION
 ========================================================= */
@@ -2933,6 +3135,7 @@ document
           );
 
         }
+
         catch(error){
 
           console.log(
@@ -2942,6 +3145,7 @@ document
         }
 
       }
+
       else{
 
         try{
@@ -2956,6 +3160,7 @@ document
           );
 
         }
+
         catch(error){
 
           alert(
