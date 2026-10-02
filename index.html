@@ -4,15 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>25th Wedding Anniversary</title>
+<title>25th Wedding Anniversary | GA Arokiaraj ravi & A Mary Francina</title>
 
-<!-- Elegant Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   BASIC
+========================================================= */
 
 * {
     margin: 0;
@@ -31,78 +34,117 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   ENVELOPE INTRO
-========================= */
+body.invitation-open {
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   INTRO / ENVELOPE
+========================================================= */
 
 #intro {
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, #f8eee4, #f5e5dc);
+    z-index: 99999;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 9999;
-    transition: opacity 1.2s ease, visibility 1.2s ease;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at center, #fffaf5 0%, #f8eee5 55%, #f2dfd5 100%);
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
 #intro.hide {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .envelope-wrapper {
     text-align: center;
     cursor: pointer;
+    user-select: none;
 }
 
 .envelope {
-    width: 280px;
-    height: 180px;
     position: relative;
+
+    width: 290px;
+    height: 185px;
+
     margin: auto;
+
     background: #ead4c7;
-    box-shadow: 0 25px 60px rgba(100, 70, 70, 0.20);
+
     border-radius: 4px;
-    overflow: hidden;
+
+    box-shadow:
+        0 25px 65px rgba(95, 65, 70, 0.22);
+
+    overflow: visible;
+
+    transform-style: preserve-3d;
 }
 
 .envelope::before {
     content: "";
+
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        transparent 49%,
-        #d5b8ad 50%,
-        transparent 51%
-    );
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 49.5%,
+            #d4b6aa 50%,
+            transparent 50.5%
+        );
+
+    border-radius: 4px;
 }
 
 .envelope::after {
     content: "";
+
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        225deg,
-        transparent 49%,
-        #d5b8ad 50%,
-        transparent 51%
-    );
+
+    background:
+        linear-gradient(
+            215deg,
+            transparent 49.5%,
+            #d4b6aa 50%,
+            transparent 50.5%
+        );
+
+    border-radius: 4px;
 }
 
 .flap {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 0;
     height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-top: 100px solid #d9bdb2;
-    transform-origin: top;
-    transition: transform 1s ease;
-    z-index: 5;
+
+    border-left: 145px solid transparent;
+    border-right: 145px solid transparent;
+    border-top: 105px solid #d9bdb2;
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s cubic-bezier(.2,.7,.2,1);
+
+    z-index: 20;
 }
 
 .envelope.open .flap {
@@ -111,115 +153,376 @@ body {
 
 .seal {
     position: absolute;
-    width: 48px;
-    height: 48px;
-    background: #b88f99;
-    border-radius: 50%;
+
     left: 50%;
-    top: 53%;
+    top: 55%;
+
+    width: 52px;
+    height: 52px;
+
     transform: translate(-50%, -50%);
-    z-index: 10;
+
+    border-radius: 50%;
+
+    background: #b98e99;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 20px;
-    box-shadow: 0 5px 15px rgba(100, 60, 70, 0.2);
+
+    color: #fff;
+    font-size: 21px;
+
+    box-shadow:
+        0 6px 18px rgba(90, 55, 65, .25);
+
+    z-index: 30;
+
+    transition:
+        opacity .4s ease,
+        transform .7s ease;
+}
+
+.envelope.open .seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.5);
 }
 
 .envelope-title {
-    margin-top: 35px;
+    margin-top: 38px;
+
     font-family: "Great Vibes", cursive;
-    font-size: 42px;
-    color: #765f6c;
+    font-size: 45px;
+
+    color: #765f6d;
 }
 
 .envelope-subtitle {
-    margin-top: 8px;
+    margin-top: 7px;
+
     font-family: "Montserrat", sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 4px;
+
     color: #a3828b;
 }
 
-/* =========================
-   PETALS & FLOWERS
-========================= */
 
-.falling {
+/* =========================================================
+   FLORAL EFFECT
+========================================================= */
+
+.flower-layer {
     position: fixed;
-    top: -80px;
+    inset: 0;
+
     pointer-events: none;
-    z-index: 8000;
-    animation-name: fall;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+
+    z-index: 9000;
+
+    overflow: hidden;
 }
 
-.petal {
-    width: 15px;
-    height: 24px;
-    background: #e8a8b4;
-    border-radius: 80% 20% 80% 20%;
-    opacity: 0.8;
+
+/* ---------- falling elements ---------- */
+
+.falling-flower,
+.falling-petal {
+    position: absolute;
+
+    top: -80px;
+    left: 0;
+
+    pointer-events: none;
+
+    will-change: transform, opacity;
+
+    animation:
+        gentleFall linear forwards;
 }
+
+.falling-petal {
+    width: 11px;
+    height: 17px;
+
+    border-radius: 80% 20% 80% 20%;
+
+    opacity: .78;
+}
+
+
+/* ---------- different flower styles ---------- */
 
 .flower {
-    width: 17px;
-    height: 17px;
     position: relative;
+
+    width: 28px;
+    height: 28px;
+
+    transform-origin: center;
 }
 
-.flower::before,
-.flower::after {
+
+/* 5-petal flower */
+
+.flower-five::before {
     content: "";
+
     position: absolute;
-    width: 13px;
-    height: 13px;
-    background: #e9a8b5;
+
+    width: 12px;
+    height: 12px;
+
     border-radius: 50%;
-}
 
-.flower::before {
-    left: 0;
-    top: 2px;
+    background: #e6a1ad;
+
+    top: 0;
+    left: 8px;
+
     box-shadow:
-        7px -4px 0 #e9a8b5,
-        12px 3px 0 #e9a8b5,
-        6px 9px 0 #e9a8b5;
+        0 16px 0 #e6a1ad,
+        8px 8px 0 #e6a1ad,
+        -8px 8px 0 #e6a1ad;
 }
 
-.flower::after {
+.flower-five::after {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #d2a35f;
+
+    left: 10px;
+    top: 10px;
+}
+
+
+/* 6-petal flower */
+
+.flower-six::before {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #d8a3c0;
+
+    top: 2px;
+    left: 9px;
+
+    box-shadow:
+        0 14px 0 #d8a3c0,
+        12px 7px 0 #d8a3c0,
+        -12px 7px 0 #d8a3c0,
+        7px 3px 0 #d8a3c0,
+        -7px 3px 0 #d8a3c0;
+}
+
+.flower-six::after {
+    content: "";
+
+    position: absolute;
+
     width: 6px;
     height: 6px;
-    background: #d3a45f;
-    left: 7px;
-    top: 7px;
+
+    border-radius: 50%;
+
+    background: #d3a35d;
+
+    left: 11px;
+    top: 11px;
 }
 
-@keyframes fall {
+
+/* large rose-style flower */
+
+.flower-rose::before {
+    content: "✿";
+
+    position: absolute;
+
+    font-size: 34px;
+    line-height: 28px;
+
+    color: #c97f91;
+
+    text-shadow:
+        0 0 1px #a85f73;
+}
+
+.flower-rose::after {
+    content: "•";
+
+    position: absolute;
+
+    left: 12px;
+    top: 7px;
+
+    font-size: 13px;
+
+    color: #d7a15d;
+}
+
+
+/* small flower */
+
+.flower-small::before {
+    content: "✽";
+
+    position: absolute;
+
+    font-size: 25px;
+
+    color: #e0a3ae;
+}
+
+.flower-small::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #d0a15c;
+
+    left: 10px;
+    top: 10px;
+}
+
+
+/* star-like flower */
+
+.flower-star::before {
+    content: "✾";
+
+    position: absolute;
+
+    font-size: 27px;
+
+    color: #d9a0ad;
+}
+
+
+/* ---------- falling animation ---------- */
+
+@keyframes gentleFall {
+
     0% {
         transform:
             translate3d(0, -100px, 0)
             rotate(0deg);
+
         opacity: 0;
     }
 
-    10% {
-        opacity: 0.9;
+    8% {
+        opacity: .95;
     }
 
     100% {
         transform:
-            translate3d(var(--drift), 110vh, 0)
+            translate3d(var(--drift), 115vh, 0)
             rotate(var(--rotation));
-        opacity: 0.65;
+
+        opacity: .35;
     }
 }
 
-/* =========================
-   MAIN WEBSITE
-========================= */
+
+/* =========================================================
+   FLOWER BLAST
+========================================================= */
+
+.blast-flower {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: var(--size);
+    height: var(--size);
+
+    transform:
+        translate(-50%, -50%)
+        rotate(0deg)
+        scale(.2);
+
+    opacity: 0;
+
+    animation:
+        blastFlower var(--duration) cubic-bezier(.12,.75,.25,1) forwards;
+}
+
+.blast-flower::before {
+    content: var(--symbol);
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: var(--font-size);
+
+    color: var(--flower-color);
+
+    filter:
+        drop-shadow(
+            0 5px 10px rgba(120,70,80,.18)
+        );
+}
+
+@keyframes blastFlower {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg)
+            scale(.1);
+
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--rotation))
+            scale(1);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 main {
     display: none;
@@ -229,137 +532,181 @@ main.show {
     display: block;
 }
 
-section {
-    position: relative;
-}
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     text-align: center;
-    padding: 80px 25px;
+
+    padding: 90px 25px;
+
     background:
-        radial-gradient(circle at top, #fffaf5, transparent 50%),
+        radial-gradient(
+            circle at top,
+            #fffaf6,
+            transparent 55%
+        ),
         #fbf4ec;
 }
 
 .small-heading {
     font-family: "Montserrat", sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 6px;
+
     text-transform: uppercase;
+
     color: #a3838d;
+
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-family: "Great Vibes", cursive;
-    font-size: clamp(55px, 9vw, 105px);
-    font-weight: 400;
-    color: #765f6d;
-    line-height: 1;
-}
 
-.hero-years {
-    margin-top: 25px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(55px, 9vw, 100px);
-    font-weight: 300;
-    color: #a98770;
-    letter-spacing: 5px;
+    font-size: clamp(60px, 10vw, 110px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #765f6d;
 }
 
 .hero-names {
-    margin-top: 30px;
+    margin-top: 32px;
+
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(23px, 4vw, 34px);
+
+    font-size: clamp(24px, 4vw, 35px);
+
+    line-height: 1.45;
+
     letter-spacing: 2px;
-    line-height: 1.5;
+
     color: #685561;
 }
 
 .hero-date {
     margin-top: 35px;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 12px;
+
     letter-spacing: 3px;
+
     color: #987b85;
 }
 
 .scroll-text {
     margin-top: 70px;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 4px;
+
     text-transform: uppercase;
+
     color: #b0929b;
 }
 
-/* =========================
+
+/* =========================================================
    SAVE THE DATE
-========================= */
+========================================================= */
 
 .save-date {
     text-align: center;
-    padding: 110px 25px;
+
+    padding: 115px 25px;
+
     background: #f7ebe2;
 }
 
 .section-label {
     font-family: "Montserrat", sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 5px;
+
     text-transform: uppercase;
+
     color: #ae8c96;
+
     margin-bottom: 20px;
 }
 
 .save-date h2,
 .venue h2 {
     font-family: "Great Vibes", cursive;
-    font-size: clamp(50px, 8vw, 80px);
+
+    font-size: clamp(55px, 8vw, 85px);
+
     font-weight: 400;
+
     color: #765f6d;
 }
 
 .save-date-date {
     margin-top: 30px;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
-    color: #725c66;
+
+    font-size: 34px;
+
     letter-spacing: 3px;
+
+    color: #725c66;
 }
 
 .save-date-time {
-    margin-top: 12px;
+    margin-top: 13px;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 13px;
+
     letter-spacing: 3px;
+
     color: #9b7e88;
 }
 
-/* =========================
+
+/* =========================================================
    COUNTDOWN
-========================= */
+========================================================= */
 
 .countdown-section {
     padding: 90px 20px;
+
     text-align: center;
+
     background: #fbf4ec;
 }
 
 .countdown {
     display: flex;
+
     justify-content: center;
-    gap: 35px;
+
+    gap: 38px;
+
     margin-top: 35px;
+
     flex-wrap: wrap;
 }
 
@@ -368,265 +715,367 @@ section {
 }
 
 .time-number {
-    font-family: "Cormorant Garamond", serif;
     font-size: 52px;
+
     font-weight: 300;
+
     color: #765f6d;
 }
 
 .time-label {
     font-family: "Montserrat", sans-serif;
+
     font-size: 8px;
+
     letter-spacing: 3px;
+
     color: #a48790;
 }
 
-/* =========================
+
+/* =========================================================
    INVITATION
-========================= */
+========================================================= */
 
 .invitation {
     text-align: center;
-    padding: 110px 20px;
+
+    padding: 115px 20px;
+
     background: #f8eee5;
 }
 
 .invitation-title {
     font-family: "Great Vibes", cursive;
-    font-size: clamp(55px, 9vw, 90px);
+
+    font-size: clamp(58px, 9vw, 95px);
+
     font-weight: 400;
+
     color: #765f6d;
+
     margin-bottom: 50px;
 }
 
 .invitation-card {
     max-width: 900px;
+
     margin: auto;
+
     padding: 25px;
-    background: rgba(255,255,255,0.35);
-    box-shadow: 0 25px 70px rgba(110,80,80,0.10);
+
+    background: rgba(255,255,255,.4);
+
+    box-shadow:
+        0 25px 70px rgba(110,80,80,.11);
 }
 
 .invitation-image {
     width: 100%;
+
     max-width: 850px;
+
     height: auto;
+
     display: block;
+
     margin: auto;
 }
 
-/* =========================
+
+/* =========================================================
    VENUE
-========================= */
+========================================================= */
 
 .venue {
-    padding: 110px 25px;
+    padding: 115px 25px;
+
     text-align: center;
+
     background: #fbf4ec;
 }
 
 .venue-name {
     margin-top: 35px;
+
     font-family: "Montserrat", sans-serif;
-    font-size: 17px;
+
+    font-size: 18px;
+
     letter-spacing: 4px;
+
     color: #735b66;
 }
 
 .venue-address {
-    max-width: 600px;
+    max-width: 650px;
+
     margin: 25px auto;
-    font-family: "Cormorant Garamond", serif;
+
     font-size: 21px;
+
     line-height: 1.7;
+
     color: #816b74;
 }
 
 .directions {
     display: inline-block;
+
     margin-top: 20px;
+
     padding: 14px 28px;
+
     border: 1px solid #b99aa2;
+
     text-decoration: none;
+
     color: #765f6d;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 2px;
-    transition: 0.3s ease;
+
+    transition: .3s ease;
 }
 
 .directions:hover {
     background: #765f6d;
+
     color: white;
 }
 
-/* =========================
-   QR CODE
-========================= */
+
+/* =========================================================
+   QR
+========================================================= */
 
 .qr-section {
     text-align: center;
-    padding: 90px 20px;
+
+    padding: 95px 20px;
+
     background: #f7ebe2;
 }
 
 .qr-section h3 {
     font-family: "Great Vibes", cursive;
-    font-size: 52px;
+
+    font-size: 55px;
+
     font-weight: 400;
+
     color: #765f6d;
+
     margin-bottom: 30px;
 }
 
 .qr-code {
     width: 210px;
     height: 210px;
-    background: white;
+
     padding: 10px;
-    box-shadow: 0 15px 40px rgba(100,70,70,0.12);
+
+    background: white;
+
+    box-shadow:
+        0 15px 40px rgba(100,70,70,.12);
 }
 
 .qr-text {
     margin-top: 20px;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 9px;
+
     letter-spacing: 2px;
+
     color: #9b7e88;
 }
 
-/* =========================
+
+/* =========================================================
    CHRISTIAN SECTION
-========================= */
+========================================================= */
 
 .christian {
     text-align: center;
-    padding: 110px 25px;
+
+    padding: 115px 25px;
+
     background: #fbf4ec;
 }
 
 .cross {
-    font-size: 30px;
+    font-size: 31px;
+
     color: #9a7883;
+
     margin-bottom: 25px;
 }
 
 .christian h2 {
     font-family: "Great Vibes", cursive;
-    font-size: 62px;
+
+    font-size: 64px;
+
     font-weight: 400;
+
     color: #765f6d;
 }
 
 .bible-verse {
     max-width: 650px;
+
     margin: 30px auto 0;
-    font-family: "Cormorant Garamond", serif;
+
     font-size: 23px;
+
     line-height: 1.7;
+
     color: #79636d;
 }
 
 .verse-reference {
     margin-top: 15px;
+
     font-family: "Montserrat", sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     color: #a2848d;
 }
 
-/* =========================
-   CLOSING
-========================= */
+
+/* =========================================================
+   FINAL CLOSING
+========================================================= */
 
 .closing-section {
     text-align: center;
-    padding: 120px 25px 90px;
-    background: linear-gradient(
-        to bottom,
-        #f8eee5,
-        #f3e2d9
-    );
+
+    padding: 120px 25px 95px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f8eee5,
+            #f3e2d9
+        );
 }
 
 .closing-cross {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 28px;
+    font-size: 29px;
+
     color: #8b6f7d;
+
     margin: 15px 0 35px;
 }
 
 .closing-message {
     max-width: 600px;
+
     margin: 0 auto 50px;
-    font-family: "Cormorant Garamond", serif;
+
     font-size: 21px;
+
     line-height: 1.8;
+
     color: #76616b;
 }
 
 .closing-regards {
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
+
     margin-bottom: 45px;
 }
 
 .closing-regards span {
     font-family: "Great Vibes", cursive;
-    font-size: 35px;
+
+    font-size: 36px;
+
     color: #8b6f7d;
 }
 
 .closing-regards strong {
     font-family: "Cormorant Garamond", serif;
+
     font-size: 25px;
+
     font-weight: 500;
+
     letter-spacing: 1px;
+
     color: #604d59;
 }
 
 .closing-line {
     width: 90px;
+
     height: 1px;
+
     background: #c9a9a9;
+
     margin: 0 auto 30px;
 }
 
 .closing-names {
-    font-family: "Cormorant Garamond", serif;
     font-size: 20px;
+
     letter-spacing: 2px;
+
     color: #765f69;
+
     margin-bottom: 14px;
 }
 
 .closing-date {
     font-family: "Montserrat", sans-serif;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     color: #9a7c86;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
     text-align: center;
+
     padding: 35px 20px 50px;
+
     background: #f3e2d9;
 }
 
 footer p {
     font-family: "Montserrat", sans-serif;
+
     font-size: 8px;
+
     letter-spacing: 3px;
+
     color: #a4868f;
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
@@ -642,7 +1091,7 @@ footer p {
     }
 
     .envelope-title {
-        font-size: 36px;
+        font-size: 37px;
     }
 
     .hero {
@@ -671,7 +1120,7 @@ footer p {
     }
 
     .christian h2 {
-        font-size: 52px;
+        font-size: 53px;
     }
 
     .bible-verse {
@@ -686,17 +1135,17 @@ footer p {
         font-size: 16px;
         letter-spacing: 1px;
     }
-
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+<!-- =======================================================
      ENVELOPE
-========================= -->
+======================================================= -->
 
 <div id="intro">
 
@@ -725,18 +1174,25 @@ footer p {
 </div>
 
 
-<!-- =========================
+<!-- =======================================================
+     FLOWER LAYER
+======================================================= -->
+
+<div id="flowerLayer" class="flower-layer"></div>
+
+
+<!-- =======================================================
      MUSIC
-========================= -->
+======================================================= -->
 
 <audio id="music" preload="auto">
     <source src="Music.mp3.mpeg" type="audio/mpeg">
 </audio>
 
 
-<!-- =========================
-     MAIN WEBSITE
-========================= -->
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
 <main id="main">
 
@@ -876,6 +1332,7 @@ footer p {
             class="directions"
             href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
             target="_blank"
+            rel="noopener"
         >
             GET DIRECTIONS
         </a>
@@ -883,7 +1340,7 @@ footer p {
     </section>
 
 
-    <!-- QR CODE -->
+    <!-- QR -->
 
     <section class="qr-section">
 
@@ -928,7 +1385,9 @@ footer p {
     </section>
 
 
-    <!-- CLOSING -->
+    <!-- ===================================================
+         FINAL CLOSING
+    =================================================== -->
 
     <section class="closing-section">
 
@@ -980,215 +1439,541 @@ footer p {
 
     </footer>
 
-
 </main>
 
 
 <script>
 
-/* =========================
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const intro = document.getElementById("intro");
+const envelope = document.getElementById("envelope");
+const main = document.getElementById("main");
+const music = document.getElementById("music");
+const flowerLayer = document.getElementById("flowerLayer");
+
+
+/* =========================================================
    OPEN INVITATION
-========================= */
+========================================================= */
 
 function openInvitation() {
 
-    const intro = document.getElementById("intro");
-    const envelope = document.getElementById("envelope");
-    const main = document.getElementById("main");
-    const music = document.getElementById("music");
+    if (envelope.classList.contains("open")) {
+        return;
+    }
 
     envelope.classList.add("open");
 
-    /* Start music */
+    document.body.classList.add("invitation-open");
+
+    /* Start music immediately after user tap */
     music.volume = 0.8;
 
     music.play().catch(function(error) {
-        console.log("Music could not autoplay:", error);
+        console.log("Music playback:", error);
     });
 
-    /* Start website */
+
+    /*
+       BIG FLOWER BLAST
+       starts exactly when envelope is opened
+    */
+
+    createFlowerBlast();
+
+
+    /*
+       Show main page
+    */
+
     setTimeout(function() {
 
         main.classList.add("show");
 
-        setTimeout(function() {
-            intro.classList.add("hide");
-        }, 300);
+    }, 500);
 
-        startFallingFlowers();
 
-    }, 900);
+    /*
+       Hide envelope after opening
+    */
+
+    setTimeout(function() {
+
+        intro.classList.add("hide");
+
+    }, 1300);
+
+
+    /*
+       Start continuous floral rain
+    */
+
+    setTimeout(function() {
+
+        startContinuousFlowers();
+
+    }, 700);
 
 }
 
 
-/* =========================
-   FALLING PETALS
-========================= */
+/* =========================================================
+   FLOWER TYPES
+========================================================= */
 
-function createFalling(type, duration) {
+const flowerTypes = [
 
-    const element = document.createElement("div");
+    {
+        symbol: "✿",
+        color: "#d8899a",
+        size: 28
+    },
 
-    element.classList.add("falling");
+    {
+        symbol: "✽",
+        color: "#e3a0ae",
+        size: 25
+    },
 
-    if (type === "flower") {
-        element.classList.add("flower");
-    } else {
-        element.classList.add("petal");
+    {
+        symbol: "❀",
+        color: "#d9a1b4",
+        size: 27
+    },
+
+    {
+        symbol: "✾",
+        color: "#c98c9e",
+        size: 28
+    },
+
+    {
+        symbol: "❁",
+        color: "#e0a9b4",
+        size: 26
+    },
+
+    {
+        symbol: "✻",
+        color: "#d7a0ad",
+        size: 24
+    }
+];
+
+
+/* =========================================================
+   FLOWER BLAST
+========================================================= */
+
+function createFlowerBlast() {
+
+    /*
+       Large central explosion.
+       100 flowers + 70 petals.
+    */
+
+    const flowerCount = 100;
+    const petalCount = 70;
+
+
+    /* ---------- FLOWERS ---------- */
+
+    for (let i = 0; i < flowerCount; i++) {
+
+        setTimeout(function() {
+
+            const flower = document.createElement("div");
+
+            flower.className = "blast-flower";
+
+            const type =
+                flowerTypes[
+                    Math.floor(
+                        Math.random() * flowerTypes.length
+                    )
+                ];
+
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            /*
+               Large radius so flowers
+               explode outward across screen.
+            */
+
+            const radius =
+                180 + Math.random() * 700;
+
+            const x =
+                Math.cos(angle) * radius;
+
+            const y =
+                Math.sin(angle) * radius;
+
+            const size =
+                18 + Math.random() * 28;
+
+            const duration =
+                1700 + Math.random() * 1900;
+
+
+            flower.style.setProperty(
+                "--x",
+                x + "px"
+            );
+
+            flower.style.setProperty(
+                "--y",
+                y + "px"
+            );
+
+            flower.style.setProperty(
+                "--size",
+                size + "px"
+            );
+
+            flower.style.setProperty(
+                "--font-size",
+                (size * 1.35) + "px"
+            );
+
+            flower.style.setProperty(
+                "--duration",
+                duration + "ms"
+            );
+
+            flower.style.setProperty(
+                "--rotation",
+                (Math.random() * 900 - 450) + "deg"
+            );
+
+            flower.style.setProperty(
+                "--symbol",
+                '"' + type.symbol + '"'
+            );
+
+            flower.style.setProperty(
+                "--flower-color",
+                type.color
+            );
+
+
+            flowerLayer.appendChild(flower);
+
+
+            setTimeout(function() {
+
+                flower.remove();
+
+            }, duration + 200);
+
+
+        }, i * 12);
+
     }
 
-    element.style.left = Math.random() * 100 + "vw";
 
-    element.style.setProperty(
+    /* ---------- PETAL BLAST ---------- */
+
+    for (let i = 0; i < petalCount; i++) {
+
+        setTimeout(function() {
+
+            const petal =
+                document.createElement("div");
+
+            petal.className = "falling-petal";
+
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            const radius =
+                150 + Math.random() * 600;
+
+            const x =
+                Math.cos(angle) * radius;
+
+            const y =
+                Math.sin(angle) * radius;
+
+            const size =
+                8 + Math.random() * 10;
+
+            const colors = [
+                "#e7a4b0",
+                "#d88b9b",
+                "#efb8c0",
+                "#d99aaa",
+                "#c98596"
+            ];
+
+            const color =
+                colors[
+                    Math.floor(
+                        Math.random() * colors.length
+                    )
+                ];
+
+
+            petal.style.left = "50%";
+            petal.style.top = "50%";
+
+            petal.style.width =
+                size + "px";
+
+            petal.style.height =
+                (size * 1.45) + "px";
+
+            petal.style.background =
+                color;
+
+            petal.style.setProperty(
+                "--drift",
+                x + "px"
+            );
+
+            petal.style.setProperty(
+                "--rotation",
+                (Math.random() * 1000 - 500) + "deg"
+            );
+
+            petal.style.animationDuration =
+                (2200 + Math.random() * 2200) + "ms";
+
+
+            flowerLayer.appendChild(petal);
+
+
+            setTimeout(function() {
+
+                petal.remove();
+
+            }, 5000);
+
+        }, i * 15);
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTINUOUS FALLING FLOWERS
+========================================================= */
+
+function createContinuousFlower() {
+
+    const flower =
+        document.createElement("div");
+
+    const type =
+        Math.floor(Math.random() * 5);
+
+    flower.className =
+        "falling-flower flower-" +
+        [
+            "five",
+            "six",
+            "rose",
+            "small",
+            "star"
+        ][type];
+
+
+    /*
+       Spread flowers across entire screen.
+    */
+
+    flower.style.left =
+        (Math.random() * 105 - 2) + "vw";
+
+    flower.style.top =
+        "-60px";
+
+
+    const scale =
+        .55 + Math.random() * 1.1;
+
+    flower.style.transform =
+        "scale(" + scale + ")";
+
+
+    flower.style.setProperty(
         "--drift",
-        (Math.random() * 250 - 125) + "px"
+        (Math.random() * 300 - 150) + "px"
     );
 
-    element.style.setProperty(
+    flower.style.setProperty(
         "--rotation",
-        (Math.random() * 1000 - 500) + "deg"
+        (Math.random() * 900 - 450) + "deg"
     );
 
-    element.style.animationDuration = duration + "ms";
 
-    document.body.appendChild(element);
+    flower.style.animationDuration =
+        (7000 + Math.random() * 6000) + "ms";
+
+
+    flowerLayer.appendChild(flower);
+
 
     setTimeout(function() {
-        element.remove();
-    }, duration + 500);
+
+        flower.remove();
+
+    }, 14000);
 
 }
 
 
-/* =========================
-   FAST FIRST BURST
-========================= */
+/* =========================================================
+   CONTINUOUS PETALS
+========================================================= */
 
-function firstBurst() {
+function createContinuousPetal() {
 
-    /* 45 petals */
-    for (let i = 0; i < 45; i++) {
+    const petal =
+        document.createElement("div");
 
-        setTimeout(function() {
-
-            createFalling(
-                "petal",
-                3500 + Math.random() * 2500
-            );
-
-        }, i * 45);
-
-    }
-
-    /* 22 flowers */
-    for (let i = 0; i < 22; i++) {
-
-        setTimeout(function() {
-
-            createFalling(
-                "flower",
-                4000 + Math.random() * 2500
-            );
-
-        }, i * 75);
-
-    }
-
-}
+    petal.className =
+        "falling-petal";
 
 
-/* =========================
-   SECOND WAVE
-========================= */
+    petal.style.left =
+        Math.random() * 100 + "vw";
 
-function secondWave() {
-
-    for (let i = 0; i < 25; i++) {
-
-        setTimeout(function() {
-
-            createFalling(
-                "petal",
-                5000 + Math.random() * 3000
-            );
-
-        }, i * 130);
-
-    }
-
-    for (let i = 0; i < 10; i++) {
-
-        setTimeout(function() {
-
-            createFalling(
-                "flower",
-                5500 + Math.random() * 3000
-            );
-
-        }, i * 200);
-
-    }
-
-}
+    petal.style.top =
+        "-40px";
 
 
-/* =========================
-   CONTINUOUS GENTLE FALL
-========================= */
+    const colors = [
+        "#e7a4b0",
+        "#d88b9b",
+        "#efb8c0",
+        "#d99aaa",
+        "#c98596"
+    ];
 
-function gentleFall() {
+    petal.style.background =
+        colors[
+            Math.floor(
+                Math.random() * colors.length
+            )
+        ];
 
-    createFalling(
-        Math.random() > 0.82 ? "flower" : "petal",
-        7500 + Math.random() * 3500
+
+    petal.style.setProperty(
+        "--drift",
+        (Math.random() * 300 - 150) + "px"
     );
 
+    petal.style.setProperty(
+        "--rotation",
+        (Math.random() * 900 - 450) + "deg"
+    );
+
+
+    petal.style.animationDuration =
+        (7000 + Math.random() * 7000) + "ms";
+
+
+    flowerLayer.appendChild(petal);
+
+
+    setTimeout(function() {
+
+        petal.remove();
+
+    }, 15000);
+
 }
 
 
-/* =========================
-   START FLOWERS
-========================= */
+/* =========================================================
+   START CONTINUOUS FLOWERS
+========================================================= */
 
-function startFallingFlowers() {
+function startContinuousFlowers() {
 
-    /* Very fast beginning */
-    firstBurst();
+    /*
+       First few seconds:
+       still quite full.
+    */
 
-    /* Gradually slower second wave */
-    setTimeout(function() {
-        secondWave();
-    }, 2500);
-
-    /* Gentle continuous effect */
-    setTimeout(function() {
-
-        gentleFall();
-
+    let flowerInterval =
         setInterval(function() {
-            gentleFall();
-        }, 850);
 
-    }, 4500);
+            createContinuousFlower();
+
+        }, 260);
+
+
+    let petalInterval =
+        setInterval(function() {
+
+            createContinuousPetal();
+
+        }, 180);
+
+
+    /*
+       After the initial excitement,
+       gradually slow the rate.
+    */
+
+    setTimeout(function() {
+
+        clearInterval(flowerInterval);
+        clearInterval(petalInterval);
+
+
+        flowerInterval =
+            setInterval(function() {
+
+                createContinuousFlower();
+
+            }, 700);
+
+
+        petalInterval =
+            setInterval(function() {
+
+                createContinuousPetal();
+
+            }, 450);
+
+
+    }, 6500);
+
+
+    /*
+       Keep the gentle flower/petal effect
+       running until the page is closed.
+    */
 
 }
 
 
-/* =========================
+/* =========================================================
    COUNTDOWN
-========================= */
+========================================================= */
 
-const targetDate = new Date(
-    "October 18, 2026 18:00:00"
-).getTime();
+const targetDate =
+    new Date(
+        "October 18, 2026 18:00:00"
+    ).getTime();
 
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const now =
+        new Date().getTime();
 
-    const difference = targetDate - now;
+    const difference =
+        targetDate - now;
+
 
     if (difference <= 0) {
 
@@ -1200,21 +1985,30 @@ function updateCountdown() {
         return;
     }
 
-    const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-    );
 
-    const hours = Math.floor(
-        (difference / (1000 * 60 * 60)) % 24
-    );
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const minutes = Math.floor(
-        (difference / (1000 * 60)) % 60
-    );
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
 
-    const seconds = Math.floor(
-        (difference / 1000) % 60
-    );
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
 
     document.getElementById("days").innerText =
         String(days).padStart(2, "0");
@@ -1233,7 +2027,10 @@ function updateCountdown() {
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 </script>
 
