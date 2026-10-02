@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,11 +13,12 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
+
 <style>
 
-/* ================================
+/* =====================================================
    BASIC
-================================ */
+===================================================== */
 
 * {
     margin: 0;
@@ -35,9 +37,9 @@ body {
 }
 
 
-/* ================================
-   PETALS + FLOWERS
-================================ */
+/* =====================================================
+   FLOWERS + PETALS
+===================================================== */
 
 #floral-container {
     position: fixed;
@@ -48,64 +50,96 @@ body {
 }
 
 
-/* Rose petal */
+/* ---------- ROSE PETAL ---------- */
 
 .petal {
     position: absolute;
+
     top: -50px;
 
     width: 15px;
-    height: 24px;
+    height: 23px;
 
     background:
         linear-gradient(
             135deg,
-            #c97889,
-            #e6a5b1 48%,
-            #b96478
+            #c87588 0%,
+            #e7a6b2 48%,
+            #b85f76 100%
         );
 
     border-radius: 85% 15% 75% 25%;
 
-    opacity: 0.75;
-
-    filter: blur(0.1px);
+    opacity: 0.72;
 
     animation:
-        fall var(--fall) linear forwards,
-        sway var(--sway) ease-in-out infinite alternate;
+        petalFall var(--fall-time) linear forwards,
+        petalSway var(--sway-time) ease-in-out infinite alternate;
 }
 
 
-/* tiny flower */
+/* tiny petal vein */
+
+.petal::after {
+    content: "";
+
+    position: absolute;
+
+    left: 25%;
+    top: 10%;
+
+    width: 1px;
+    height: 70%;
+
+    background: rgba(255,255,255,0.32);
+
+    transform: rotate(15deg);
+
+    border-radius: 50%;
+}
+
+
+/* ---------- FLOWER ---------- */
 
 .flower {
     position: absolute;
+
     top: -45px;
 
-    width: 18px;
-    height: 18px;
-
-    animation:
-        flowerFall var(--fall) linear forwards,
-        flowerSpin var(--spin) linear infinite;
+    width: 20px;
+    height: 20px;
 
     opacity: 0.78;
+
+    animation:
+        flowerFall var(--flower-fall) linear forwards,
+        flowerSway var(--flower-sway) ease-in-out infinite alternate;
 }
+
+
+/* five flower petals */
 
 .flower span {
     position: absolute;
 
-    width: 8px;
-    height: 11px;
-
-    background: #e4a6b0;
-
-    border-radius: 70% 70% 45% 45%;
+    width: 9px;
+    height: 12px;
 
     left: 5px;
     top: 1px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5a4b0,
+            #cf788b
+        );
+
+    border-radius: 70% 70% 45% 45%;
 }
+
+
+/* rotate each petal */
 
 .flower span:nth-child(1) {
     transform: rotate(0deg) translateY(-3px);
@@ -127,23 +161,29 @@ body {
     transform: rotate(288deg) translateY(-3px);
 }
 
+
+/* flower center */
+
 .flower::after {
     content: "";
+
     position: absolute;
 
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: #c49b63;
+    width: 5px;
+    height: 5px;
 
     left: 7px;
     top: 7px;
+
+    border-radius: 50%;
+
+    background: #c59b63;
 }
 
 
-@keyframes fall {
+/* ---------- PETAL FALL ---------- */
+
+@keyframes petalFall {
 
     0% {
         transform:
@@ -182,6 +222,8 @@ body {
 }
 
 
+/* ---------- FLOWER FALL ---------- */
+
 @keyframes flowerFall {
 
     0% {
@@ -214,51 +256,55 @@ body {
 }
 
 
-@keyframes sway {
+/* ---------- SWAY ---------- */
+
+@keyframes petalSway {
 
     from {
-        margin-left: -12px;
+        margin-left: -10px;
     }
 
     to {
-        margin-left: 12px;
+        margin-left: 10px;
     }
 }
 
 
-@keyframes flowerSpin {
+@keyframes flowerSway {
 
     from {
-        margin-left: -7px;
+        margin-left: -8px;
     }
 
     to {
-        margin-left: 7px;
+        margin-left: 8px;
     }
 }
 
 
-/* ================================
-   OPENING
-================================ */
+/* =====================================================
+   OPENING ENVELOPE
+===================================================== */
 
 #opening {
 
     position: fixed;
+
     inset: 0;
 
     z-index: 5000;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background:
         radial-gradient(
             circle,
-            #fffaf4,
-            #f4e6d7 75%,
-            #ead6c2
+            #fffaf4 0%,
+            #f4e6d7 70%,
+            #ead6c2 100%
         );
 
     transition:
@@ -270,7 +316,9 @@ body {
 #opening.hide {
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
@@ -283,7 +331,9 @@ body {
 
 .tap-text {
 
-    font-family: "Montserrat", sans-serif;
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 10px;
 
@@ -297,6 +347,8 @@ body {
 }
 
 
+/* ---------- ENVELOPE ---------- */
+
 .envelope {
 
     position: relative;
@@ -309,7 +361,7 @@ body {
     filter:
         drop-shadow(
             0 25px 30px
-            rgba(85, 60, 65, 0.16)
+            rgba(85,60,65,0.16)
         );
 
     transition:
@@ -327,6 +379,7 @@ body {
 .envelope-back {
 
     position: absolute;
+
     inset: 0;
 
     background: #ead5c1;
@@ -349,7 +402,7 @@ body {
 
     box-shadow:
         0 4px 15px
-        rgba(70,50,50,0.1);
+        rgba(70,50,50,0.10);
 
     transition:
         transform 1.2s ease;
@@ -359,6 +412,7 @@ body {
 .envelope-front {
 
     position: absolute;
+
     inset: 0;
 
     background: #e5cdb8;
@@ -421,6 +475,7 @@ body {
     border-radius: 50%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -440,15 +495,14 @@ body {
 
     box-shadow:
         0 6px 15px
-        rgba(80,50,30,0.2);
+        rgba(80,50,30,0.20);
 
     transition:
         opacity 0.4s ease;
 }
 
 
-.envelope.open
-.envelope-flap {
+.envelope.open .envelope-flap {
 
     transform:
         rotateX(180deg);
@@ -461,21 +515,21 @@ body {
 }
 
 
-.envelope.open
-.envelope-paper {
+.envelope.open .envelope-paper {
 
     transform:
         translateY(-80px);
 }
 
 
-/* ================================
-   MAIN
-================================ */
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
 
 #main-content {
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
@@ -486,6 +540,7 @@ body {
 #main-content.show {
 
     opacity: 1;
+
     visibility: visible;
 }
 
@@ -494,13 +549,12 @@ section {
 
     padding:
         100px 20px;
-
 }
 
 
-/* ================================
+/* =====================================================
    HERO
-================================ */
+===================================================== */
 
 .hero {
 
@@ -532,7 +586,9 @@ section {
 
 .eyebrow {
 
-    font-family: "Montserrat", sans-serif;
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 10px;
 
@@ -579,16 +635,14 @@ section {
     line-height: 1.35;
 
     color: #836d7b;
-
 }
 
 
-.names .amp {
+.amp {
 
     font-size: 25px;
 
     color: #b09272;
-
 }
 
 
@@ -605,6 +659,8 @@ section {
 }
 
 
+/* ---------- DATE ON HERO ---------- */
+
 .hero-date {
 
     font-family:
@@ -613,16 +669,37 @@ section {
 
     font-size: 11px;
 
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 
     color: #927d87;
 
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
 }
 
 
-/* ================================
-   DATE
-================================ */
+.hero-date span {
+
+    white-space: nowrap;
+}
+
+
+.date-dot {
+
+    color: #b09272;
+}
+
+
+/* =====================================================
+   DATE SECTION
+===================================================== */
 
 .date-section {
 
@@ -675,13 +752,15 @@ section {
 
     font-size: 14px;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     color: #927685;
 
     margin-top: 20px;
 
     font-weight: 500;
+
+    white-space: nowrap;
 }
 
 
@@ -699,9 +778,9 @@ section {
 }
 
 
-/* ================================
+/* =====================================================
    COUNTDOWN
-================================ */
+===================================================== */
 
 .countdown-section {
 
@@ -773,9 +852,9 @@ section {
 }
 
 
-/* ================================
+/* =====================================================
    INVITATION
-================================ */
+===================================================== */
 
 .invitation-section {
 
@@ -784,6 +863,8 @@ section {
     background: #f9f0e5;
 }
 
+
+/* Special elegant calligraphy */
 
 .invitation-section h2 {
 
@@ -819,9 +900,9 @@ section {
 }
 
 
-/* ================================
+/* =====================================================
    VENUE
-================================ */
+===================================================== */
 
 .venue-section {
 
@@ -915,9 +996,9 @@ section {
 }
 
 
-/* ================================
-   QR
-================================ */
+/* =====================================================
+   QR SECTION
+===================================================== */
 
 .qr-section {
 
@@ -975,9 +1056,9 @@ section {
 }
 
 
-/* ================================
-   CHRISTIAN
-================================ */
+/* =====================================================
+   CHRISTIAN SECTION
+===================================================== */
 
 .christian-section {
 
@@ -1037,15 +1118,16 @@ section {
 }
 
 
-/* ================================
+/* =====================================================
    FOOTER
-================================ */
+===================================================== */
 
 footer {
 
     text-align: center;
 
-    padding: 75px 20px;
+    padding:
+        75px 20px;
 
     background: #6e5967;
 
@@ -1090,8 +1172,12 @@ footer {
     font-size: 10px;
 
     letter-spacing: 3px;
+
+    white-space: nowrap;
 }
 
+
+/* ---------- REGARDS ---------- */
 
 .footer-cross {
 
@@ -1101,11 +1187,43 @@ footer {
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+.regards {
 
-@media(max-width:600px) {
+    margin-top: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    font-style: italic;
+
+    color: #ead9c9;
+}
+
+
+.regards-names {
+
+    margin-top: 8px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    letter-spacing: 1px;
+
+    color: #fff5eb;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
 
     .envelope {
 
@@ -1144,6 +1262,24 @@ footer {
     }
 
 
+    .hero-date {
+
+        gap: 8px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .event-time {
+
+        font-size: 12px;
+
+        letter-spacing: 3px;
+    }
+
+
     .countdown {
 
         gap: 35px;
@@ -1161,25 +1297,32 @@ footer {
         width: 96%;
     }
 
+
+    .regards-names {
+
+        font-size: 21px;
+    }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ==================================
-     FLORAL CONTAINER
-================================== -->
+<!-- =====================================================
+     FLOWER / PETAL CONTAINER
+===================================================== -->
 
 <div id="floral-container"></div>
 
 
-<!-- ==================================
-     ENVELOPE
-================================== -->
+<!-- =====================================================
+     OPENING ENVELOPE
+===================================================== -->
 
 <div id="opening">
 
@@ -1189,7 +1332,11 @@ footer {
             Tap to open
         </div>
 
-        <div class="envelope" id="envelope">
+
+        <div
+            class="envelope"
+            id="envelope"
+        >
 
             <div class="envelope-back"></div>
 
@@ -1210,14 +1357,16 @@ footer {
 </div>
 
 
-<!-- ==================================
-     MAIN
-================================== -->
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
 
 <div id="main-content">
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
@@ -1227,9 +1376,11 @@ footer {
             A Celebration of Love
         </div>
 
+
         <h1>
             25 Years
         </h1>
+
 
         <div class="names">
 
@@ -1243,10 +1394,24 @@ footer {
 
         </div>
 
+
         <div class="gold-line"></div>
 
+
         <div class="hero-date">
-            18 OCTOBER 2026 &nbsp; • &nbsp; 6:00 PM ONWARDS
+
+            <span>
+                18 OCTOBER 2026
+            </span>
+
+            <span class="date-dot">
+                •
+            </span>
+
+            <span>
+                6:00 PM ONWARDS
+            </span>
+
         </div>
 
     </div>
@@ -1254,7 +1419,9 @@ footer {
 </section>
 
 
-<!-- DATE -->
+<!-- =====================================================
+     DATE
+===================================================== -->
 
 <section class="date-section">
 
@@ -1262,13 +1429,16 @@ footer {
         Save the Date
     </div>
 
+
     <h2>
         18 OCTOBER 2026
     </h2>
 
+
     <div class="event-time">
         6:00 PM ONWARDS
     </div>
+
 
     <p class="date-message">
         Join us as we celebrate this beautiful milestone together.
@@ -1277,7 +1447,9 @@ footer {
 </section>
 
 
-<!-- COUNTDOWN -->
+<!-- =====================================================
+     COUNTDOWN
+===================================================== -->
 
 <section class="countdown-section">
 
@@ -1285,67 +1457,94 @@ footer {
         Until We Celebrate
     </div>
 
+
     <h2>
         Counting the Moments
     </h2>
 
+
     <div class="countdown">
 
+
         <div>
-            <div class="count-number" id="days">
+
+            <div
+                class="count-number"
+                id="days"
+            >
                 00
             </div>
 
             <div class="count-label">
                 Days
             </div>
+
         </div>
 
 
         <div>
-            <div class="count-number" id="hours">
+
+            <div
+                class="count-number"
+                id="hours"
+            >
                 00
             </div>
 
             <div class="count-label">
                 Hours
             </div>
+
         </div>
 
 
         <div>
-            <div class="count-number" id="minutes">
+
+            <div
+                class="count-number"
+                id="minutes"
+            >
                 00
             </div>
 
             <div class="count-label">
                 Minutes
             </div>
+
         </div>
 
 
         <div>
-            <div class="count-number" id="seconds">
+
+            <div
+                class="count-number"
+                id="seconds"
+            >
                 00
             </div>
 
             <div class="count-label">
                 Seconds
             </div>
+
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- INVITATION -->
+<!-- =====================================================
+     INVITATION
+===================================================== -->
 
 <section class="invitation-section">
 
     <h2>
         You Are Invited
     </h2>
+
 
     <img
         class="invitation-image"
@@ -1356,7 +1555,9 @@ footer {
 </section>
 
 
-<!-- VENUE -->
+<!-- =====================================================
+     VENUE
+===================================================== -->
 
 <section class="venue-section">
 
@@ -1364,13 +1565,16 @@ footer {
         The Celebration
     </div>
 
+
     <h2>
         Venue
     </h2>
 
+
     <div class="venue-name">
         ARIMA THUMBI
     </div>
+
 
     <p class="address">
 
@@ -1384,6 +1588,7 @@ footer {
 
     </p>
 
+
     <a
         class="directions"
         href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
@@ -1395,7 +1600,9 @@ footer {
 </section>
 
 
-<!-- QR -->
+<!-- =====================================================
+     QR
+===================================================== -->
 
 <section class="qr-section">
 
@@ -1403,13 +1610,16 @@ footer {
         Find Us
     </div>
 
+
     <h2>
         Scan for Location
     </h2>
 
+
     <p class="qr-text">
         Scan the QR code to open ARIMA THUMBI in Google Maps.
     </p>
+
 
     <img
         class="qr-code"
@@ -1420,7 +1630,9 @@ footer {
 </section>
 
 
-<!-- CHRISTIAN -->
+<!-- =====================================================
+     CHRISTIAN SECTION
+===================================================== -->
 
 <section class="christian-section">
 
@@ -1428,9 +1640,11 @@ footer {
         ✝
     </div>
 
+
     <h2>
         With Grateful Hearts
     </h2>
+
 
     <p class="verse">
 
@@ -1446,25 +1660,42 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
+
 
     <div class="footer-names">
         GA Arokiaraj ravi &amp; A Mary Francina
     </div>
 
+
     <div class="footer-date">
         18 OCTOBER 2026
     </div>
+
 
     <div class="footer-time">
         6:00 PM ONWARDS
     </div>
 
+
     <div class="footer-cross">
         ✝
     </div>
+
+
+    <div class="regards">
+        With Regards
+    </div>
+
+
+    <div class="regards-names">
+        Mary Princy A &amp; Mary Prathiba A
+    </div>
+
 
 </footer>
 
@@ -1472,23 +1703,28 @@ footer {
 </div>
 
 
-<!-- ==================================
+<!-- =====================================================
      MUSIC
-================================== -->
+===================================================== -->
 
-<audio id="music" preload="auto">
+<audio
+    id="music"
+    preload="auto"
+>
+
     <source
         src="Music.mp3.mpeg"
         type="audio/mpeg"
     >
+
 </audio>
 
 
 <script>
 
-/* ==================================
-   ENVELOPE
-================================== */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const envelope =
     document.getElementById("envelope");
@@ -1502,44 +1738,70 @@ const mainContent =
 const music =
     document.getElementById("music");
 
+const floralContainer =
+    document.getElementById("floral-container");
+
+
 let opened = false;
 
+
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
 
 envelope.addEventListener(
     "click",
     function() {
 
-        if (opened) return;
+
+        if (opened) {
+            return;
+        }
+
 
         opened = true;
 
-        envelope.classList.add("open");
+
+        /* Open envelope */
+
+        envelope.classList.add(
+            "open"
+        );
 
 
-        /* MUSIC */
+        /* Start music */
 
         music.volume = 0.8;
 
         music.play().catch(
             function(error) {
-                console.log(error);
+
+                console.log(
+                    "Music error:",
+                    error
+                );
+
             }
         );
 
 
-        /* START FLORAL BURST */
+        /* Start floral animation */
 
         startFloralShow();
 
 
-        /* SHOW WEBSITE */
+        /* Reveal website */
 
         setTimeout(
             function() {
 
-                opening.classList.add("hide");
+                opening.classList.add(
+                    "hide"
+                );
 
-                mainContent.classList.add("show");
+                mainContent.classList.add(
+                    "show"
+                );
 
             },
             1300
@@ -1549,24 +1811,23 @@ envelope.addEventListener(
 );
 
 
-/* ==================================
-   FLORAL ANIMATION
-================================== */
-
-const floralContainer =
-    document.getElementById(
-        "floral-container"
-    );
-
+/* =====================================================
+   CREATE PETAL
+===================================================== */
 
 function createPetal(
     burst = false
 ) {
 
-    const petal =
-        document.createElement("div");
 
-    petal.className = "petal";
+    const petal =
+        document.createElement(
+            "div"
+        );
+
+
+    petal.className =
+        "petal";
 
 
     petal.style.left =
@@ -1575,7 +1836,8 @@ function createPetal(
 
     const scale =
         0.55 +
-        Math.random() * 0.8;
+        Math.random() * 0.85;
+
 
     petal.style.setProperty(
         "--scale",
@@ -1583,51 +1845,70 @@ function createPetal(
     );
 
 
+    /* Burst is much faster */
+
+    const fallTime =
+        burst
+            ? 3 + Math.random() * 3
+            : 8 + Math.random() * 7;
+
+
     petal.style.setProperty(
-        "--fall",
-        (
-            burst
-                ? 3 + Math.random() * 3
-                : 8 + Math.random() * 7
-        ) + "s"
+        "--fall-time",
+        fallTime + "s"
     );
 
 
     petal.style.setProperty(
-        "--sway",
-        (
-            1.5 +
-            Math.random() * 2
-        ) + "s"
+        "--sway-time",
+        1.5 +
+        Math.random() * 2 +
+        "s"
     );
 
+
+    /* Natural movement */
 
     petal.style.setProperty(
         "--x1",
-        (-70 + Math.random() * 140) + "px"
+        (-70 + Math.random() * 140)
+        + "px"
     );
+
 
     petal.style.setProperty(
         "--x2",
-        (-110 + Math.random() * 220) + "px"
+        (-110 + Math.random() * 220)
+        + "px"
     );
+
 
     petal.style.setProperty(
         "--x3",
-        (-130 + Math.random() * 260) + "px"
+        (-130 + Math.random() * 260)
+        + "px"
     );
+
 
     petal.style.setProperty(
         "--x4",
-        (-160 + Math.random() * 320) + "px"
+        (-160 + Math.random() * 320)
+        + "px"
     );
 
 
+    /* Different sizes */
+
     petal.style.width =
-        (10 + Math.random() * 11) + "px";
+        10 +
+        Math.random() * 11 +
+        "px";
+
 
     petal.style.height =
-        (16 + Math.random() * 13) + "px";
+        16 +
+        Math.random() * 13 +
+        "px";
 
 
     floralContainer.appendChild(
@@ -1636,20 +1917,34 @@ function createPetal(
 
 
     setTimeout(
-        () => petal.remove(),
-        11000
+        function() {
+
+            petal.remove();
+
+        },
+        (fallTime + 2) * 1000
     );
+
 }
 
+
+/* =====================================================
+   CREATE FLOWER
+===================================================== */
 
 function createFlower(
     burst = false
 ) {
 
-    const flower =
-        document.createElement("div");
 
-    flower.className = "flower";
+    const flower =
+        document.createElement(
+            "div"
+        );
+
+
+    flower.className =
+        "flower";
 
 
     flower.style.left =
@@ -1658,7 +1953,8 @@ function createFlower(
 
     const scale =
         0.6 +
-        Math.random() * 0.7;
+        Math.random() * 0.75;
+
 
     flower.style.setProperty(
         "--scale",
@@ -1666,40 +1962,48 @@ function createFlower(
     );
 
 
+    const fallTime =
+        burst
+            ? 4 + Math.random() * 3
+            : 9 + Math.random() * 6;
+
+
     flower.style.setProperty(
-        "--fall",
-        (
-            burst
-                ? 4 + Math.random() * 3
-                : 9 + Math.random() * 6
-        ) + "s"
+        "--flower-fall",
+        fallTime + "s"
     );
 
 
     flower.style.setProperty(
-        "--spin",
-        (
-            3 +
-            Math.random() * 3
-        ) + "s"
+        "--flower-sway",
+        2 +
+        Math.random() * 3 +
+        "s"
     );
 
 
     flower.style.setProperty(
         "--x1",
-        (-70 + Math.random() * 140) + "px"
+        (-70 + Math.random() * 140)
+        + "px"
     );
+
 
     flower.style.setProperty(
         "--x2",
-        (-100 + Math.random() * 200) + "px"
+        (-100 + Math.random() * 200)
+        + "px"
     );
+
 
     flower.style.setProperty(
         "--x3",
-        (-130 + Math.random() * 260) + "px"
+        (-130 + Math.random() * 260)
+        + "px"
     );
 
+
+    /* Five petals */
 
     for (
         let i = 0;
@@ -1708,9 +2012,13 @@ function createFlower(
     ) {
 
         const petal =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
-        flower.appendChild(petal);
+        flower.appendChild(
+            petal
+        );
 
     }
 
@@ -1721,28 +2029,43 @@ function createFlower(
 
 
     setTimeout(
-        () => flower.remove(),
-        11000
+        function() {
+
+            flower.remove();
+
+        },
+        (fallTime + 2) * 1000
     );
+
 }
 
 
+/* =====================================================
+   FLORAL SHOW
+===================================================== */
+
 function startFloralShow() {
 
+
     /*
-       FIRST:
-       BIG FAST BURST
+       STAGE 1
+       VERY FAST + MANY
     */
+
 
     for (
         let i = 0;
-        i < 38;
+        i < 50;
         i++
     ) {
 
         setTimeout(
-            () => createPetal(true),
-            i * 45
+            function() {
+
+                createPetal(true);
+
+            },
+            i * 35
         );
 
     }
@@ -1750,35 +2073,45 @@ function startFloralShow() {
 
     for (
         let i = 0;
-        i < 18;
+        i < 25;
         i++
     ) {
 
         setTimeout(
-            () => createFlower(true),
-            i * 80
+            function() {
+
+                createFlower(true);
+
+            },
+            i * 60
         );
 
     }
 
 
     /*
-       SECOND:
-       MEDIUM SPEED
+       STAGE 2
+       GRADUALLY SLOWER
     */
+
 
     setTimeout(
         function() {
 
+
             for (
                 let i = 0;
-                i < 22;
+                i < 30;
                 i++
             ) {
 
                 setTimeout(
-                    () => createPetal(false),
-                    i * 180
+                    function() {
+
+                        createPetal(false);
+
+                    },
+                    i * 150
                 );
 
             }
@@ -1786,16 +2119,21 @@ function startFloralShow() {
 
             for (
                 let i = 0;
-                i < 8;
+                i < 10;
                 i++
             ) {
 
                 setTimeout(
-                    () => createFlower(false),
-                    i * 300
+                    function() {
+
+                        createFlower(false);
+
+                    },
+                    i * 280
                 );
 
             }
+
 
         },
         1800
@@ -1803,29 +2141,42 @@ function startFloralShow() {
 
 
     /*
-       THIRD:
-       SLOW CONTINUOUS FALL
+       STAGE 3
+       SLOW + ELEGANT + CONTINUOUS
     */
+
 
     setTimeout(
         function() {
 
+
             setInterval(
                 function() {
 
+
+                    /* Petal */
+
                     createPetal(false);
 
+
+                    /*
+                       Occasionally add
+                       a flower
+                    */
+
                     if (
-                        Math.random() > 0.72
+                        Math.random() > 0.68
                     ) {
 
                         createFlower(false);
 
                     }
 
+
                 },
                 850
             );
+
 
         },
         4500
@@ -1834,9 +2185,9 @@ function startFloralShow() {
 }
 
 
-/* ==================================
+/* =====================================================
    COUNTDOWN
-================================== */
+===================================================== */
 
 const eventDate =
     new Date(
@@ -1846,32 +2197,42 @@ const eventDate =
 
 function updateCountdown() {
 
+
     const now =
         new Date().getTime();
+
 
     const distance =
         eventDate - now;
 
 
-    if (distance <= 0) {
+    if (
+        distance <= 0
+    ) {
+
 
         document.getElementById(
             "days"
         ).innerText = "00";
 
+
         document.getElementById(
             "hours"
         ).innerText = "00";
+
 
         document.getElementById(
             "minutes"
         ).innerText = "00";
 
+
         document.getElementById(
             "seconds"
         ).innerText = "00";
 
+
         return;
+
     }
 
 
@@ -1915,30 +2276,43 @@ function updateCountdown() {
     document.getElementById(
         "days"
     ).innerText =
-        String(days).padStart(2, "0");
+        String(days).padStart(
+            2,
+            "0"
+        );
 
 
     document.getElementById(
         "hours"
     ).innerText =
-        String(hours).padStart(2, "0");
+        String(hours).padStart(
+            2,
+            "0"
+        );
 
 
     document.getElementById(
         "minutes"
     ).innerText =
-        String(minutes).padStart(2, "0");
+        String(minutes).padStart(
+            2,
+            "0"
+        );
 
 
     document.getElementById(
         "seconds"
     ).innerText =
-        String(seconds).padStart(2, "0");
+        String(seconds).padStart(
+            2,
+            "0"
+        );
 
 }
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
