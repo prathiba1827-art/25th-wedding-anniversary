@@ -4,20 +4,16 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Silver Jubilee Wedding Anniversary</title>
 
-
-<!-- GOOGLE FONTS -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-
+<link
+href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -36,37 +32,25 @@ html {
 }
 
 body {
-    margin: 0;
-
     background: #fffaf6;
-
     color: #503f43;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
+    font-family: "Cormorant Garamond", serif;
     overflow-x: hidden;
 }
 
 
 /* =========================================================
    FIRST SCREEN
-   VERSE + ENVELOPE TOGETHER
+   VERSE + ENVELOPE
 ========================================================= */
 
 #opening {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 30000;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -76,7 +60,6 @@ body {
     overflow: hidden;
 
     background:
-
         radial-gradient(
             circle at 50% 20%,
             #fffdf9 0%,
@@ -89,17 +72,12 @@ body {
         visibility 1.2s ease;
 }
 
-
-/* tiny pastel glow */
-
 #opening::before {
-
     content: "";
 
     position: absolute;
 
     width: 420px;
-
     height: 420px;
 
     border-radius: 50%;
@@ -111,20 +89,17 @@ body {
     filter: blur(70px);
 
     top: -120px;
-
     left: -100px;
 
     pointer-events: none;
 }
 
 #opening::after {
-
     content: "";
 
     position: absolute;
 
     width: 380px;
-
     height: 380px;
 
     border-radius: 50%;
@@ -136,19 +111,14 @@ body {
     filter: blur(70px);
 
     bottom: -120px;
-
     right: -100px;
 
     pointer-events: none;
 }
 
-
 #opening.hide {
-
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
 }
 
@@ -158,19 +128,14 @@ body {
 ========================================================= */
 
 .opening-content {
-
     position: relative;
-
     z-index: 5;
 
     width: 100%;
-
     max-width: 520px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
@@ -180,7 +145,6 @@ body {
 ========================================================= */
 
 .wedding-verse {
-
     max-width: 470px;
 
     margin-bottom: 24px;
@@ -196,12 +160,9 @@ body {
 }
 
 .wedding-verse-reference {
-
     margin-top: 10px;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
+    font-family: "Montserrat", sans-serif;
 
     font-size: 9px;
 
@@ -214,13 +175,11 @@ body {
 
 
 /* =========================================================
-   LITTLE DIVIDER
+   DIVIDER
 ========================================================= */
 
 .opening-divider {
-
     width: 65px;
-
     height: 2px;
 
     background: #d99c91;
@@ -236,27 +195,22 @@ body {
 ========================================================= */
 
 .envelope-wrapper {
-
     position: relative;
 
     width: 390px;
-
     max-width: 90vw;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
 
 /* =========================================================
-   DECORATIVE FLOWERS BESIDE ENVELOPE
+   DECORATIVE FLOWERS
 ========================================================= */
 
 .corner-flower {
-
     position: absolute;
 
     font-size: 30px;
@@ -269,9 +223,7 @@ body {
 }
 
 .corner-one {
-
     left: -18px;
-
     top: 35px;
 
     color: #d9918b;
@@ -280,9 +232,7 @@ body {
 }
 
 .corner-two {
-
     right: -18px;
-
     top: 75px;
 
     color: #c99ab0;
@@ -291,18 +241,14 @@ body {
 }
 
 .corner-three {
-
     left: -8px;
-
     bottom: 35px;
 
     color: #d6a67e;
 }
 
 .corner-four {
-
     right: -8px;
-
     bottom: 20px;
 
     color: #a9b99d;
@@ -314,11 +260,9 @@ body {
 ========================================================= */
 
 .envelope {
-
     position: relative;
 
     width: 360px;
-
     height: 235px;
 
     max-width: 88vw;
@@ -338,9 +282,7 @@ body {
 }
 
 .envelope:hover {
-
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 }
 
 
@@ -349,7 +291,6 @@ body {
 ========================================================= */
 
 .envelope-back {
-
     position: absolute;
 
     inset: 0;
@@ -375,15 +316,12 @@ body {
 ========================================================= */
 
 .inner-card {
-
     position: absolute;
 
     left: 7%;
-
     bottom: 6%;
 
     width: 86%;
-
     height: 83%;
 
     background:
@@ -399,24 +337,18 @@ body {
     z-index: 2;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 }
 
 .inner-card-content {
-
     text-align: center;
 
     color: #71565a;
 }
 
 .inner-small {
-
-    font-family:
-        "Montserrat",
-        sans-serif;
+    font-family: "Montserrat", sans-serif;
 
     font-size: 8px;
 
@@ -428,10 +360,7 @@ body {
 }
 
 .inner-25 {
-
-    font-family:
-        "Great Vibes",
-        cursive;
+    font-family: "Great Vibes", cursive;
 
     font-size: 58px;
 
@@ -441,7 +370,6 @@ body {
 }
 
 .inner-text {
-
     font-size: 15px;
 
     font-weight: 700;
@@ -455,15 +383,12 @@ body {
 ========================================================= */
 
 .envelope-left {
-
     position: absolute;
 
     left: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 0;
 
     border-left:
@@ -484,15 +409,12 @@ body {
 ========================================================= */
 
 .envelope-right {
-
     position: absolute;
 
     right: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 0;
 
     border-right:
@@ -513,15 +435,12 @@ body {
 ========================================================= */
 
 .envelope-bottom {
-
     position: absolute;
 
     left: 0;
-
     bottom: 0;
 
     width: 0;
-
     height: 0;
 
     border-left:
@@ -542,15 +461,12 @@ body {
 ========================================================= */
 
 .envelope-top {
-
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     width: 0;
-
     height: 0;
 
     border-left:
@@ -562,8 +478,7 @@ body {
     border-top:
         132px solid #dbaea9;
 
-    transform-origin:
-        top center;
+    transform-origin: top center;
 
     z-index: 12;
 
@@ -573,9 +488,7 @@ body {
 }
 
 .envelope.open .envelope-top {
-
-    transform:
-        rotateX(180deg);
+    transform: rotateX(180deg);
 }
 
 
@@ -584,7 +497,6 @@ body {
 ========================================================= */
 
 .envelope-border {
-
     position: absolute;
 
     inset: 9px;
@@ -606,18 +518,15 @@ body {
 ========================================================= */
 
 .seal {
-
     position: absolute;
 
     left: 50%;
-
     top: 50%;
 
     transform:
         translate(-50%, -50%);
 
     width: 82px;
-
     height: 82px;
 
     padding: 5px;
@@ -642,16 +551,12 @@ body {
     z-index: 20;
 
     transition:
-
         opacity .45s ease,
-
         transform .55s ease;
 }
 
 .seal img {
-
     width: 100%;
-
     height: 100%;
 
     display: block;
@@ -662,7 +567,6 @@ body {
 }
 
 .envelope.open .seal {
-
     opacity: 0;
 
     transform:
@@ -676,7 +580,6 @@ body {
 ========================================================= */
 
 .tap-text {
-
     margin-top: 25px;
 
     font-family:
@@ -695,7 +598,6 @@ body {
 }
 
 .tap-subtext {
-
     margin-top: 7px;
 
     font-size: 16px;
@@ -711,7 +613,6 @@ body {
 ========================================================= */
 
 .flower-layer {
-
     position: fixed;
 
     inset: 0;
@@ -724,7 +625,6 @@ body {
 }
 
 .falling-flower {
-
     position: absolute;
 
     top: -80px;
@@ -739,7 +639,6 @@ body {
 @keyframes fall {
 
     0% {
-
         transform:
             translate3d(
                 0,
@@ -753,12 +652,10 @@ body {
     }
 
     8% {
-
         opacity: 1;
     }
 
     100% {
-
         transform:
             translate3d(
                 var(--drift),
@@ -778,15 +675,12 @@ body {
 ========================================================= */
 
 .flower-burst {
-
     position: fixed;
 
     left: 50%;
-
     top: 50%;
 
     width: 10px;
-
     height: 10px;
 
     z-index: 25000;
@@ -795,11 +689,9 @@ body {
 }
 
 .burst-item {
-
     position: absolute;
 
     left: 0;
-
     top: 0;
 
     opacity: 0;
@@ -814,7 +706,6 @@ body {
 @keyframes burst {
 
     0% {
-
         opacity: 0;
 
         transform:
@@ -825,12 +716,10 @@ body {
     }
 
     8% {
-
         opacity: 1;
     }
 
     100% {
-
         opacity: 0;
 
         transform:
@@ -846,11 +735,10 @@ body {
 
 
 /* =========================================================
-   MAIN WEBSITE
+   MAIN
 ========================================================= */
 
 #main {
-
     opacity: 0;
 
     transition:
@@ -858,7 +746,6 @@ body {
 }
 
 #main.show {
-
     opacity: 1;
 }
 
@@ -868,13 +755,10 @@ body {
 ========================================================= */
 
 .hero {
-
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
@@ -891,12 +775,10 @@ body {
 }
 
 .hero-inner {
-
     max-width: 900px;
 }
 
 .eyebrow {
-
     font-family:
         "Montserrat",
         sans-serif;
@@ -913,7 +795,6 @@ body {
 }
 
 .hero h1 {
-
     font-size:
         clamp(70px, 11vw, 125px);
 
@@ -925,7 +806,6 @@ body {
 }
 
 .hero-script {
-
     margin-top: 20px;
 
     font-family:
@@ -941,9 +821,7 @@ body {
 }
 
 .divider {
-
     width: 90px;
-
     height: 2px;
 
     background: #d99c91;
@@ -953,7 +831,6 @@ body {
 }
 
 .names {
-
     font-size:
         clamp(25px, 4vw, 42px);
 
@@ -965,12 +842,10 @@ body {
 }
 
 .names span {
-
     display: block;
 }
 
 .hero-date {
-
     margin-top: 30px;
 
     font-family:
@@ -988,11 +863,10 @@ body {
 
 
 /* =========================================================
-   COMMON
+   COMMON SECTIONS
 ========================================================= */
 
 section {
-
     position: relative;
 
     padding:
@@ -1002,14 +876,12 @@ section {
 }
 
 .section-inner {
-
     max-width: 900px;
 
     margin: auto;
 }
 
 .section-label {
-
     font-family:
         "Montserrat",
         sans-serif;
@@ -1028,7 +900,6 @@ section {
 }
 
 section h2 {
-
     font-size:
         clamp(40px, 6vw, 65px);
 
@@ -1043,7 +914,6 @@ section h2 {
 ========================================================= */
 
 .christian {
-
     position: relative;
 
     z-index: 9500;
@@ -1057,21 +927,18 @@ section h2 {
 }
 
 .christian > * {
-
     position: relative;
 
     z-index: 10000;
 }
 
 .cross {
-
     font-size: 28px;
 
     color: #b77d7d;
 }
 
 .christian h2 {
-
     font-family:
         "Great Vibes",
         cursive;
@@ -1085,7 +952,6 @@ section h2 {
 }
 
 .bible-verse {
-
     max-width: 680px;
 
     margin:
@@ -1101,7 +967,6 @@ section h2 {
 }
 
 .verse-reference {
-
     margin-top: 18px;
 
     font-family:
@@ -1123,12 +988,10 @@ section h2 {
 ========================================================= */
 
 .save-date {
-
     background: #f3eee5;
 }
 
 .save-date h2 {
-
     font-family:
         "Great Vibes",
         cursive;
@@ -1142,7 +1005,6 @@ section h2 {
 }
 
 .big-date {
-
     margin-top: 30px;
 
     font-size:
@@ -1154,7 +1016,6 @@ section h2 {
 }
 
 .big-time {
-
     margin-top: 12px;
 
     font-family:
@@ -1176,12 +1037,10 @@ section h2 {
 ========================================================= */
 
 .invitation {
-
     background: #fffaf6;
 }
 
 .invitation-title {
-
     font-family:
         "Great Vibes",
         cursive;
@@ -1197,7 +1056,6 @@ section h2 {
 }
 
 .invitation-image {
-
     display: block;
 
     width:
@@ -1220,12 +1078,10 @@ section h2 {
 ========================================================= */
 
 .venue {
-
     background: #eef1e8;
 }
 
 .venue-name {
-
     margin-top: 25px;
 
     font-size:
@@ -1239,7 +1095,6 @@ section h2 {
 }
 
 .address {
-
     max-width: 650px;
 
     margin:
@@ -1255,7 +1110,6 @@ section h2 {
 }
 
 .map-button {
-
     display: inline-block;
 
     margin-top: 35px;
@@ -1287,7 +1141,6 @@ section h2 {
 }
 
 .map-button:hover {
-
     background: #9c6565;
 
     transform:
@@ -1295,14 +1148,11 @@ section h2 {
 }
 
 .qr-container {
-
     margin-top: 50px;
 }
 
 .qr-container img {
-
     width: 180px;
-
     height: 180px;
 
     background: white;
@@ -1317,7 +1167,6 @@ section h2 {
 }
 
 .qr-text {
-
     margin-top: 15px;
 
     font-family:
@@ -1339,7 +1188,6 @@ section h2 {
 ========================================================= */
 
 .closing {
-
     background:
         linear-gradient(
             180deg,
@@ -1351,25 +1199,7 @@ section h2 {
         130px 25px;
 }
 
-.closing-small {
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-
-    color: #9a706d;
-
-    font-weight: 700;
-}
-
 .closing h2 {
-
     margin-top: 20px;
 
     font-family:
@@ -1385,7 +1215,6 @@ section h2 {
 }
 
 .closing-names {
-
     margin-top: 25px;
 
     font-size: 23px;
@@ -1398,7 +1227,6 @@ section h2 {
 }
 
 .closing-date {
-
     margin-top: 25px;
 
     font-family:
@@ -1415,7 +1243,6 @@ section h2 {
 }
 
 .closing-cross {
-
     margin-top: 35px;
 
     font-size: 28px;
@@ -1429,7 +1256,6 @@ section h2 {
 ========================================================= */
 
 footer {
-
     padding:
         30px 20px;
 
@@ -1463,7 +1289,6 @@ footer {
     }
 
     .wedding-verse {
-
         font-size: 21px;
 
         max-width: 340px;
@@ -1472,94 +1297,69 @@ footer {
     }
 
     .opening-divider {
-
         margin:
             14px auto 18px;
     }
 
     .envelope {
-
         width: 310px;
-
         height: 202px;
     }
 
     .envelope-left {
-
         border-left-width: 155px;
-
         border-top-width: 101px;
-
         border-bottom-width: 101px;
     }
 
     .envelope-right {
-
         border-right-width: 155px;
-
         border-top-width: 101px;
-
         border-bottom-width: 101px;
     }
 
     .envelope-bottom {
-
         border-left-width: 155px;
-
         border-right-width: 155px;
-
         border-bottom-width: 113px;
     }
 
     .envelope-top {
-
         border-left-width: 155px;
-
         border-right-width: 155px;
-
         border-top-width: 113px;
     }
 
     .seal {
-
         width: 72px;
-
         height: 72px;
     }
 
     .tap-text {
-
         margin-top: 20px;
-
         font-size: 9px;
     }
 
     .tap-subtext {
-
         font-size: 14px;
     }
 
     .corner-flower {
-
         display: none;
     }
 
     .bible-verse {
-
         font-size: 21px;
     }
 
     .address {
-
         font-size: 19px;
     }
 
     section {
-
         padding:
             90px 20px;
     }
-
 }
 
 </style>
@@ -1580,8 +1380,6 @@ footer {
     <div class="opening-content">
 
 
-        <!-- WEDDING VERSE -->
-
         <div class="wedding-verse">
 
             “Therefore what God has joined together,
@@ -1597,12 +1395,8 @@ footer {
         <div class="opening-divider"></div>
 
 
-        <!-- ENVELOPE -->
-
         <div class="envelope-wrapper">
 
-
-            <!-- LITTLE FLOWERS -->
 
             <div class="corner-flower corner-one">
                 ❀
@@ -1627,12 +1421,8 @@ footer {
             >
 
 
-                <!-- ENVELOPE BACK -->
-
                 <div class="envelope-back"></div>
 
-
-                <!-- CARD INSIDE -->
 
                 <div class="inner-card">
 
@@ -1655,32 +1445,16 @@ footer {
                 </div>
 
 
-                <!-- LEFT -->
-
                 <div class="envelope-left"></div>
-
-
-                <!-- RIGHT -->
 
                 <div class="envelope-right"></div>
 
-
-                <!-- BOTTOM -->
-
                 <div class="envelope-bottom"></div>
-
-
-                <!-- TOP -->
 
                 <div class="envelope-top"></div>
 
-
-                <!-- BORDER -->
-
                 <div class="envelope-border"></div>
 
-
-                <!-- HOLY FAMILY BUTTON -->
 
                 <div class="seal">
 
@@ -1738,24 +1512,19 @@ footer {
 
     <div class="hero-inner">
 
-
         <div class="eyebrow">
             SILVER JUBILEE ANNIVERSARY
         </div>
-
 
         <h1>
             25th
         </h1>
 
-
         <div class="hero-script">
             Wedding Anniversary
         </div>
 
-
         <div class="divider"></div>
-
 
         <div class="names">
 
@@ -1773,11 +1542,9 @@ footer {
 
         </div>
 
-
         <div class="hero-date">
             18 OCTOBER 2026 • 6:00 PM ONWARDS
         </div>
-
 
     </div>
 
@@ -1793,16 +1560,13 @@ footer {
 
     <div class="section-inner">
 
-
         <div class="cross">
             ✝
         </div>
 
-
         <h2>
             With Grateful Hearts
         </h2>
-
 
         <div class="bible-verse">
 
@@ -1812,11 +1576,9 @@ footer {
 
         </div>
 
-
         <div class="verse-reference">
             PSALM 107:1
         </div>
-
 
     </div>
 
@@ -1832,26 +1594,21 @@ footer {
 
     <div class="section-inner">
 
-
         <div class="section-label">
             Save the Date
         </div>
-
 
         <h2>
             A Day to Remember
         </h2>
 
-
         <div class="big-date">
             18 OCTOBER 2026
         </div>
 
-
         <div class="big-time">
             6:00 PM ONWARDS
         </div>
-
 
     </div>
 
@@ -1867,18 +1624,15 @@ footer {
 
     <div class="section-inner">
 
-
         <div class="invitation-title">
             You Are Invited
         </div>
-
 
         <img
             class="invitation-image"
             src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
             alt="Silver Jubilee 25th Wedding Anniversary Invitation"
         >
-
 
     </div>
 
@@ -1894,21 +1648,17 @@ footer {
 
     <div class="section-inner">
 
-
         <div class="section-label">
             The Celebration
         </div>
-
 
         <h2>
             Join Us
         </h2>
 
-
         <div class="venue-name">
             ARIMA THUMBI
         </div>
-
 
         <div class="address">
 
@@ -1918,14 +1668,14 @@ footer {
 
             Ramapuram, St. Thomas Mount,<br>
 
-            Tamil Nadu 600016
+            Chennai, Tamil Nadu 600016
 
         </div>
 
 
         <a
             class="map-button"
-            href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
+            href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Chennai+Tamil+Nadu+600016"
             target="_blank"
         >
             Get Directions
@@ -1934,20 +1684,16 @@ footer {
 
         <div class="qr-container">
 
-
             <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BChennai%2BTamil%2BNadu%2B600016"
                 alt="Venue QR Code"
             >
-
 
             <div class="qr-text">
                 SCAN FOR LOCATION
             </div>
 
-
         </div>
-
 
     </div>
 
@@ -1962,11 +1708,6 @@ footer {
 <section class="closing">
 
     <div class="section-inner">
-
-
-        <div class="closing-small">
-            With Regards
-        </div>
 
 
         <h2>
@@ -2107,7 +1848,6 @@ function createFallingFlower(
     const flower =
         document.createElement("div");
 
-
     flower.className =
         "falling-flower";
 
@@ -2137,17 +1877,13 @@ function createFallingFlower(
 
     const duration =
         fast
-
             ? Math.random() * 2.5 + 2
-
             : Math.random() * 8 + 7;
 
 
     const delay =
         fast
-
             ? Math.random() * 1.2
-
             : Math.random() * 4;
 
 
@@ -2242,10 +1978,8 @@ function flowerExplosion() {
     const burst =
         document.createElement("div");
 
-
     burst.className =
         "flower-burst";
-
 
     flowerLayer.appendChild(
         burst
@@ -2273,7 +2007,6 @@ function flowerExplosion() {
 
         const item =
             document.createElement("div");
-
 
         item.className =
             "burst-item";
@@ -2376,7 +2109,6 @@ function flowerExplosion() {
 
         const item =
             document.createElement("div");
-
 
         item.className =
             "burst-item";
@@ -2579,16 +2311,14 @@ envelope.addEventListener(
 
 
         if (opened) {
-
             return;
-
         }
 
 
         opened = true;
 
 
-        /* OPEN */
+        /* OPEN ENVELOPE */
 
         envelope.classList.add(
             "open"
@@ -2622,7 +2352,7 @@ envelope.addEventListener(
         startFlowerRain();
 
 
-        /* WAIT FOR OPENING ANIMATION */
+        /* SHOW WEBSITE */
 
         setTimeout(
             function() {
@@ -2636,8 +2366,6 @@ envelope.addEventListener(
                     "show"
                 );
 
-
-                /* Start page at top */
 
                 window.scrollTo(
                     0,
@@ -2653,7 +2381,7 @@ envelope.addEventListener(
 
 
 /* =========================================================
-   EXTRA GENTLE FLOWERS UNTIL END
+   GENTLE FLOWERS UNTIL END
 ========================================================= */
 
 setInterval(
@@ -2661,9 +2389,7 @@ setInterval(
 
         if (opened) {
 
-            createFallingFlower(
-                false
-            );
+            createFallingFlower(false);
 
         }
 
