@@ -4,17 +4,20 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Silver Jubilee Anniversary</title>
+<title>Silver Jubilee Wedding Anniversary</title>
+
+
+<!-- GOOGLE FONTS -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap"
-rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
 
 <style>
 
@@ -33,219 +36,276 @@ html {
 }
 
 body {
-    background: #faf8f5;
-    color: #443e45;
-    font-family: "Cormorant Garamond", serif;
+    margin: 0;
+
+    background: #fffaf6;
+
+    color: #503f43;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
     overflow-x: hidden;
 }
 
 
 /* =========================================================
-   FIRST BIBLE VERSE
-========================================================= */
-
-#bibleIntro {
-    position: fixed;
-    inset: 0;
-    z-index: 50000;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-    padding: 28px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #ffffff 0%,
-            #f8f5f1 55%,
-            #e8e3de 100%
-        );
-
-    transition:
-        opacity 1.3s ease,
-        visibility 1.3s ease;
-}
-
-#bibleIntro.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.bible-intro-content {
-    width: 100%;
-    max-width: 720px;
-    animation: introFade 1.5s ease;
-}
-
-@keyframes introFade {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.intro-cross {
-    font-size: 31px;
-    color: #777178;
-    margin-bottom: 25px;
-}
-
-.intro-verse {
-    font-size: clamp(25px, 4vw, 36px);
-    line-height: 1.5;
-    color: #3f3941;
-    font-weight: 600;
-}
-
-.intro-reference {
-    margin-top: 18px;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-
-    color: #666068;
-    font-weight: 600;
-}
-
-.intro-line {
-    width: 95px;
-    height: 1px;
-    background: #aaa4aa;
-    margin: 34px auto;
-}
-
-.intro-silver {
-    font-family: "Montserrat", sans-serif;
-
-    font-size: clamp(12px, 2vw, 16px);
-    letter-spacing: 7px;
-
-    color: #6c666d;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.intro-number {
-    margin-top: 10px;
-
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(65px, 11vw, 105px);
-
-    line-height: .9;
-
-    color: #858087;
-}
-
-.intro-anniversary {
-    margin-top: 12px;
-
-    font-size: clamp(23px, 4vw, 35px);
-
-    color: #484149;
-    font-weight: 600;
-}
-
-.intro-names {
-    margin-top: 25px;
-
-    font-size: 19px;
-
-    color: #5a535b;
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   ENVELOPE SCREEN
+   FIRST SCREEN
+   VERSE + ENVELOPE TOGETHER
 ========================================================= */
 
 #opening {
+
     position: fixed;
+
     inset: 0;
 
-    z-index: 40000;
+    z-index: 30000;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
-    padding: 25px;
+    padding: 30px 20px;
+
+    overflow: hidden;
 
     background:
+
         radial-gradient(
-            ellipse at center,
-            #ffffff 0%,
-            #f8f4ef 52%,
-            #e6dfd9 100%
+            circle at 50% 20%,
+            #fffdf9 0%,
+            #fff6f0 48%,
+            #f9ebe5 100%
         );
 
-    opacity: 0;
-    visibility: hidden;
-
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
-#opening.show {
-    opacity: 1;
-    visibility: visible;
+
+/* tiny pastel glow */
+
+#opening::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    background: #f9dcd6;
+
+    opacity: .18;
+
+    filter: blur(70px);
+
+    top: -120px;
+
+    left: -100px;
+
+    pointer-events: none;
 }
+
+#opening::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+
+    height: 380px;
+
+    border-radius: 50%;
+
+    background: #e6d9e8;
+
+    opacity: .16;
+
+    filter: blur(70px);
+
+    bottom: -120px;
+
+    right: -100px;
+
+    pointer-events: none;
+}
+
 
 #opening.hide {
+
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
 
 /* =========================================================
-   LUXURY ENVELOPE AREA
+   OPENING CONTENT
 ========================================================= */
 
-.envelope-area {
+.opening-content {
+
     position: relative;
 
-    width: min(440px, 94vw);
+    z-index: 5;
+
+    width: 100%;
+
+    max-width: 520px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
 
 /* =========================================================
-   SMALL TOP ORNAMENT
+   WEDDING VERSE
 ========================================================= */
 
-.envelope-ornament {
-    margin-bottom: 22px;
+.wedding-verse {
 
-    font-family: "Montserrat", sans-serif;
+    max-width: 470px;
+
+    margin-bottom: 24px;
+
+    color: #513f43;
+
+    font-size:
+        clamp(21px, 4vw, 29px);
+
+    line-height: 1.35;
+
+    font-weight: 700;
+}
+
+.wedding-verse-reference {
+
+    margin-top: 10px;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 9px;
 
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 
-    color: #777178;
+    color: #9a706d;
 
-    text-transform: uppercase;
+    font-weight: 700;
+}
 
-    font-weight: 600;
+
+/* =========================================================
+   LITTLE DIVIDER
+========================================================= */
+
+.opening-divider {
+
+    width: 65px;
+
+    height: 2px;
+
+    background: #d99c91;
+
+    margin: 20px auto 25px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   ENVELOPE AREA
+========================================================= */
+
+.envelope-wrapper {
+
+    position: relative;
+
+    width: 390px;
+
+    max-width: 90vw;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   DECORATIVE FLOWERS BESIDE ENVELOPE
+========================================================= */
+
+.corner-flower {
+
+    position: absolute;
+
+    font-size: 30px;
+
+    opacity: .75;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.corner-one {
+
+    left: -18px;
+
+    top: 35px;
+
+    color: #d9918b;
+
+    transform: rotate(-20deg);
+}
+
+.corner-two {
+
+    right: -18px;
+
+    top: 75px;
+
+    color: #c99ab0;
+
+    transform: rotate(20deg);
+}
+
+.corner-three {
+
+    left: -8px;
+
+    bottom: 35px;
+
+    color: #d6a67e;
+}
+
+.corner-four {
+
+    right: -8px;
+
+    bottom: 20px;
+
+    color: #a9b99d;
 }
 
 
@@ -254,12 +314,14 @@ body {
 ========================================================= */
 
 .envelope {
+
     position: relative;
 
-    width: 390px;
-    height: 255px;
+    width: 360px;
 
-    max-width: 92vw;
+    height: 235px;
+
+    max-width: 88vw;
 
     cursor: pointer;
 
@@ -267,38 +329,42 @@ body {
 
     filter:
         drop-shadow(
-            0 25px 35px
-            rgba(55,48,50,.20)
+            0 22px 30px
+            rgba(100,65,65,.18)
         );
 
     transition:
-        transform .45s ease;
+        transform .35s ease;
 }
 
 .envelope:hover {
-    transform: translateY(-6px);
+
+    transform:
+        translateY(-5px);
 }
 
 
 /* =========================================================
-   ENVELOPE BACK
+   ENVELOPE BODY
 ========================================================= */
 
 .envelope-back {
+
     position: absolute;
 
     inset: 0;
 
+    border-radius: 8px;
+
     background:
         linear-gradient(
-            145deg,
-            #f8f5f1,
-            #e4ded9
+            135deg,
+            #fff8f1,
+            #f3ded7
         );
 
-    border: 1px solid #c2bbb9;
-
-    border-radius: 5px;
+    border:
+        1px solid #e6c7bf;
 
     z-index: 1;
 }
@@ -309,29 +375,26 @@ body {
 ========================================================= */
 
 .inner-card {
+
     position: absolute;
 
     left: 7%;
 
-    bottom: 5%;
+    bottom: 6%;
 
     width: 86%;
 
-    height: 82%;
+    height: 83%;
 
     background:
         linear-gradient(
             145deg,
-            #fffefa,
-            #f5efe9
+            #fffdf9,
+            #fdf0e9
         );
 
     border:
-        1px solid #d5cec9;
-
-    box-shadow:
-        0 8px 20px
-        rgba(60,50,55,.10);
+        1px solid #efd8d0;
 
     z-index: 2;
 
@@ -340,50 +403,50 @@ body {
     align-items: center;
 
     justify-content: center;
-
-    transition:
-        transform 1s ease;
 }
-
-
-/* Inner card text */
 
 .inner-card-content {
+
     text-align: center;
 
-    color: #655d64;
+    color: #71565a;
 }
 
-.inner-card-small {
-    font-family: "Montserrat", sans-serif;
+.inner-small {
 
-    font-size: 7px;
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
 
     letter-spacing: 3px;
 
-    color: #817980;
+    color: #9a706d;
+
+    font-weight: 700;
 }
 
-.inner-card-25 {
-    margin-top: 5px;
+.inner-25 {
 
-    font-family: "Great Vibes", cursive;
+    font-family:
+        "Great Vibes",
+        cursive;
 
-    font-size: 52px;
+    font-size: 58px;
+
+    color: #b77d7d;
 
     line-height: 1;
-
-    color: #918b91;
 }
 
-.inner-card-text {
-    margin-top: 3px;
+.inner-text {
 
     font-size: 15px;
 
-    letter-spacing: 1px;
+    font-weight: 700;
 
-    color: #625b62;
+    color: #71565a;
 }
 
 
@@ -392,24 +455,27 @@ body {
 ========================================================= */
 
 .envelope-left {
+
     position: absolute;
 
     left: 0;
+
     bottom: 0;
 
     width: 0;
+
     height: 0;
 
-    border-left: 195px solid #e2ddda;
-    border-top: 128px solid transparent;
-    border-bottom: 128px solid transparent;
+    border-left:
+        180px solid #f0d9d3;
+
+    border-top:
+        118px solid transparent;
+
+    border-bottom:
+        118px solid transparent;
 
     z-index: 5;
-
-    filter:
-        drop-shadow(
-            1px 0 0 #c8c1bf
-        );
 }
 
 
@@ -418,24 +484,27 @@ body {
 ========================================================= */
 
 .envelope-right {
+
     position: absolute;
 
     right: 0;
+
     bottom: 0;
 
     width: 0;
+
     height: 0;
 
-    border-right: 195px solid #ddd8d5;
-    border-top: 128px solid transparent;
-    border-bottom: 128px solid transparent;
+    border-right:
+        180px solid #efd7d1;
+
+    border-top:
+        118px solid transparent;
+
+    border-bottom:
+        118px solid transparent;
 
     z-index: 5;
-
-    filter:
-        drop-shadow(
-            -1px 0 0 #c8c1bf
-        );
 }
 
 
@@ -444,17 +513,25 @@ body {
 ========================================================= */
 
 .envelope-bottom {
+
     position: absolute;
 
     left: 0;
+
     bottom: 0;
 
     width: 0;
+
     height: 0;
 
-    border-left: 195px solid transparent;
-    border-right: 195px solid transparent;
-    border-bottom: 145px solid #ccc6c6;
+    border-left:
+        180px solid transparent;
+
+    border-right:
+        180px solid transparent;
+
+    border-bottom:
+        130px solid #e4c5bf;
 
     z-index: 6;
 }
@@ -465,21 +542,30 @@ body {
 ========================================================= */
 
 .envelope-top {
+
     position: absolute;
 
     left: 0;
+
     top: 0;
 
     width: 0;
+
     height: 0;
 
-    border-left: 195px solid transparent;
-    border-right: 195px solid transparent;
-    border-top: 145px solid #bdb7ba;
+    border-left:
+        180px solid transparent;
 
-    transform-origin: top center;
+    border-right:
+        180px solid transparent;
 
-    z-index: 10;
+    border-top:
+        132px solid #dbaea9;
+
+    transform-origin:
+        top center;
+
+    z-index: 12;
 
     transition:
         transform 1.15s
@@ -487,110 +573,101 @@ body {
 }
 
 .envelope.open .envelope-top {
+
     transform:
         rotateX(180deg);
 }
 
 
 /* =========================================================
-   SILVER BORDER DETAIL
+   ENVELOPE BORDER
 ========================================================= */
 
-.envelope-detail {
+.envelope-border {
+
     position: absolute;
 
-    inset: 10px;
+    inset: 9px;
 
-    border: 1px solid rgba(255,255,255,.75);
+    border:
+        1px solid
+        rgba(255,255,255,.8);
 
-    z-index: 7;
+    border-radius: 5px;
+
+    z-index: 8;
 
     pointer-events: none;
 }
 
 
 /* =========================================================
-   HOLY FAMILY SEAL
+   HOLY FAMILY BUTTON
 ========================================================= */
 
 .seal {
+
     position: absolute;
 
     left: 50%;
+
     top: 50%;
 
     transform:
         translate(-50%, -50%);
 
-    width: 88px;
-    height: 88px;
+    width: 82px;
+
+    height: 82px;
 
     padding: 5px;
 
     border-radius: 50%;
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #ebe7e4
-        );
+    background: #fffaf6;
 
     border:
-        2px solid #a9a3a8;
+        3px solid #d59b91;
 
     box-shadow:
-        0 8px 20px
-        rgba(50,45,50,.25),
 
-        inset 0 0 0 2px
-        rgba(255,255,255,.8);
+        0 8px 22px
+        rgba(110,70,70,.22),
+
+        0 0 0 4px
+        rgba(255,255,255,.7);
 
     overflow: hidden;
 
-    z-index: 15;
+    z-index: 20;
 
     transition:
-        transform .6s ease,
-        opacity .5s ease;
-}
 
-.seal::before {
-    content: "";
+        opacity .45s ease,
 
-    position: absolute;
-
-    inset: 2px;
-
-    border:
-        1px solid rgba(255,255,255,.8);
-
-    border-radius: 50%;
-
-    z-index: 2;
-
-    pointer-events: none;
+        transform .55s ease;
 }
 
 .seal img {
+
     width: 100%;
+
     height: 100%;
 
     display: block;
 
     object-fit: cover;
 
-    object-position: center;
-
     border-radius: 50%;
 }
 
 .envelope.open .seal {
+
     opacity: 0;
 
     transform:
         translate(-50%, -50%)
-        scale(.35);
+        scale(.3);
 }
 
 
@@ -598,65 +675,34 @@ body {
    TAP TEXT
 ========================================================= */
 
-.open-text {
-    margin-top: 32px;
+.tap-text {
 
-    font-family: "Montserrat", sans-serif;
+    margin-top: 25px;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 10px;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 
     text-transform: uppercase;
 
-    color: #514b52;
+    color: #76575b;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.open-subtext {
-    margin-top: 9px;
+.tap-subtext {
+
+    margin-top: 7px;
 
     font-size: 16px;
 
-    color: #777078;
-}
+    color: #8a6c6f;
 
-
-/* =========================================================
-   LITTLE DECORATIVE STARS
-========================================================= */
-
-.envelope-star {
-    position: absolute;
-
-    color: #aaa4aa;
-
-    font-size: 17px;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-.star-one {
-    left: -28px;
-    top: 38px;
-}
-
-.star-two {
-    right: -28px;
-    top: 78px;
-}
-
-.star-three {
-    left: -18px;
-    bottom: 40px;
-}
-
-.star-four {
-    right: -18px;
-    bottom: 28px;
+    font-weight: 600;
 }
 
 
@@ -665,47 +711,54 @@ body {
 ========================================================= */
 
 .flower-layer {
+
     position: fixed;
 
     inset: 0;
 
     pointer-events: none;
 
-    z-index: 9000;
+    z-index: 10000;
 
     overflow: hidden;
 }
 
 .falling-flower {
+
     position: absolute;
 
     top: -80px;
 
-    user-select: none;
-
     animation:
-        falling linear forwards;
+        fall linear forwards;
 
     will-change:
         transform;
 }
 
-@keyframes falling {
+@keyframes fall {
 
     0% {
+
         transform:
-            translate3d(0,-80px,0)
+            translate3d(
+                0,
+                -80px,
+                0
+            )
             rotate(0deg)
-            scale(.8);
+            scale(.7);
 
         opacity: 0;
     }
 
     8% {
+
         opacity: 1;
     }
 
     100% {
+
         transform:
             translate3d(
                 var(--drift),
@@ -715,61 +768,69 @@ body {
             rotate(var(--rotation))
             scale(var(--scale));
 
-        opacity: .75;
+        opacity: .8;
     }
 }
 
 
 /* =========================================================
-   FLOWER EXPLOSION
+   BIG FLOWER BURST
 ========================================================= */
 
 .flower-burst {
+
     position: fixed;
 
     left: 50%;
+
     top: 50%;
 
     width: 10px;
+
     height: 10px;
 
-    z-index: 20000;
+    z-index: 25000;
 
     pointer-events: none;
 }
 
 .burst-item {
+
     position: absolute;
 
     left: 0;
+
     top: 0;
+
+    opacity: 0;
 
     animation:
         burst
-        2.4s
+        2.5s
         cubic-bezier(.12,.7,.25,1)
         forwards;
-
-    opacity: 0;
 }
 
 @keyframes burst {
 
     0% {
+
         opacity: 0;
 
         transform:
             translate(-50%,-50%)
             translate(0,0)
             rotate(0deg)
-            scale(.2);
+            scale(.15);
     }
 
     8% {
+
         opacity: 1;
     }
 
     100% {
+
         opacity: 0;
 
         transform:
@@ -785,17 +846,19 @@ body {
 
 
 /* =========================================================
-   MAIN
+   MAIN WEBSITE
 ========================================================= */
 
 #main {
+
     opacity: 0;
 
     transition:
-        opacity 1.5s ease;
+        opacity 1.4s ease;
 }
 
 #main.show {
+
     opacity: 1;
 }
 
@@ -805,11 +868,13 @@ body {
 ========================================================= */
 
 .hero {
+
     min-height: 100vh;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -818,104 +883,116 @@ body {
         100px 25px;
 
     background:
-        radial-gradient(
-            circle at center,
-            #ffffff,
-            #faf8f5
+        linear-gradient(
+            180deg,
+            #fffaf6,
+            #fff5ef
         );
 }
 
 .hero-inner {
+
     max-width: 900px;
 }
 
 .eyebrow {
-    font-family: "Montserrat", sans-serif;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 10px;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
-    text-transform: uppercase;
+    color: #9a706d;
 
-    color: #6c666d;
-
-    font-weight: 600;
+    font-weight: 700;
 
     margin-bottom: 25px;
 }
 
 .hero h1 {
+
     font-size:
         clamp(70px, 11vw, 125px);
 
-    line-height: .8;
+    line-height: .85;
 
-    color: #474149;
+    color: #59464a;
 
-    font-weight: 600;
-
-    letter-spacing: -3px;
+    font-weight: 700;
 }
 
 .hero-script {
-    margin-top: 25px;
 
-    font-family: "Great Vibes", cursive;
+    margin-top: 20px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
 
     font-size:
-        clamp(58px, 9vw, 105px);
+        clamp(60px, 9vw, 110px);
 
-    color: #858087;
+    color: #b77d7d;
 
     line-height: 1;
 }
 
 .divider {
-    width: 100px;
-    height: 1px;
 
-    background: #aaa4aa;
+    width: 90px;
+
+    height: 2px;
+
+    background: #d99c91;
 
     margin:
-        35px auto;
+        32px auto;
 }
 
 .names {
+
     font-size:
         clamp(25px, 4vw, 42px);
 
-    line-height: 1.3;
+    line-height: 1.35;
 
-    color: #474149;
+    color: #503f43;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .names span {
+
     display: block;
 }
 
 .hero-date {
-    margin-top: 32px;
 
-    font-family: "Montserrat", sans-serif;
+    margin-top: 30px;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 12px;
 
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
 
-    color: #575159;
+    color: #75585c;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   SECTIONS
+   COMMON
 ========================================================= */
 
 section {
+
     position: relative;
 
     padding:
@@ -925,13 +1002,17 @@ section {
 }
 
 .section-inner {
+
     max-width: 900px;
 
     margin: auto;
 }
 
 .section-label {
-    font-family: "Montserrat", sans-serif;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
 
     font-size: 10px;
 
@@ -939,83 +1020,88 @@ section {
 
     text-transform: uppercase;
 
-    color: #69636b;
+    color: #9a706d;
 
-    font-weight: 600;
+    font-weight: 700;
 
     margin-bottom: 20px;
 }
 
 section h2 {
+
     font-size:
         clamp(40px, 6vw, 65px);
 
-    color: #4b444c;
+    color: #554348;
 
-    font-weight: 600;
-
-    line-height: 1.1;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   BIBLE SECTION
+   CHRISTIAN SECTION
 ========================================================= */
 
 .christian {
+
     position: relative;
 
     z-index: 9500;
 
     isolation: isolate;
 
+    background: #fff5ef;
+
     padding:
         115px 25px;
-
-    background: #f5f1ed;
 }
 
 .christian > * {
+
     position: relative;
 
     z-index: 10000;
 }
 
-.christian .cross {
-    font-size: 30px;
+.cross {
 
-    color: #777178;
+    font-size: 28px;
+
+    color: #b77d7d;
 }
 
 .christian h2 {
+
     font-family:
         "Great Vibes",
         cursive;
 
     font-size:
-        clamp(50px, 7vw, 68px);
+        clamp(52px, 7vw, 70px);
+
+    color: #b77d7d;
 
     font-weight: 400;
-
-    color: #555058;
 }
 
 .bible-verse {
+
     max-width: 680px;
 
     margin:
-        30px auto 0;
+        28px auto 0;
 
     font-size: 25px;
 
-    line-height: 1.65;
+    line-height: 1.6;
 
-    color: #403b43;
+    color: #503f43;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .verse-reference {
+
     margin-top: 18px;
 
     font-family:
@@ -1026,21 +1112,23 @@ section h2 {
 
     letter-spacing: 3px;
 
-    color: #5f5960;
+    color: #9a706d;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
 /* =========================================================
-   SAVE DATE
+   SAVE THE DATE
 ========================================================= */
 
 .save-date {
-    background: #e9e5e2;
+
+    background: #f3eee5;
 }
 
 .save-date h2 {
+
     font-family:
         "Great Vibes",
         cursive;
@@ -1048,23 +1136,25 @@ section h2 {
     font-size:
         clamp(55px, 8vw, 82px);
 
-    font-weight: 400;
+    color: #b77d7d;
 
-    color: #666068;
+    font-weight: 400;
 }
 
 .big-date {
+
     margin-top: 30px;
 
     font-size:
         clamp(38px, 6vw, 62px);
 
-    color: #474149;
+    color: #554348;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .big-time {
+
     margin-top: 12px;
 
     font-family:
@@ -1073,9 +1163,9 @@ section h2 {
 
     font-size: 14px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
-    color: #575159;
+    color: #75585c;
 
     font-weight: 700;
 }
@@ -1086,10 +1176,12 @@ section h2 {
 ========================================================= */
 
 .invitation {
-    background: #faf8f5;
+
+    background: #fffaf6;
 }
 
 .invitation-title {
+
     font-family:
         "Great Vibes",
         cursive;
@@ -1097,7 +1189,7 @@ section h2 {
     font-size:
         clamp(58px, 8vw, 85px);
 
-    color: #555058;
+    color: #b77d7d;
 
     font-weight: 400;
 
@@ -1105,6 +1197,7 @@ section h2 {
 }
 
 .invitation-image {
+
     display: block;
 
     width:
@@ -1114,11 +1207,11 @@ section h2 {
 
     margin: auto;
 
-    border-radius: 5px;
+    border-radius: 6px;
 
     box-shadow:
         0 25px 60px
-        rgba(60,55,60,.18);
+        rgba(100,65,65,.16);
 }
 
 
@@ -1127,16 +1220,18 @@ section h2 {
 ========================================================= */
 
 .venue {
-    background: #e9e5e2;
+
+    background: #eef1e8;
 }
 
 .venue-name {
+
     margin-top: 25px;
 
     font-size:
         clamp(35px, 5vw, 52px);
 
-    color: #474149;
+    color: #526052;
 
     font-weight: 700;
 
@@ -1144,6 +1239,7 @@ section h2 {
 }
 
 .address {
+
     max-width: 650px;
 
     margin:
@@ -1153,12 +1249,13 @@ section h2 {
 
     line-height: 1.5;
 
-    color: #504950;
+    color: #4e5148;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .map-button {
+
     display: inline-block;
 
     margin-top: 35px;
@@ -1166,11 +1263,13 @@ section h2 {
     padding:
         15px 30px;
 
-    background: #777178;
+    background: #b77d7d;
 
     color: white;
 
     text-decoration: none;
+
+    border-radius: 30px;
 
     font-family:
         "Montserrat",
@@ -1182,36 +1281,43 @@ section h2 {
 
     text-transform: uppercase;
 
-    font-weight: 600;
+    font-weight: 700;
 
     transition: .3s ease;
 }
 
 .map-button:hover {
-    background: #504950;
+
+    background: #9c6565;
 
     transform:
         translateY(-2px);
 }
 
 .qr-container {
+
     margin-top: 50px;
 }
 
 .qr-container img {
+
     width: 180px;
+
     height: 180px;
 
     background: white;
 
     padding: 10px;
 
+    border-radius: 12px;
+
     box-shadow:
         0 10px 30px
-        rgba(60,55,60,.12);
+        rgba(70,70,60,.12);
 }
 
 .qr-text {
+
     margin-top: 15px;
 
     font-family:
@@ -1222,9 +1328,9 @@ section h2 {
 
     letter-spacing: 2px;
 
-    color: #69636a;
+    color: #687060;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -1233,13 +1339,20 @@ section h2 {
 ========================================================= */
 
 .closing {
-    background: #faf8f5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffaf6,
+            #f9e8e2
+        );
 
     padding:
         130px 25px;
 }
 
 .closing-small {
+
     font-family:
         "Montserrat",
         sans-serif;
@@ -1250,12 +1363,13 @@ section h2 {
 
     text-transform: uppercase;
 
-    color: #69636a;
+    color: #9a706d;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .closing h2 {
+
     margin-top: 20px;
 
     font-family:
@@ -1265,24 +1379,26 @@ section h2 {
     font-size:
         clamp(58px, 8vw, 85px);
 
-    font-weight: 400;
+    color: #b77d7d;
 
-    color: #555058;
+    font-weight: 400;
 }
 
 .closing-names {
+
     margin-top: 25px;
 
     font-size: 23px;
 
     line-height: 1.6;
 
-    color: #474149;
+    color: #503f43;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .closing-date {
+
     margin-top: 25px;
 
     font-family:
@@ -1293,17 +1409,18 @@ section h2 {
 
     letter-spacing: 2px;
 
-    color: #575159;
+    color: #75585c;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .closing-cross {
+
     margin-top: 35px;
 
     font-size: 28px;
 
-    color: #777178;
+    color: #b77d7d;
 }
 
 
@@ -1312,12 +1429,13 @@ section h2 {
 ========================================================= */
 
 footer {
+
     padding:
         30px 20px;
 
     text-align: center;
 
-    background: #dedbd8;
+    background: #eadbd4;
 
     font-family:
         "Montserrat",
@@ -1327,9 +1445,9 @@ footer {
 
     letter-spacing: 2px;
 
-    color: #5f5960;
+    color: #765e61;
 
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -1339,60 +1457,109 @@ footer {
 
 @media (max-width: 600px) {
 
+    #opening {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .wedding-verse {
+
+        font-size: 21px;
+
+        max-width: 340px;
+
+        margin-bottom: 15px;
+    }
+
+    .opening-divider {
+
+        margin:
+            14px auto 18px;
+    }
+
     .envelope {
+
         width: 310px;
-        height: 205px;
+
+        height: 202px;
     }
 
     .envelope-left {
+
         border-left-width: 155px;
-        border-top-width: 103px;
-        border-bottom-width: 103px;
+
+        border-top-width: 101px;
+
+        border-bottom-width: 101px;
     }
 
     .envelope-right {
+
         border-right-width: 155px;
-        border-top-width: 103px;
-        border-bottom-width: 103px;
+
+        border-top-width: 101px;
+
+        border-bottom-width: 101px;
     }
 
     .envelope-bottom {
+
         border-left-width: 155px;
+
         border-right-width: 155px;
-        border-bottom-width: 116px;
+
+        border-bottom-width: 113px;
     }
 
     .envelope-top {
+
         border-left-width: 155px;
+
         border-right-width: 155px;
-        border-top-width: 116px;
+
+        border-top-width: 113px;
     }
 
     .seal {
+
         width: 72px;
+
         height: 72px;
     }
 
-    .envelope-star {
+    .tap-text {
+
+        margin-top: 20px;
+
+        font-size: 9px;
+    }
+
+    .tap-subtext {
+
+        font-size: 14px;
+    }
+
+    .corner-flower {
+
         display: none;
     }
 
-    .intro-verse {
-        font-size: 24px;
-    }
-
     .bible-verse {
+
         font-size: 21px;
     }
 
     .address {
+
         font-size: 19px;
     }
 
     section {
+
         padding:
             90px 20px;
     }
+
 }
 
 </style>
@@ -1403,167 +1570,141 @@ footer {
 <body>
 
 
-<!-- =====================================================
-     BIBLE VERSE — FIRST THING THEY SEE
-===================================================== -->
-
-<div id="bibleIntro">
-
-    <div class="bible-intro-content">
-
-        <div class="intro-cross">
-            ✝
-        </div>
-
-        <div class="intro-verse">
-
-            “Give thanks to the Lord,
-            for He is good;
-            His love endures forever.”
-
-        </div>
-
-        <div class="intro-reference">
-            PSALM 107:1
-        </div>
-
-        <div class="intro-line"></div>
-
-        <div class="intro-silver">
-            Silver Jubilee
-        </div>
-
-        <div class="intro-number">
-            25th
-        </div>
-
-        <div class="intro-anniversary">
-            Wedding Anniversary
-        </div>
-
-        <div class="intro-names">
-            GA Arokiaraj Ravi &amp; A Mary Francina
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     ENVELOPE
-===================================================== -->
+<!-- =========================================================
+     FIRST SCREEN
+     WEDDING VERSE + ENVELOPE
+========================================================= -->
 
 <div id="opening">
 
-    <div class="envelope-area">
+    <div class="opening-content">
 
 
-        <div class="envelope-ornament">
-            25 Years of Love &amp; Grace
+        <!-- WEDDING VERSE -->
+
+        <div class="wedding-verse">
+
+            “Therefore what God has joined together,
+            let no one separate.”
+
+            <div class="wedding-verse-reference">
+                MARK 10:9
+            </div>
+
         </div>
 
 
-        <div class="envelope" id="envelope">
+        <div class="opening-divider"></div>
 
 
-            <!-- Back -->
+        <!-- ENVELOPE -->
 
-            <div class="envelope-back"></div>
+        <div class="envelope-wrapper">
 
 
-            <!-- Inner invitation card -->
+            <!-- LITTLE FLOWERS -->
 
-            <div class="inner-card">
+            <div class="corner-flower corner-one">
+                ❀
+            </div>
 
-                <div class="inner-card-content">
+            <div class="corner-flower corner-two">
+                ✿
+            </div>
 
-                    <div class="inner-card-small">
-                        SILVER JUBILEE
-                    </div>
+            <div class="corner-flower corner-three">
+                ✽
+            </div>
 
-                    <div class="inner-card-25">
-                        25
-                    </div>
+            <div class="corner-flower corner-four">
+                ❁
+            </div>
 
-                    <div class="inner-card-text">
-                        Wedding Anniversary
+
+            <div
+                class="envelope"
+                id="envelope"
+            >
+
+
+                <!-- ENVELOPE BACK -->
+
+                <div class="envelope-back"></div>
+
+
+                <!-- CARD INSIDE -->
+
+                <div class="inner-card">
+
+                    <div class="inner-card-content">
+
+                        <div class="inner-small">
+                            SILVER JUBILEE
+                        </div>
+
+                        <div class="inner-25">
+                            25
+                        </div>
+
+                        <div class="inner-text">
+                            Wedding Anniversary
+                        </div>
+
                     </div>
 
                 </div>
 
+
+                <!-- LEFT -->
+
+                <div class="envelope-left"></div>
+
+
+                <!-- RIGHT -->
+
+                <div class="envelope-right"></div>
+
+
+                <!-- BOTTOM -->
+
+                <div class="envelope-bottom"></div>
+
+
+                <!-- TOP -->
+
+                <div class="envelope-top"></div>
+
+
+                <!-- BORDER -->
+
+                <div class="envelope-border"></div>
+
+
+                <!-- HOLY FAMILY BUTTON -->
+
+                <div class="seal">
+
+                    <img
+                        src="./IMG_3688.jpeg"
+                        alt="Holy Family"
+                    >
+
+                </div>
+
+
             </div>
 
 
-            <!-- Left flap -->
-
-            <div class="envelope-left"></div>
-
-
-            <!-- Right flap -->
-
-            <div class="envelope-right"></div>
-
-
-            <!-- Bottom flap -->
-
-            <div class="envelope-bottom"></div>
-
-
-            <!-- Top flap -->
-
-            <div class="envelope-top"></div>
-
-
-            <!-- Fine border -->
-
-            <div class="envelope-detail"></div>
-
-
-            <!-- HOLY FAMILY BUTTON -->
-
-            <div class="seal">
-
-                <img
-                    src="./IMG_3688.jpeg"
-                    alt="Holy Family"
-                >
-
+            <div class="tap-text">
+                Tap to Open
             </div>
 
-
-            <!-- Decorative stars -->
-
-            <div class="envelope-star star-one">
-                ✦
-            </div>
-
-            <div class="envelope-star star-two">
-                ✧
-            </div>
-
-            <div class="envelope-star star-three">
-                ✦
-            </div>
-
-            <div class="envelope-star star-four">
-                ✧
+            <div class="tap-subtext">
+                A celebration of 25 beautiful years
             </div>
 
 
         </div>
-
-
-        <div class="open-text">
-            Tap the Holy Family to Open
-        </div>
-
-
-        <div class="open-subtext">
-            A celebration of 25 beautiful years
-        </div>
-
 
     </div>
 
@@ -1571,9 +1712,9 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FLOWERS
-===================================================== -->
+========================================================= -->
 
 <div
     class="flower-layer"
@@ -1582,34 +1723,39 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      MAIN WEBSITE
-===================================================== -->
+========================================================= -->
 
 <main id="main">
 
 
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <section class="hero">
 
     <div class="hero-inner">
 
+
         <div class="eyebrow">
             SILVER JUBILEE ANNIVERSARY
         </div>
+
 
         <h1>
             25th
         </h1>
 
+
         <div class="hero-script">
             Wedding Anniversary
         </div>
 
+
         <div class="divider"></div>
+
 
         <div class="names">
 
@@ -1627,9 +1773,11 @@ footer {
 
         </div>
 
+
         <div class="hero-date">
             18 OCTOBER 2026 • 6:00 PM ONWARDS
         </div>
+
 
     </div>
 
@@ -1637,21 +1785,24 @@ footer {
 
 
 
-<!-- =====================================================
-     CHRISTIAN SECTION
-===================================================== -->
+<!-- =========================================================
+     PSALM 107:1
+========================================================= -->
 
 <section class="christian">
 
     <div class="section-inner">
 
+
         <div class="cross">
             ✝
         </div>
 
+
         <h2>
             With Grateful Hearts
         </h2>
+
 
         <div class="bible-verse">
 
@@ -1661,9 +1812,11 @@ footer {
 
         </div>
 
+
         <div class="verse-reference">
             PSALM 107:1
         </div>
+
 
     </div>
 
@@ -1671,29 +1824,34 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      SAVE THE DATE
-===================================================== -->
+========================================================= -->
 
 <section class="save-date">
 
     <div class="section-inner">
 
+
         <div class="section-label">
             Save the Date
         </div>
+
 
         <h2>
             A Day to Remember
         </h2>
 
+
         <div class="big-date">
             18 OCTOBER 2026
         </div>
 
+
         <div class="big-time">
             6:00 PM ONWARDS
         </div>
+
 
     </div>
 
@@ -1701,17 +1859,19 @@ footer {
 
 
 
-<!-- =====================================================
-     INVITATION CARD
-===================================================== -->
+<!-- =========================================================
+     INVITATION
+========================================================= -->
 
 <section class="invitation">
 
     <div class="section-inner">
 
+
         <div class="invitation-title">
             You Are Invited
         </div>
+
 
         <img
             class="invitation-image"
@@ -1719,31 +1879,36 @@ footer {
             alt="Silver Jubilee 25th Wedding Anniversary Invitation"
         >
 
+
     </div>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      VENUE
-===================================================== -->
+========================================================= -->
 
 <section class="venue">
 
     <div class="section-inner">
 
+
         <div class="section-label">
             The Celebration
         </div>
+
 
         <h2>
             Join Us
         </h2>
 
+
         <div class="venue-name">
             ARIMA THUMBI
         </div>
+
 
         <div class="address">
 
@@ -1769,16 +1934,20 @@ footer {
 
         <div class="qr-container">
 
+
             <img
                 src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
                 alt="Venue QR Code"
             >
 
+
             <div class="qr-text">
                 SCAN FOR LOCATION
             </div>
 
+
         </div>
+
 
     </div>
 
@@ -1786,21 +1955,24 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      CLOSING
-===================================================== -->
+========================================================= -->
 
 <section class="closing">
 
     <div class="section-inner">
 
+
         <div class="closing-small">
             With Regards
         </div>
 
+
         <h2>
             With Love
         </h2>
+
 
         <div class="closing-names">
 
@@ -1816,7 +1988,9 @@ footer {
 
         </div>
 
+
         <div class="divider"></div>
+
 
         <div class="closing-date">
 
@@ -1828,9 +2002,11 @@ footer {
 
         </div>
 
+
         <div class="closing-cross">
             ✝
         </div>
+
 
     </div>
 
@@ -1838,9 +2014,9 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
@@ -1853,9 +2029,9 @@ footer {
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      MUSIC
-===================================================== -->
+========================================================= -->
 
 <audio
     id="music"
@@ -1875,9 +2051,6 @@ footer {
    ELEMENTS
 ========================================================= */
 
-const bibleIntro =
-    document.getElementById("bibleIntro");
-
 const opening =
     document.getElementById("opening");
 
@@ -1895,24 +2068,10 @@ const music =
 
 
 /* =========================================================
-   BIBLE VERSE → ENVELOPE
+   FLOWERS
 ========================================================= */
 
-setTimeout(function() {
-
-    bibleIntro.classList.add("hide");
-
-    opening.classList.add("show");
-
-}, 5500);
-
-
-
-/* =========================================================
-   FLOWER SYMBOLS
-========================================================= */
-
-const flowerSymbols = [
+const flowers = [
 
     "✿",
     "❀",
@@ -1926,7 +2085,7 @@ const flowerSymbols = [
 
 ];
 
-const petalSymbols = [
+const petals = [
 
     "❧",
     "❦",
@@ -1937,31 +2096,33 @@ const petalSymbols = [
 ];
 
 
-
 /* =========================================================
-   FALLING FLOWERS
+   FALLING FLOWER
 ========================================================= */
 
-function createFallingFlower(fast = false) {
+function createFallingFlower(
+    fast = false
+) {
 
     const flower =
         document.createElement("div");
+
 
     flower.className =
         "falling-flower";
 
 
     const symbols =
-        Math.random() > .3
-            ? flowerSymbols
-            : petalSymbols;
+        Math.random() > .28
+            ? flowers
+            : petals;
 
 
     flower.textContent =
         symbols[
             Math.floor(
-                Math.random() *
-                symbols.length
+                Math.random()
+                * symbols.length
             )
         ];
 
@@ -1976,13 +2137,17 @@ function createFallingFlower(fast = false) {
 
     const duration =
         fast
+
             ? Math.random() * 2.5 + 2
+
             : Math.random() * 8 + 7;
 
 
     const delay =
         fast
+
             ? Math.random() * 1.2
+
             : Math.random() * 4;
 
 
@@ -2008,10 +2173,24 @@ function createFallingFlower(fast = false) {
         size + "px";
 
 
+    const pastelColors = [
+
+        "#d98f86",
+        "#c995a8",
+        "#d9a77e",
+        "#a7b79c",
+        "#d8b7b0"
+
+    ];
+
+
     flower.style.color =
-        Math.random() > .5
-            ? "#aaa4aa"
-            : "#8e8890";
+        pastelColors[
+            Math.floor(
+                Math.random()
+                * pastelColors.length
+            )
+        ];
 
 
     flower.style.animationDuration =
@@ -2054,6 +2233,246 @@ function createFallingFlower(fast = false) {
 }
 
 
+/* =========================================================
+   BIG FLOWER EXPLOSION
+========================================================= */
+
+function flowerExplosion() {
+
+    const burst =
+        document.createElement("div");
+
+
+    burst.className =
+        "flower-burst";
+
+
+    flowerLayer.appendChild(
+        burst
+    );
+
+
+    const pastelColors = [
+
+        "#d98f86",
+        "#c995a8",
+        "#d9a77e",
+        "#a7b79c",
+        "#e2b4aa"
+
+    ];
+
+
+    /* FLOWERS */
+
+    for (
+        let i = 0;
+        i < 140;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "burst-item";
+
+
+        item.textContent =
+            flowers[
+                Math.floor(
+                    Math.random()
+                    * flowers.length
+                )
+            ];
+
+
+        const angle =
+            Math.random()
+            * Math.PI * 2;
+
+
+        const distance =
+            Math.random() * 700 + 150;
+
+
+        const x =
+            Math.cos(angle)
+            * distance;
+
+
+        const y =
+            Math.sin(angle)
+            * distance;
+
+
+        item.style.fontSize =
+            (
+                Math.random()
+                * 24 + 12
+            ) + "px";
+
+
+        item.style.color =
+            pastelColors[
+                Math.floor(
+                    Math.random()
+                    * pastelColors.length
+                )
+            ];
+
+
+        item.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        item.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        item.style.setProperty(
+            "--rotation",
+
+            (
+                (Math.random() - .5)
+                * 1400
+
+            ) + "deg"
+        );
+
+
+        item.style.setProperty(
+            "--scale",
+
+            Math.random()
+            * 1.5 + .6
+        );
+
+
+        item.style.animationDelay =
+            Math.random()
+            * .35 + "s";
+
+
+        burst.appendChild(
+            item
+        );
+
+    }
+
+
+    /* PETALS */
+
+    for (
+        let i = 0;
+        i < 120;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "burst-item";
+
+
+        item.textContent =
+            petals[
+                Math.floor(
+                    Math.random()
+                    * petals.length
+                )
+            ];
+
+
+        const angle =
+            Math.random()
+            * Math.PI * 2;
+
+
+        const distance =
+            Math.random()
+            * 650 + 100;
+
+
+        const x =
+            Math.cos(angle)
+            * distance;
+
+
+        const y =
+            Math.sin(angle)
+            * distance;
+
+
+        item.style.fontSize =
+            (
+                Math.random()
+                * 20 + 10
+            ) + "px";
+
+
+        item.style.color =
+            "#d99c91";
+
+
+        item.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        item.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        item.style.setProperty(
+            "--rotation",
+
+            (
+                (Math.random() - .5)
+                * 1200
+
+            ) + "deg"
+        );
+
+
+        item.style.setProperty(
+            "--scale",
+
+            Math.random()
+            * 1.3 + .6
+        );
+
+
+        item.style.animationDelay =
+            Math.random()
+            * .45 + "s";
+
+
+        burst.appendChild(
+            item
+        );
+
+    }
+
+
+    setTimeout(function() {
+
+        burst.remove();
+
+    }, 4500);
+
+}
+
 
 /* =========================================================
    CONTINUOUS FLOWER RAIN
@@ -2088,11 +2507,14 @@ function startFlowerRain() {
         }, 40);
 
 
-    /* START SLOWING */
+    /* SLOW DOWN */
 
     setTimeout(function() {
 
-        clearInterval(rainInterval);
+        clearInterval(
+            rainInterval
+        );
+
 
         rainInterval =
             setInterval(function() {
@@ -2108,7 +2530,10 @@ function startFlowerRain() {
 
     setTimeout(function() {
 
-        clearInterval(rainInterval);
+        clearInterval(
+            rainInterval
+        );
+
 
         rainInterval =
             setInterval(function() {
@@ -2120,11 +2545,14 @@ function startFlowerRain() {
     }, 9000);
 
 
-    /* GENTLE CONTINUOUS */
+    /* GENTLE UNTIL END */
 
     setTimeout(function() {
 
-        clearInterval(rainInterval);
+        clearInterval(
+            rainInterval
+        );
+
 
         rainInterval =
             setInterval(function() {
@@ -2136,214 +2564,6 @@ function startFlowerRain() {
     }, 16000);
 
 }
-
-
-
-/* =========================================================
-   BIG FLOWER EXPLOSION
-========================================================= */
-
-function flowerExplosion() {
-
-    const burst =
-        document.createElement("div");
-
-    burst.className =
-        "flower-burst";
-
-    flowerLayer.appendChild(
-        burst
-    );
-
-
-    /* FLOWERS */
-
-    for (
-        let i = 0;
-        i < 140;
-        i++
-    ) {
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "burst-item";
-
-
-        item.textContent =
-            flowerSymbols[
-                Math.floor(
-                    Math.random() *
-                    flowerSymbols.length
-                )
-            ];
-
-
-        const angle =
-            Math.random()
-            * Math.PI * 2;
-
-
-        const distance =
-            Math.random() * 700 + 150;
-
-
-        const x =
-            Math.cos(angle)
-            * distance;
-
-
-        const y =
-            Math.sin(angle)
-            * distance;
-
-
-        item.style.fontSize =
-            (
-                Math.random() * 24 + 12
-            ) + "px";
-
-
-        item.style.color =
-            Math.random() > .5
-                ? "#aaa4aa"
-                : "#8e8890";
-
-
-        item.style.setProperty(
-            "--x",
-            x + "px"
-        );
-
-
-        item.style.setProperty(
-            "--y",
-            y + "px"
-        );
-
-
-        item.style.setProperty(
-            "--rotation",
-            (
-                (Math.random() - .5)
-                * 1400
-            ) + "deg"
-        );
-
-
-        item.style.setProperty(
-            "--scale",
-            Math.random() * 1.5 + .6
-        );
-
-
-        item.style.animationDelay =
-            Math.random() * .35 + "s";
-
-
-        burst.appendChild(item);
-
-    }
-
-
-    /* PETALS */
-
-    for (
-        let i = 0;
-        i < 120;
-        i++
-    ) {
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "burst-item";
-
-
-        item.textContent =
-            petalSymbols[
-                Math.floor(
-                    Math.random() *
-                    petalSymbols.length
-                )
-            ];
-
-
-        const angle =
-            Math.random()
-            * Math.PI * 2;
-
-
-        const distance =
-            Math.random() * 650 + 100;
-
-
-        const x =
-            Math.cos(angle)
-            * distance;
-
-
-        const y =
-            Math.sin(angle)
-            * distance;
-
-
-        item.style.fontSize =
-            (
-                Math.random() * 20 + 10
-            ) + "px";
-
-
-        item.style.color =
-            "#b5afb5";
-
-
-        item.style.setProperty(
-            "--x",
-            x + "px"
-        );
-
-
-        item.style.setProperty(
-            "--y",
-            y + "px"
-        );
-
-
-        item.style.setProperty(
-            "--rotation",
-            (
-                (Math.random() - .5)
-                * 1200
-            ) + "deg"
-        );
-
-
-        item.style.setProperty(
-            "--scale",
-            Math.random() * 1.3 + .6
-        );
-
-
-        item.style.animationDelay =
-            Math.random() * .45 + "s";
-
-
-        burst.appendChild(item);
-
-    }
-
-
-    setTimeout(function() {
-
-        burst.remove();
-
-    }, 4500);
-
-}
-
 
 
 /* =========================================================
@@ -2359,23 +2579,26 @@ envelope.addEventListener(
 
 
         if (opened) {
+
             return;
+
         }
 
 
         opened = true;
 
 
-        /* Open */
+        /* OPEN */
 
         envelope.classList.add(
             "open"
         );
 
 
-        /* Music */
+        /* MUSIC */
 
         music.volume = .8;
+
 
         music.play().catch(
             function(error) {
@@ -2389,48 +2612,64 @@ envelope.addEventListener(
         );
 
 
-        /* BIG EXPLOSION */
+        /* HUGE FLOWER EXPLOSION */
 
         flowerExplosion();
 
 
-        /* CONTINUOUS RAIN */
+        /* CONTINUOUS FLOWERS */
 
         startFlowerRain();
 
 
-        /* Reveal */
+        /* WAIT FOR OPENING ANIMATION */
 
-        setTimeout(function() {
+        setTimeout(
+            function() {
 
-            opening.classList.add(
-                "hide"
-            );
+                opening.classList.add(
+                    "hide"
+                );
 
-            main.classList.add(
-                "show"
-            );
 
-        }, 950);
+                main.classList.add(
+                    "show"
+                );
+
+
+                /* Start page at top */
+
+                window.scrollTo(
+                    0,
+                    0
+                );
+
+            },
+            1200
+        );
 
     }
 );
 
 
-
 /* =========================================================
-   KEEP FLOWERS ALIVE
+   EXTRA GENTLE FLOWERS UNTIL END
 ========================================================= */
 
-setInterval(function() {
+setInterval(
+    function() {
 
-    if (opened) {
+        if (opened) {
 
-        createFallingFlower(false);
+            createFallingFlower(
+                false
+            );
 
-    }
+        }
 
-}, 500);
+    },
+    500
+);
 
 </script>
 
