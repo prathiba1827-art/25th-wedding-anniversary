@@ -7,6 +7,7 @@
 <title>25th Wedding Anniversary | Arokiaraj Ravi & Mary Francina</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,49 +24,220 @@ body {
     font-family: Georgia, "Times New Roman", serif;
 }
 
-section {
-    min-height: 100vh;
+/* =========================
+   ENVELOPE OPENING
+========================= */
+
+.opening {
+    position: relative;
+    height: 100vh;
+    min-height: 650px;
+    background: radial-gradient(circle at center, #fffaf1, #f2e2cd);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.opening-title {
+    position: absolute;
+    top: 13%;
+    text-align: center;
+    color: #795c3c;
+    letter-spacing: 4px;
+    font-size: 14px;
+}
+
+.envelope {
+    position: relative;
+    width: 330px;
+    height: 220px;
+    cursor: pointer;
+    margin-top: 30px;
+    perspective: 1000px;
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #d8b98e;
+    border-radius: 5px;
+    box-shadow: 0 20px 45px rgba(91, 61, 31, 0.25);
+}
+
+.envelope-paper {
+    position: absolute;
+    width: 88%;
+    height: 86%;
+    left: 6%;
+    top: 5%;
+    background: #fffaf1;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 30px 20px;
+    color: #795c3c;
+    font-size: 15px;
+    letter-spacing: 2px;
+    transition: 1s ease;
 }
 
-/* OPENING */
-.opening {
-    min-height: 100vh;
-    background: #f8f0e3;
-    flex-direction: column;
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
 }
 
-.opening h1 {
-    font-size: 24px;
-    letter-spacing: 5px;
-    margin-bottom: 30px;
+.envelope-front::before,
+.envelope-front::after {
+    content: "";
+    position: absolute;
+    width: 72%;
+    height: 72%;
+    background: #e4c69e;
 }
 
-.open-btn {
-    border: 1px solid #b08a54;
-    background: transparent;
-    color: #6d5135;
-    padding: 15px 35px;
-    border-radius: 30px;
-    font-family: Georgia, serif;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
+.envelope-front::before {
+    left: -18%;
+    bottom: -25%;
+    transform: rotate(45deg);
 }
 
-.open-btn:hover {
-    background: #b08a54;
+.envelope-front::after {
+    right: -18%;
+    bottom: -25%;
+    transform: rotate(-45deg);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-top: 125px solid #cda875;
+    transform-origin: top center;
+    transition: transform 1s ease;
+    z-index: 4;
+}
+
+.seal {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #a97942;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(80, 50, 20, 0.25);
+    transition: 0.5s;
 }
 
-/* INVITATION */
+.open-text {
+    margin-top: 35px;
+    color: #806344;
+    letter-spacing: 3px;
+    font-size: 13px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Envelope opening */
+
+.opening.opened .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.opening.opened .envelope-paper {
+    transform: translateY(-150px);
+}
+
+.opening.opened .seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.5);
+}
+
+.opening.opened .open-text {
+    opacity: 0;
+}
+
+/* =========================
+   ROSE PETALS
+========================= */
+
+.petal {
+    position: fixed;
+    top: -40px;
+    width: 14px;
+    height: 20px;
+    background: #d98b91;
+    border-radius: 100% 0 100% 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: .9;
+    animation: fall linear forwards;
+}
+
+.petal:nth-child(3n) {
+    background: #e7a4a5;
+}
+
+.petal:nth-child(4n) {
+    background: #c96f79;
+}
+
+@keyframes fall {
+
+    0% {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .95;
+    }
+
+    50% {
+        transform: translateY(55vh) translateX(70px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(-80px) rotate(420deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   INVITATION
+========================= */
+
 .invitation {
+    display: none;
     padding: 0;
     background: #f8f0e3;
+}
+
+.invitation.show {
     display: block;
 }
 
@@ -77,23 +249,36 @@ section {
     margin: auto;
 }
 
-/* SCROLL */
+/* =========================
+   SCROLL
+========================= */
+
 .scroll-text {
     padding: 45px 20px;
     background: #f8f0e3;
+    text-align: center;
     color: #8b6b48;
     letter-spacing: 3px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-/* DETAILS */
+/* =========================
+   DATE
+========================= */
+
 .details {
+    min-height: 100vh;
     background: #f7eee1;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .details h2 {
-    font-size: 38px;
+    font-size: 40px;
     font-weight: normal;
     margin-bottom: 25px;
 }
@@ -101,7 +286,7 @@ section {
 .date {
     font-size: 24px;
     letter-spacing: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .day {
@@ -128,30 +313,39 @@ section {
 }
 
 .time-box span {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
 }
 
-/* VENUE */
+/* =========================
+   VENUE
+========================= */
+
 .venue {
-    flex-direction: column;
+    min-height: 100vh;
     background: #eee1cf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .venue h2 {
-    font-size: 38px;
+    font-size: 40px;
     font-weight: normal;
     margin-bottom: 25px;
 }
 
 .venue-name {
-    font-size: 27px;
+    font-size: 28px;
     margin-bottom: 15px;
 }
 
 .address {
+    line-height: 1.8;
     max-width: 500px;
-    line-height: 1.7;
     margin-bottom: 25px;
 }
 
@@ -164,22 +358,31 @@ section {
     border-radius: 25px;
 }
 
-/* CLOSING */
+/* =========================
+   CLOSING
+========================= */
+
 .closing {
-    flex-direction: column;
+    min-height: 100vh;
     background: #f8f0e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .closing h2 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: normal;
     margin-bottom: 20px;
 }
 
 .bible {
     font-style: italic;
-    max-width: 500px;
     line-height: 1.8;
+    max-width: 500px;
     margin-bottom: 30px;
 }
 
@@ -188,7 +391,10 @@ section {
     line-height: 1.8;
 }
 
-/* MUSIC */
+/* =========================
+   MUSIC BUTTON
+========================= */
+
 .music {
     position: fixed;
     right: 20px;
@@ -201,49 +407,90 @@ section {
     color: #6b4d2e;
     font-size: 20px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 200;
 }
 
 @media (max-width: 600px) {
 
-    .opening h1 {
-        font-size: 20px;
+    .envelope {
+        width: 290px;
+        height: 195px;
+    }
+
+    .envelope-flap {
+        border-left-width: 145px;
+        border-right-width: 145px;
+        border-top-width: 110px;
     }
 
     .details h2,
     .venue h2 {
         font-size: 32px;
     }
-
-    .invitation img {
-        width: 100%;
-    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- OPENING -->
+<!-- =========================
+     ENVELOPE
+========================= -->
+
 <section class="opening" id="opening">
-    <h1>25 YEARS OF LOVE</h1>
 
-    <button class="open-btn" onclick="openInvitation()">
-        ✦ Tap to Open Invitation ✦
-    </button>
+    <div class="opening-title">
+        25 YEARS OF LOVE • FAITH • TOGETHERNESS
+    </div>
+
+    <div class="envelope" onclick="openInvitation()">
+
+        <div class="envelope-back"></div>
+
+        <div class="envelope-paper">
+            YOU ARE INVITED
+        </div>
+
+        <div class="envelope-front"></div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="seal">
+            ♡
+        </div>
+
+    </div>
+
+    <div class="open-text">
+        TAP THE ENVELOPE TO OPEN
+    </div>
+
 </section>
 
-<!-- YOUR ACTUAL INVITATION DESIGN -->
+
+<!-- =========================
+     YOUR INVITATION
+========================= -->
+
 <section class="invitation" id="invitation">
-    <img src="Elegant%2025th%20Anniversary%20Invitation.png"
-         alt="25th Wedding Anniversary Invitation">
+
+    <img
+        src="Elegant%2025th%20Anniversary%20Invitation.png"
+        alt="25th Wedding Anniversary Invitation">
+
 </section>
+
 
 <div class="scroll-text">
     ↓ SCROLL TO UNFOLD THE DETAILS ↓
 </div>
 
-<!-- DATE -->
+
+<!-- =========================
+     DATE
+========================= -->
+
 <section class="details">
 
     <h2>Save the Date</h2>
@@ -282,7 +529,11 @@ section {
 
 </section>
 
-<!-- VENUE -->
+
+<!-- =========================
+     VENUE
+========================= -->
+
 <section class="venue">
 
     <h2>Celebration</h2>
@@ -298,15 +549,20 @@ section {
         Tamil Nadu 600016
     </div>
 
-    <a class="map-btn"
-       href="https://www.google.com/maps/search/?api=1&query=ARIMA%20THUMBI%201%2F38%20N%20Parade%20Rd%20Chakrapani%20Colony%20Ramapuram%20St%20Thomas%20Mount%20Tamil%20Nadu%20600016"
-       target="_blank">
+    <a
+        class="map-btn"
+        href="https://www.google.com/maps/search/?api=1&query=ARIMA%20THUMBI%201%2F38%20N%20Parade%20Rd%20Chakrapani%20Colony%20Ramapuram%20St%20Thomas%20Mount%20Tamil%20Nadu%20600016"
+        target="_blank">
         📍 Get Directions
     </a>
 
 </section>
 
-<!-- CLOSING -->
+
+<!-- =========================
+     CLOSING
+========================= -->
+
 <section class="closing">
 
     <h2>Twenty Five Years</h2>
@@ -326,55 +582,161 @@ section {
 
 </section>
 
+
+<!-- MUSIC BUTTON -->
+
 <button class="music" onclick="toggleMusic()">♫</button>
 
-<audio id="music">
-    <source src="music/cant-help-falling-in-love.mp3" type="audio/mpeg">
+
+<!-- YOUR MP3 -->
+
+<audio id="music" preload="auto">
+    <source
+        src="Y2Mate.is%20-%20ELVIS%20-%20Can%27t%20Help%20Falling%20In%20Love%20The%20Masquerade%20-%20Ball%20Version%20-%20Bridgeton%20S4%202026.mp3"
+        type="audio/mpeg">
 </audio>
+
 
 <script>
 
+/* =========================
+   OPEN ENVELOPE
+========================= */
+
 function openInvitation() {
-    document.getElementById("invitation").scrollIntoView({
-        behavior: "smooth"
+
+    const opening = document.getElementById("opening");
+    const invitation = document.getElementById("invitation");
+    const music = document.getElementById("music");
+
+    /* Open envelope */
+
+    opening.classList.add("opened");
+
+
+    /* START MUSIC FROM THE USER'S TAP */
+
+    music.play().catch(function(error) {
+        console.log("Music could not start:", error);
     });
+
+
+    /* ROSE PETALS */
+
+    for (let i = 0; i < 45; i++) {
+
+        setTimeout(function() {
+
+            const petal = document.createElement("div");
+
+            petal.className = "petal";
+
+            petal.style.left =
+                Math.random() * 100 + "vw";
+
+            petal.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            petal.style.animationDelay =
+                (Math.random() * 1.5) + "s";
+
+            petal.style.transform =
+                "rotate(" +
+                Math.random() * 360 +
+                "deg)";
+
+            document.body.appendChild(petal);
+
+            setTimeout(function() {
+                petal.remove();
+            }, 9000);
+
+        }, i * 60);
+
+    }
+
+
+    /* SHOW INVITATION */
+
+    setTimeout(function() {
+
+        invitation.classList.add("show");
+
+        invitation.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 1200);
+
 }
 
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
 function toggleMusic() {
-    const music = document.getElementById("music");
+
+    const music =
+        document.getElementById("music");
 
     if (music.paused) {
         music.play();
     } else {
         music.pause();
     }
+
 }
 
-/* COUNTDOWN */
 
-const eventDate = new Date("October 18, 2026 00:00:00").getTime();
+/* =========================
+   COUNTDOWN
+========================= */
+
+const eventDate =
+    new Date("October 18, 2026 00:00:00").getTime();
 
 setInterval(function() {
 
-    const now = new Date().getTime();
-    const distance = eventDate - now;
+    const now =
+        new Date().getTime();
+
+    const distance =
+        eventDate - now;
 
     if (distance <= 0) {
-        document.getElementById("days").innerHTML = "00";
-        document.getElementById("hours").innerHTML = "00";
-        document.getElementById("minutes").innerHTML = "00";
-        document.getElementById("seconds").innerHTML = "00";
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
-    const seconds = Math.floor((distance / 1000) % 60);
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+    const hours =
+        Math.floor(
+            (distance /
+            (1000 * 60 * 60)) % 24
+        );
+
+    const minutes =
+        Math.floor(
+            (distance /
+            (1000 * 60)) % 60
+        );
+
+    const seconds =
+        Math.floor(
+            (distance / 1000) % 60
+        );
 
     document.getElementById("days").innerHTML = days;
+
     document.getElementById("hours").innerHTML = hours;
+
     document.getElementById("minutes").innerHTML = minutes;
+
     document.getElementById("seconds").innerHTML = seconds;
 
 }, 1000);
