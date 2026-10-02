@@ -18,10 +18,9 @@ html {
 }
 
 body {
+    background: #f8f0e3;
+    color: #4b382b;
     font-family: Georgia, "Times New Roman", serif;
-    background: #f7f1e7;
-    color: #3c352d;
-    overflow-x: hidden;
 }
 
 section {
@@ -30,290 +29,194 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 50px 25px;
-    position: relative;
-}
-
-.container {
-    width: 100%;
-    max-width: 650px;
-    margin: auto;
+    padding: 30px 20px;
 }
 
 /* OPENING */
-
 .opening {
     min-height: 100vh;
-    background:
-        radial-gradient(circle at center, #fffaf2 0%, #eadfca 100%);
-    cursor: pointer;
+    background: #f8f0e3;
+    flex-direction: column;
 }
 
-.opening-content {
-    animation: fadeIn 2s ease;
-}
-
-.initials {
-    font-size: 28px;
-    letter-spacing: 7px;
-    margin-bottom: 45px;
-}
-
-.open-text {
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: #756650;
-}
-
-.open-text span {
-    display: block;
-    margin-top: 18px;
-    font-size: 30px;
-}
-
-/* HERO */
-
-.hero {
-    background: #f8f1e5;
-}
-
-.small-title {
-    font-size: 15px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #907b59;
-    margin-bottom: 25px;
-}
-
-h1 {
-    font-size: clamp(38px, 10vw, 68px);
-    font-weight: normal;
-    line-height: 1.15;
-    color: #40372d;
-}
-
-.and {
-    font-size: 25px;
-    margin: 15px 0;
-    font-style: italic;
-}
-
-.subtitle {
-    margin-top: 30px;
-    font-size: 17px;
-    line-height: 1.8;
-    color: #6e6253;
-}
-
-.scroll-text {
-    margin-top: 65px;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #927d5b;
-}
-
-.arrow {
-    font-size: 28px;
-    margin-top: 12px;
-    animation: bounce 1.8s infinite;
-}
-
-/* DIVIDER */
-
-.divider {
-    font-size: 25px;
-    color: #a28b62;
-    margin-bottom: 35px;
-}
-
-/* SAVE DATE */
-
-.date-section {
-    background: #eee3d2;
-}
-
-.section-title {
-    font-size: 36px;
-    font-weight: normal;
+.opening h1 {
+    font-size: 24px;
+    letter-spacing: 5px;
     margin-bottom: 30px;
 }
 
-.date-number {
-    font-size: 80px;
-    line-height: 1;
-    color: #806b49;
+.open-btn {
+    border: 1px solid #b08a54;
+    background: transparent;
+    color: #6d5135;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.date-month {
-    font-size: 25px;
-    margin-top: 12px;
+.open-btn:hover {
+    background: #b08a54;
+    color: white;
 }
 
-.date-day {
-    margin-top: 12px;
-    font-size: 17px;
-    letter-spacing: 2px;
-}
-
-.countdown {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin: 40px 0;
-}
-
-.countdown div {
-    padding: 15px 5px;
-    border-top: 1px solid #b9a98d;
-    border-bottom: 1px solid #b9a98d;
-}
-
-.countdown strong {
+/* INVITATION */
+.invitation {
+    padding: 0;
+    background: #f8f0e3;
     display: block;
-    font-size: 24px;
+}
+
+.invitation img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* SCROLL */
+.scroll-text {
+    padding: 45px 20px;
+    background: #f8f0e3;
+    color: #8b6b48;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+/* DETAILS */
+.details {
+    background: #f7eee1;
+    flex-direction: column;
+}
+
+.details h2 {
+    font-size: 38px;
     font-weight: normal;
-}
-
-.countdown span {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-/* VENUE */
-
-.venue {
-    background: #f8f1e5;
-}
-
-.venue-name {
-    font-size: 29px;
-    line-height: 1.4;
     margin-bottom: 25px;
 }
 
-.address {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #6d6255;
+.date {
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
 }
 
-.buttons {
+.day {
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.countdown {
     display: flex;
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 30px;
 }
 
-.btn {
-    border: 1px solid #9b8766;
-    padding: 13px 20px;
-    text-decoration: none;
-    color: #594c3b;
-    background: transparent;
-    border-radius: 2px;
-    font-family: inherit;
-    cursor: pointer;
-    font-size: 14px;
+.time-box {
+    border: 1px solid #c4a77d;
+    padding: 15px;
+    min-width: 75px;
 }
 
-.btn:hover {
-    background: #e9ddca;
-}
-
-.map-box {
-    margin-top: 40px;
-    padding: 35px 20px;
-    border: 1px solid #c7b79a;
-    background: #eee3d2;
-}
-
-.map-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-/* MESSAGE */
-
-.message {
-    background: #e9ddca;
-}
-
-.message p {
-    font-size: 19px;
-    line-height: 1.9;
-    font-style: italic;
-}
-
-.names {
-    margin-top: 35px;
+.time-box strong {
+    display: block;
     font-size: 25px;
 }
 
-.footer {
-    margin-top: 60px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #8b795f;
+.time-box span {
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* VENUE */
+.venue {
+    flex-direction: column;
+    background: #eee1cf;
+}
+
+.venue h2 {
+    font-size: 38px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.venue-name {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.address {
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.map-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    border: 1px solid #9c7546;
+    color: #6b4d2e;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+/* CLOSING */
+.closing {
+    flex-direction: column;
+    background: #f8f0e3;
+}
+
+.closing h2 {
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.bible {
+    font-style: italic;
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.names {
+    font-size: 24px;
+    line-height: 1.8;
 }
 
 /* MUSIC */
-
-.music-button {
+.music {
     position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 100;
-    width: 48px;
-    height: 48px;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: 1px solid #9b8766;
-    background: #f8f1e5;
-    color: #594c3b;
-    font-size: 18px;
+    border: 1px solid #9c7546;
+    background: #f8f0e3;
+    color: #6b4d2e;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
 }
 
-/* ANIMATIONS */
+@media (max-width: 600px) {
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 480px) {
-
-    section {
-        padding: 40px 22px;
+    .opening h1 {
+        font-size: 20px;
     }
 
-    .countdown strong {
-        font-size: 19px;
+    .details h2,
+    .venue h2 {
+        font-size: 32px;
     }
 
-    .countdown span {
-        font-size: 9px;
-    }
-
-    .venue-name {
-        font-size: 25px;
+    .invitation img {
+        width: 100%;
     }
 }
 </style>
@@ -322,369 +225,159 @@ h1 {
 <body>
 
 <!-- OPENING -->
+<section class="opening" id="opening">
+    <h1>25 YEARS OF LOVE</h1>
 
-<section class="opening" onclick="openInvitation()">
+    <button class="open-btn" onclick="openInvitation()">
+        ✦ Tap to Open Invitation ✦
+    </button>
+</section>
 
-    <div class="opening-content">
+<!-- YOUR ACTUAL INVITATION DESIGN -->
+<section class="invitation" id="invitation">
+    <img src="Elegant%2025th%20Anniversary%20Invitation.png"
+         alt="25th Wedding Anniversary Invitation">
+</section>
 
-        <div class="initials">A & M</div>
+<div class="scroll-text">
+    ↓ SCROLL TO UNFOLD THE DETAILS ↓
+</div>
 
-        <div class="open-text">
-            ✦ Tap to Open Your Invitation ✦
-            <span>⌄</span>
+<!-- DATE -->
+<section class="details">
+
+    <h2>Save the Date</h2>
+
+    <div class="date">
+        OCTOBER 18, 2026
+    </div>
+
+    <div class="day">
+        Sunday
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <strong id="days">00</strong>
+            <span>DAYS</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>HOURS</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>MINUTES</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>SECONDS</span>
         </div>
 
     </div>
 
 </section>
-
-
-<!-- MAIN INVITATION -->
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="small-title">
-            Together with their family
-        </div>
-
-        <h1>
-            25th Wedding<br>
-            Anniversary
-        </h1>
-
-        <div class="and">&</div>
-
-        <div class="names">
-            Ga. Arokiaraj Ravi<br>
-            &<br>
-            A. Mary Francina
-        </div>
-
-        <p class="subtitle">
-            With hearts full of gratitude,
-            we joyfully invite you to celebrate
-            twenty-five beautiful years of
-            love, faith and togetherness.
-        </p>
-
-        <div class="scroll-text">
-            Scroll to unfold the details
-        </div>
-
-        <div class="arrow">⌄</div>
-
-    </div>
-
-</section>
-
-
-<!-- SAVE THE DATE -->
-
-<section class="date-section">
-
-    <div class="container">
-
-        <div class="divider">✝</div>
-
-        <h2 class="section-title">
-            Save the Date
-        </h2>
-
-        <div class="date-number">
-            18
-        </div>
-
-        <div class="date-month">
-            October 2026
-        </div>
-
-        <div class="date-day">
-            SUNDAY
-        </div>
-
-        <div class="countdown">
-
-            <div>
-                <strong id="days">00</strong>
-                <span>Days</span>
-            </div>
-
-            <div>
-                <strong id="hours">00</strong>
-                <span>Hours</span>
-            </div>
-
-            <div>
-                <strong id="minutes">00</strong>
-                <span>Mins</span>
-            </div>
-
-            <div>
-                <strong id="seconds">00</strong>
-                <span>Secs</span>
-            </div>
-
-        </div>
-
-        <button class="btn" onclick="addCalendar()">
-            ＋ Add to Calendar
-        </button>
-
-    </div>
-
-</section>
-
 
 <!-- VENUE -->
-
 <section class="venue">
 
-    <div class="container">
+    <h2>Celebration</h2>
 
-        <div class="divider">✝</div>
-
-        <h2 class="section-title">
-            Venue
-        </h2>
-
-        <div class="venue-name">
-            ARIMA THUMBI
-        </div>
-
-        <div class="address">
-            1/38, N Parade Rd,<br>
-            Chakrapani Colony,<br>
-            Ramapuram, St. Thomas Mount,<br>
-            Tamil Nadu 600016
-        </div>
-
-        <div class="buttons">
-
-            <a
-                class="btn"
-                href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
-                target="_blank">
-                Get Directions
-            </a>
-
-            <button class="btn" onclick="copyAddress()">
-                Copy Address
-            </button>
-
-        </div>
-
-        <div class="map-box">
-
-            <div class="map-icon">📍</div>
-
-            <p>
-                Tap below to locate the venue
-            </p>
-
-            <br>
-
-            <a
-                class="btn"
-                href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
-                target="_blank">
-                Open Google Maps
-            </a>
-
-        </div>
-
+    <div class="venue-name">
+        ARIMA THUMBI
     </div>
 
-</section>
+    <div class="address">
+        1/38, N Parade Rd,<br>
+        Chakrapani Colony,<br>
+        Ramapuram, St. Thomas Mount,<br>
+        Tamil Nadu 600016
+    </div>
 
+    <a class="map-btn"
+       href="https://www.google.com/maps/search/?api=1&query=ARIMA%20THUMBI%201%2F38%20N%20Parade%20Rd%20Chakrapani%20Colony%20Ramapuram%20St%20Thomas%20Mount%20Tamil%20Nadu%20600016"
+       target="_blank">
+        📍 Get Directions
+    </a>
+
+</section>
 
 <!-- CLOSING -->
+<section class="closing">
 
-<section class="message">
+    <h2>Twenty Five Years</h2>
 
-    <div class="container">
+    <p class="bible">
+        “Therefore what God has joined together,<br>
+        let no one separate.”
+        <br><br>
+        — Mark 10:9
+    </p>
 
-        <div class="divider">✝</div>
-
-        <p>
-            “What therefore God has joined together,
-            let not man separate.”
-        </p>
-
-        <p style="font-size:14px; margin-top:12px;">
-            — Mark 10:9
-        </p>
-
-        <div class="names">
-            Ga. Arokiaraj Ravi<br>
-            &<br>
-            A. Mary Francina
-        </div>
-
-        <div class="footer">
-            25 YEARS • ONE LOVE • ONE JOURNEY
-        </div>
-
+    <div class="names">
+        Ga. Arokiaraj Ravi<br>
+        &<br>
+        A. Mary Francina
     </div>
 
 </section>
 
+<button class="music" onclick="toggleMusic()">♫</button>
 
-<!-- MUSIC BUTTON -->
-
-<button class="music-button" onclick="toggleMusic()" id="musicButton">
-    ♫
-</button>
-
-<!--
-Later we will add your music file here.
-The file will be:
-music/cant-help-falling-in-love.mp3
--->
-
-<audio id="music" loop>
+<audio id="music">
     <source src="music/cant-help-falling-in-love.mp3" type="audio/mpeg">
 </audio>
 
-
 <script>
 
-/* OPEN INVITATION */
-
 function openInvitation() {
-
-    const music = document.getElementById("music");
-
-    music.play().catch(() => {});
-
-    window.scrollTo({
-        top: window.innerHeight,
+    document.getElementById("invitation").scrollIntoView({
         behavior: "smooth"
     });
 }
 
-
-/* MUSIC */
-
 function toggleMusic() {
-
     const music = document.getElementById("music");
-    const button = document.getElementById("musicButton");
 
     if (music.paused) {
-
         music.play();
-
-        button.innerHTML = "♫";
-
     } else {
-
         music.pause();
-
-        button.innerHTML = "🔇";
     }
 }
 
-
 /* COUNTDOWN */
 
-const anniversaryDate =
-    new Date("October 18, 2026 00:00:00").getTime();
+const eventDate = new Date("October 18, 2026 00:00:00").getTime();
 
-function updateCountdown() {
+setInterval(function() {
 
     const now = new Date().getTime();
-
-    const distance = anniversaryDate - now;
+    const distance = eventDate - now;
 
     if (distance <= 0) {
-
         document.getElementById("days").innerHTML = "00";
         document.getElementById("hours").innerHTML = "00";
         document.getElementById("minutes").innerHTML = "00";
         document.getElementById("seconds").innerHTML = "00";
-
         return;
     }
 
-    const days =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
 
-    const hours =
-        Math.floor(
-            (distance % (1000 * 60 * 60 * 24))
-            / (1000 * 60 * 60)
-        );
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
 
-    const minutes =
-        Math.floor(
-            (distance % (1000 * 60 * 60))
-            / (1000 * 60)
-        );
-
-    const seconds =
-        Math.floor(
-            (distance % (1000 * 60))
-            / 1000
-        );
-
-    document.getElementById("days").innerHTML =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").innerHTML =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").innerHTML =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").innerHTML =
-        String(seconds).padStart(2, "0");
-}
-
-setInterval(updateCountdown, 1000);
-
-updateCountdown();
-
-
-/* COPY ADDRESS */
-
-function copyAddress() {
-
-    const address =
-        "ARIMA THUMBI, 1/38, N Parade Rd, Chakrapani Colony, Ramapuram, St. Thomas Mount, Tamil Nadu 600016";
-
-    navigator.clipboard.writeText(address);
-
-    alert("Address copied ❤️");
-}
-
-
-/* CALENDAR */
-
-function addCalendar() {
-
-    const title =
-        "25th Wedding Anniversary - Arokiaraj Ravi & Mary Francina";
-
-    const details =
-        "Celebrating the 25th Wedding Anniversary of Ga. Arokiaraj Ravi & A. Mary Francina.";
-
-    const location =
-        "ARIMA THUMBI, 1/38 N Parade Rd, Chakrapani Colony, Ramapuram, St. Thomas Mount, Tamil Nadu 600016";
-
-    const start = "20261018T000000";
-    const end = "20261018T235900";
-
-    const url =
-        "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" + encodeURIComponent(title) +
-        "&dates=" + start + "/" + end +
-        "&details=" + encodeURIComponent(details) +
-        "&location=" + encodeURIComponent(location);
-
-    window.open(url, "_blank");
-}
+}, 1000);
 
 </script>
 
