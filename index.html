@@ -6,7 +6,14 @@
 
 <title>25th Wedding Anniversary</title>
 
+<!-- Elegant fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -18,115 +25,157 @@ html {
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #f8f1e7;
-    color: #6f6070;
+    background: #f8f1e8;
+    color: #70606c;
     overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
 }
 
-/* =========================
-   ROSE PETALS
-========================= */
 
-#petal-container {
+/* =====================================================
+   FALLING PETALS + FLOWERS
+===================================================== */
+
+#nature-container {
     position: fixed;
     inset: 0;
     pointer-events: none;
     overflow: hidden;
-    z-index: 999;
+    z-index: 1500;
+}
+
+.nature {
+    position: absolute;
+    top: -60px;
+    pointer-events: none;
+    will-change: transform, opacity;
+
+    animation:
+        natureFall var(--duration) linear forwards,
+        natureSway var(--sway) ease-in-out infinite alternate;
 }
 
 .petal {
-    position: absolute;
-    top: -45px;
-    width: 15px;
+    width: 14px;
     height: 22px;
-    background: linear-gradient(
-        135deg,
-        #d98a9b 0%,
-        #e7a8b5 45%,
-        #c87388 100%
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #d98b9c,
+            #e9adb8 48%,
+            #c9798c
+        );
 
     border-radius: 80% 20% 75% 25%;
-    opacity: 0.72;
 
-    filter: blur(0.15px);
+    opacity: var(--opacity);
 
-    animation:
-        petalFall var(--fall-time) linear forwards,
-        petalSway var(--sway-time) ease-in-out infinite alternate;
-
-    transform: rotate(var(--rotation));
+    filter: drop-shadow(
+        0 2px 2px rgba(120,70,80,.08)
+    );
 }
 
 .petal::after {
     content: "";
     position: absolute;
-    width: 35%;
+
+    width: 30%;
     height: 70%;
-    left: 15%;
-    top: 10%;
-    border-left: 1px solid rgba(255,255,255,0.35);
+
+    left: 18%;
+    top: 8%;
+
+    border-left: 1px solid rgba(255,255,255,.35);
+
     border-radius: 50%;
-    transform: rotate(15deg);
 }
 
-@keyframes petalFall {
+.flower {
+    width: var(--flower-size);
+    height: var(--flower-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: var(--flower-size);
+
+    filter:
+        drop-shadow(
+            0 2px 3px rgba(100,60,70,.12)
+        );
+
+    opacity: var(--opacity);
+}
+
+@keyframes natureFall {
+
     0% {
         transform:
-            translate3d(0, -40px, 0)
+            translate3d(0,-70px,0)
             rotate(var(--rotation))
             scale(var(--scale));
+
+        opacity: 0;
     }
 
-    25% {
+    8% {
+        opacity: var(--opacity);
+    }
+
+    30% {
         transform:
-            translate3d(var(--drift-one), 25vh, 0)
-            rotate(calc(var(--rotation) + 80deg))
+            translate3d(var(--drift1),28vh,0)
+            rotate(calc(var(--rotation) + 100deg))
             scale(var(--scale));
     }
 
-    50% {
+    60% {
         transform:
-            translate3d(var(--drift-two), 52vh, 0)
-            rotate(calc(var(--rotation) + 180deg))
+            translate3d(var(--drift2),58vh,0)
+            rotate(calc(var(--rotation) + 220deg))
             scale(var(--scale));
     }
 
-    75% {
+    82% {
         transform:
-            translate3d(var(--drift-three), 76vh, 0)
-            rotate(calc(var(--rotation) + 270deg))
+            translate3d(var(--drift3),82vh,0)
+            rotate(calc(var(--rotation) + 300deg))
             scale(var(--scale));
     }
 
     100% {
         transform:
-            translate3d(var(--drift-four), 110vh, 0)
-            rotate(calc(var(--rotation) + 360deg))
+            translate3d(var(--drift4),115vh,0)
+            rotate(calc(var(--rotation) + 420deg))
             scale(var(--scale));
+
+        opacity: 0;
     }
 }
 
-@keyframes petalSway {
+@keyframes natureSway {
+
     from {
-        margin-left: -8px;
+        margin-left: -12px;
     }
 
     to {
-        margin-left: 8px;
+        margin-left: 12px;
     }
 }
 
-/* =========================
-   ENVELOPE INTRO
-========================= */
+
+/* =====================================================
+   OPENING SCREEN
+===================================================== */
 
 #opening {
     position: fixed;
     inset: 0;
-    z-index: 2000;
+
+    z-index: 3000;
 
     display: flex;
     align-items: center;
@@ -135,14 +184,14 @@ body {
     background:
         radial-gradient(
             circle at center,
-            #fffaf3 0%,
-            #f4e7d7 70%,
-            #ead7c3 100%
+            #fffaf5 0%,
+            #f5e9dc 65%,
+            #ead8c5 100%
         );
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity 1.4s ease,
+        visibility 1.4s ease;
 }
 
 #opening.hide {
@@ -158,11 +207,14 @@ body {
 .open-text {
     margin-bottom: 28px;
 
-    font-size: 12px;
-    letter-spacing: 5px;
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 6px;
+
     text-transform: uppercase;
 
-    color: #907b88;
+    color: #907987;
 }
 
 .envelope {
@@ -174,10 +226,12 @@ body {
     cursor: pointer;
 
     filter:
-        drop-shadow(0 20px 25px rgba(94, 67, 72, 0.18));
+        drop-shadow(
+            0 22px 30px rgba(80,55,60,.18)
+        );
 
     transition:
-        transform 0.5s ease;
+        transform .5s ease;
 }
 
 .envelope:hover {
@@ -188,48 +242,45 @@ body {
     position: absolute;
     inset: 0;
 
-    background: #ead5c2;
+    background: #ead6c3;
 
     border-radius: 5px;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(128, 90, 80, 0.12);
 }
 
 .envelope-paper {
     position: absolute;
 
-    width: 285px;
-    height: 175px;
-
     left: 22px;
     bottom: 15px;
 
-    background: #fffaf4;
+    width: 286px;
+    height: 176px;
+
+    background: #fffaf5;
 
     border-radius: 3px;
 
     box-shadow:
-        0 3px 12px rgba(90, 60, 60, 0.12);
+        0 5px 15px rgba(80,55,60,.12);
 
     transition:
-        transform 1s ease,
-        opacity 1s ease;
+        transform 1.2s ease;
 }
 
 .envelope-front {
     position: absolute;
     inset: 0;
 
-    background: #e6cfbb;
+    background: #e5cdb8;
 
-    clip-path: polygon(
-        0 0,
-        50% 55%,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            50% 55%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
     border-radius: 5px;
 }
@@ -237,26 +288,27 @@ body {
 .envelope-flap {
     position: absolute;
 
-    left: 0;
     top: 0;
+    left: 0;
 
     width: 100%;
     height: 58%;
 
-    background: #f0ddcc;
+    background: #f0ddcb;
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 
     transform-origin: top center;
 
     transition:
         transform 1.2s cubic-bezier(.65,0,.35,1);
 
-    z-index: 4;
+    z-index: 5;
 }
 
 .seal {
@@ -265,36 +317,36 @@ body {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -5%);
+    transform:
+        translate(-50%,-5%);
 
-    width: 52px;
-    height: 52px;
+    width: 53px;
+    height: 53px;
 
     border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff0d0,
-            #c69a55 65%,
-            #a97b3d 100%
-        );
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0d0,
+            #c99d59 65%,
+            #a8793e
+        );
+
     color: white;
 
-    font-size: 23px;
+    font-size: 22px;
 
     box-shadow:
-        0 5px 12px rgba(91, 64, 38, 0.2);
+        0 5px 15px rgba(80,55,35,.2);
 
     z-index: 10;
 
-    transition:
-        opacity 0.4s ease;
+    transition: opacity .4s ease;
 }
 
 .envelope.open .envelope-flap {
@@ -306,34 +358,23 @@ body {
 }
 
 .envelope.open .envelope-paper {
-    transform: translateY(-80px);
+    transform: translateY(-82px);
 }
 
-/* =========================
-   MAIN WEBSITE
-========================= */
 
-#main-content {
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 1.5s ease;
-}
-
-#main-content.show {
-    opacity: 1;
-    visibility: visible;
-}
+/* =====================================================
+   GENERAL SECTIONS
+===================================================== */
 
 section {
     position: relative;
-    padding: 90px 20px;
+    padding: 110px 20px;
 }
 
-/* =========================
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero {
     min-height: 100vh;
@@ -346,177 +387,231 @@ section {
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            #fffaf4,
-            #f8eee2 55%,
-            #f1dfce
+            circle at 50% 15%,
+            #fffaf5,
+            #f8eee3 60%,
+            #f0dfcf
         );
 }
 
 .hero-content {
-    max-width: 850px;
+    max-width: 900px;
 }
 
-.small-heading {
-    font-size: 12px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #907989;
+.eyebrow {
+    font-family: "Montserrat", sans-serif;
 
-    margin-bottom: 24px;
+    font-size: 10px;
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    color: #a08690;
+
+    margin-bottom: 28px;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 8vw, 82px);
-    font-weight: normal;
-    line-height: 1.05;
+    font-family: "Cormorant Garamond", serif;
 
-    color: #766276;
+    font-size: clamp(75px, 13vw, 145px);
 
-    margin-bottom: 24px;
+    line-height: .8;
+
+    font-weight: 300;
+
+    color: #746071;
+
+    margin-bottom: 30px;
+}
+
+.hero-script {
+    font-family: "Parisienne", cursive;
+
+    font-size: clamp(32px, 5vw, 55px);
+
+    color: #a07886;
+
+    margin-bottom: 20px;
 }
 
 .hero-names {
-    font-size: clamp(18px, 3vw, 27px);
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(21px, 3vw, 30px);
+
     letter-spacing: 2px;
 
-    color: #836d7b;
+    line-height: 1.5;
 
-    margin-bottom: 25px;
+    color: #7c6975;
 }
-
-.hero-date {
-    font-size: 15px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-
-    color: #9a818b;
-}
-
-/* =========================
-   DIVIDER
-========================= */
 
 .divider {
-    width: 80px;
+    width: 75px;
     height: 1px;
 
     margin: 35px auto;
 
-    background: #c5a6a9;
+    background: #c6a7aa;
 }
 
-/* =========================
-   DATE SECTION
-========================= */
+.hero-date {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #9b818b;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
 
 .date-section {
     text-align: center;
 
-    background: #fbf5ec;
+    background: #fbf5ed;
 }
 
 .date-section .day {
-    font-size: 13px;
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
     letter-spacing: 7px;
+
     text-transform: uppercase;
 
-    color: #927e89;
+    color: #9b858e;
 
     margin-bottom: 18px;
 }
 
 .date-section h2 {
-    font-size: clamp(40px, 7vw, 65px);
-    font-weight: normal;
+    font-family: "Cormorant Garamond", serif;
 
-    color: #766276;
+    font-size: clamp(50px, 8vw, 82px);
 
-    margin-bottom: 15px;
+    font-weight: 300;
+
+    color: #766274;
+
+    margin-bottom: 12px;
 }
 
 .event-time {
-    font-size: 17px;
-    letter-spacing: 4px;
+    font-family: "Montserrat", sans-serif;
 
-    color: #876d7d;
+    font-size: 13px;
 
-    font-weight: bold;
+    letter-spacing: 5px;
 
-    margin: 12px 0 25px;
+    font-weight: 500;
+
+    color: #90737f;
+
+    margin: 10px 0 28px;
 }
 
 .date-message {
-    font-size: 17px;
-    line-height: 1.8;
+    max-width: 550px;
 
-    color: #83737e;
+    margin: auto;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 22px;
+
+    line-height: 1.6;
+
+    color: #887680;
 }
 
-/* =========================
+
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
 .countdown-section {
     text-align: center;
 
-    background:
-        linear-gradient(
-            180deg,
-            #fbf5ec,
-            #f5e9dc
-        );
+    background: #f5e9dc;
 }
 
-.countdown-title {
-    font-size: 13px;
+.section-label {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
     letter-spacing: 6px;
+
     text-transform: uppercase;
 
-    color: #927e89;
+    color: #a08690;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .countdown-section h2 {
-    font-size: clamp(40px, 7vw, 65px);
-    font-weight: normal;
+    font-family: "Cormorant Garamond", serif;
 
-    color: #766276;
+    font-size: clamp(48px, 7vw, 75px);
 
-    margin-bottom: 45px;
+    font-weight: 300;
+
+    color: #766274;
+
+    margin-bottom: 50px;
 }
 
 .countdown {
     display: flex;
+
     justify-content: center;
-    gap: clamp(25px, 7vw, 80px);
+
+    gap: clamp(30px, 8vw, 90px);
 
     flex-wrap: wrap;
 }
 
 .count-box {
-    min-width: 75px;
+    min-width: 70px;
 }
 
 .count-number {
-    font-size: 38px;
-    color: #827083;
+    font-family: "Cormorant Garamond", serif;
 
-    margin-bottom: 7px;
+    font-size: 50px;
+
+    font-weight: 400;
+
+    color: #806d7b;
+
+    margin-bottom: 4px;
 }
 
 .count-label {
-    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 8px;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
 
-    color: #a08d96;
+    color: #a18c95;
 }
 
-/* =========================
+
+/* =====================================================
    INVITATION
-========================= */
+===================================================== */
 
 .invitation-section {
     text-align: center;
@@ -525,31 +620,36 @@ section {
 }
 
 .invitation-section h2 {
-    font-size: 42px;
+    font-family: "Parisienne", cursive;
+
+    font-size: clamp(55px, 8vw, 82px);
+
     font-weight: normal;
 
-    color: #766276;
+    color: #806876;
 
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 }
 
 .invitation-image {
-    width: min(92%, 760px);
-    height: auto;
-
     display: block;
 
-    margin: 0 auto;
+    width: min(92%, 760px);
 
-    border-radius: 4px;
+    height: auto;
+
+    margin: auto;
+
+    border-radius: 3px;
 
     box-shadow:
-        0 25px 60px rgba(84, 58, 63, 0.16);
+        0 30px 70px rgba(80,55,60,.16);
 }
 
-/* =========================
+
+/* =====================================================
    VENUE
-========================= */
+===================================================== */
 
 .venue-section {
     text-align: center;
@@ -557,82 +657,92 @@ section {
     background: #fbf6ef;
 }
 
-.venue-section h2 {
-    font-size: 48px;
-    font-weight: normal;
+.venue-section h2,
+.qr-section h2 {
+    font-family: "Cormorant Garamond", serif;
 
-    color: #766276;
+    font-size: clamp(50px, 7vw, 75px);
+
+    font-weight: 300;
+
+    color: #766274;
+}
+
+.venue-name {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    letter-spacing: 4px;
+
+    color: #876d7b;
 
     margin-bottom: 20px;
 }
 
-.venue-name {
-    font-size: 25px;
-    letter-spacing: 3px;
-
-    color: #876e7c;
-
-    margin-bottom: 18px;
-}
-
 .address {
-    max-width: 650px;
+    max-width: 620px;
 
-    margin: 0 auto 30px;
+    margin: auto;
 
-    font-size: 16px;
-    line-height: 1.8;
+    font-family: "Montserrat", sans-serif;
 
-    color: #85747d;
+    font-size: 13px;
+
+    line-height: 2;
+
+    color: #887780;
+
+    margin-bottom: 32px;
 }
 
 .directions-button {
     display: inline-block;
 
-    padding: 15px 28px;
+    padding: 15px 30px;
+
+    border: 1px solid #b99ea6;
 
     text-decoration: none;
 
-    border: 1px solid #b89da4;
-
     color: #806b78;
 
-    letter-spacing: 2px;
+    font-family: "Montserrat", sans-serif;
 
-    font-size: 12px;
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
     text-transform: uppercase;
 
-    transition: all 0.3s ease;
+    transition: .3s ease;
 }
 
 .directions-button:hover {
     background: #806b78;
+
     color: white;
 }
 
-/* =========================
+
+/* =====================================================
    QR
-========================= */
+===================================================== */
 
 .qr-section {
     text-align: center;
 
-    background: #f7ede1;
-}
-
-.qr-section h2 {
-    font-size: 42px;
-    font-weight: normal;
-
-    color: #766276;
-
-    margin-bottom: 15px;
+    background: #f6ecdf;
 }
 
 .qr-text {
-    color: #8b7981;
+    margin: 18px auto 30px;
 
-    margin-bottom: 28px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    color: #887680;
 }
 
 .qr-code {
@@ -643,15 +753,16 @@ section {
 
     background: white;
 
-    border-radius: 8px;
+    border-radius: 5px;
 
     box-shadow:
-        0 15px 35px rgba(91, 64, 70, 0.12);
+        0 18px 40px rgba(80,55,60,.12);
 }
 
-/* =========================
-   CHRISTIAN SECTION
-========================= */
+
+/* =====================================================
+   CHRISTIAN MESSAGE
+===================================================== */
 
 .christian-section {
     text-align: center;
@@ -659,24 +770,29 @@ section {
     background:
         linear-gradient(
             180deg,
-            #fbf5ec,
+            #fbf5ed,
             #f1e1d2
         );
 }
 
 .cross {
-    font-size: 48px;
+    font-family: "Cormorant Garamond", serif;
 
-    color: #a68762;
+    font-size: 50px;
+
+    color: #b08d59;
 
     margin-bottom: 20px;
 }
 
 .christian-section h2 {
-    font-size: 36px;
-    font-weight: normal;
+    font-family: "Cormorant Garamond", serif;
 
-    color: #766276;
+    font-size: clamp(42px, 6vw, 65px);
+
+    font-weight: 300;
+
+    color: #766274;
 
     margin-bottom: 25px;
 }
@@ -686,61 +802,71 @@ section {
 
     margin: auto;
 
-    font-size: 18px;
-    line-height: 1.9;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 23px;
+
+    line-height: 1.8;
 
     font-style: italic;
 
-    color: #85747d;
+    color: #87757d;
 }
 
-/* =========================
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer {
     text-align: center;
 
-    padding: 70px 20px;
+    padding: 85px 20px;
 
-    background: #6f5c69;
+    background: #6e5b68;
 
-    color: #f7eee4;
+    color: #f8eee3;
 }
 
 .footer-names {
-    font-size: 22px;
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 27px;
 
     letter-spacing: 2px;
 
     margin-bottom: 20px;
 }
 
-.footer-date {
-    font-size: 13px;
+.footer-date,
+.footer-time {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 9px;
 
     letter-spacing: 4px;
 
     margin-bottom: 12px;
 }
 
-.footer-time {
-    font-size: 13px;
-
-    letter-spacing: 3px;
-}
-
 .footer-cross {
-    margin-top: 25px;
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: 22px;
+    font-size: 24px;
+
+    margin-top: 28px;
 }
 
-/* =========================
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 600px) {
+
+    section {
+        padding: 85px 18px;
+    }
 
     .envelope {
         width: 290px;
@@ -754,54 +880,66 @@ footer {
         left: 20px;
     }
 
-    section {
-        padding: 75px 18px;
-    }
-
     .hero h1 {
-        font-size: 48px;
+        font-size: 82px;
     }
 
     .hero-names {
-        line-height: 1.7;
+        font-size: 21px;
     }
 
     .date-section h2 {
-        font-size: 42px;
+        font-size: 48px;
     }
 
     .countdown {
-        gap: 28px;
+        gap: 30px;
     }
 
     .count-number {
-        font-size: 32px;
+        font-size: 42px;
     }
 
     .invitation-image {
         width: 96%;
     }
 
-    .venue-section h2,
-    .qr-section h2 {
-        font-size: 38px;
-    }
 }
+
+
+/* =====================================================
+   REDUCE MOTION ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     PETALS
-========================= -->
 
-<div id="petal-container"></div>
+<!-- =====================================================
+     PETALS + FLOWERS
+===================================================== -->
+
+<div id="nature-container"></div>
 
 
-<!-- =========================
-     OPENING ENVELOPE
-========================= -->
+<!-- =====================================================
+     ENVELOPE
+===================================================== -->
 
 <div id="opening">
 
@@ -832,26 +970,32 @@ footer {
 </div>
 
 
-<!-- =========================
-     MAIN CONTENT
-========================= -->
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
 
 <div id="main-content">
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="small-heading">
+        <div class="eyebrow">
             A Celebration of Love
         </div>
 
         <h1>
-            25 Years
+            25
         </h1>
+
+        <div class="hero-script">
+            Years of Love
+        </div>
 
         <div class="hero-names">
             GA Arokiaraj ravi
@@ -872,7 +1016,9 @@ footer {
 </section>
 
 
-<!-- DATE -->
+<!-- =====================================================
+     DATE
+===================================================== -->
 
 <section class="date-section">
 
@@ -895,11 +1041,13 @@ footer {
 </section>
 
 
-<!-- COUNTDOWN -->
+<!-- =====================================================
+     COUNTDOWN
+===================================================== -->
 
 <section class="countdown-section">
 
-    <div class="countdown-title">
+    <div class="section-label">
         Until We Celebrate
     </div>
 
@@ -913,6 +1061,7 @@ footer {
             <div class="count-number" id="days">
                 00
             </div>
+
             <div class="count-label">
                 Days
             </div>
@@ -922,6 +1071,7 @@ footer {
             <div class="count-number" id="hours">
                 00
             </div>
+
             <div class="count-label">
                 Hours
             </div>
@@ -931,6 +1081,7 @@ footer {
             <div class="count-number" id="minutes">
                 00
             </div>
+
             <div class="count-label">
                 Minutes
             </div>
@@ -940,6 +1091,7 @@ footer {
             <div class="count-number" id="seconds">
                 00
             </div>
+
             <div class="count-label">
                 Seconds
             </div>
@@ -950,7 +1102,9 @@ footer {
 </section>
 
 
-<!-- INVITATION -->
+<!-- =====================================================
+     INVITATION
+===================================================== -->
 
 <section class="invitation-section">
 
@@ -967,11 +1121,13 @@ footer {
 </section>
 
 
-<!-- VENUE -->
+<!-- =====================================================
+     VENUE
+===================================================== -->
 
 <section class="venue-section">
 
-    <div class="small-heading">
+    <div class="section-label">
         The Celebration
     </div>
 
@@ -996,6 +1152,7 @@ footer {
         class="directions-button"
         href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
         target="_blank"
+        rel="noopener"
     >
         Get Directions
     </a>
@@ -1003,11 +1160,13 @@ footer {
 </section>
 
 
-<!-- QR CODE -->
+<!-- =====================================================
+     QR
+===================================================== -->
 
 <section class="qr-section">
 
-    <div class="small-heading">
+    <div class="section-label">
         Find Us
     </div>
 
@@ -1028,7 +1187,9 @@ footer {
 </section>
 
 
-<!-- CHRISTIAN MESSAGE -->
+<!-- =====================================================
+     CHRISTIAN MESSAGE
+===================================================== -->
 
 <section class="christian-section">
 
@@ -1050,7 +1211,9 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -1075,9 +1238,9 @@ footer {
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      MUSIC
-========================= -->
+===================================================== -->
 
 <audio id="music" preload="auto">
     <source src="Music.mp3.mpeg" type="audio/mpeg">
@@ -1086,16 +1249,24 @@ footer {
 
 <script>
 
-/* =========================
-   OPEN ENVELOPE + MUSIC
-========================= */
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
 
-const envelope = document.getElementById("envelope");
-const opening = document.getElementById("opening");
-const mainContent = document.getElementById("main-content");
-const music = document.getElementById("music");
+const envelope =
+    document.getElementById("envelope");
+
+const opening =
+    document.getElementById("opening");
+
+const mainContent =
+    document.getElementById("main-content");
+
+const music =
+    document.getElementById("music");
 
 let opened = false;
+
 
 envelope.addEventListener("click", function () {
 
@@ -1105,149 +1276,365 @@ envelope.addEventListener("click", function () {
 
     envelope.classList.add("open");
 
-    /* Start music directly from the user's tap */
+
+    /* -----------------------------
+       MUSIC
+    ----------------------------- */
+
     music.volume = 0.8;
 
     music.play().catch(function(error) {
-        console.log("Music could not autoplay:", error);
+
+        console.log(
+            "Music could not start:",
+            error
+        );
+
     });
 
-    /* Start the website after envelope opens */
+
+    /* -----------------------------
+       START NATURE EFFECT
+    ----------------------------- */
+
+    startNatureShow();
+
+
+    /* -----------------------------
+       REVEAL WEBSITE
+    ----------------------------- */
+
     setTimeout(function () {
 
         opening.classList.add("hide");
+
         mainContent.classList.add("show");
 
-        startPetals();
-
-    }, 1200);
+    }, 1500);
 
 });
 
 
-/* =========================
-   BEAUTIFUL CONTINUOUS PETALS
-========================= */
+/* =====================================================
+   NATURE ANIMATION
+===================================================== */
 
-const petalContainer =
-    document.getElementById("petal-container");
+const natureContainer =
+    document.getElementById("nature-container");
 
-let petalInterval;
+
+let natureInterval = null;
+
+
+/* Create one petal */
 
 function createPetal() {
 
-    const petal =
+    const element =
         document.createElement("div");
 
-    petal.className = "petal";
+    element.className =
+        "nature petal";
 
-    /* Random horizontal starting point */
-    petal.style.left =
-        Math.random() * 100 + "vw";
-
-    /* Elegant variation */
-    const size =
-        0.65 + Math.random() * 0.75;
-
-    petal.style.setProperty(
-        "--scale",
-        size
+    setNatureProperties(
+        element,
+        false
     );
 
-    petal.style.setProperty(
-        "--rotation",
-        Math.floor(Math.random() * 360) + "deg"
+    natureContainer.appendChild(element);
+
+    removeNature(
+        element,
+        9000
     );
-
-    /* Different falling speeds */
-    const fallTime =
-        8 + Math.random() * 7;
-
-    petal.style.setProperty(
-        "--fall-time",
-        fallTime + "s"
-    );
-
-    petal.style.setProperty(
-        "--sway-time",
-        (2.5 + Math.random() * 2) + "s"
-    );
-
-    /* Natural drifting path */
-    petal.style.setProperty(
-        "--drift-one",
-        (-50 + Math.random() * 100) + "px"
-    );
-
-    petal.style.setProperty(
-        "--drift-two",
-        (-80 + Math.random() * 160) + "px"
-    );
-
-    petal.style.setProperty(
-        "--drift-three",
-        (-100 + Math.random() * 200) + "px"
-    );
-
-    petal.style.setProperty(
-        "--drift-four",
-        (-120 + Math.random() * 240) + "px"
-    );
-
-    /* Random width and height */
-    petal.style.width =
-        (11 + Math.random() * 9) + "px";
-
-    petal.style.height =
-        (17 + Math.random() * 11) + "px";
-
-    /* Slightly different opacity */
-    petal.style.opacity =
-        0.45 + Math.random() * 0.3;
-
-    petalContainer.appendChild(petal);
-
-    /* Remove after animation */
-    setTimeout(function () {
-
-        if (petal.parentNode) {
-            petal.remove();
-        }
-
-    }, (fallTime + 1) * 1000);
 }
 
 
-function startPetals() {
+/* Create one small flower */
 
-    /* A few petals immediately */
-    for (let i = 0; i < 7; i++) {
+function createFlower() {
 
-        setTimeout(
-            createPetal,
-            i * 280
+    const element =
+        document.createElement("div");
+
+    element.className =
+        "nature flower";
+
+    element.textContent =
+        Math.random() > .5
+        ? "🌸"
+        : "🌺";
+
+    setNatureProperties(
+        element,
+        true
+    );
+
+    natureContainer.appendChild(element);
+
+    removeNature(
+        element,
+        10000
+    );
+}
+
+
+/* Give every object natural movement */
+
+function setNatureProperties(
+    element,
+    isFlower
+) {
+
+    element.style.left =
+        Math.random() * 100 + "vw";
+
+
+    const scale =
+        isFlower
+        ? .45 + Math.random() * .45
+        : .65 + Math.random() * .7;
+
+    element.style.setProperty(
+        "--scale",
+        scale
+    );
+
+
+    element.style.setProperty(
+        "--rotation",
+        Math.floor(
+            Math.random() * 360
+        ) + "deg"
+    );
+
+
+    const duration =
+        isFlower
+        ? 8 + Math.random() * 5
+        : 7 + Math.random() * 6;
+
+    element.style.setProperty(
+        "--duration",
+        duration + "s"
+    );
+
+
+    element.style.setProperty(
+        "--sway",
+        2.5 + Math.random() * 2.5 + "s"
+    );
+
+
+    element.style.setProperty(
+        "--drift1",
+        (-60 + Math.random() * 120) + "px"
+    );
+
+    element.style.setProperty(
+        "--drift2",
+        (-100 + Math.random() * 200) + "px"
+    );
+
+    element.style.setProperty(
+        "--drift3",
+        (-130 + Math.random() * 260) + "px"
+    );
+
+    element.style.setProperty(
+        "--drift4",
+        (-160 + Math.random() * 320) + "px"
+    );
+
+
+    element.style.setProperty(
+        "--opacity",
+        .42 + Math.random() * .35
+    );
+
+
+    if (isFlower) {
+
+        element.style.setProperty(
+            "--flower-size",
+            13 + Math.random() * 10 + "px"
+        );
+
+    } else {
+
+        element.style.width =
+            11 + Math.random() * 8 + "px";
+
+        element.style.height =
+            17 + Math.random() * 10 + "px";
+
+    }
+
+}
+
+
+/* Remove after falling */
+
+function removeNature(
+    element,
+    time
+) {
+
+    setTimeout(function () {
+
+        if (element.parentNode) {
+
+            element.remove();
+
+        }
+
+    }, time);
+
+}
+
+
+/* =====================================================
+   DRAMATIC OPENING BURST
+===================================================== */
+
+function startNatureShow() {
+
+
+    /* --------------------------------
+       PHASE 1
+       VERY FAST + MANY
+    -------------------------------- */
+
+    let burstCount = 0;
+
+    const fastBurst =
+        setInterval(function () {
+
+            for (
+                let i = 0;
+                i < 4;
+                i++
+            ) {
+
+                createPetal();
+
+            }
+
+
+            if (
+                burstCount % 2 === 0
+            ) {
+
+                createFlower();
+
+            }
+
+
+            burstCount++;
+
+
+            if (
+                burstCount >= 9
+            ) {
+
+                clearInterval(
+                    fastBurst
+                );
+
+                startSlowTransition();
+
+            }
+
+        }, 120);
+
+}
+
+
+/* =====================================================
+   PHASE 2
+   GRADUALLY SLOW DOWN
+===================================================== */
+
+function startSlowTransition() {
+
+    let count = 0;
+
+    const transition =
+        setInterval(function () {
+
+            createPetal();
+
+            if (
+                count % 3 === 0
+            ) {
+
+                createFlower();
+
+            }
+
+            count++;
+
+
+            if (
+                count >= 12
+            ) {
+
+                clearInterval(
+                    transition
+                );
+
+                startGentleFall();
+
+            }
+
+        }, 350);
+
+}
+
+
+/* =====================================================
+   PHASE 3
+   SOFT CONTINUOUS FALL
+===================================================== */
+
+function startGentleFall() {
+
+    if (natureInterval) {
+
+        clearInterval(
+            natureInterval
         );
 
     }
 
-    /*
-       Continue forever.
-       One new petal every 650ms
-       keeps the screen elegant instead
-       of becoming overloaded.
-    */
 
-    petalInterval =
-        setInterval(
-            createPetal,
-            650
-        );
+    natureInterval =
+        setInterval(function () {
+
+            createPetal();
+
+
+            /*
+               Flowers appear occasionally
+               so the screen remains elegant.
+            */
+
+            if (
+                Math.random() < .18
+            ) {
+
+                createFlower();
+
+            }
+
+        }, 700);
+
 }
 
 
-/* =========================
+/* =====================================================
    COUNTDOWN
-========================= */
+===================================================== */
 
 const eventDate =
     new Date(
@@ -1263,15 +1650,31 @@ function updateCountdown() {
     const distance =
         eventDate - now;
 
-    if (distance <= 0) {
 
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+    if (
+        distance <= 0
+    ) {
+
+        document.getElementById(
+            "days"
+        ).innerText = "00";
+
+        document.getElementById(
+            "hours"
+        ).innerText = "00";
+
+        document.getElementById(
+            "minutes"
+        ).innerText = "00";
+
+        document.getElementById(
+            "seconds"
+        ).innerText = "00";
 
         return;
+
     }
+
 
     const days =
         Math.floor(
@@ -1279,45 +1682,80 @@ function updateCountdown() {
             (1000 * 60 * 60 * 24)
         );
 
+
     const hours =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24))
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            )
             /
             (1000 * 60 * 60)
         );
 
+
     const minutes =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60))
+            (
+                distance %
+                (1000 * 60 * 60)
+            )
             /
             (1000 * 60)
         );
 
+
     const seconds =
         Math.floor(
-            (distance %
-                (1000 * 60))
+            (
+                distance %
+                (1000 * 60)
+            )
             /
             1000
         );
 
-    document.getElementById("days").innerText =
-        String(days).padStart(2, "0");
 
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
+    document.getElementById(
+        "days"
+    ).innerText =
+        String(days).padStart(
+            2,
+            "0"
+        );
 
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
 
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
+    document.getElementById(
+        "hours"
+    ).innerText =
+        String(hours).padStart(
+            2,
+            "0"
+        );
+
+
+    document.getElementById(
+        "minutes"
+    ).innerText =
+        String(minutes).padStart(
+            2,
+            "0"
+        );
+
+
+    document.getElementById(
+        "seconds"
+    ).innerText =
+        String(seconds).padStart(
+            2,
+            "0"
+        );
+
 }
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
