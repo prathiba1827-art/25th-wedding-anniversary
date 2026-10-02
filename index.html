@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>25th Wedding Anniversary</title>
+<title>Silver Jubilee Anniversary</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 * {
     margin: 0;
@@ -24,33 +29,186 @@ html {
 }
 
 body {
-    background: #fbf4ec;
-    color: #594750;
+    background: #faf8f5;
+    color: #49434a;
     font-family: "Cormorant Garamond", serif;
     overflow-x: hidden;
 }
 
 
-/* =========================================================
-   ENVELOPE
-========================================================= */
+/* =====================================================
+   FIRST SCREEN — BIBLE VERSE
+===================================================== */
 
-#intro {
+#bibleIntro {
     position: fixed;
     inset: 0;
-    z-index: 99999;
+    z-index: 30000;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background:
-        radial-gradient(circle at center, #fffaf5 0%, #f8eee5 55%, #f2dfd5 100%);
+    text-align: center;
+    padding: 25px;
 
-    transition: opacity 1.2s ease, visibility 1.2s ease;
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #f7f4f1 55%,
+            #e7e3df 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
-#intro.hide {
+#bibleIntro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.bible-intro-content {
+    width: 100%;
+    max-width: 700px;
+
+    animation: introAppear 1.5s ease;
+}
+
+@keyframes introAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-cross {
+    font-size: 32px;
+    color: #77727a;
+    margin-bottom: 25px;
+}
+
+.intro-verse {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(25px, 4vw, 36px);
+    line-height: 1.45;
+    color: #403b43;
+    font-weight: 600;
+}
+
+.intro-reference {
+    margin-top: 18px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    color: #666068;
+    font-weight: 600;
+}
+
+.intro-divider {
+    width: 90px;
+    height: 1px;
+    background: #aaa4aa;
+
+    margin: 32px auto;
+}
+
+.intro-silver {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: clamp(13px, 2vw, 17px);
+
+    letter-spacing: 7px;
+    text-transform: uppercase;
+
+    color: #69636b;
+    font-weight: 700;
+}
+
+.intro-number {
+    margin-top: 10px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(60px, 10vw, 95px);
+
+    line-height: 1;
+
+    color: #858087;
+}
+
+.intro-anniversary {
+    margin-top: 5px;
+
+    font-size: clamp(24px, 4vw, 36px);
+
+    color: #49434a;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+.intro-couple {
+    margin-top: 25px;
+
+    font-size: 19px;
+
+    color: #5b555c;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   ENVELOPE SCREEN
+===================================================== */
+
+#opening {
+    position: fixed;
+    inset: 0;
+
+    z-index: 20000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffffff 0%,
+            #f8f5f2 50%,
+            #e8e2de 100%
+        );
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#opening.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#opening.hide {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -58,78 +216,121 @@ body {
 
 .envelope-wrapper {
     text-align: center;
-    cursor: pointer;
-    user-select: none;
 }
 
-.envelope {
-    position: relative;
 
-    width: 290px;
-    height: 185px;
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelope {
+    width: 330px;
+    height: 220px;
+
+    position: relative;
 
     margin: auto;
 
-    background: #ead4c7;
+    cursor: pointer;
 
-    border-radius: 4px;
+    filter:
+        drop-shadow(
+            0 20px 30px
+            rgba(45,40,45,.18)
+        );
 
-    box-shadow:
-        0 25px 65px rgba(95, 65, 70, 0.22);
-
-    transform-style: preserve-3d;
+    transition: transform .4s ease;
 }
 
-.envelope::before {
-    content: "";
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope-body {
     position: absolute;
     inset: 0;
 
     background:
         linear-gradient(
-            145deg,
-            transparent 49.5%,
-            #d4b6aa 50%,
-            transparent 50.5%
+            135deg,
+            #faf8f6,
+            #ded9d7
         );
+
+    border: 1px solid #bdb8bb;
+
+    border-radius: 5px;
 }
 
-.envelope::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            215deg,
-            transparent 49.5%,
-            #d4b6aa 50%,
-            transparent 50.5%
-        );
-}
-
-.flap {
+.envelope-left {
     position: absolute;
 
-    top: 0;
     left: 0;
+    bottom: 0;
 
     width: 0;
     height: 0;
 
-    border-left: 145px solid transparent;
-    border-right: 145px solid transparent;
-    border-top: 105px solid #d9bdb2;
+    border-left: 165px solid #e0dcda;
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+
+    z-index: 3;
+}
+
+.envelope-right {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-right: 165px solid #e0dcda;
+    border-top: 110px solid transparent;
+    border-bottom: 110px solid transparent;
+
+    z-index: 3;
+}
+
+.envelope-bottom {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-bottom: 125px solid #cbc6c8;
+
+    z-index: 4;
+}
+
+.envelope-top {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 165px solid transparent;
+    border-right: 165px solid transparent;
+    border-top: 125px solid #bcb7ba;
 
     transform-origin: top center;
 
-    transition:
-        transform 1s cubic-bezier(.2,.7,.2,1);
+    z-index: 6;
 
-    z-index: 20;
+    transition: transform 1s ease;
 }
 
-.envelope.open .flap {
+.envelope.open .envelope-top {
     transform: rotateX(180deg);
 }
 
@@ -137,63 +338,78 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 55%;
-
-    width: 52px;
-    height: 52px;
+    top: 50%;
 
     transform: translate(-50%, -50%);
 
-    border-radius: 50%;
+    width: 65px;
+    height: 65px;
 
-    background: #b98e99;
+    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #fff;
-    font-size: 21px;
+    background:
+        linear-gradient(
+            145deg,
+            #aaa5aa,
+            #706a71
+        );
+
+    border: 3px solid #e5e1e3;
+
+    color: white;
+
+    font-size: 27px;
+
+    z-index: 8;
 
     box-shadow:
-        0 6px 18px rgba(90, 55, 65, .25);
-
-    z-index: 30;
+        0 8px 20px rgba(40,35,40,.2);
 
     transition:
         opacity .4s ease,
-        transform .7s ease;
+        transform .5s ease;
 }
 
 .envelope.open .seal {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(.5);
+
+    transform:
+        translate(-50%, -50%)
+        scale(.5);
 }
 
-.envelope-title {
-    margin-top: 38px;
-
-    font-family: "Great Vibes", cursive;
-    font-size: 45px;
-
-    color: #604952;
-}
-
-.envelope-subtitle {
-    margin-top: 7px;
+.open-text {
+    margin-top: 35px;
 
     font-family: "Montserrat", sans-serif;
-    font-size: 9px;
+
+    font-size: 11px;
+
     letter-spacing: 4px;
 
-    color: #725963;
-    font-weight: 500;
+    text-transform: uppercase;
+
+    color: #59535b;
+
+    font-weight: 600;
+}
+
+.open-subtext {
+    margin-top: 9px;
+
+    font-size: 16px;
+
+    color: #777078;
 }
 
 
-/* =========================================================
+/* =====================================================
    FLOWER LAYER
-========================================================= */
+===================================================== */
 
 .flower-layer {
     position: fixed;
@@ -206,100 +422,29 @@ body {
     overflow: hidden;
 }
 
-
-/* =========================================================
-   FALLING PETALS
-========================================================= */
-
-.falling-petal {
+.falling-flower {
     position: absolute;
 
-    top: -50px;
+    top: -80px;
 
-    width: 11px;
-    height: 17px;
+    user-select: none;
 
-    border-radius: 80% 20% 80% 20%;
+    animation-name: falling;
 
-    pointer-events: none;
+    animation-timing-function: linear;
 
-    animation:
-        gentleFall linear forwards;
+    animation-fill-mode: forwards;
+
+    will-change: transform;
 }
 
-@keyframes gentleFall {
+@keyframes falling {
 
     0% {
         transform:
-            translate3d(0, -100px, 0)
-            rotate(0deg);
-
-        opacity: 0;
-    }
-
-    8% {
-        opacity: .95;
-    }
-
-    100% {
-        transform:
-            translate3d(var(--drift), 115vh, 0)
-            rotate(var(--rotation));
-
-        opacity: .35;
-    }
-}
-
-
-/* =========================================================
-   FLOWER BLAST
-========================================================= */
-
-.blast-flower {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        scale(.1);
-
-    opacity: 0;
-
-    animation:
-        blastFlower var(--duration)
-        cubic-bezier(.12,.75,.25,1)
-        forwards;
-}
-
-.blast-flower::before {
-    content: var(--symbol);
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    font-size: var(--font-size);
-
-    color: var(--flower-color);
-
-    filter:
-        drop-shadow(
-            0 5px 10px rgba(120,70,80,.18)
-        );
-}
-
-@keyframes blastFlower {
-
-    0% {
-        transform:
-            translate(-50%, -50%)
+            translate3d(0,-80px,0)
             rotate(0deg)
-            scale(.1);
+            scale(.8);
 
         opacity: 0;
     }
@@ -308,73 +453,138 @@ body {
         opacity: 1;
     }
 
-    65% {
-        opacity: 1;
-    }
-
     100% {
         transform:
-            translate(
-                calc(-50% + var(--x)),
-                calc(-50% + var(--y))
+            translate3d(
+                var(--drift),
+                115vh,
+                0
             )
             rotate(var(--rotation))
-            scale(1);
+            scale(var(--scale));
 
-        opacity: 0;
+        opacity: .72;
     }
 }
 
 
-/* =========================================================
-   MAIN
-========================================================= */
+/* =====================================================
+   BIG FLOWER EXPLOSION
+===================================================== */
 
-main {
-    display: none;
+.flower-burst {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    z-index: 15000;
+
+    pointer-events: none;
 }
 
-main.show {
-    display: block;
+.burst-item {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    animation:
+        flowerBurst
+        2.2s
+        cubic-bezier(.12,.7,.25,1)
+        forwards;
+
+    opacity: 0;
+}
+
+@keyframes flowerBurst {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            translate(0,0)
+            rotate(0deg)
+            scale(.2);
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%,-50%)
+            translate(var(--x),var(--y))
+            rotate(var(--rotation))
+            scale(var(--scale));
+    }
 }
 
 
-/* =========================================================
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
+
+#main {
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+#main.show {
+    opacity: 1;
+}
+
+
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero {
     min-height: 100vh;
 
     display: flex;
-    flex-direction: column;
-
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 
-    padding: 90px 25px;
+    padding: 100px 25px;
 
     background:
         radial-gradient(
-            circle at top,
-            #fffaf6,
-            transparent 55%
-        ),
-        #fbf4ec;
+            circle at center,
+            #ffffff,
+            #faf8f5
+        );
+
+    position: relative;
+
+    z-index: 1;
 }
 
-.small-heading {
+.hero-inner {
+    max-width: 900px;
+}
+
+.eyebrow {
     font-family: "Montserrat", sans-serif;
 
-    font-size: 10px;
+    font-size: 11px;
 
-    letter-spacing: 6px;
+    letter-spacing: 5px;
 
     text-transform: uppercase;
 
-    color: #725963;
+    color: #69636b;
 
     font-weight: 600;
 
@@ -382,400 +592,168 @@ main.show {
 }
 
 .hero h1 {
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(60px, 10vw, 110px);
-
-    font-weight: 400;
-
-    line-height: 1;
-
-    color: #604952;
-}
-
-.hero-names {
-    margin-top: 32px;
-
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(24px, 4vw, 35px);
+    font-size: clamp(60px, 10vw, 115px);
 
-    line-height: 1.45;
+    line-height: .9;
 
-    letter-spacing: 2px;
-
-    color: #514049;
+    color: #454048;
 
     font-weight: 600;
+
+    letter-spacing: -2px;
+}
+
+.hero-script {
+    margin-top: 20px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(60px, 10vw, 120px);
+
+    color: #858087;
+
+    line-height: 1;
+}
+
+.divider {
+    width: 100px;
+    height: 1px;
+
+    background: #aaa4aa;
+
+    margin: 35px auto;
+}
+
+.names {
+    font-size: clamp(25px, 4vw, 42px);
+
+    line-height: 1.35;
+
+    color: #474149;
+
+    font-weight: 600;
+}
+
+.names span {
+    display: block;
 }
 
 .hero-date {
-    margin-top: 35px;
+    margin-top: 32px;
 
     font-family: "Montserrat", sans-serif;
 
-    font-size: 12px;
+    font-size: 13px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
 
-    color: #634d56;
+    color: #575159;
 
     font-weight: 600;
 }
 
-.scroll-text {
-    margin-top: 70px;
 
-    font-family: "Montserrat", sans-serif;
+/* =====================================================
+   COMMON SECTIONS
+===================================================== */
 
-    font-size: 9px;
+section {
+    position: relative;
 
-    letter-spacing: 4px;
+    padding: 110px 25px;
 
-    text-transform: uppercase;
-
-    color: #725963;
-
-    font-weight: 500;
+    text-align: center;
 }
 
+.section-inner {
+    max-width: 900px;
 
-/* =========================================================
-   SAVE THE DATE
-========================================================= */
-
-.save-date {
-    text-align: center;
-
-    padding: 115px 25px;
-
-    background: #f7ebe2;
+    margin: auto;
 }
 
 .section-label {
     font-family: "Montserrat", sans-serif;
 
-    font-size: 9px;
+    font-size: 10px;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    color: #725963;
+    color: #69636b;
 
     font-weight: 600;
 
     margin-bottom: 20px;
 }
 
-.save-date h2,
-.venue h2 {
-    font-family: "Great Vibes", cursive;
+section h2 {
+    font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(55px, 8vw, 85px);
+    font-size: clamp(40px, 6vw, 65px);
 
-    font-weight: 400;
-
-    color: #604952;
-}
-
-.save-date-date {
-    margin-top: 30px;
-
-    font-size: 34px;
-
-    letter-spacing: 3px;
-
-    color: #634d56;
-
-    font-weight: 600;
-}
-
-.save-date-time {
-    margin-top: 13px;
-
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    color: #634d56;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.countdown-section {
-    padding: 90px 20px;
-
-    text-align: center;
-
-    background: #fbf4ec;
-}
-
-.countdown {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 38px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
-}
-
-.time-box {
-    min-width: 90px;
-}
-
-.time-number {
-    font-size: 52px;
+    color: #4b444c;
 
     font-weight: 600;
 
-    color: #604952;
-}
-
-.time-label {
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    color: #725963;
-
-    font-weight: 600;
+    line-height: 1.1;
 }
 
 
-/* =========================================================
-   INVITATION
-========================================================= */
-
-.invitation {
-    text-align: center;
-
-    padding: 115px 20px;
-
-    background: #f8eee5;
-}
-
-.invitation-title {
-    font-family: "Great Vibes", cursive;
-
-    font-size: clamp(58px, 9vw, 95px);
-
-    font-weight: 400;
-
-    color: #604952;
-
-    margin-bottom: 50px;
-}
-
-.invitation-card {
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 25px;
-
-    background: rgba(255,255,255,.4);
-
-    box-shadow:
-        0 25px 70px rgba(110,80,80,.11);
-}
-
-.invitation-image {
-    width: 100%;
-
-    max-width: 850px;
-
-    height: auto;
-
-    display: block;
-
-    margin: auto;
-}
-
-
-/* =========================================================
-   VENUE
-========================================================= */
-
-.venue {
-    padding: 115px 25px;
-
-    text-align: center;
-
-    background: #fbf4ec;
-}
-
-.venue-name {
-    margin-top: 35px;
-
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 18px;
-
-    letter-spacing: 4px;
-
-    color: #634d56;
-
-    font-weight: 600;
-}
-
-.venue-address {
-    max-width: 650px;
-
-    margin: 25px auto;
-
-    font-size: 21px;
-
-    line-height: 1.7;
-
-    color: #66515a;
-
-    font-weight: 500;
-}
-
-.directions {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 14px 28px;
-
-    border: 1px solid #a98791;
-
-    text-decoration: none;
-
-    color: #634d56;
-
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    font-weight: 600;
-
-    transition: .3s ease;
-}
-
-.directions:hover {
-    background: #634d56;
-
-    color: white;
-}
-
-
-/* =========================================================
-   QR
-========================================================= */
-
-.qr-section {
-    text-align: center;
-
-    padding: 95px 20px;
-
-    background: #f7ebe2;
-}
-
-.qr-section h3 {
-    font-family: "Great Vibes", cursive;
-
-    font-size: 55px;
-
-    font-weight: 400;
-
-    color: #604952;
-
-    margin-bottom: 30px;
-}
-
-.qr-code {
-    width: 210px;
-    height: 210px;
-
-    padding: 10px;
-
-    background: white;
-
-    box-shadow:
-        0 15px 40px rgba(100,70,70,.12);
-}
-
-.qr-text {
-    margin-top: 20px;
-
-    font-family: "Montserrat", sans-serif;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    color: #725963;
-
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   CHRISTIAN SECTION
-========================================================= */
+/* =====================================================
+   BIBLE SECTION — ALWAYS IN FRONT
+===================================================== */
 
 .christian {
-    text-align: center;
+    position: relative;
+
+    z-index: 9500;
+
+    isolation: isolate;
 
     padding: 115px 25px;
 
-    background: #fbf4ec;
+    background: #f7f4f1;
 }
 
-.cross {
-    font-size: 31px;
+.christian > * {
+    position: relative;
 
-    color: #725563;
+    z-index: 10000;
+}
 
-    margin-bottom: 25px;
+.christian .cross {
+    font-size: 30px;
+
+    color: #777178;
 }
 
 .christian h2 {
     font-family: "Great Vibes", cursive;
 
-    font-size: 64px;
+    font-size: clamp(48px, 7vw, 64px);
 
     font-weight: 400;
 
-    color: #604952;
+    color: #555058;
 }
-
-
-/* BIBLE VERSE - DARKER + BOLDER */
 
 .bible-verse {
     max-width: 680px;
 
     margin: 30px auto 0;
 
-    font-family: "Cormorant Garamond", serif;
+    font-size: 25px;
 
-    font-size: 24px;
+    line-height: 1.65;
 
-    line-height: 1.7;
-
-    color: #55434c;
+    color: #403b43;
 
     font-weight: 600;
 
-    letter-spacing: .2px;
+    letter-spacing: .3px;
 }
 
 .verse-reference {
@@ -787,239 +765,390 @@ main.show {
 
     letter-spacing: 3px;
 
-    color: #6b515b;
+    color: #5f5960;
 
     font-weight: 600;
 }
 
 
-/* =========================================================
-   CLOSING
-========================================================= */
+/* =====================================================
+   SAVE THE DATE
+===================================================== */
 
-.closing-section {
-    text-align: center;
-
-    padding: 120px 25px 95px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #f8eee5,
-            #f3e2d9
-        );
+.save-date {
+    background: #ebe8e5;
 }
 
-.closing-cross {
-    font-size: 29px;
+.save-date h2 {
+    font-family: "Great Vibes", cursive;
 
-    color: #725563;
+    font-size: clamp(55px, 8vw, 80px);
 
-    margin: 15px 0 35px;
+    font-weight: 400;
+
+    color: #666068;
 }
 
-.closing-message {
-    max-width: 600px;
+.big-date {
+    margin-top: 30px;
 
-    margin: 0 auto 50px;
+    font-size: clamp(38px, 6vw, 62px);
 
-    font-size: 21px;
+    color: #474149;
 
-    line-height: 1.8;
-
-    color: #62505a;
-
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.closing-regards {
-    display: flex;
+.big-time {
+    margin-top: 10px;
 
-    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
 
-    gap: 10px;
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    color: #575159;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   INVITATION
+===================================================== */
+
+.invitation {
+    background: #faf8f5;
+}
+
+.invitation-title {
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(55px, 8vw, 80px);
+
+    color: #555058;
+
+    font-weight: 400;
 
     margin-bottom: 45px;
 }
 
-.closing-regards span {
-    font-family: "Great Vibes", cursive;
+.invitation-image {
+    display: block;
 
-    font-size: 36px;
+    width: min(900px, 100%);
 
-    color: #725563;
+    height: auto;
 
-    font-weight: 500;
+    margin: auto;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 25px 60px
+        rgba(60,55,60,.18);
 }
 
-.closing-regards strong {
-    font-family: "Cormorant Garamond", serif;
 
-    font-size: 25px;
+/* =====================================================
+   VENUE
+===================================================== */
+
+.venue {
+    background: #ebe8e5;
+}
+
+.venue-name {
+    margin-top: 25px;
+
+    font-size: clamp(35px, 5vw, 52px);
+
+    color: #474149;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.address {
+    max-width: 650px;
+
+    margin: 20px auto 0;
+
+    font-size: 21px;
+
+    line-height: 1.5;
+
+    color: #504950;
 
     font-weight: 600;
-
-    letter-spacing: 1px;
-
-    color: #503d46;
 }
 
-.closing-line {
-    width: 90px;
+.map-button {
+    display: inline-block;
 
-    height: 1px;
+    margin-top: 35px;
 
-    background: #b9929e;
+    padding: 15px 30px;
 
-    margin: 0 auto 30px;
-}
+    background: #777178;
 
-.closing-names {
-    font-size: 20px;
+    color: white;
+
+    text-decoration: none;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
 
     letter-spacing: 2px;
 
-    color: #594650;
+    text-transform: uppercase;
 
-    margin-bottom: 14px;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.map-button:hover {
+    background: #504950;
+
+    transform: translateY(-2px);
+}
+
+.qr-container {
+    margin-top: 50px;
+}
+
+.qr-container img {
+    width: 180px;
+    height: 180px;
+
+    background: white;
+
+    padding: 10px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(60,55,60,.12);
+}
+
+.qr-text {
+    margin-top: 15px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #69636a;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CLOSING
+===================================================== */
+
+.closing {
+    background: #faf8f5;
+
+    padding: 130px 25px;
+}
+
+.closing-small {
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #69636a;
+
+    font-weight: 600;
+}
+
+.closing h2 {
+    margin-top: 20px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(55px, 8vw, 80px);
+
+    font-weight: 400;
+
+    color: #555058;
+}
+
+.closing-names {
+    margin-top: 25px;
+
+    font-size: 23px;
+
+    line-height: 1.6;
+
+    color: #474149;
 
     font-weight: 600;
 }
 
 .closing-date {
+    margin-top: 25px;
+
     font-family: "Montserrat", sans-serif;
 
-    font-size: 10px;
+    font-size: 11px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
-    color: #634d56;
+    color: #575159;
 
     font-weight: 600;
 }
 
+.closing-cross {
+    margin-top: 35px;
 
-/* =========================================================
-   FOOTER
-========================================================= */
+    font-size: 28px;
 
-footer {
-    text-align: center;
-
-    padding: 35px 20px 50px;
-
-    background: #f3e2d9;
+    color: #777178;
 }
 
-footer p {
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #dedbd8;
+
     font-family: "Montserrat", sans-serif;
 
     font-size: 8px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
-    color: #725963;
+    color: #5f5960;
 
     font-weight: 600;
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
     .envelope {
-        width: 250px;
-        height: 160px;
+        width: 280px;
+        height: 185px;
     }
 
-    .flap {
-        border-left-width: 125px;
-        border-right-width: 125px;
-        border-top-width: 90px;
+    .envelope-left {
+        border-left-width: 140px;
+        border-top-width: 92px;
+        border-bottom-width: 92px;
     }
 
-    .envelope-title {
-        font-size: 37px;
+    .envelope-right {
+        border-right-width: 140px;
+        border-top-width: 92px;
+        border-bottom-width: 92px;
     }
 
-    .hero {
-        min-height: 90vh;
+    .envelope-bottom {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-bottom-width: 105px;
     }
 
-    .hero-date {
-        font-size: 10px;
-        letter-spacing: 2px;
+    .envelope-top {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 105px;
     }
 
-    .countdown {
-        gap: 22px;
+    .seal {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
     }
 
-    .time-box {
-        min-width: 70px;
-    }
-
-    .time-number {
-        font-size: 42px;
-    }
-
-    .venue-address {
-        font-size: 19px;
-    }
-
-    .christian h2 {
-        font-size: 53px;
+    .intro-verse {
+        font-size: 24px;
     }
 
     .bible-verse {
-        font-size: 20px;
-    }
-
-    .closing-regards strong {
         font-size: 21px;
     }
 
-    .closing-names {
-        font-size: 16px;
-        letter-spacing: 1px;
+    .address {
+        font-size: 19px;
     }
 
+    section {
+        padding: 90px 20px;
+    }
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
-     ENVELOPE
-========================================================= -->
+<!-- =====================================================
+     FIRST SCREEN — BIBLE VERSE
+===================================================== -->
 
-<div id="intro">
+<div id="bibleIntro">
 
-    <div class="envelope-wrapper" onclick="openInvitation()">
+    <div class="bible-intro-content">
 
-        <div class="envelope" id="envelope">
+        <div class="intro-cross">
+            ✝
+        </div>
 
-            <div class="flap"></div>
+        <div class="intro-verse">
 
-            <div class="seal">
-                ✝
-            </div>
+            “Give thanks to the Lord,
+            for He is good;
+            His love endures forever.”
 
         </div>
 
-        <div class="envelope-title">
-            You Are Invited
+        <div class="intro-reference">
+            PSALM 107:1
         </div>
 
-        <div class="envelope-subtitle">
-            TAP TO OPEN
+        <div class="intro-divider"></div>
+
+        <div class="intro-silver">
+            Silver Jubilee
+        </div>
+
+        <div class="intro-number">
+            25th
+        </div>
+
+        <div class="intro-anniversary">
+            Wedding Anniversary
+        </div>
+
+        <div class="intro-couple">
+            GA Arokiaraj Ravi &amp; A Mary Francina
         </div>
 
     </div>
@@ -1027,109 +1156,169 @@ footer p {
 </div>
 
 
-<!-- =========================================================
+
+<!-- =====================================================
+     ENVELOPE
+===================================================== -->
+
+<div id="opening">
+
+    <div class="envelope-wrapper">
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-body"></div>
+
+            <div class="envelope-left"></div>
+
+            <div class="envelope-right"></div>
+
+            <div class="envelope-bottom"></div>
+
+            <div class="envelope-top"></div>
+
+            <div class="seal">
+                ✝
+            </div>
+
+        </div>
+
+        <div class="open-text">
+            Tap to Open
+        </div>
+
+        <div class="open-subtext">
+            A celebration of 25 beautiful years
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
      FLOWER LAYER
-========================================================= -->
+===================================================== -->
 
-<div id="flowerLayer" class="flower-layer"></div>
-
-
-<!-- =========================================================
-     MUSIC
-========================================================= -->
-
-<audio id="music" preload="auto">
-    <source src="Music.mp3.mpeg" type="audio/mpeg">
-</audio>
+<div
+    class="flower-layer"
+    id="flowerLayer">
+</div>
 
 
-<!-- =========================================================
-     MAIN WEBSITE
-========================================================= -->
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
 
 <main id="main">
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-    <div class="small-heading">
-        A Celebration of Love
-    </div>
+    <div class="hero-inner">
 
-    <h1>
-        25 Years
-    </h1>
+        <div class="eyebrow">
+            SILVER JUBILEE ANNIVERSARY
+        </div>
 
-    <div class="hero-names">
-        GA Arokiaraj Ravi<br>
-        &amp;<br>
-        A Mary Francina
-    </div>
+        <h1>
+            25th
+        </h1>
 
-    <div class="hero-date">
-        18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
-    </div>
+        <div class="hero-script">
+            Wedding Anniversary
+        </div>
 
-    <div class="scroll-text">
-        Scroll to discover
+        <div class="divider"></div>
+
+        <div class="names">
+
+            <span>
+                GA Arokiaraj Ravi
+            </span>
+
+            <span>
+                &amp;
+            </span>
+
+            <span>
+                A Mary Francina
+            </span>
+
+        </div>
+
+        <div class="hero-date">
+            18 OCTOBER 2026 • 6:00 PM ONWARDS
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- SAVE THE DATE -->
+
+<!-- =====================================================
+     CHRISTIAN SECTION
+===================================================== -->
+
+<section class="christian">
+
+    <div class="section-inner">
+
+        <div class="cross">
+            ✝
+        </div>
+
+        <h2>
+            With Grateful Hearts
+        </h2>
+
+        <div class="bible-verse">
+
+            “Give thanks to the Lord,
+            for He is good;
+            His love endures forever.”
+
+        </div>
+
+        <div class="verse-reference">
+            PSALM 107:1
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SAVE THE DATE
+===================================================== -->
 
 <section class="save-date">
 
-    <div class="section-label">
-        Save the Date
-    </div>
+    <div class="section-inner">
 
-    <h2>
-        Twenty Five Years
-    </h2>
-
-    <div class="save-date-date">
-        18 OCTOBER 2026
-    </div>
-
-    <div class="save-date-time">
-        6:00 PM ONWARDS
-    </div>
-
-</section>
-
-
-<!-- COUNTDOWN -->
-
-<section class="countdown-section">
-
-    <div class="section-label">
-        Until We Celebrate
-    </div>
-
-    <div class="countdown">
-
-        <div class="time-box">
-            <div class="time-number" id="days">00</div>
-            <div class="time-label">DAYS</div>
+        <div class="section-label">
+            Save the Date
         </div>
 
-        <div class="time-box">
-            <div class="time-number" id="hours">00</div>
-            <div class="time-label">HOURS</div>
+        <h2>
+            A Day to Remember
+        </h2>
+
+        <div class="big-date">
+            18 OCTOBER 2026
         </div>
 
-        <div class="time-box">
-            <div class="time-number" id="minutes">00</div>
-            <div class="time-label">MINUTES</div>
-        </div>
-
-        <div class="time-box">
-            <div class="time-number" id="seconds">00</div>
-            <div class="time-label">SECONDS</div>
+        <div class="big-time">
+            6:00 PM ONWARDS
         </div>
 
     </div>
@@ -1137,20 +1326,23 @@ footer p {
 </section>
 
 
-<!-- INVITATION -->
+
+<!-- =====================================================
+     INVITATION
+===================================================== -->
 
 <section class="invitation">
 
-    <div class="invitation-title">
-        You Are Invited
-    </div>
+    <div class="section-inner">
 
-    <div class="invitation-card">
+        <div class="invitation-title">
+            You Are Invited
+        </div>
 
         <img
             class="invitation-image"
             src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
-            alt="25th Wedding Anniversary Invitation"
+            alt="Silver Jubilee 25th Wedding Anniversary Invitation"
         >
 
     </div>
@@ -1158,135 +1350,127 @@ footer p {
 </section>
 
 
-<!-- VENUE -->
+
+<!-- =====================================================
+     VENUE
+===================================================== -->
 
 <section class="venue">
 
-    <div class="section-label">
-        The Celebration
-    </div>
+    <div class="section-inner">
 
-    <h2>
-        Venue
-    </h2>
+        <div class="section-label">
+            The Celebration
+        </div>
 
-    <div class="venue-name">
-        ARIMA THUMBI
-    </div>
+        <h2>
+            Join Us
+        </h2>
 
-    <div class="venue-address">
-        1/38, N Parade Rd,<br>
-        Chakrapani Colony,<br>
-        Ramapuram, St. Thomas Mount,<br>
-        Chennai Tamil Nadu 600016
-    </div>
+        <div class="venue-name">
+            ARIMA THUMBI
+        </div>
 
-    <a
-        class="directions"
-        href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
-        target="_blank"
-        rel="noopener"
-    >
-        GET DIRECTIONS
-    </a>
+        <div class="address">
 
-</section>
+            1/38, N Parade Rd,<br>
+
+            Chakrapani Colony,<br>
+
+            Ramapuram, St. Thomas Mount,<br>
+
+            Tamil Nadu 600016
+
+        </div>
 
 
-<!-- QR -->
-
-<section class="qr-section">
-
-    <h3>
-        Find Us
-    </h3>
-
-    <img
-        class="qr-code"
-        src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
-        alt="Venue QR Code"
-    >
-
-    <div class="qr-text">
-        SCAN TO OPEN THE VENUE LOCATION
-    </div>
-
-</section>
+        <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
+            target="_blank"
+        >
+            Get Directions
+        </a>
 
 
-<!-- CHRISTIAN MESSAGE -->
+        <div class="qr-container">
 
-<section class="christian">
+            <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
+                alt="Venue QR Code"
+            >
 
-    <div class="cross">
-        ✝
-    </div>
+            <div class="qr-text">
+                SCAN FOR LOCATION
+            </div>
 
-    <h2>
-        With Grateful Hearts
-    </h2>
+        </div>
 
-    <div class="bible-verse">
-        “Give thanks to the Lord, for He is good;
-        His love endures forever.”
-    </div>
-
-    <div class="verse-reference">
-        PSALM 107:1
     </div>
 
 </section>
 
 
-<!-- FINAL CLOSING -->
 
-<section class="closing-section">
+<!-- =====================================================
+     CLOSING
+===================================================== -->
 
-    <div class="closing-cross">
-        ✝
-    </div>
+<section class="closing">
 
-    <p class="closing-message">
-        With grateful hearts, we thank you for being
-        a part of this beautiful celebration.
-    </p>
+    <div class="section-inner">
 
-    <div class="closing-regards">
+        <div class="closing-small">
+            With Regards
+        </div>
 
-        <span>
-            With Regards,
-        </span>
+        <h2>
+            With Love
+        </h2>
 
-        <strong>
-            Mary Princy A &amp; Mary Prathiba A
-        </strong>
+        <div class="closing-names">
 
-    </div>
+            Mary Princy A
 
-    <div class="closing-line"></div>
+            <br>
 
-    <p class="closing-names">
-        GA Arokiaraj Ravi &amp; A Mary Francina
-    </p>
+            &amp;
 
-    <p class="closing-date">
-        18 OCTOBER 2026 &nbsp;•&nbsp; 6:00 PM ONWARDS
-    </p>
+            <br>
 
-    <div class="closing-cross">
-        ✝
+            Mary Prathiba A
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="closing-date">
+
+            GA Arokiaraj Ravi &amp; A Mary Francina
+
+            <br><br>
+
+            18 OCTOBER 2026 • 6:00 PM ONWARDS
+
+        </div>
+
+        <div class="closing-cross">
+            ✝
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    <p>
-        GA AROKIARAJ RAVI &nbsp;•&nbsp; A MARY FRANCINA
-    </p>
+    25 YEARS OF LOVE • FAITH • TOGETHERNESS
 
 </footer>
 
@@ -1294,611 +1478,575 @@ footer p {
 </main>
 
 
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="music"
+    preload="auto">
+
+    <source
+        src="Music.mp3.mpeg"
+        type="audio/mpeg">
+
+</audio>
+
+
+
 <script>
 
-/* =========================================================
+/* =====================================================
    ELEMENTS
-========================================================= */
+===================================================== */
 
-const intro = document.getElementById("intro");
-const envelope = document.getElementById("envelope");
-const main = document.getElementById("main");
-const music = document.getElementById("music");
-const flowerLayer = document.getElementById("flowerLayer");
+const bibleIntro =
+    document.getElementById("bibleIntro");
 
+const opening =
+    document.getElementById("opening");
 
-/* =========================================================
-   OPEN INVITATION
-========================================================= */
+const envelope =
+    document.getElementById("envelope");
 
-function openInvitation() {
+const main =
+    document.getElementById("main");
 
-    if (envelope.classList.contains("open")) {
-        return;
-    }
+const flowerLayer =
+    document.getElementById("flowerLayer");
 
-    envelope.classList.add("open");
-
-    music.volume = 0.8;
-
-    music.play().catch(function(error) {
-        console.log("Music playback:", error);
-    });
+const music =
+    document.getElementById("music");
 
 
-    /* BIG FLOWER BLAST */
+/* =====================================================
+   SHOW ENVELOPE AFTER BIBLE VERSE
+===================================================== */
 
-    createFlowerBlast();
+setTimeout(function() {
 
+    bibleIntro.classList.add("hide");
 
-    /* SHOW WEBSITE */
+    opening.classList.add("show");
 
-    setTimeout(function() {
-        main.classList.add("show");
-    }, 450);
-
-
-    /* HIDE ENVELOPE */
-
-    setTimeout(function() {
-        intro.classList.add("hide");
-    }, 1300);
+}, 5500);
 
 
-    /* START CONTINUOUS FLOWERS */
 
-    setTimeout(function() {
-        startContinuousFlowers();
-    }, 500);
+/* =====================================================
+   FLOWERS
+===================================================== */
 
-}
+const flowerSymbols = [
 
+    "✿",
+    "❀",
+    "✽",
+    "✾",
+    "❁",
+    "✻",
+    "🌸",
+    "🌺",
+    "🌷"
 
-/* =========================================================
-   FLOWER TYPES
-========================================================= */
+];
 
-const flowerTypes = [
+const petalSymbols = [
 
-    {
-        symbol: "✿",
-        color: "#d8899a"
-    },
-
-    {
-        symbol: "✽",
-        color: "#e3a0ae"
-    },
-
-    {
-        symbol: "❀",
-        color: "#d9a1b4"
-    },
-
-    {
-        symbol: "✾",
-        color: "#c98c9e"
-    },
-
-    {
-        symbol: "❁",
-        color: "#e0a9b4"
-    },
-
-    {
-        symbol: "✻",
-        color: "#d7a0ad"
-    }
+    "❧",
+    "❦",
+    "♡",
+    "♥",
+    "•"
 
 ];
 
 
-/* =========================================================
-   BIG FLOWER BLAST
-========================================================= */
 
-function createFlowerBlast() {
+/* =====================================================
+   CREATE FALLING FLOWER
+===================================================== */
 
-    const flowerCount = 120;
-    const petalCount = 100;
-
-
-    /* FLOWERS */
-
-    for (let i = 0; i < flowerCount; i++) {
-
-        setTimeout(function() {
-
-            const flower =
-                document.createElement("div");
-
-            flower.className =
-                "blast-flower";
-
-
-            const type =
-                flowerTypes[
-                    Math.floor(
-                        Math.random() *
-                        flowerTypes.length
-                    )
-                ];
-
-
-            const angle =
-                Math.random() *
-                Math.PI * 2;
-
-
-            const radius =
-                180 +
-                Math.random() * 800;
-
-
-            const x =
-                Math.cos(angle) *
-                radius;
-
-
-            const y =
-                Math.sin(angle) *
-                radius;
-
-
-            const size =
-                18 +
-                Math.random() * 30;
-
-
-            const duration =
-                1600 +
-                Math.random() * 2200;
-
-
-            flower.style.setProperty(
-                "--x",
-                x + "px"
-            );
-
-            flower.style.setProperty(
-                "--y",
-                y + "px"
-            );
-
-            flower.style.setProperty(
-                "--font-size",
-                size + "px"
-            );
-
-            flower.style.setProperty(
-                "--duration",
-                duration + "ms"
-            );
-
-            flower.style.setProperty(
-                "--rotation",
-                (Math.random() * 1000 - 500) + "deg"
-            );
-
-            flower.style.setProperty(
-                "--symbol",
-                '"' + type.symbol + '"'
-            );
-
-            flower.style.setProperty(
-                "--flower-color",
-                type.color
-            );
-
-
-            flowerLayer.appendChild(flower);
-
-
-            setTimeout(function() {
-                flower.remove();
-            }, duration + 300);
-
-
-        }, i * 9);
-
-    }
-
-
-    /* PETALS */
-
-    for (let i = 0; i < petalCount; i++) {
-
-        setTimeout(function() {
-
-            const petal =
-                document.createElement("div");
-
-            petal.className =
-                "falling-petal";
-
-
-            const angle =
-                Math.random() *
-                Math.PI * 2;
-
-
-            const radius =
-                150 +
-                Math.random() * 750;
-
-
-            const x =
-                Math.cos(angle) *
-                radius;
-
-
-            const y =
-                Math.sin(angle) *
-                radius;
-
-
-            const size =
-                8 +
-                Math.random() * 10;
-
-
-            const colors = [
-                "#e7a4b0",
-                "#d88b9b",
-                "#efb8c0",
-                "#d99aaa",
-                "#c98596"
-            ];
-
-
-            petal.style.left = "50%";
-            petal.style.top = "50%";
-
-            petal.style.width =
-                size + "px";
-
-            petal.style.height =
-                (size * 1.45) + "px";
-
-
-            petal.style.background =
-                colors[
-                    Math.floor(
-                        Math.random() *
-                        colors.length
-                    )
-                ];
-
-
-            petal.style.setProperty(
-                "--drift",
-                x + "px"
-            );
-
-            petal.style.setProperty(
-                "--rotation",
-                (Math.random() * 1000 - 500) + "deg"
-            );
-
-
-            petal.style.animationDuration =
-                (2200 + Math.random() * 2500) +
-                "ms";
-
-
-            flowerLayer.appendChild(petal);
-
-
-            setTimeout(function() {
-                petal.remove();
-            }, 5500);
-
-
-        }, i * 10);
-
-    }
-
-}
-
-
-/* =========================================================
-   CONTINUOUS FLOWERS
-========================================================= */
-
-function createContinuousFlower() {
+function createFallingFlower(fast = false) {
 
     const flower =
         document.createElement("div");
 
-
-    const styles = [
-        "✿",
-        "✽",
-        "❀",
-        "✾",
-        "❁",
-        "✻"
-    ];
-
-
-    const colors = [
-        "#d8899a",
-        "#e3a0ae",
-        "#d9a1b4",
-        "#c98c9e",
-        "#e0a9b4",
-        "#d7a0ad"
-    ];
-
-
-    const index =
-        Math.floor(
-            Math.random() *
-            styles.length
-        );
-
-
     flower.className =
-        "blast-flower";
+        "falling-flower";
 
 
-    flower.style.left =
-        (Math.random() * 100) + "vw";
-
-    flower.style.top =
-        "-40px";
-
-
-    flower.style.setProperty(
-        "--symbol",
-        '"' + styles[index] + '"'
-    );
+    const symbols =
+        Math.random() > 0.3
+            ? flowerSymbols
+            : petalSymbols;
 
 
-    flower.style.setProperty(
-        "--flower-color",
-        colors[index]
-    );
-
-
-    flower.style.setProperty(
-        "--font-size",
-        (18 + Math.random() * 20) + "px"
-    );
-
-
-    flower.style.setProperty(
-        "--x",
-        (Math.random() * 300 - 150) + "px"
-    );
-
-
-    flower.style.setProperty(
-        "--y",
-        "120vh"
-    );
-
-
-    flower.style.setProperty(
-        "--duration",
-        (7500 + Math.random() * 5000) + "ms"
-    );
-
-
-    flower.style.setProperty(
-        "--rotation",
-        (Math.random() * 900 - 450) + "deg"
-    );
-
-
-    flowerLayer.appendChild(flower);
-
-
-    setTimeout(function() {
-        flower.remove();
-    }, 14000);
-
-}
-
-
-/* =========================================================
-   CONTINUOUS PETALS
-========================================================= */
-
-function createContinuousPetal() {
-
-    const petal =
-        document.createElement("div");
-
-
-    petal.className =
-        "falling-petal";
-
-
-    petal.style.left =
-        Math.random() * 100 + "vw";
-
-
-    petal.style.top =
-        "-40px";
-
-
-    const colors = [
-        "#e7a4b0",
-        "#d88b9b",
-        "#efb8c0",
-        "#d99aaa",
-        "#c98596"
-    ];
-
-
-    petal.style.background =
-        colors[
+    flower.textContent =
+        symbols[
             Math.floor(
                 Math.random() *
-                colors.length
+                symbols.length
             )
         ];
 
 
-    petal.style.setProperty(
+    const size =
+        Math.random() * 18 + 10;
+
+
+    const left =
+        Math.random() * 100;
+
+
+    const duration =
+        fast
+            ? Math.random() * 2.5 + 2
+            : Math.random() * 8 + 7;
+
+
+    const delay =
+        fast
+            ? Math.random() * 1.5
+            : Math.random() * 4;
+
+
+    const drift =
+        (Math.random() - 0.5) * 350;
+
+
+    const rotation =
+        (Math.random() > 0.5 ? 1 : -1)
+        *
+        (Math.random() * 720 + 360);
+
+
+    const scale =
+        Math.random() * 0.8 + 0.7;
+
+
+    flower.style.left =
+        left + "%";
+
+
+    flower.style.fontSize =
+        size + "px";
+
+
+    flower.style.color =
+        Math.random() > 0.5
+            ? "#aaa4aa"
+            : "#8e8890";
+
+
+    flower.style.animationDuration =
+        duration + "s";
+
+
+    flower.style.animationDelay =
+        delay + "s";
+
+
+    flower.style.setProperty(
         "--drift",
-        (Math.random() * 300 - 150) + "px"
+        drift + "px"
     );
 
 
-    petal.style.setProperty(
+    flower.style.setProperty(
         "--rotation",
-        (Math.random() * 900 - 450) + "deg"
+        rotation + "deg"
     );
 
 
-    petal.style.animationDuration =
-        (7000 + Math.random() * 7000) +
-        "ms";
+    flower.style.setProperty(
+        "--scale",
+        scale
+    );
 
 
-    flowerLayer.appendChild(petal);
+    flowerLayer.appendChild(
+        flower
+    );
 
 
     setTimeout(function() {
-        petal.remove();
-    }, 15000);
+
+        flower.remove();
+
+    }, (duration + delay) * 1000 + 1000);
 
 }
 
 
-/* =========================================================
-   CONTINUOUS FLOWER RAIN
-========================================================= */
 
-function startContinuousFlowers() {
+/* =====================================================
+   FLOWER RAIN
+===================================================== */
 
-    /*
-       Heavy floral rain at the beginning
-    */
-
-    let flowerInterval =
-        setInterval(function() {
-            createContinuousFlower();
-        }, 230);
+let rainInterval = null;
 
 
-    let petalInterval =
-        setInterval(function() {
-            createContinuousPetal();
-        }, 160);
+function startFlowerRain() {
 
 
-    /*
-       Gradually becomes gentle
-    */
+    /* VERY FAST INITIAL FALL */
 
-    setTimeout(function() {
+    for (
+        let i = 0;
+        i < 180;
+        i++
+    ) {
 
-        clearInterval(flowerInterval);
-        clearInterval(petalInterval);
+        createFallingFlower(true);
 
-
-        flowerInterval =
-            setInterval(function() {
-                createContinuousFlower();
-            }, 650);
-
-
-        petalInterval =
-            setInterval(function() {
-                createContinuousPetal();
-            }, 420);
-
-
-    }, 6500);
-
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-const targetDate =
-    new Date(
-        "October 18, 2026 18:00:00"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-
-    const difference =
-        targetDate - now;
-
-
-    if (difference <= 0) {
-
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-
-        return;
     }
 
 
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
+    /* HEAVY */
+
+    rainInterval =
+        setInterval(function() {
+
+            createFallingFlower(false);
+
+        }, 45);
 
 
-    const hours =
-        Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
-        );
+    /* SLOWER */
+
+    setTimeout(function() {
+
+        clearInterval(rainInterval);
+
+        rainInterval =
+            setInterval(function() {
+
+                createFallingFlower(false);
+
+            }, 120);
+
+    }, 3500);
 
 
-    const minutes =
-        Math.floor(
-            (difference /
-            (1000 * 60)) % 60
-        );
+    /* EVEN SLOWER */
+
+    setTimeout(function() {
+
+        clearInterval(rainInterval);
+
+        rainInterval =
+            setInterval(function() {
+
+                createFallingFlower(false);
+
+            }, 220);
+
+    }, 9000);
 
 
-    const seconds =
-        Math.floor(
-            (difference / 1000) % 60
-        );
+    /* GENTLE CONTINUOUS */
 
+    setTimeout(function() {
 
-    document.getElementById("days").innerText =
-        String(days).padStart(2, "0");
+        clearInterval(rainInterval);
 
+        rainInterval =
+            setInterval(function() {
 
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
+                createFallingFlower(false);
 
+            }, 350);
 
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
-
-
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
+    }, 16000);
 
 }
 
 
-updateCountdown();
 
-setInterval(
-    updateCountdown,
-    1000
+/* =====================================================
+   BIG FLOWER EXPLOSION
+===================================================== */
+
+function flowerExplosion() {
+
+    const burst =
+        document.createElement("div");
+
+    burst.className =
+        "flower-burst";
+
+    flowerLayer.appendChild(
+        burst
+    );
+
+
+    /* 120 FLOWERS */
+
+    for (
+        let i = 0;
+        i < 120;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "burst-item";
+
+
+        item.textContent =
+            flowerSymbols[
+                Math.floor(
+                    Math.random() *
+                    flowerSymbols.length
+                )
+            ];
+
+
+        const angle =
+            Math.random()
+            * Math.PI * 2;
+
+
+        const distance =
+            Math.random() * 650 + 180;
+
+
+        const x =
+            Math.cos(angle) * distance;
+
+
+        const y =
+            Math.sin(angle) * distance;
+
+
+        item.style.fontSize =
+            (
+                Math.random() * 22 + 13
+            ) + "px";
+
+
+        item.style.color =
+            Math.random() > 0.5
+                ? "#aaa4aa"
+                : "#8e8890";
+
+
+        item.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        item.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        item.style.setProperty(
+            "--rotation",
+            (
+                (Math.random() - 0.5)
+                * 1200
+            ) + "deg"
+        );
+
+
+        item.style.setProperty(
+            "--scale",
+            Math.random() * 1.5 + .6
+        );
+
+
+        item.style.animationDelay =
+            Math.random() * .35 + "s";
+
+
+        burst.appendChild(item);
+
+    }
+
+
+    /* 100 PETALS */
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "burst-item";
+
+
+        item.textContent =
+            petalSymbols[
+                Math.floor(
+                    Math.random() *
+                    petalSymbols.length
+                )
+            ];
+
+
+        const angle =
+            Math.random()
+            * Math.PI * 2;
+
+
+        const distance =
+            Math.random() * 600 + 100;
+
+
+        const x =
+            Math.cos(angle) * distance;
+
+
+        const y =
+            Math.sin(angle) * distance;
+
+
+        item.style.fontSize =
+            (
+                Math.random() * 20 + 10
+            ) + "px";
+
+
+        item.style.color =
+            "#b8b2b8";
+
+
+        item.style.setProperty(
+            "--x",
+            x + "px"
+        );
+
+
+        item.style.setProperty(
+            "--y",
+            y + "px"
+        );
+
+
+        item.style.setProperty(
+            "--rotation",
+            (
+                (Math.random() - 0.5)
+                * 1000
+            ) + "deg"
+        );
+
+
+        item.style.setProperty(
+            "--scale",
+            Math.random() * 1.3 + .6
+        );
+
+
+        item.style.animationDelay =
+            Math.random() * .4 + "s";
+
+
+        burst.appendChild(item);
+
+    }
+
+
+    setTimeout(function() {
+
+        burst.remove();
+
+    }, 4000);
+
+}
+
+
+
+/* =====================================================
+   OPEN ENVELOPE
+===================================================== */
+
+let opened = false;
+
+
+envelope.addEventListener(
+    "click",
+    function() {
+
+
+        if (opened) {
+            return;
+        }
+
+
+        opened = true;
+
+
+        /* OPEN ENVELOPE */
+
+        envelope.classList.add("open");
+
+
+        /* START MUSIC */
+
+        music.volume = 0.8;
+
+        music.play().catch(
+            function(error) {
+
+                console.log(
+                    "Music playback:",
+                    error
+                );
+
+            }
+        );
+
+
+        /* BIG FLOWER BLAST */
+
+        flowerExplosion();
+
+
+        /* CONTINUOUS FLOWERS */
+
+        startFlowerRain();
+
+
+        /* SHOW WEBSITE */
+
+        setTimeout(function() {
+
+            opening.classList.add("hide");
+
+            main.classList.add("show");
+
+        }, 850);
+
+    }
 );
+
+
+
+/* =====================================================
+   CONTINUE FLOWERS UNTIL THE END
+===================================================== */
+
+setInterval(function() {
+
+    if (opened) {
+
+        createFallingFlower(false);
+
+    }
+
+}, 500);
 
 </script>
 
