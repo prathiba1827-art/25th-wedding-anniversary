@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>25th Wedding Anniversary | Arokiaraj Ravi & Mary Francina</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f7f1e7;
+    color: #3c352d;
+    overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 25px;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* OPENING */
+
+.opening {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at center, #fffaf2 0%, #eadfca 100%);
+    cursor: pointer;
+}
+
+.opening-content {
+    animation: fadeIn 2s ease;
+}
+
+.initials {
+    font-size: 28px;
+    letter-spacing: 7px;
+    margin-bottom: 45px;
+}
+
+.open-text {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #756650;
+}
+
+.open-text span {
+    display: block;
+    margin-top: 18px;
+    font-size: 30px;
+}
+
+/* HERO */
+
+.hero {
+    background: #f8f1e5;
+}
+
+.small-title {
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #907b59;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(38px, 10vw, 68px);
+    font-weight: normal;
+    line-height: 1.15;
+    color: #40372d;
+}
+
+.and {
+    font-size: 25px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.subtitle {
+    margin-top: 30px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #6e6253;
+}
+
+.scroll-text {
+    margin-top: 65px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #927d5b;
+}
+
+.arrow {
+    font-size: 28px;
+    margin-top: 12px;
+    animation: bounce 1.8s infinite;
+}
+
+/* DIVIDER */
+
+.divider {
+    font-size: 25px;
+    color: #a28b62;
+    margin-bottom: 35px;
+}
+
+/* SAVE DATE */
+
+.date-section {
+    background: #eee3d2;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.date-number {
+    font-size: 80px;
+    line-height: 1;
+    color: #806b49;
+}
+
+.date-month {
+    font-size: 25px;
+    margin-top: 12px;
+}
+
+.date-day {
+    margin-top: 12px;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 40px 0;
+}
+
+.countdown div {
+    padding: 15px 5px;
+    border-top: 1px solid #b9a98d;
+    border-bottom: 1px solid #b9a98d;
+}
+
+.countdown strong {
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.countdown span {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* VENUE */
+
+.venue {
+    background: #f8f1e5;
+}
+
+.venue-name {
+    font-size: 29px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.address {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #6d6255;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn {
+    border: 1px solid #9b8766;
+    padding: 13px 20px;
+    text-decoration: none;
+    color: #594c3b;
+    background: transparent;
+    border-radius: 2px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #e9ddca;
+}
+
+.map-box {
+    margin-top: 40px;
+    padding: 35px 20px;
+    border: 1px solid #c7b79a;
+    background: #eee3d2;
+}
+
+.map-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* MESSAGE */
+
+.message {
+    background: #e9ddca;
+}
+
+.message p {
+    font-size: 19px;
+    line-height: 1.9;
+    font-style: italic;
+}
+
+.names {
+    margin-top: 35px;
+    font-size: 25px;
+}
+
+.footer {
+    margin-top: 60px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8b795f;
+}
+
+/* MUSIC */
+
+.music-button {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #9b8766;
+    background: #f8f1e5;
+    color: #594c3b;
+    font-size: 18px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+
+    section {
+        padding: 40px 22px;
+    }
+
+    .countdown strong {
+        font-size: 19px;
+    }
+
+    .countdown span {
+        font-size: 9px;
+    }
+
+    .venue-name {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<section class="opening" onclick="openInvitation()">
+
+    <div class="opening-content">
+
+        <div class="initials">A & M</div>
+
+        <div class="open-text">
+            ✦ Tap to Open Your Invitation ✦
+            <span>⌄</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN INVITATION -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="small-title">
+            Together with their family
+        </div>
+
+        <h1>
+            25th Wedding<br>
+            Anniversary
+        </h1>
+
+        <div class="and">&</div>
+
+        <div class="names">
+            Ga. Arokiaraj Ravi<br>
+            &<br>
+            A. Mary Francina
+        </div>
+
+        <p class="subtitle">
+            With hearts full of gratitude,
+            we joyfully invite you to celebrate
+            twenty-five beautiful years of
+            love, faith and togetherness.
+        </p>
+
+        <div class="scroll-text">
+            Scroll to unfold the details
+        </div>
+
+        <div class="arrow">⌄</div>
+
+    </div>
+
+</section>
+
+
+<!-- SAVE THE DATE -->
+
+<section class="date-section">
+
+    <div class="container">
+
+        <div class="divider">✝</div>
+
+        <h2 class="section-title">
+            Save the Date
+        </h2>
+
+        <div class="date-number">
+            18
+        </div>
+
+        <div class="date-month">
+            October 2026
+        </div>
+
+        <div class="date-day">
+            SUNDAY
+        </div>
+
+        <div class="countdown">
+
+            <div>
+                <strong id="days">00</strong>
+                <span>Days</span>
+            </div>
+
+            <div>
+                <strong id="hours">00</strong>
+                <span>Hours</span>
+            </div>
+
+            <div>
+                <strong id="minutes">00</strong>
+                <span>Mins</span>
+            </div>
+
+            <div>
+                <strong id="seconds">00</strong>
+                <span>Secs</span>
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="addCalendar()">
+            ＋ Add to Calendar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- VENUE -->
+
+<section class="venue">
+
+    <div class="container">
+
+        <div class="divider">✝</div>
+
+        <h2 class="section-title">
+            Venue
+        </h2>
+
+        <div class="venue-name">
+            ARIMA THUMBI
+        </div>
+
+        <div class="address">
+            1/38, N Parade Rd,<br>
+            Chakrapani Colony,<br>
+            Ramapuram, St. Thomas Mount,<br>
+            Tamil Nadu 600016
+        </div>
+
+        <div class="buttons">
+
+            <a
+                class="btn"
+                href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
+                target="_blank">
+                Get Directions
+            </a>
+
+            <button class="btn" onclick="copyAddress()">
+                Copy Address
+            </button>
+
+        </div>
+
+        <div class="map-box">
+
+            <div class="map-icon">📍</div>
+
+            <p>
+                Tap below to locate the venue
+            </p>
+
+            <br>
+
+            <a
+                class="btn"
+                href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
+                target="_blank">
+                Open Google Maps
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CLOSING -->
+
+<section class="message">
+
+    <div class="container">
+
+        <div class="divider">✝</div>
+
+        <p>
+            “What therefore God has joined together,
+            let not man separate.”
+        </p>
+
+        <p style="font-size:14px; margin-top:12px;">
+            — Mark 10:9
+        </p>
+
+        <div class="names">
+            Ga. Arokiaraj Ravi<br>
+            &<br>
+            A. Mary Francina
+        </div>
+
+        <div class="footer">
+            25 YEARS • ONE LOVE • ONE JOURNEY
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-button" onclick="toggleMusic()" id="musicButton">
+    ♫
+</button>
+
+<!--
+Later we will add your music file here.
+The file will be:
+music/cant-help-falling-in-love.mp3
+-->
+
+<audio id="music" loop>
+    <source src="music/cant-help-falling-in-love.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* OPEN INVITATION */
+
+function openInvitation() {
+
+    const music = document.getElementById("music");
+
+    music.play().catch(() => {});
+
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
+}
+
+
+/* MUSIC */
+
+function toggleMusic() {
+
+    const music = document.getElementById("music");
+    const button = document.getElementById("musicButton");
+
+    if (music.paused) {
+
+        music.play();
+
+        button.innerHTML = "♫";
+
+    } else {
+
+        music.pause();
+
+        button.innerHTML = "🔇";
+    }
+}
+
+
+/* COUNTDOWN */
+
+const anniversaryDate =
+    new Date("October 18, 2026 00:00:00").getTime();
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+
+    const distance = anniversaryDate - now;
+
+    if (distance <= 0) {
+
+        document.getElementById("days").innerHTML = "00";
+        document.getElementById("hours").innerHTML = "00";
+        document.getElementById("minutes").innerHTML = "00";
+        document.getElementById("seconds").innerHTML = "00";
+
+        return;
+    }
+
+    const days =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+        Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+    document.getElementById("days").innerHTML =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").innerHTML =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerHTML =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerHTML =
+        String(seconds).padStart(2, "0");
+}
+
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
+
+
+/* COPY ADDRESS */
+
+function copyAddress() {
+
+    const address =
+        "ARIMA THUMBI, 1/38, N Parade Rd, Chakrapani Colony, Ramapuram, St. Thomas Mount, Tamil Nadu 600016";
+
+    navigator.clipboard.writeText(address);
+
+    alert("Address copied ❤️");
+}
+
+
+/* CALENDAR */
+
+function addCalendar() {
+
+    const title =
+        "25th Wedding Anniversary - Arokiaraj Ravi & Mary Francina";
+
+    const details =
+        "Celebrating the 25th Wedding Anniversary of Ga. Arokiaraj Ravi & A. Mary Francina.";
+
+    const location =
+        "ARIMA THUMBI, 1/38 N Parade Rd, Chakrapani Colony, Ramapuram, St. Thomas Mount, Tamil Nadu 600016";
+
+    const start = "20261018T000000";
+    const end = "20261018T235900";
+
+    const url =
+        "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent(title) +
+        "&dates=" + start + "/" + end +
+        "&details=" + encodeURIComponent(details) +
+        "&location=" + encodeURIComponent(location);
+
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
