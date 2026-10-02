@@ -9,14 +9,14 @@
 
 <style>
 
-/* =========================
-   BASIC SETTINGS
-========================= */
+/* ==============================
+   RESET
+============================== */
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -25,26 +25,37 @@ html {
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-    background: #fffaf5;
-    color: #4b3535;
+    background: #fffaf6;
+    color: #604747;
     overflow-x: hidden;
 }
 
-/* =========================
+
+/* ==============================
    OPENING SCREEN
-========================= */
+============================== */
 
 #opening {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background:
-        radial-gradient(circle at top, #fff7f0, #f7e5dc 70%, #ecd2c8);
+
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    transition: opacity 1.2s ease, visibility 1.2s ease;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf5 0%,
+            #f7e5dc 65%,
+            #ecd0c5 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
 #opening.opened {
@@ -53,156 +64,208 @@ body {
     pointer-events: none;
 }
 
-/* =========================
+
+/* ==============================
    OPENING TEXT
-========================= */
+============================== */
 
 .open-title {
-    color: #7b3f45;
-    font-size: 15px;
+    margin-bottom: 35px;
+
+    color: #87515a;
+
+    font-size: 14px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 35px;
+
     text-align: center;
 }
 
 .open-subtitle {
-    color: #8c6666;
-    font-size: 14px;
     margin-top: 35px;
-    letter-spacing: 1px;
+
+    color: #8d6d6d;
+
+    font-size: 13px;
+    letter-spacing: 1.5px;
 }
 
-/* =========================
+
+/* ==============================
    ENVELOPE
-========================= */
+============================== */
 
 .envelope {
     position: relative;
-    width: 290px;
-    height: 190px;
+
+    width: 300px;
+    height: 195px;
+
     cursor: pointer;
+
     perspective: 1000px;
 }
+
 
 /* Envelope body */
 
 .envelope-body {
     position: absolute;
+
     width: 100%;
     height: 100%;
-    background: #ead0c4;
+
+    background: #e8cbbf;
+
     border-radius: 5px;
-    box-shadow: 0 20px 45px rgba(91, 54, 54, 0.25);
+
+    box-shadow:
+        0 20px 45px rgba(90, 55, 55, 0.22);
+
     overflow: hidden;
 }
 
-/* Left flap */
+
+/* Left triangle */
 
 .envelope-body::before {
     content: "";
+
     position: absolute;
+
     left: 0;
     bottom: 0;
 
-    border-left: 145px solid #e3c2b5;
-    border-top: 95px solid transparent;
-    border-bottom: 95px solid transparent;
+    border-left: 150px solid #dfbeb1;
+    border-top: 97px solid transparent;
+    border-bottom: 97px solid transparent;
 
     z-index: 2;
 }
 
-/* Right flap */
+
+/* Right triangle */
 
 .envelope-body::after {
     content: "";
+
     position: absolute;
+
     right: 0;
     bottom: 0;
 
-    border-right: 145px solid #e3c2b5;
-    border-top: 95px solid transparent;
-    border-bottom: 95px solid transparent;
+    border-right: 150px solid #dfbeb1;
+    border-top: 97px solid transparent;
+    border-bottom: 97px solid transparent;
 
     z-index: 2;
 }
 
-/* Top flap */
+
+/* ==============================
+   LETTER
+============================== */
+
+.letter {
+    position: absolute;
+
+    left: 30px;
+    top: 22px;
+
+    width: 240px;
+    height: 150px;
+
+    background: #fffdf9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(70, 40, 40, 0.12);
+
+    transition:
+        transform 1.2s ease;
+
+    z-index: 1;
+}
+
+.letter-text {
+    color: #814751;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==============================
+   TOP FLAP
+============================== */
 
 .flap {
     position: absolute;
+
     top: 0;
     left: 0;
 
     width: 0;
     height: 0;
 
-    border-left: 145px solid transparent;
-    border-right: 145px solid transparent;
-    border-top: 105px solid #d9b5a7;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 108px solid #d8b5a7;
 
     transform-origin: top center;
-    transition: transform 1.1s ease;
+
+    transition:
+        transform 1.1s ease;
+
     z-index: 5;
 }
 
-/* Letter */
 
-.letter {
-    position: absolute;
-    width: 235px;
-    height: 150px;
-    background: #fffdf9;
-    left: 27px;
-    top: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    box-shadow: 0 5px 15px rgba(80, 45, 45, 0.12);
-
-    transition: transform 1.2s ease;
-    z-index: 1;
-}
-
-.letter-text {
-    color: #7b3f45;
-    font-size: 13px;
-    letter-spacing: 2px;
-    line-height: 1.8;
-}
-
-/* Seal */
+/* ==============================
+   SEAL
+============================== */
 
 .seal {
     position: absolute;
+
+    left: 126px;
+    top: 84px;
+
     width: 48px;
     height: 48px;
-    border-radius: 50%;
 
-    background: #a75c67;
-    color: white;
+    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    left: 121px;
-    top: 82px;
+    background: #a85d68;
 
-    font-size: 20px;
+    color: white;
+
+    font-size: 21px;
 
     z-index: 10;
 
-    box-shadow: 0 5px 12px rgba(100, 45, 50, 0.3);
+    box-shadow:
+        0 5px 12px rgba(90, 40, 45, 0.25);
 
     transition: opacity .5s ease;
 }
 
-/* Envelope opening */
+
+/* ==============================
+   ENVELOPE OPEN ANIMATION
+============================== */
 
 .envelope.open .flap {
     transform: rotateX(180deg);
@@ -216,27 +279,30 @@ body {
     opacity: 0;
 }
 
-/* =========================
-   PETALS
-========================= */
+
+/* ==============================
+   ROSE PETALS
+============================== */
 
 .petal {
     position: fixed;
+
     top: -30px;
+
     width: 13px;
     height: 18px;
 
-    background: #d97987;
+    background: #d97886;
 
-    border-radius: 70% 30% 70% 30%;
+    border-radius:
+        70% 30% 70% 30%;
 
     pointer-events: none;
 
     z-index: 10000;
 
-    animation-name: fallingPetal;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+    animation:
+        fallingPetal linear forwards;
 }
 
 @keyframes fallingPetal {
@@ -246,6 +312,7 @@ body {
             translateY(-40px)
             translateX(0)
             rotate(0deg);
+
         opacity: 1;
     }
 
@@ -275,17 +342,20 @@ body {
             translateY(110vh)
             translateX(-20px)
             rotate(360deg);
+
         opacity: 0;
     }
 }
 
-/* =========================
-   MAIN WEBSITE
-========================= */
+
+/* ==============================
+   MAIN INVITATION
+============================== */
 
 #invitation {
     opacity: 0;
-    transform: translateY(30px);
+
+    transform: translateY(25px);
 
     transition:
         opacity 1.5s ease,
@@ -297,12 +367,14 @@ body {
     transform: translateY(0);
 }
 
-/* =========================
+
+/* ==============================
    MUSIC BUTTON
-========================= */
+============================== */
 
 .music-button {
     position: fixed;
+
     top: 20px;
     right: 20px;
 
@@ -310,83 +382,114 @@ body {
     height: 48px;
 
     border-radius: 50%;
-    border: 1px solid #b8757d;
 
-    background: rgba(255,255,255,0.9);
+    border: 1px solid #b97980;
 
-    color: #8c4d58;
+    background: rgba(255,255,255,0.94);
 
-    font-size: 21px;
+    color: #8b4d58;
+
+    font-size: 20px;
 
     cursor: pointer;
 
     z-index: 5000;
 
-    box-shadow: 0 5px 18px rgba(80,40,40,0.15);
+    box-shadow:
+        0 5px 18px rgba(70,40,40,.15);
 }
 
-/* =========================
+
+/* ==============================
    HERO
-========================= */
+============================== */
 
 .hero {
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 80px 20px 50px;
+    padding:
+        80px 20px 50px;
 
     text-align: center;
 
     background:
-        radial-gradient(circle at center, #fffaf7, #f6e4db);
+        radial-gradient(
+            circle at center,
+            #fffaf7,
+            #f5e1d8
+        );
 }
 
 .hero-inner {
-    max-width: 800px;
     width: 100%;
+    max-width: 850px;
 }
 
 .small-heading {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #98636a;
-    text-transform: uppercase;
     margin-bottom: 20px;
+
+    color: #98636a;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    font-size: clamp(35px, 8vw, 72px);
-    color: #7a3d48;
+    color: #7b3f49;
+
+    font-size:
+        clamp(42px, 9vw, 76px);
+
     font-weight: normal;
+
     line-height: 1.15;
 }
 
 .hero h2 {
     margin-top: 20px;
-    font-size: clamp(17px, 4vw, 25px);
+
+    color: #765858;
+
+    font-size:
+        clamp(17px, 4vw, 25px);
+
     font-weight: normal;
-    color: #755858;
+
+    line-height: 1.5;
 }
 
 .ampersand {
+    color: #b06a72;
+
     font-family: cursive;
-    color: #b16a72;
+
     font-size: 1.3em;
 }
 
 .scroll-text {
     margin-top: 60px;
-    color: #947373;
+
+    color: #967171;
+
     font-size: 13px;
+
     letter-spacing: 2px;
-    animation: floatText 2s infinite ease-in-out;
+
+    animation:
+        floating 2s infinite ease-in-out;
 }
 
-@keyframes floatText {
-    0%,100% {
+@keyframes floating {
+
+    0%, 100% {
         transform: translateY(0);
     }
 
@@ -395,98 +498,130 @@ body {
     }
 }
 
-/* =========================
+
+/* ==============================
    INVITATION IMAGE
-========================= */
+============================== */
 
 .invitation-section {
     padding: 70px 20px;
+
     text-align: center;
+
     background: #fffaf6;
 }
 
 .invitation-section img {
+    display: block;
+
     width: 100%;
+
     max-width: 600px;
 
-    display: block;
     margin: auto;
 
     border-radius: 4px;
 
     box-shadow:
-        0 15px 45px rgba(80, 40, 40, 0.18);
+        0 15px 45px
+        rgba(80, 40, 40, .18);
 }
 
-/* =========================
+
+/* ==============================
    GENERAL SECTIONS
-========================= */
+============================== */
 
 .section {
     padding: 90px 20px;
+
     text-align: center;
 }
 
 .section:nth-child(even) {
-    background: #fdf1ec;
+    background: #fdf0eb;
 }
 
 .section-title {
-    color: #7d414a;
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
     margin-bottom: 20px;
+
+    color: #985d66;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
 }
 
 .section-heading {
-    color: #6e3b43;
-    font-size: clamp(30px, 7vw, 48px);
-    font-weight: normal;
     margin-bottom: 25px;
+
+    color: #713c45;
+
+    font-size:
+        clamp(31px, 7vw, 48px);
+
+    font-weight: normal;
 }
 
 .section-text {
     max-width: 650px;
+
     margin: auto;
-    line-height: 1.9;
+
+    color: #735d5d;
+
     font-size: 16px;
-    color: #725c5c;
+
+    line-height: 1.9;
 }
 
-/* =========================
+
+/* ==============================
    DATE
-========================= */
+============================== */
 
 .date-box {
     max-width: 650px;
-    margin: 35px auto 0;
 
-    padding: 35px 20px;
+    margin:
+        35px auto 0;
 
-    border-top: 1px solid #d8b4aa;
-    border-bottom: 1px solid #d8b4aa;
-}
+    padding:
+        35px 20px;
 
-.date {
-    font-size: 42px;
-    color: #874752;
-    margin: 10px 0;
+    border-top:
+        1px solid #d7b3a8;
+
+    border-bottom:
+        1px solid #d7b3a8;
 }
 
 .day {
-    letter-spacing: 4px;
     color: #987073;
+
+    letter-spacing: 4px;
+}
+
+.date {
+    margin: 10px 0;
+
+    color: #874752;
+
+    font-size: 40px;
 }
 
 .time {
+    color: #7c6464;
+
     margin-top: 12px;
-    color: #7b6363;
 }
 
-/* =========================
+
+/* ==============================
    COUNTDOWN
-========================= */
+============================== */
 
 .countdown {
     display: grid;
@@ -502,39 +637,43 @@ body {
 }
 
 .count-box {
-    background: #fff;
-
     padding: 20px 8px;
+
+    background: white;
 
     border-radius: 8px;
 
     box-shadow:
-        0 5px 18px rgba(100,50,50,.08);
+        0 5px 18px
+        rgba(100,50,50,.08);
 }
 
 .count-number {
     display: block;
 
-    font-size: 28px;
-
     color: #874752;
+
+    font-size: 28px;
 }
 
 .count-label {
-    font-size: 11px;
+    display: block;
 
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
+    margin-top: 7px;
 
     color: #9b7b7b;
 
-    margin-top: 7px;
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
-/* =========================
+
+/* ==============================
    VENUE
-========================= */
+============================== */
 
 .venue-card {
     max-width: 650px;
@@ -548,39 +687,44 @@ body {
     border-radius: 10px;
 
     box-shadow:
-        0 10px 30px rgba(80,40,40,.08);
+        0 10px 30px
+        rgba(80,40,40,.08);
 }
 
 .venue-name {
-    font-size: 28px;
+    margin-bottom: 18px;
+
     color: #874752;
 
-    margin-bottom: 18px;
+    font-size: 28px;
 }
 
 .address {
-    line-height: 1.8;
     color: #725c5c;
+
+    line-height: 1.8;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+
+/* ==============================
+   BUTTON
+============================== */
 
 .button {
     display: inline-block;
 
     margin-top: 25px;
 
-    padding: 13px 25px;
+    padding:
+        13px 25px;
+
+    border-radius: 30px;
 
     background: #8c4d58;
 
     color: white;
 
     text-decoration: none;
-
-    border-radius: 30px;
 
     font-family: Arial, sans-serif;
 
@@ -595,16 +739,17 @@ body {
     transform: translateY(-2px);
 }
 
-/* =========================
-   CHRISTIAN SECTION
-========================= */
+
+/* ==============================
+   CHRISTIAN MESSAGE
+============================== */
 
 .cross {
-    font-size: 38px;
+    margin-bottom: 20px;
 
     color: #9c6068;
 
-    margin-bottom: 20px;
+    font-size: 38px;
 }
 
 .bible {
@@ -612,46 +757,50 @@ body {
 
     margin: auto;
 
-    font-style: italic;
+    color: #765b5b;
 
     font-size: 19px;
 
-    line-height: 1.8;
+    font-style: italic;
 
-    color: #765b5b;
+    line-height: 1.8;
 }
 
-/* =========================
+
+/* ==============================
    FOOTER
-========================= */
+============================== */
 
 footer {
     padding: 70px 20px;
 
     text-align: center;
 
-    background: #f4ddd5;
+    background: #f3ddd5;
 
     color: #704d52;
 }
 
 .footer-names {
-    font-size: 26px;
+    margin-bottom: 15px;
 
     color: #7d414a;
 
-    margin-bottom: 15px;
+    font-size: 26px;
+
+    line-height: 1.5;
 }
 
 .footer-date {
-    letter-spacing: 2px;
-
     font-size: 13px;
+
+    letter-spacing: 2px;
 }
 
-/* =========================
+
+/* ==============================
    MOBILE
-========================= */
+============================== */
 
 @media (max-width: 600px) {
 
@@ -690,18 +839,17 @@ footer {
     }
 
     .countdown {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .date {
         font-size: 34px;
     }
-
 }
 
-/* =========================
-   HIDDEN AUDIO
-========================= */
+
+/* Hide audio player */
 
 audio {
     display: none;
@@ -714,9 +862,9 @@ audio {
 <body>
 
 
-<!-- =====================================================
+<!-- ==========================================
      OPENING ENVELOPE
-===================================================== -->
+========================================== -->
 
 <div id="opening">
 
@@ -724,29 +872,39 @@ audio {
         You are warmly invited
     </div>
 
-    <div class="envelope" id="envelope" onclick="openInvitation()">
+
+    <div
+        class="envelope"
+        id="envelope"
+        onclick="openInvitation()"
+    >
 
         <div class="envelope-body">
 
             <div class="letter">
 
                 <div class="letter-text">
+
                     25TH<br>
                     WEDDING<br>
                     ANNIVERSARY
+
                 </div>
 
             </div>
 
         </div>
 
+
         <div class="flap"></div>
+
 
         <div class="seal">
             ♡
         </div>
 
     </div>
+
 
     <div class="open-subtitle">
         Tap the envelope to open
@@ -756,40 +914,51 @@ audio {
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      MUSIC
-===================================================== -->
 
-<audio id="music" preload="auto">
+     THIS MATCHES YOUR ACTUAL FILE:
+     Music.mp3.mpeg
+========================================== -->
+
+<audio
+    id="music"
+    preload="auto"
+>
 
     <source
-        src="music.mp3"
-        type="audio/mpeg">
+        src="Music.mp3.mpeg"
+        type="audio/mpeg"
+    >
 
 </audio>
 
 
+
+<!-- ==========================================
+     MUSIC BUTTON
+========================================== -->
+
 <button
     class="music-button"
     id="musicButton"
-    onclick="toggleMusic()">
-
+    onclick="toggleMusic()"
+>
     ♫
-
 </button>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      MAIN INVITATION
-===================================================== -->
+========================================== -->
 
 <main id="invitation">
 
 
-<!-- =====================================================
+<!-- ==========================================
      HERO
-===================================================== -->
+========================================== -->
 
 <section class="hero">
 
@@ -799,22 +968,34 @@ audio {
             Together with their family
         </div>
 
+
         <h1>
             25 Years
         </h1>
+
 
         <h2>
             of Love, Faith &amp; Togetherness
         </h2>
 
+
         <h2>
+
             Ga. Arokiaraj Ravi
-            <span class="ampersand">&amp;</span>
+
+            <span class="ampersand">
+                &amp;
+            </span>
+
             A. Mary Francina
+
         </h2>
 
+
         <div class="scroll-text">
+
             ↓ Scroll to unfold the details ↓
+
         </div>
 
     </div>
@@ -823,23 +1004,24 @@ audio {
 
 
 
-<!-- =====================================================
-     INVITATION IMAGE
-===================================================== -->
+<!-- ==========================================
+     YOUR INVITATION IMAGE
+========================================== -->
 
 <section class="invitation-section">
 
     <img
         src="Elegant 25th Anniversary Invitation.png"
-        alt="25th Wedding Anniversary Invitation">
+        alt="25th Wedding Anniversary Invitation"
+    >
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      SAVE THE DATE
-===================================================== -->
+========================================== -->
 
 <section class="section">
 
@@ -847,9 +1029,11 @@ audio {
         Save the Date
     </div>
 
+
     <h2 class="section-heading">
         A Celebration of 25 Years
     </h2>
+
 
     <p class="section-text">
 
@@ -859,15 +1043,18 @@ audio {
 
     </p>
 
+
     <div class="date-box">
 
         <div class="day">
             SUNDAY
         </div>
 
+
         <div class="date">
             18 OCTOBER 2026
         </div>
+
 
         <div class="time">
             Please join us as we celebrate this special milestone.
@@ -879,9 +1066,9 @@ audio {
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      COUNTDOWN
-===================================================== -->
+========================================== -->
 
 <section class="section">
 
@@ -889,22 +1076,28 @@ audio {
         The Celebration Begins In
     </div>
 
+
     <h2 class="section-heading">
         Counting the Days
     </h2>
 
+
     <div class="countdown">
 
+
         <div class="count-box">
+
             <span
                 class="count-number"
-                id="days">
+                id="days"
+            >
                 00
             </span>
 
             <span class="count-label">
                 Days
             </span>
+
         </div>
 
 
@@ -912,7 +1105,8 @@ audio {
 
             <span
                 class="count-number"
-                id="hours">
+                id="hours"
+            >
                 00
             </span>
 
@@ -927,7 +1121,8 @@ audio {
 
             <span
                 class="count-number"
-                id="minutes">
+                id="minutes"
+            >
                 00
             </span>
 
@@ -942,7 +1137,8 @@ audio {
 
             <span
                 class="count-number"
-                id="seconds">
+                id="seconds"
+            >
                 00
             </span>
 
@@ -952,15 +1148,16 @@ audio {
 
         </div>
 
+
     </div>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      VENUE
-===================================================== -->
+========================================== -->
 
 <section class="section">
 
@@ -968,15 +1165,19 @@ audio {
         Join Us
     </div>
 
+
     <h2 class="section-heading">
         The Venue
     </h2>
 
+
     <div class="venue-card">
+
 
         <div class="venue-name">
             ARIMA THUMBI
         </div>
+
 
         <div class="address">
 
@@ -988,10 +1189,12 @@ audio {
 
         </div>
 
+
         <a
             class="button"
             href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Tamil+Nadu+600016"
-            target="_blank">
+            target="_blank"
+        >
 
             Get Directions
 
@@ -1003,9 +1206,9 @@ audio {
 
 
 
-<!-- =====================================================
-     CHRISTIAN MESSAGE
-===================================================== -->
+<!-- ==========================================
+     CHRISTIAN SECTION
+========================================== -->
 
 <section class="section">
 
@@ -1013,13 +1216,16 @@ audio {
         ✝
     </div>
 
+
     <div class="section-title">
         With God's Blessings
     </div>
 
+
     <h2 class="section-heading">
         25 Years of Grace
     </h2>
+
 
     <p class="bible">
 
@@ -1036,35 +1242,46 @@ audio {
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      CLOSING
-===================================================== -->
+========================================== -->
 
 <footer>
+
 
     <div class="footer-names">
 
         Ga. Arokiaraj Ravi
+
         <br>
+
         &amp;
+
         <br>
+
         A. Mary Francina
 
     </div>
 
+
     <div class="footer-date">
 
         25TH WEDDING ANNIVERSARY
+
         <br><br>
+
         18 • 10 • 2026
 
     </div>
 
+
     <br>
+
 
     <div>
         With love, gratitude &amp; God's blessings ♡
     </div>
+
 
 </footer>
 
@@ -1073,39 +1290,47 @@ audio {
 
 
 
-<!-- =====================================================
+<!-- ==========================================
      JAVASCRIPT
-===================================================== -->
+========================================== -->
 
 <script>
 
 
-/* =====================================================
-   OPEN INVITATION
-===================================================== */
+/* ==========================================
+   OPEN ENVELOPE
+========================================== */
 
 function openInvitation() {
+
 
     const envelope =
         document.getElementById("envelope");
 
+
     const opening =
         document.getElementById("opening");
+
 
     const invitation =
         document.getElementById("invitation");
 
+
     const music =
         document.getElementById("music");
+
 
     /* Open envelope */
 
     envelope.classList.add("open");
 
 
-    /* Start music immediately after tap */
+    /* ==========================
+       PLAY MUSIC
+    ========================== */
 
-    music.volume = 1.0;
+    music.volume = 1;
+
 
     music.play()
         .then(function() {
@@ -1125,12 +1350,16 @@ function openInvitation() {
         });
 
 
-    /* Create rose petals */
+    /* ==========================
+       ROSE PETALS
+    ========================== */
 
     createPetals();
 
 
-    /* Wait for envelope animation */
+    /* ==========================
+       SHOW INVITATION
+    ========================== */
 
     setTimeout(function() {
 
@@ -1149,13 +1378,15 @@ function openInvitation() {
 
 
 
-/* =====================================================
-   ROSE PETALS
-===================================================== */
+/* ==========================================
+   CREATE ROSE PETALS
+========================================== */
 
 function createPetals() {
 
-    const numberOfPetals = 100;
+
+    const numberOfPetals = 80;
+
 
     for (
         let i = 0;
@@ -1163,13 +1394,16 @@ function createPetals() {
         i++
     ) {
 
+
         const petal =
             document.createElement("div");
 
-        petal.className = "petal";
+
+        petal.className =
+            "petal";
 
 
-        /* Random horizontal position */
+        /* Random position */
 
         petal.style.left =
             Math.random() * 100 + "vw";
@@ -1180,14 +1414,16 @@ function createPetals() {
         const size =
             8 + Math.random() * 10;
 
+
         petal.style.width =
             size + "px";
+
 
         petal.style.height =
             size * 1.35 + "px";
 
 
-        /* Random animation speed */
+        /* Random speed */
 
         petal.style.animationDuration =
             (5 + Math.random() * 5) + "s";
@@ -1196,21 +1432,13 @@ function createPetals() {
         /* Random delay */
 
         petal.style.animationDelay =
-            (Math.random() * 3) + "s";
-
-
-        /* Random rotation */
-
-        petal.style.transform =
-            "rotate(" +
-            Math.random() * 360 +
-            "deg)";
+            (Math.random() * 2) + "s";
 
 
         document.body.appendChild(petal);
 
 
-        /* Remove after animation */
+        /* Remove petal later */
 
         setTimeout(function() {
 
@@ -1224,20 +1452,23 @@ function createPetals() {
 
 
 
-/* =====================================================
+/* ==========================================
    MUSIC BUTTON
-===================================================== */
+========================================== */
 
 function toggleMusic() {
 
+
     const music =
         document.getElementById("music");
+
 
     const button =
         document.getElementById("musicButton");
 
 
     if (music.paused) {
+
 
         music.play()
             .then(function() {
@@ -1251,7 +1482,9 @@ function toggleMusic() {
 
             });
 
+
     } else {
+
 
         music.pause();
 
@@ -1263,14 +1496,9 @@ function toggleMusic() {
 
 
 
-/* =====================================================
+/* ==========================================
    COUNTDOWN
-===================================================== */
-
-/*
-   Event date:
-   October 18, 2026
-*/
+========================================== */
 
 const eventDate =
     new Date(
@@ -1280,8 +1508,10 @@ const eventDate =
 
 function updateCountdown() {
 
+
     const now =
         new Date().getTime();
+
 
     const difference =
         eventDate - now;
@@ -1302,7 +1532,6 @@ function updateCountdown() {
             .innerHTML = "00";
 
         return;
-
     }
 
 
@@ -1366,6 +1595,7 @@ function updateCountdown() {
 
 updateCountdown();
 
+
 setInterval(
     updateCountdown,
     1000
@@ -1375,4 +1605,5 @@ setInterval(
 </script>
 
 </body>
+
 </html>
