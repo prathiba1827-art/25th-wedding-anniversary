@@ -9,9 +9,9 @@
 
 <style>
 
-/* ==============================
+/* =====================================================
    RESET
-============================== */
+===================================================== */
 
 * {
     margin: 0;
@@ -24,16 +24,17 @@ html {
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
+    margin: 0;
     background: #fffaf6;
     color: #604747;
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
 
-/* ==============================
+/* =====================================================
    OPENING SCREEN
-============================== */
+===================================================== */
 
 #opening {
     position: fixed;
@@ -41,40 +42,35 @@ body {
     z-index: 9999;
 
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     background:
         radial-gradient(
             circle at center,
-            #fffaf5 0%,
-            #f7e5dc 65%,
-            #ecd0c5 100%
+            #fffdf9 0%,
+            #f9e9df 58%,
+            #ead0c4 100%
         );
 
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity 1.4s ease,
+        visibility 1.4s ease;
 }
 
-#opening.opened {
+#opening.hide {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-
-/* ==============================
-   OPENING TEXT
-============================== */
-
 .open-title {
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 
     color: #87515a;
 
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
 
@@ -82,18 +78,20 @@ body {
 }
 
 .open-subtitle {
-    margin-top: 35px;
+    margin-top: 38px;
 
-    color: #8d6d6d;
+    color: #927171;
 
     font-size: 13px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
+
+    text-align: center;
 }
 
 
-/* ==============================
+/* =====================================================
    ENVELOPE
-============================== */
+===================================================== */
 
 .envelope {
     position: relative;
@@ -106,27 +104,22 @@ body {
     perspective: 1000px;
 }
 
-
-/* Envelope body */
-
 .envelope-body {
     position: absolute;
+    inset: 0;
 
-    width: 100%;
-    height: 100%;
-
-    background: #e8cbbf;
+    background: #e8cabe;
 
     border-radius: 5px;
 
     box-shadow:
-        0 20px 45px rgba(90, 55, 55, 0.22);
+        0 22px 50px rgba(78, 48, 48, 0.23);
 
     overflow: hidden;
 }
 
 
-/* Left triangle */
+/* left envelope fold */
 
 .envelope-body::before {
     content: "";
@@ -137,14 +130,14 @@ body {
     bottom: 0;
 
     border-left: 150px solid #dfbeb1;
-    border-top: 97px solid transparent;
-    border-bottom: 97px solid transparent;
+    border-top: 98px solid transparent;
+    border-bottom: 98px solid transparent;
 
     z-index: 2;
 }
 
 
-/* Right triangle */
+/* right envelope fold */
 
 .envelope-body::after {
     content: "";
@@ -155,25 +148,25 @@ body {
     bottom: 0;
 
     border-right: 150px solid #dfbeb1;
-    border-top: 97px solid transparent;
-    border-bottom: 97px solid transparent;
+    border-top: 98px solid transparent;
+    border-bottom: 98px solid transparent;
 
     z-index: 2;
 }
 
 
-/* ==============================
+/* =====================================================
    LETTER
-============================== */
+===================================================== */
 
 .letter {
     position: absolute;
 
     left: 30px;
-    top: 22px;
+    top: 20px;
 
     width: 240px;
-    height: 150px;
+    height: 152px;
 
     background: #fffdf9;
 
@@ -184,16 +177,16 @@ body {
     text-align: center;
 
     box-shadow:
-        0 5px 15px rgba(70, 40, 40, 0.12);
+        0 7px 20px rgba(70, 40, 40, 0.12);
 
     transition:
-        transform 1.2s ease;
+        transform 1.25s ease;
 
     z-index: 1;
 }
 
 .letter-text {
-    color: #814751;
+    color: #824650;
 
     font-size: 13px;
 
@@ -203,9 +196,9 @@ body {
 }
 
 
-/* ==============================
-   TOP FLAP
-============================== */
+/* =====================================================
+   ENVELOPE FLAP
+===================================================== */
 
 .flap {
     position: absolute;
@@ -218,7 +211,7 @@ body {
 
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
-    border-top: 108px solid #d8b5a7;
+    border-top: 108px solid #d7b4a6;
 
     transform-origin: top center;
 
@@ -229,9 +222,9 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    SEAL
-============================== */
+===================================================== */
 
 .seal {
     position: absolute;
@@ -244,28 +237,27 @@ body {
 
     border-radius: 50%;
 
+    background: #a85c68;
+
+    color: white;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: #a85d68;
-
-    color: white;
 
     font-size: 21px;
 
     z-index: 10;
 
     box-shadow:
-        0 5px 12px rgba(90, 40, 45, 0.25);
+        0 5px 14px rgba(90, 40, 45, 0.25);
 
-    transition: opacity .5s ease;
+    transition:
+        opacity 0.5s ease;
 }
 
 
-/* ==============================
-   ENVELOPE OPEN ANIMATION
-============================== */
+/* envelope opening */
 
 .envelope.open .flap {
     transform: rotateX(180deg);
@@ -280,77 +272,85 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    ROSE PETALS
-============================== */
+   CONTINUE UNTIL THE PAGE IS CLOSED
+===================================================== */
 
 .petal {
     position: fixed;
 
-    top: -30px;
+    top: -35px;
 
-    width: 13px;
+    width: 12px;
     height: 18px;
-
-    background: #d97886;
-
-    border-radius:
-        70% 30% 70% 30%;
 
     pointer-events: none;
 
-    z-index: 10000;
+    z-index: 9500;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2a2aa,
+            #d87582 60%,
+            #bd5968
+        );
+
+    border-radius:
+        80% 20% 75% 25%;
+
+    opacity: 0;
 
     animation:
-        fallingPetal linear forwards;
+        petalFall linear forwards;
 }
 
-@keyframes fallingPetal {
+@keyframes petalFall {
 
     0% {
         transform:
-            translateY(-40px)
-            translateX(0)
+            translate3d(0, -40px, 0)
             rotate(0deg);
 
-        opacity: 1;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0.9;
     }
 
     25% {
         transform:
-            translateY(25vh)
-            translateX(35px)
+            translate3d(35px, 25vh, 0)
             rotate(90deg);
     }
 
     50% {
         transform:
-            translateY(50vh)
-            translateX(-30px)
-            rotate(180deg);
+            translate3d(-25px, 50vh, 0)
+            rotate(190deg);
     }
 
     75% {
         transform:
-            translateY(75vh)
-            translateX(40px)
-            rotate(270deg);
+            translate3d(35px, 75vh, 0)
+            rotate(280deg);
     }
 
     100% {
         transform:
-            translateY(110vh)
-            translateX(-20px)
-            rotate(360deg);
+            translate3d(-20px, 110vh, 0)
+            rotate(390deg);
 
         opacity: 0;
     }
 }
 
 
-/* ==============================
-   MAIN INVITATION
-============================== */
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
 
 #invitation {
     opacity: 0;
@@ -364,13 +364,14 @@ body {
 
 #invitation.show {
     opacity: 1;
+
     transform: translateY(0);
 }
 
 
-/* ==============================
+/* =====================================================
    MUSIC BUTTON
-============================== */
+===================================================== */
 
 .music-button {
     position: fixed;
@@ -383,37 +384,36 @@ body {
 
     border-radius: 50%;
 
-    border: 1px solid #b97980;
+    border: 1px solid #b77780;
 
-    background: rgba(255,255,255,0.94);
+    background: rgba(255, 255, 255, 0.95);
 
-    color: #8b4d58;
+    color: #874b57;
 
     font-size: 20px;
 
     cursor: pointer;
 
-    z-index: 5000;
+    z-index: 8000;
 
     box-shadow:
-        0 5px 18px rgba(70,40,40,.15);
+        0 6px 20px rgba(70, 40, 40, 0.15);
 }
 
 
-/* ==============================
+/* =====================================================
    HERO
-============================== */
+===================================================== */
 
 .hero {
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     padding:
-        80px 20px 50px;
+        90px 20px 60px;
 
     text-align: center;
 
@@ -421,7 +421,7 @@ body {
         radial-gradient(
             circle at center,
             #fffaf7,
-            #f5e1d8
+            #f4dfd6
         );
 }
 
@@ -430,10 +430,10 @@ body {
     max-width: 850px;
 }
 
-.small-heading {
-    margin-bottom: 20px;
+.eyebrow {
+    margin-bottom: 25px;
 
-    color: #98636a;
+    color: #98616a;
 
     font-size: 13px;
 
@@ -443,27 +443,34 @@ body {
 }
 
 .hero h1 {
-    color: #7b3f49;
+    color: #783f49;
 
     font-size:
-        clamp(42px, 9vw, 76px);
+        clamp(45px, 10vw, 80px);
 
     font-weight: normal;
 
-    line-height: 1.15;
+    line-height: 1.05;
+}
+
+.gold-line {
+    width: 80px;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background: #bd9a75;
 }
 
 .hero h2 {
-    margin-top: 20px;
-
-    color: #765858;
+    color: #755858;
 
     font-size:
-        clamp(17px, 4vw, 25px);
+        clamp(18px, 4vw, 26px);
 
     font-weight: normal;
 
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .ampersand {
@@ -474,22 +481,23 @@ body {
     font-size: 1.3em;
 }
 
-.scroll-text {
-    margin-top: 60px;
+.scroll {
+    margin-top: 65px;
 
-    color: #967171;
+    color: #987474;
 
-    font-size: 13px;
+    font-size: 12px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
     animation:
-        floating 2s infinite ease-in-out;
+        floatText 2s ease-in-out infinite;
 }
 
-@keyframes floating {
+@keyframes floatText {
 
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -499,12 +507,12 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    INVITATION IMAGE
-============================== */
+===================================================== */
 
 .invitation-section {
-    padding: 70px 20px;
+    padding: 80px 20px;
 
     text-align: center;
 
@@ -515,7 +523,6 @@ body {
     display: block;
 
     width: 100%;
-
     max-width: 600px;
 
     margin: auto;
@@ -523,17 +530,18 @@ body {
     border-radius: 4px;
 
     box-shadow:
-        0 15px 45px
-        rgba(80, 40, 40, .18);
+        0 20px 55px rgba(75, 40, 40, 0.18);
 }
 
 
-/* ==============================
+/* =====================================================
    GENERAL SECTIONS
-============================== */
+===================================================== */
 
 .section {
-    padding: 90px 20px;
+    position: relative;
+
+    padding: 100px 20px;
 
     text-align: center;
 }
@@ -542,86 +550,88 @@ body {
     background: #fdf0eb;
 }
 
-.section-title {
+.label {
     margin-bottom: 20px;
 
     color: #985d66;
 
-    font-size: 13px;
+    font-size: 12px;
 
     letter-spacing: 4px;
 
     text-transform: uppercase;
 }
 
-.section-heading {
+.heading {
     margin-bottom: 25px;
 
-    color: #713c45;
+    color: #713d46;
 
     font-size:
-        clamp(31px, 7vw, 48px);
+        clamp(32px, 7vw, 50px);
 
     font-weight: normal;
 }
 
-.section-text {
+.text {
     max-width: 650px;
 
     margin: auto;
 
-    color: #735d5d;
+    color: #735e5e;
 
     font-size: 16px;
 
-    line-height: 1.9;
+    line-height: 2;
 }
 
 
-/* ==============================
+/* =====================================================
    DATE
-============================== */
+===================================================== */
 
 .date-box {
     max-width: 650px;
 
     margin:
-        35px auto 0;
+        40px auto 0;
 
     padding:
         35px 20px;
 
     border-top:
-        1px solid #d7b3a8;
+        1px solid #d5b0a5;
 
     border-bottom:
-        1px solid #d7b3a8;
+        1px solid #d5b0a5;
 }
 
 .day {
-    color: #987073;
+    color: #987074;
+
+    font-size: 13px;
 
     letter-spacing: 4px;
 }
 
 .date {
-    margin: 10px 0;
+    margin: 12px 0;
 
-    color: #874752;
+    color: #874650;
 
     font-size: 40px;
 }
 
-.time {
-    color: #7c6464;
+.date-note {
+    color: #7b6464;
 
-    margin-top: 12px;
+    line-height: 1.7;
 }
 
 
-/* ==============================
+/* =====================================================
    COUNTDOWN
-============================== */
+===================================================== */
 
 .countdown {
     display: grid;
@@ -633,27 +643,26 @@ body {
 
     max-width: 650px;
 
-    margin: 40px auto 0;
+    margin: 45px auto 0;
 }
 
-.count-box {
-    padding: 20px 8px;
+.count {
+    padding: 22px 8px;
 
     background: white;
 
     border-radius: 8px;
 
     box-shadow:
-        0 5px 18px
-        rgba(100,50,50,.08);
+        0 7px 22px rgba(90, 50, 50, 0.08);
 }
 
-.count-number {
+.number {
     display: block;
 
-    color: #874752;
+    color: #874650;
 
-    font-size: 28px;
+    font-size: 29px;
 }
 
 .count-label {
@@ -661,9 +670,9 @@ body {
 
     margin-top: 7px;
 
-    color: #9b7b7b;
+    color: #9a7c7c;
 
-    font-size: 11px;
+    font-size: 10px;
 
     letter-spacing: 1px;
 
@@ -671,44 +680,38 @@ body {
 }
 
 
-/* ==============================
+/* =====================================================
    VENUE
-============================== */
+===================================================== */
 
 .venue-card {
     max-width: 650px;
 
-    margin: 35px auto;
+    margin: 40px auto 0;
 
-    padding: 35px 25px;
+    padding: 40px 25px;
 
-    background: #fff;
+    background: white;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     box-shadow:
-        0 10px 30px
-        rgba(80,40,40,.08);
+        0 12px 35px rgba(70, 40, 40, 0.09);
 }
 
 .venue-name {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 
-    color: #874752;
+    color: #874650;
 
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .address {
     color: #725c5c;
 
-    line-height: 1.8;
+    line-height: 1.9;
 }
-
-
-/* ==============================
-   BUTTON
-============================== */
 
 .button {
     display: inline-block;
@@ -716,7 +719,7 @@ body {
     margin-top: 25px;
 
     padding:
-        13px 25px;
+        14px 28px;
 
     border-radius: 30px;
 
@@ -728,11 +731,11 @@ body {
 
     font-family: Arial, sans-serif;
 
-    font-size: 13px;
+    font-size: 12px;
 
     letter-spacing: 1px;
 
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .button:hover {
@@ -740,16 +743,65 @@ body {
 }
 
 
-/* ==============================
-   CHRISTIAN MESSAGE
-============================== */
+/* =====================================================
+   QR MAP
+===================================================== */
+
+.qr-wrapper {
+    max-width: 330px;
+
+    margin: 45px auto 0;
+
+    padding: 28px;
+
+    background: white;
+
+    border: 1px solid #ead8d0;
+
+    box-shadow:
+        0 10px 30px rgba(80, 40, 40, 0.08);
+}
+
+.qr-title {
+    margin-bottom: 10px;
+
+    color: #874650;
+
+    font-size: 18px;
+}
+
+.qr-wrapper img {
+    display: block;
+
+    width: 100%;
+    max-width: 250px;
+
+    margin: auto;
+}
+
+.qr-text {
+    margin-top: 15px;
+
+    color: #8a7070;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   CHRISTIAN SECTION
+===================================================== */
 
 .cross {
     margin-bottom: 20px;
 
-    color: #9c6068;
+    color: #9d6069;
 
-    font-size: 38px;
+    font-size: 40px;
 }
 
 .bible {
@@ -757,22 +809,22 @@ body {
 
     margin: auto;
 
-    color: #765b5b;
+    color: #765c5c;
 
     font-size: 19px;
 
     font-style: italic;
 
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 
-/* ==============================
+/* =====================================================
    FOOTER
-============================== */
+===================================================== */
 
 footer {
-    padding: 70px 20px;
+    padding: 90px 20px;
 
     text-align: center;
 
@@ -782,25 +834,31 @@ footer {
 }
 
 .footer-names {
-    margin-bottom: 15px;
+    color: #7b414b;
 
-    color: #7d414a;
+    font-size: 27px;
 
-    font-size: 26px;
-
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .footer-date {
-    font-size: 13px;
+    margin-top: 20px;
 
-    letter-spacing: 2px;
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+.footer-love {
+    margin-top: 30px;
+
+    font-size: 15px;
 }
 
 
-/* ==============================
+/* =====================================================
    MOBILE
-============================== */
+===================================================== */
 
 @media (max-width: 600px) {
 
@@ -811,14 +869,14 @@ footer {
 
     .envelope-body::before {
         border-left-width: 135px;
-        border-top-width: 87px;
-        border-bottom-width: 87px;
+        border-top-width: 88px;
+        border-bottom-width: 88px;
     }
 
     .envelope-body::after {
         border-right-width: 135px;
-        border-top-width: 87px;
-        border-bottom-width: 87px;
+        border-top-width: 88px;
+        border-bottom-width: 88px;
     }
 
     .flap {
@@ -844,12 +902,9 @@ footer {
     }
 
     .date {
-        font-size: 34px;
+        font-size: 33px;
     }
 }
-
-
-/* Hide audio player */
 
 audio {
     display: none;
@@ -862,9 +917,9 @@ audio {
 <body>
 
 
-<!-- ==========================================
+<!-- =====================================================
      OPENING ENVELOPE
-========================================== -->
+===================================================== -->
 
 <div id="opening">
 
@@ -884,11 +939,9 @@ audio {
             <div class="letter">
 
                 <div class="letter-text">
-
                     25TH<br>
                     WEDDING<br>
                     ANNIVERSARY
-
                 </div>
 
             </div>
@@ -913,13 +966,11 @@ audio {
 </div>
 
 
-
-<!-- ==========================================
-     MUSIC
-
-     THIS MATCHES YOUR ACTUAL FILE:
+<!-- =====================================================
+     YOUR EXACT MUSIC FILE
+     
      Music.mp3.mpeg
-========================================== -->
+===================================================== -->
 
 <audio
     id="music"
@@ -928,16 +979,12 @@ audio {
 
     <source
         src="Music.mp3.mpeg"
-        type="audio/mpeg"
-    >
+        type="audio/mpeg">
 
 </audio>
 
 
-
-<!-- ==========================================
-     MUSIC BUTTON
-========================================== -->
+<!-- MUSIC BUTTON -->
 
 <button
     class="music-button"
@@ -948,24 +995,23 @@ audio {
 </button>
 
 
-
-<!-- ==========================================
+<!-- =====================================================
      MAIN INVITATION
-========================================== -->
+===================================================== -->
 
 <main id="invitation">
 
 
-<!-- ==========================================
+<!-- =====================================================
      HERO
-========================================== -->
+===================================================== -->
 
 <section class="hero">
 
     <div class="hero-inner">
 
-        <div class="small-heading">
-            Together with their family
+        <div class="eyebrow">
+            A Celebration of Love
         </div>
 
 
@@ -974,28 +1020,28 @@ audio {
         </h1>
 
 
-        <h2>
-            of Love, Faith &amp; Togetherness
-        </h2>
+        <div class="gold-line"></div>
 
 
         <h2>
 
-            Ga. Arokiaraj Ravi
+            GA Arokiaraj ravi
+
+            <br>
 
             <span class="ampersand">
-                &amp;
+                &
             </span>
 
-            A. Mary Francina
+            <br>
+
+            A Mary Francina
 
         </h2>
 
 
-        <div class="scroll-text">
-
-            ↓ Scroll to unfold the details ↓
-
+        <div class="scroll">
+            ↓ SCROLL TO UNFOLD THE DETAILS ↓
         </div>
 
     </div>
@@ -1003,39 +1049,36 @@ audio {
 </section>
 
 
-
-<!-- ==========================================
-     YOUR INVITATION IMAGE
-========================================== -->
+<!-- =====================================================
+     EXACT INVITATION IMAGE
+===================================================== -->
 
 <section class="invitation-section">
 
     <img
         src="Elegant 25th Anniversary Invitation.png"
-        alt="25th Wedding Anniversary Invitation"
-    >
+        alt="25th Wedding Anniversary Invitation">
 
 </section>
 
 
-
-<!-- ==========================================
+<!-- =====================================================
      SAVE THE DATE
-========================================== -->
+===================================================== -->
 
 <section class="section">
 
-    <div class="section-title">
-        Save the Date
+    <div class="label">
+        Save The Date
     </div>
 
 
-    <h2 class="section-heading">
-        A Celebration of 25 Years
+    <h2 class="heading">
+        25 Years of Love
     </h2>
 
 
-    <p class="section-text">
+    <p class="text">
 
         With grateful hearts and joyful memories,
         we invite you to celebrate twenty-five beautiful
@@ -1056,8 +1099,11 @@ audio {
         </div>
 
 
-        <div class="time">
-            Please join us as we celebrate this special milestone.
+        <div class="date-note">
+
+            Join us as we celebrate this beautiful
+            milestone together.
+
         </div>
 
     </div>
@@ -1065,30 +1111,29 @@ audio {
 </section>
 
 
-
-<!-- ==========================================
+<!-- =====================================================
      COUNTDOWN
-========================================== -->
+===================================================== -->
 
 <section class="section">
 
-    <div class="section-title">
-        The Celebration Begins In
+    <div class="label">
+        Until We Celebrate
     </div>
 
 
-    <h2 class="section-heading">
-        Counting the Days
+    <h2 class="heading">
+        Counting The Moments
     </h2>
 
 
     <div class="countdown">
 
 
-        <div class="count-box">
+        <div class="count">
 
             <span
-                class="count-number"
+                class="number"
                 id="days"
             >
                 00
@@ -1101,10 +1146,10 @@ audio {
         </div>
 
 
-        <div class="count-box">
+        <div class="count">
 
             <span
-                class="count-number"
+                class="number"
                 id="hours"
             >
                 00
@@ -1117,10 +1162,10 @@ audio {
         </div>
 
 
-        <div class="count-box">
+        <div class="count">
 
             <span
-                class="count-number"
+                class="number"
                 id="minutes"
             >
                 00
@@ -1133,10 +1178,10 @@ audio {
         </div>
 
 
-        <div class="count-box">
+        <div class="count">
 
             <span
-                class="count-number"
+                class="number"
                 id="seconds"
             >
                 00
@@ -1154,20 +1199,19 @@ audio {
 </section>
 
 
-
-<!-- ==========================================
+<!-- =====================================================
      VENUE
-========================================== -->
+===================================================== -->
 
 <section class="section">
 
-    <div class="section-title">
+    <div class="label">
         Join Us
     </div>
 
 
-    <h2 class="section-heading">
-        The Venue
+    <h2 class="heading">
+        The Celebration
     </h2>
 
 
@@ -1202,13 +1246,38 @@ audio {
 
     </div>
 
+
+    <!-- =================================================
+         MAP QR CODE
+    ================================================== -->
+
+    <div class="qr-wrapper">
+
+        <div class="qr-title">
+            Find Your Way
+        </div>
+
+
+        <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BTamil%2BNadu%2B600016"
+            alt="Scan to open venue location">
+
+        
+        <div class="qr-text">
+
+            Scan the QR code with your phone
+            to open the venue directly in Google Maps.
+
+        </div>
+
+    </div>
+
 </section>
 
 
-
-<!-- ==========================================
-     CHRISTIAN SECTION
-========================================== -->
+<!-- =====================================================
+     CHRISTIAN BLESSING
+===================================================== -->
 
 <section class="section">
 
@@ -1217,12 +1286,12 @@ audio {
     </div>
 
 
-    <div class="section-title">
+    <div class="label">
         With God's Blessings
     </div>
 
 
-    <h2 class="section-heading">
+    <h2 class="heading">
         25 Years of Grace
     </h2>
 
@@ -1241,25 +1310,24 @@ audio {
 </section>
 
 
-
-<!-- ==========================================
-     CLOSING
-========================================== -->
+<!-- =====================================================
+     FINAL CLOSING
+===================================================== -->
 
 <footer>
 
 
     <div class="footer-names">
 
-        Ga. Arokiaraj Ravi
+        GA Arokiaraj ravi
 
         <br>
 
-        &amp;
+        &
 
         <br>
 
-        A. Mary Francina
+        A Mary Francina
 
     </div>
 
@@ -1275,11 +1343,10 @@ audio {
     </div>
 
 
-    <br>
+    <div class="footer-love">
 
+        With love, gratitude & God's blessings ♡
 
-    <div>
-        With love, gratitude &amp; God's blessings ♡
     </div>
 
 
@@ -1289,32 +1356,24 @@ audio {
 </main>
 
 
-
-<!-- ==========================================
-     JAVASCRIPT
-========================================== -->
-
 <script>
 
+/* =====================================================
+   OPEN INVITATION
+===================================================== */
 
-/* ==========================================
-   OPEN ENVELOPE
-========================================== */
+let petalsStarted = false;
 
 function openInvitation() {
-
 
     const envelope =
         document.getElementById("envelope");
 
-
     const opening =
         document.getElementById("opening");
 
-
     const invitation =
         document.getElementById("invitation");
-
 
     const music =
         document.getElementById("music");
@@ -1325,12 +1384,11 @@ function openInvitation() {
     envelope.classList.add("open");
 
 
-    /* ==========================
-       PLAY MUSIC
-    ========================== */
+    /* =================================================
+       PLAY MUSIC DIRECTLY FROM THE TAP
+    ================================================= */
 
     music.volume = 1;
-
 
     music.play()
         .then(function() {
@@ -1343,27 +1401,33 @@ function openInvitation() {
         .catch(function(error) {
 
             console.log(
-                "Music could not start:",
+                "Music playback error:",
                 error
             );
 
         });
 
 
-    /* ==========================
-       ROSE PETALS
-    ========================== */
+    /* =================================================
+       START PETALS
+    ================================================= */
 
-    createPetals();
+    if (!petalsStarted) {
+
+        petalsStarted = true;
+
+        startContinuousPetals();
+
+    }
 
 
-    /* ==========================
-       SHOW INVITATION
-    ========================== */
+    /* =================================================
+       REVEAL WEBSITE
+    ================================================= */
 
     setTimeout(function() {
 
-        opening.classList.add("opened");
+        opening.classList.add("hide");
 
         invitation.classList.add("show");
 
@@ -1377,98 +1441,112 @@ function openInvitation() {
 }
 
 
+/* =====================================================
+   CREATE ONE PETAL
+===================================================== */
 
-/* ==========================================
-   CREATE ROSE PETALS
-========================================== */
+function createPetal() {
 
-function createPetals() {
+    const petal =
+        document.createElement("div");
 
-
-    const numberOfPetals = 80;
-
-
-    for (
-        let i = 0;
-        i < numberOfPetals;
-        i++
-    ) {
+    petal.className = "petal";
 
 
-        const petal =
-            document.createElement("div");
+    /* Random size */
+
+    const size =
+        8 + Math.random() * 8;
+
+    petal.style.width =
+        size + "px";
+
+    petal.style.height =
+        size * 1.4 + "px";
 
 
-        petal.className =
-            "petal";
+    /* Random horizontal position */
+
+    petal.style.left =
+        Math.random() * 100 + "vw";
 
 
-        /* Random position */
+    /* Random falling speed */
 
-        petal.style.left =
-            Math.random() * 100 + "vw";
-
-
-        /* Random size */
-
-        const size =
-            8 + Math.random() * 10;
+    petal.style.animationDuration =
+        (6 + Math.random() * 7) + "s";
 
 
-        petal.style.width =
-            size + "px";
+    /* Slightly different starting time */
+
+    petal.style.animationDelay =
+        (Math.random() * 1.5) + "s";
 
 
-        petal.style.height =
-            size * 1.35 + "px";
+    document.body.appendChild(petal);
 
 
-        /* Random speed */
+    /* Remove old petal */
 
-        petal.style.animationDuration =
-            (5 + Math.random() * 5) + "s";
+    setTimeout(function() {
 
+        petal.remove();
 
-        /* Random delay */
-
-        petal.style.animationDelay =
-            (Math.random() * 2) + "s";
-
-
-        document.body.appendChild(petal);
-
-
-        /* Remove petal later */
-
-        setTimeout(function() {
-
-            petal.remove();
-
-        }, 11000);
-
-    }
+    }, 15000);
 
 }
 
 
+/* =====================================================
+   CONTINUOUS PETAL EFFECT
 
-/* ==========================================
+   PETALS KEEP COMING UNTIL THE PAGE IS RELOADED
+===================================================== */
+
+function startContinuousPetals() {
+
+
+    /* Beautiful first shower */
+
+    for (
+        let i = 0;
+        i < 25;
+        i++
+    ) {
+
+        setTimeout(
+            createPetal,
+            i * 120
+        );
+
+    }
+
+
+    /* Keep generating petals */
+
+    setInterval(function() {
+
+        createPetal();
+
+    }, 380);
+
+}
+
+
+/* =====================================================
    MUSIC BUTTON
-========================================== */
+===================================================== */
 
 function toggleMusic() {
 
-
     const music =
         document.getElementById("music");
-
 
     const button =
         document.getElementById("musicButton");
 
 
     if (music.paused) {
-
 
         music.play()
             .then(function() {
@@ -1482,9 +1560,9 @@ function toggleMusic() {
 
             });
 
+    }
 
-    } else {
-
+    else {
 
         music.pause();
 
@@ -1495,10 +1573,9 @@ function toggleMusic() {
 }
 
 
-
-/* ==========================================
+/* =====================================================
    COUNTDOWN
-========================================== */
+===================================================== */
 
 const eventDate =
     new Date(
@@ -1508,10 +1585,8 @@ const eventDate =
 
 function updateCountdown() {
 
-
     const now =
         new Date().getTime();
-
 
     const difference =
         eventDate - now;
@@ -1519,16 +1594,20 @@ function updateCountdown() {
 
     if (difference <= 0) {
 
-        document.getElementById("days")
+        document
+            .getElementById("days")
             .innerHTML = "00";
 
-        document.getElementById("hours")
+        document
+            .getElementById("hours")
             .innerHTML = "00";
 
-        document.getElementById("minutes")
+        document
+            .getElementById("minutes")
             .innerHTML = "00";
 
-        document.getElementById("seconds")
+        document
+            .getElementById("seconds")
             .innerHTML = "00";
 
         return;
@@ -1545,7 +1624,7 @@ function updateCountdown() {
     const hours =
         Math.floor(
             (difference %
-                (1000 * 60 * 60 * 24))
+            (1000 * 60 * 60 * 24))
             /
             (1000 * 60 * 60)
         );
@@ -1554,7 +1633,7 @@ function updateCountdown() {
     const minutes =
         Math.floor(
             (difference %
-                (1000 * 60 * 60))
+            (1000 * 60 * 60))
             /
             (1000 * 60)
         );
@@ -1563,28 +1642,32 @@ function updateCountdown() {
     const seconds =
         Math.floor(
             (difference %
-                (1000 * 60))
+            (1000 * 60))
             /
             1000
         );
 
 
-    document.getElementById("days")
+    document
+        .getElementById("days")
         .innerHTML =
         String(days).padStart(2, "0");
 
 
-    document.getElementById("hours")
+    document
+        .getElementById("hours")
         .innerHTML =
         String(hours).padStart(2, "0");
 
 
-    document.getElementById("minutes")
+    document
+        .getElementById("minutes")
         .innerHTML =
         String(minutes).padStart(2, "0");
 
 
-    document.getElementById("seconds")
+    document
+        .getElementById("seconds")
         .innerHTML =
         String(seconds).padStart(2, "0");
 
@@ -1595,15 +1678,12 @@ function updateCountdown() {
 
 updateCountdown();
 
-
 setInterval(
     updateCountdown,
     1000
 );
 
-
 </script>
 
 </body>
-
 </html>
