@@ -1,413 +1,590 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fffaf6">
-
-<title>Silver Jubilee | GA Arokiaraj Ravi &amp; A Mary Francina</title>
+<meta name="theme-color" content="#fff8f4">
+<title>Silver Jubilee | Arokiaraj Ravi & Mary Francina</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --cream: #fffaf6;
-  --blush: #f7eee9;
-  --rose: #a76c70;
-  --pink: #b77d7d;
-  --dark: #503f43;
-  --sage: #526052;
+  --cream: #fff8f4;
+  --rose: #bd7181;
+  --dark: #49313a;
+  --sage: #798b70;
+  --peach: #f4ded4;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
 body {
+  margin: 0;
   background: var(--cream);
   color: var(--dark);
-  font-family: "Cormorant Garamond", serif;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
   overflow-x: hidden;
 }
 
-button, a { font-family: inherit; }
-img { display: block; max-width: 100%; }
-
-/* PETALS ONLY */
-
-.petal {
-  position: fixed;
-  top: -35px;
-  z-index: 9999;
-  pointer-events: none;
-  width: var(--size);
-  height: calc(var(--size) * 1.4);
-  background: linear-gradient(145deg, #fff0f3, var(--petal-color));
-  border-radius: var(--shape);
-  box-shadow: 0 1px 3px rgba(130,65,80,.08);
-  animation: falling var(--duration) linear forwards;
-}
-
-.petal::after {
-  content: "";
-  position: absolute;
-  left: 22%;
-  top: 12%;
-  width: 24%;
-  height: 54%;
-  border-radius: 50%;
-  background: rgba(255,255,255,.3);
-  transform: rotate(22deg);
-}
-
-@keyframes falling {
-  0% {
-    transform: translate3d(0,-30px,0) rotate(0deg);
-    opacity: 0;
-  }
-  10% { opacity: .8; }
-  50% {
-    transform: translate3d(var(--drift-mid),50vh,0) rotate(240deg);
-  }
-  100% {
-    transform: translate3d(var(--drift),110vh,0) rotate(600deg);
-    opacity: .2;
-  }
-}
-
-.burst-petal {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 10001;
-  pointer-events: none;
-  width: var(--size);
-  height: calc(var(--size) * 1.4);
-  background: linear-gradient(145deg,#fff0f3,var(--petal-color));
-  border-radius: var(--shape);
-  animation: burst var(--duration) ease-out forwards;
-}
-
-@keyframes burst {
-  0% {
-    transform: translate(-50%,-50%) scale(.2) rotate(0);
-    opacity: 0;
-  }
-  10% { opacity: .95; }
-  100% {
-    transform: translate(var(--x),var(--y)) scale(.75) rotate(var(--rotation));
-    opacity: 0;
-  }
-}
-
-/* OPENING */
-
-#opening {
-  position: fixed;
-  inset: 0;
-  z-index: 5000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: radial-gradient(circle at top,#fffdf9,#fff8f1 48%,#f7e9e2);
-  transition: opacity 1s ease, visibility 1s ease;
-}
-
-#opening.hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.opening-content {
-  width: min(92%,760px);
-  padding: 24px 15px;
-  text-align: center;
-}
-
-.wedding-verse {
-  max-width: 620px;
-  margin: 0 auto 18px;
-  color: #513f43;
-  font-size: clamp(21px,4vw,28px);
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.wedding-verse-reference {
-  margin-top: 10px;
-  color: var(--rose);
-  font: 700 12px "Montserrat",sans-serif;
-  letter-spacing: 3px;
-}
-
-.opening-divider, .divider {
-  width: 90px;
-  height: 1px;
-  margin: 22px auto 28px;
-  background: #d99c91;
-}
-
-.envelope-wrapper {
-  position: relative;
-  width: 390px;
-  max-width: 90vw;
-  margin: auto;
-}
-
-.envelope {
-  position: relative;
-  width: 100%;
-  height: 245px;
-  perspective: 1000px;
-  cursor: pointer;
-  filter: drop-shadow(0 18px 22px rgba(120,70,65,.13));
-}
-
-.envelope-back {
-  position: absolute;
-  inset: 0;
-  background: #fff8f1;
-  border: 1px solid #e4c5bf;
-}
-
-.inner-card {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: 13%;
-  height: 75%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fffdf9;
-  border: 1px solid #e8d3cb;
-}
-
-.inner-small {
-  color: #9b706d;
-  font: 600 10px "Montserrat",sans-serif;
-  letter-spacing: 3px;
-}
-
-.inner-25 {
-  margin: 5px 0;
-  color: var(--pink);
-  font-size: 70px;
-  font-weight: 700;
-  line-height: .9;
-}
-
-.inner-text { color: #74575b; font-size: 17px; }
-
-.envelope-left, .envelope-right, .envelope-bottom {
-  position: absolute;
-  z-index: 4;
-}
-
-.envelope-left {
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  height: 100%;
-  background: #f3ded7;
-  clip-path: polygon(0 0,100% 50%,0 100%);
-}
-
-.envelope-right {
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  height: 100%;
-  background: #f0d9d3;
-  clip-path: polygon(100% 0,0 50%,100% 100%);
-}
-
-.envelope-bottom {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 65%;
-  background: #efd7d1;
-  clip-path: polygon(0 100%,50% 0,100% 100%);
-}
-
-.envelope-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  z-index: 6;
-  background: #dbaea9;
-  clip-path: polygon(0 0,50% 100%,100% 0);
-  transform-origin: top;
-  transition: transform 1s cubic-bezier(.2,.8,.2,1);
-}
-
-.envelope.open .envelope-top {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-.envelope-border {
-  position: absolute;
-  inset: 7px;
-  z-index: 7;
-  border: 1px solid rgba(160,110,105,.25);
-  pointer-events: none;
-}
-
-.seal {
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  width: 78px;
-  height: 78px;
-  transform: translate(-50%,-50%);
-  overflow: hidden;
-  border: 4px solid var(--cream);
-  border-radius: 50%;
-  background: var(--cream);
-  box-shadow: 0 5px 16px rgba(80,50,50,.2),0 0 0 2px #d59b91;
-}
-
-.seal img { width: 100%; height: 100%; object-fit: cover; }
-
-/* SMALL CSS PETALS AROUND ENVELOPE */
-
-.corner-petal {
-  position: absolute;
-  width: 12px;
-  height: 21px;
-  border-radius: 75% 25% 65% 35% / 60% 40% 60% 40%;
-  background: linear-gradient(145deg,#f8dbe2,#d98799);
-  opacity: .8;
-}
-
-.corner-one { top: -15px; left: -10px; transform: rotate(-35deg); }
-.corner-two { top: -8px; right: -10px; transform: rotate(55deg); }
-.corner-three { bottom: 40px; left: -16px; transform: rotate(40deg); }
-.corner-four { bottom: 35px; right: -16px; transform: rotate(-50deg); }
-
-.tap-text {
-  margin-top: 22px;
-  color: #8e6261;
-  font: 700 12px "Montserrat",sans-serif;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.tap-subtext { margin-top: 7px; color: #9b7774; font-size: 15px; }
-
-/* MAIN CONTENT */
-
-#main {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease;
-}
-
-#main.show { opacity: 1; visibility: visible; }
-
-.section-inner { width: min(900px,92%); margin: auto; }
+button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero {
-  min-height: 100vh;
+  min-height: 100svh;
+  padding: 60px 20px 55px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
-  text-align: center;
+  position: relative;
+  overflow: hidden;
   background:
-    radial-gradient(circle at 20% 20%,rgba(244,211,205,.35),transparent 28%),
-    radial-gradient(circle at 80% 80%,rgba(223,233,216,.35),transparent 30%),
+    radial-gradient(ellipse at 0% 0%, #f4dfdc 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 100%, #e5eadf 0%, transparent 40%),
     var(--cream);
 }
 
-.eyebrow, .section-label {
-  color: #9a706d;
-  font: 700 12px "Montserrat",sans-serif;
+.hero::before, .hero::after {
+  content: "❧";
+  position: absolute;
+  color: #bd7181;
+  opacity: .20;
+  font-size: 130px;
+  pointer-events: none;
+}
+
+.hero::before { top: 0; left: -20px; transform: rotate(-35deg); }
+.hero::after { bottom: 0; right: -20px; transform: rotate(145deg); }
+
+.hero-content {
+  width: min(100%, 760px);
+  position: relative;
+  z-index: 1;
+  padding: 38px 22px;
+  border: 1px solid #d9b4b6;
+  outline: 1px solid #e9d4c9;
+  outline-offset: 7px;
+  background: rgba(255, 250, 247, .87);
+  box-shadow: 0 15px 50px rgba(104, 62, 72, .07);
+}
+
+.eyebrow {
+  font-size: 13px;
   letter-spacing: 4px;
   text-transform: uppercase;
+  color: #82656b;
+}
+
+.cross {
+  font-family: Georgia, serif;
+  font-size: 29px;
+  color: var(--rose);
+  margin: 15px 0;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--rose);
+  font-weight: 400;
 }
 
 .hero h1 {
-  margin-top: 25px;
-  color: var(--rose);
-  font-size: clamp(130px,25vw,230px);
-  font-weight: 500;
-  line-height: .8;
+  font-size: clamp(44px, 9vw, 76px);
+  line-height: 1.12;
+  margin: 14px 0;
 }
 
-.hero-script, .invitation-title, .with-love {
-  color: var(--pink);
-  font-family: "Great Vibes",cursive;
+.subtitle {
+  font-size: clamp(16px, 3vw, 21px);
+  letter-spacing: 2px;
+  margin: 18px 0;
 }
 
-.hero-script {
-  margin-top: 5px;
-  font-size: clamp(48px,8vw,85px);
+.verse {
+  max-width: 540px;
+  margin: 25px auto;
+  font-size: 21px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.reference {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9d586a;
 }
 
 .names {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  color: var(--dark);
-  font-size: clamp(25px,4vw,42px);
-  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(23px, 5vw, 38px);
+  line-height: 1.55;
+  font-weight: 500;
+  margin: 25px auto;
 }
 
-.names span:nth-child(2) {
-  color: var(--pink);
-  font: 400 40px "Great Vibes",cursive;
+.ampersand {
+  display: block;
+  color: var(--rose);
+  font-family: 'Great Vibes', cursive;
+  font-size: 43px;
+  line-height: 1.2;
 }
 
-.hero-date {
-  margin-top: 22px;
-  color: #79595d;
-  font: 700 13px "Montserrat",sans-serif;
+.invite-line {
+  font-size: 21px;
+  margin: 15px 0 8px;
+}
+
+.date {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(21px, 4vw, 29px);
   letter-spacing: 2px;
+  margin: 13px 0;
 }
 
-/* DATE */
-
-.save-date {
-  padding: 110px 20px;
-  text-align: center;
-  background: var(--cream);
+.event-time {
+  font-size: 21px;
+  letter-spacing: 1px;
 }
 
-.save-date h2 {
-  margin-top: 18px;
-  color: #59464a;
-  font-size: clamp(40px,6vw,62px);
-  font-weight: 700;
+.section {
+  padding: 75px 22px;
+  position: relative;
 }
 
-.big-date {
-  margin-top: 35px;
-  color: #9b6267;
-  font-size: clamp(42px,7vw,80px);
-  font-weight: 700;
+.section-inner {
+  width: min(100%, 780px);
+  margin: auto;
 }
 
-.weekday {
-  margin-top: 18px;
-  color: #a16f6c;
-  font: 700 12px "Montserrat",sans-serif;
-  letter-spacing: 4px;
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 500;
+  margin: 12px 0 25px;
 }
 
-.big-time {
-  margin-top: 12px;
-  color: #604c50;
-  font: 700
+.section p {
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+.save-date { background: #f7e8e3; }
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 540px;
+  margin: 32px auto;
+}
+
+.time-box {
+  padding: 18px 5px;
+  border: 1px solid #d7b2b5;
+  background: rgba(255,255,255,.55);
+}
+
+.time-box strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(25px, 6vw, 39px);
+  font-weight: 500;
+  color: #98566a;
+}
+
+.time-box span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.invitation-image {
+  display: block;
+  width: min(100%, 600px);
+  height: auto;
+  margin: 30px auto;
+  border: 8px solid #fffaf7;
+  outline: 1px solid #dfc4bb;
+  box-shadow: 0 12px 35px #583b3b13;
+}
+
+.image-note {
+  font-size: 15px !important;
+  color: #806c70;
+}
+
+.love-section {
+  background: linear-gradient(180deg, #fff8f4, #f5e5e0);
+}
+
+.venue-card {
+  margin: 25px auto;
+  padding: 28px 22px;
+  max-width: 570px;
+  background: rgba(255,255,255,.62);
+  border: 1px solid #dec3bd;
+}
+
+.venue-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+.address {
+  font-size: 19px !important;
+  line-height: 1.7 !important;
+}
+
+.map-link, .music-button, .calendar-button {
+  display: inline-block;
+  border: 1px solid #b87987;
+  color: #754653;
+  background: #fffaf7;
+  text-decoration: none;
+  padding: 13px 23px;
+  margin: 10px 5px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.map-link:hover, .music-button:hover, .calendar-button:hover {
+  background: #f1dedc;
+}
+
+.closing {
+  background: #f4e4de;
+  padding: 70px 20px 80px;
+}
+
+.closing .script {
+  font-size: clamp(48px, 10vw, 70px);
+  margin: 15px 0;
+}
+
+.family-names {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 4vw, 27px);
+  line-height: 1.8;
+}
+
+footer {
+  background: #49313a;
+  color: #fff4ee;
+  padding: 18px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.petal {
+  position: fixed;
+  z-index: 20;
+  top: -35px;
+  width: 12px;
+  height: 18px;
+  border-radius: 80% 15% 80% 15%;
+  background: linear-gradient(135deg, #f6c5d1, #d9829a);
+  opacity: .8;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% { transform: translate3d(0, -10px, 0) rotate(0deg); }
+  100% { transform: translate3d(var(--drift), 110vh, 0) rotate(520deg); }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 32px 16px; }
+  .hero-content { padding: 30px 15px; }
+  .eyebrow { letter-spacing: 2px; font-size: 11px; }
+  .verse { font-size: 19px; }
+  .section { padding: 55px 18px; }
+  .countdown { gap: 6px; }
+  .time-box { padding: 14px 2px; }
+  .time-box span { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">A celebration of faith, love &amp; togetherness</div>
+    <div class="cross">✝</div>
+
+    <div class="verse">
+      “Therefore what God has joined together, let no one separate.”
+      <div class="reference">MARK 10:9</div>
+    </div>
+
+    <h1 class="script">You Are Invited</h1>
+    <div class="subtitle">TO CELEBRATE A BEAUTIFUL MILESTONE</div>
+
+    <div class="names">
+      GA Arokiaraj Ravi
+      <span class="ampersand">&amp;</span>
+      A Mary Francina
+    </div>
+
+    <p class="invite-line">Celebrating 25 years of marriage</p>
+    <div class="script" style="font-size:52px;">Our Silver Jubilee</div>
+
+    <div class="cross">❦</div>
+    <div class="date">SUNDAY · OCTOBER 18, 2026</div>
+    <div class="event-time">6:00 PM onwards</div>
+
+    <button class="music-button" id="musicButton" type="button">
+      ♫ Play Celebration Music
+    </button>
+    <audio id="music" src="./music.mp3" preload="none" loop></audio>
+  </div>
+</section>
+
+<section class="section save-date" id="save-date">
+  <div class="section-inner">
+    <div class="eyebrow">A special day is approaching</div>
+    <h2>Save the Date</h2>
+    <div class="script" style="font-size:48px;">25 years of God's grace</div>
+
+    <div class="countdown" aria-label="Countdown to the anniversary">
+      <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
+      <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
+      <div class="time-box"><strong id="minutes">--</strong><span>Minutes</span></div>
+      <div class="time-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+    </div>
+
+    <button class="calendar-button" id="calendarButton" type="button">
+      ＋ Add to Calendar
+    </button>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">A cherished milestone</div>
+    <h2>Our Silver Jubilee Invitation</h2>
+    <p>Join us as we celebrate twenty-five beautiful years of marriage, memories and God's unfailing love.</p>
+
+    <img
+      class="invitation-image"
+      src="./Elegant%2025th%20Anniversary%20Invitation.png"
+      alt="Silver Jubilee wedding anniversary invitation"
+      onerror="this.style.display='none'; document.getElementById('imageNote').style.display='block';"
+    >
+    <p id="imageNote" class="image-note" style="display:none;">
+      The invitation image could not be found. Please check the image filename in your GitHub repository.
+    </p>
+  </div>
+</section>
+
+<section class="section love-section">
+  <div class="section-inner">
+    <div class="cross">✝</div>
+    <h2>A Love Blessed by God</h2>
+
+    <div class="verse">
+      “Let all that you do be done in love.”
+      <div class="reference">1 CORINTHIANS 16:14</div>
+    </div>
+
+    <p>
+      With hearts full of gratitude, we joyfully celebrate
+      25 beautiful years of love, faith and God's grace.
+    </p>
+
+    <p>
+      Your presence and blessings will make this milestone
+      even more meaningful to us.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="venue">
+  <div class="section-inner">
+    <div class="eyebrow">We look forward to celebrating with you</div>
+    <h2>Join Us for the Celebration</h2>
+
+    <div class="venue-card">
+      <div class="cross">❦</div>
+      <div class="venue-name">ARIMA THUMBI</div>
+      <p class="address">
+        1/38, N Parade Rd, Chakrapani Colony,<br>
+        Ramapuram, St. Thomas Mount,<br>
+        Chennai, Tamil Nadu 600016
+      </p>
+
+      <p><strong>Sunday, October 18, 2026</strong><br>6:00 PM onwards</p>
+
+      <a class="map-link"
+         href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI%2C+1%2F38+N+Parade+Rd%2C+Chennai+600016"
+         target="_blank" rel="noopener">
+        View Location ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section love-section">
+  <div class="section-inner">
+    <div class="verse">
+      “Many waters cannot quench love; rivers cannot sweep it away.”
+      <div class="reference">SONG OF SOLOMON 8:7</div>
+    </div>
+    <div class="cross">✝</div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="eyebrow">A day made more special with you</div>
+  <div class="script">With Love</div>
+
+  <div class="family-names">
+    Mary Princy A<br>
+    &amp; Mary Prathiba A
+  </div>
+
+  <p>Sunday, October 18, 2026<br>6:00 PM onwards</p>
+  <div class="cross">✝</div>
+</section>
+
+<footer>
+  Celebrating 25 years of love, faith &amp; God's grace
+</footer>
+
+<script>
+(() => {
+  const music = document.getElementById('music');
+  const musicButton = document.getElementById('musicButton');
+
+  musicButton.addEventListener('click', async () => {
+    if (music.paused) {
+      try {
+        await music.play();
+        musicButton.textContent = 'Ⅱ Pause Celebration Music';
+      } catch (error) {
+        musicButton.textContent = 'Music unavailable — check music.mp3';
+      }
+    } else {
+      music.pause();
+      musicButton.textContent = '♫ Play Celebration Music';
+    }
+  });
+
+  // Event starts at 6:00 PM India Standard Time.
+  const eventDate = new Date('2026-10-18T18:00:00+05:30').getTime();
+
+  function updateCountdown() {
+    const difference = eventDate - Date.now();
+
+    if (difference <= 0) {
+      document.getElementById('days').textContent = '0';
+      document.getElementById('hours').textContent = '0';
+      document.getElementById('minutes').textContent = '0';
+      document.getElementById('seconds').textContent = '0';
+      return;
+    }
+
+    document.getElementById('days').textContent =
+      Math.floor(difference / 86400000);
+
+    document.getElementById('hours').textContent =
+      Math.floor((difference % 86400000) / 3600000);
+
+    document.getElementById('minutes').textContent =
+      Math.floor((difference % 3600000) / 60000);
+
+    document.getElementById('seconds').textContent =
+      Math.floor((difference % 60000) / 1000);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  document.getElementById('calendarButton').addEventListener('click', () => {
+    const calendarEvent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Silver Jubilee Invitation//EN',
+      'BEGIN:VEVENT',
+      'UID:silver-jubilee-20261018@example.com',
+      'DTSTAMP:20260101T000000Z',
+      'DTSTART:20261018T123000Z',
+      'DTEND:20261018T153000Z',
+      'SUMMARY:Silver Jubilee - Arokiaraj Ravi & Mary Francina',
+      'LOCATION:ARIMA THUMBI, Chennai, Tamil Nadu 600016',
+      'DESCRIPTION:Celebrating 25 beautiful years of love, faith and God\\'s grace.',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([calendarEvent], {
+      type: 'text/calendar;charset=utf-8'
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Silver-Jubilee-October-18-2026.ics';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  // One gentle stream of individual petals; no flower emojis.
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (!reducedMotion) {
+    function createPetal() {
+      const petal = document.createElement('span');
+      petal.className = 'petal';
+      petal.setAttribute('aria-hidden', 'true');
+
+      const size = 7 + Math.random() * 8;
+      const duration = 7 + Math.random() * 6;
+
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.width = size + 'px';
+      petal.style.height = size * 1.45 + 'px';
+      petal.style.opacity = (0.35 + Math.random() * 0.45).toFixed(2);
+      petal.style.setProperty(
+        '--drift',
+        (Math.random() * 160 - 80) + 'px'
+      );
+      petal.style.animationDuration = duration + 's';
+
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), duration * 1000 + 500);
+    }
+
+    // Small opening shower, followed by a gentle continuous fall.
+    for (let i = 0; i < 18; i++) {
+      setTimeout(createPetal, i * 120);
+    }
+
+    setInterval(createPetal, 850);
+  }
+})();
+</script>
+
+</body>
+</html>
