@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>25th Wedding Anniversary | GA Arokiaraj Ravi &amp; A Mary Francina</title>
+<meta name="theme-color" content="#fffaf6">
+
+<title>Silver Jubilee | GA Arokiaraj Ravi &amp; A Mary Francina</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,18 +14,14 @@
 <style>
 :root {
   --cream: #fffaf6;
-  --blush: #f7e9e2;
-  --pink: #b77d7d;
+  --blush: #f7eee9;
   --rose: #a76c70;
+  --pink: #b77d7d;
   --dark: #503f43;
   --sage: #526052;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
 
@@ -37,7 +35,7 @@ body {
 button, a { font-family: inherit; }
 img { display: block; max-width: 100%; }
 
-/* ==================== PETALS ==================== */
+/* PETALS ONLY */
 
 .petal {
   position: fixed;
@@ -46,10 +44,10 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
   width: var(--size);
   height: calc(var(--size) * 1.4);
-  background: linear-gradient(145deg, #fff0f3, var(--petal-color) 75%);
+  background: linear-gradient(145deg, #fff0f3, var(--petal-color));
   border-radius: var(--shape);
-  box-shadow: 0 1px 3px rgba(130, 65, 80, .08);
-  animation: fall var(--duration) linear forwards;
+  box-shadow: 0 1px 3px rgba(130,65,80,.08);
+  animation: falling var(--duration) linear forwards;
 }
 
 .petal::after {
@@ -60,22 +58,22 @@ img { display: block; max-width: 100%; }
   width: 24%;
   height: 54%;
   border-radius: 50%;
-  background: rgba(255,255,255,.28);
+  background: rgba(255,255,255,.3);
   transform: rotate(22deg);
 }
 
-@keyframes fall {
+@keyframes falling {
   0% {
-    transform: translate3d(0, -30px, 0) rotate(0deg);
+    transform: translate3d(0,-30px,0) rotate(0deg);
     opacity: 0;
   }
-  10% { opacity: .85; }
+  10% { opacity: .8; }
   50% {
-    transform: translate3d(var(--drift-mid), 50vh, 0) rotate(240deg);
+    transform: translate3d(var(--drift-mid),50vh,0) rotate(240deg);
   }
   100% {
-    transform: translate3d(var(--drift), 110vh, 0) rotate(600deg);
-    opacity: .25;
+    transform: translate3d(var(--drift),110vh,0) rotate(600deg);
+    opacity: .2;
   }
 }
 
@@ -87,24 +85,24 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
   width: var(--size);
   height: calc(var(--size) * 1.4);
-  background: linear-gradient(145deg, #fff0f3, var(--petal-color));
+  background: linear-gradient(145deg,#fff0f3,var(--petal-color));
   border-radius: var(--shape);
   animation: burst var(--duration) ease-out forwards;
 }
 
 @keyframes burst {
   0% {
-    transform: translate(-50%, -50%) scale(.2) rotate(0);
+    transform: translate(-50%,-50%) scale(.2) rotate(0);
     opacity: 0;
   }
   10% { opacity: .95; }
   100% {
-    transform: translate(var(--x), var(--y)) scale(.75) rotate(var(--rotation));
+    transform: translate(var(--x),var(--y)) scale(.75) rotate(var(--rotation));
     opacity: 0;
   }
 }
 
-/* ==================== OPENING ==================== */
+/* OPENING */
 
 #opening {
   position: fixed;
@@ -114,7 +112,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle at top, #fffdf9, #fff8f1 48%, #f7e9e2);
+  background: radial-gradient(circle at top,#fffdf9,#fff8f1 48%,#f7e9e2);
   transition: opacity 1s ease, visibility 1s ease;
 }
 
@@ -125,8 +123,8 @@ img { display: block; max-width: 100%; }
 }
 
 .opening-content {
-  width: min(92%, 760px);
-  padding: 25px 15px;
+  width: min(92%,760px);
+  padding: 24px 15px;
   text-align: center;
 }
 
@@ -134,23 +132,23 @@ img { display: block; max-width: 100%; }
   max-width: 620px;
   margin: 0 auto 18px;
   color: #513f43;
-  font-size: clamp(21px, 4vw, 27px);
+  font-size: clamp(21px,4vw,28px);
   font-weight: 700;
   line-height: 1.4;
 }
 
 .wedding-verse-reference {
   margin-top: 10px;
-  font: 700 12px "Montserrat", sans-serif;
-  letter-spacing: 3px;
   color: var(--rose);
+  font: 700 12px "Montserrat",sans-serif;
+  letter-spacing: 3px;
 }
 
 .opening-divider, .divider {
-  width: 100px;
+  width: 90px;
   height: 1px;
-  background: #d99c91;
   margin: 22px auto 28px;
+  background: #d99c91;
 }
 
 .envelope-wrapper {
@@ -174,7 +172,6 @@ img { display: block; max-width: 100%; }
   inset: 0;
   background: #fff8f1;
   border: 1px solid #e4c5bf;
-  border-radius: 5px;
 }
 
 .inner-card {
@@ -189,24 +186,23 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   background: #fffdf9;
   border: 1px solid #e8d3cb;
-  box-shadow: 0 8px 20px rgba(100,60,60,.1);
 }
 
 .inner-small {
-  font: 600 10px "Montserrat", sans-serif;
-  letter-spacing: 3px;
   color: #9b706d;
+  font: 600 10px "Montserrat",sans-serif;
+  letter-spacing: 3px;
 }
 
 .inner-25 {
   margin: 5px 0;
   color: var(--pink);
   font-size: 70px;
-  line-height: .9;
   font-weight: 700;
+  line-height: .9;
 }
 
-.inner-text { font-size: 17px; color: #74575b; }
+.inner-text { color: #74575b; font-size: 17px; }
 
 .envelope-left, .envelope-right, .envelope-bottom {
   position: absolute;
@@ -219,7 +215,7 @@ img { display: block; max-width: 100%; }
   width: 50%;
   height: 100%;
   background: #f3ded7;
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  clip-path: polygon(0 0,100% 50%,0 100%);
 }
 
 .envelope-right {
@@ -228,7 +224,7 @@ img { display: block; max-width: 100%; }
   width: 50%;
   height: 100%;
   background: #f0d9d3;
-  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  clip-path: polygon(100% 0,0 50%,100% 100%);
 }
 
 .envelope-bottom {
@@ -237,7 +233,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 65%;
   background: #efd7d1;
-  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  clip-path: polygon(0 100%,50% 0,100% 100%);
 }
 
 .envelope-top {
@@ -248,7 +244,7 @@ img { display: block; max-width: 100%; }
   height: 60%;
   z-index: 6;
   background: #dbaea9;
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  clip-path: polygon(0 0,50% 100%,100% 0);
   transform-origin: top;
   transition: transform 1s cubic-bezier(.2,.8,.2,1);
 }
@@ -266,7 +262,6 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
 }
 
-/* Holy Family image is the clickable seal */
 .seal {
   position: absolute;
   z-index: 10;
@@ -279,41 +274,38 @@ img { display: block; max-width: 100%; }
   border: 4px solid var(--cream);
   border-radius: 50%;
   background: var(--cream);
-  box-shadow: 0 5px 16px rgba(80,50,50,.2), 0 0 0 2px #d59b91;
+  box-shadow: 0 5px 16px rgba(80,50,50,.2),0 0 0 2px #d59b91;
 }
 
-.seal img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.seal img { width: 100%; height: 100%; object-fit: cover; }
+
+/* SMALL CSS PETALS AROUND ENVELOPE */
+
+.corner-petal {
+  position: absolute;
+  width: 12px;
+  height: 21px;
+  border-radius: 75% 25% 65% 35% / 60% 40% 60% 40%;
+  background: linear-gradient(145deg,#f8dbe2,#d98799);
+  opacity: .8;
 }
+
+.corner-one { top: -15px; left: -10px; transform: rotate(-35deg); }
+.corner-two { top: -8px; right: -10px; transform: rotate(55deg); }
+.corner-three { bottom: 40px; left: -16px; transform: rotate(40deg); }
+.corner-four { bottom: 35px; right: -16px; transform: rotate(-50deg); }
 
 .tap-text {
   margin-top: 22px;
   color: #8e6261;
-  font: 700 12px "Montserrat", sans-serif;
+  font: 700 12px "Montserrat",sans-serif;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .tap-subtext { margin-top: 7px; color: #9b7774; font-size: 15px; }
 
-/* CSS-only corner petals, no flower symbols */
-.corner-petal {
-  position: absolute;
-  width: 13px;
-  height: 22px;
-  border-radius: 75% 25% 65% 35% / 60% 40% 60% 40%;
-  background: linear-gradient(145deg, #f8dbe2, #d98799);
-  opacity: .8;
-}
-
-.corner-one { top: -16px; left: -10px; transform: rotate(-35deg); }
-.corner-two { top: -9px; right: -10px; transform: rotate(55deg); }
-.corner-three { bottom: 40px; left: -16px; transform: rotate(40deg); }
-.corner-four { bottom: 35px; right: -16px; transform: rotate(-50deg); }
-
-/* ==================== MAIN / HERO ==================== */
+/* MAIN CONTENT */
 
 #main {
   opacity: 0;
@@ -323,6 +315,8 @@ img { display: block; max-width: 100%; }
 
 #main.show { opacity: 1; visibility: visible; }
 
+.section-inner { width: min(900px,92%); margin: auto; }
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -331,34 +325,35 @@ img { display: block; max-width: 100%; }
   padding: 80px 20px;
   text-align: center;
   background:
-    radial-gradient(circle at 20% 20%, rgba(244,211,205,.35), transparent 28%),
-    radial-gradient(circle at 80% 80%, rgba(223,233,216,.35), transparent 30%),
+    radial-gradient(circle at 20% 20%,rgba(244,211,205,.35),transparent 28%),
+    radial-gradient(circle at 80% 80%,rgba(223,233,216,.35),transparent 30%),
     var(--cream);
 }
 
-.hero-inner { max-width: 900px; }
-
 .eyebrow, .section-label {
   color: #9a706d;
-  font: 700 12px "Montserrat", sans-serif;
+  font: 700 12px "Montserrat",sans-serif;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  margin: 25px 0 0;
+  margin-top: 25px;
   color: var(--rose);
-  font-size: clamp(130px, 25vw, 230px);
+  font-size: clamp(130px,25vw,230px);
   font-weight: 500;
   line-height: .8;
 }
 
 .hero-script, .invitation-title, .with-love {
   color: var(--pink);
-  font-family: "Great Vibes", cursive;
+  font-family: "Great Vibes",cursive;
 }
 
-.hero-script { margin-top: 5px; font-size: clamp(48px, 8vw, 85px); }
+.hero-script {
+  margin-top: 5px;
+  font-size: clamp(48px,8vw,85px);
+}
 
 .names {
   display: flex;
@@ -367,56 +362,23 @@ img { display: block; max-width: 100%; }
   flex-wrap: wrap;
   gap: 15px;
   color: var(--dark);
-  font-size: clamp(25px, 4vw, 42px);
+  font-size: clamp(25px,4vw,42px);
   font-weight: 700;
 }
 
 .names span:nth-child(2) {
   color: var(--pink);
-  font: 400 40px "Great Vibes", cursive;
+  font: 400 40px "Great Vibes",cursive;
 }
 
 .hero-date {
   margin-top: 22px;
   color: #79595d;
-  font: 700 13px "Montserrat", sans-serif;
+  font: 700 13px "Montserrat",sans-serif;
   letter-spacing: 2px;
 }
 
-/* ==================== CHRISTIAN VERSE ==================== */
-
-.christian {
-  padding: 110px 20px;
-  text-align: center;
-  background: #f4eee8;
-}
-
-.section-inner { width: min(900px, 92%); margin: auto; }
-
-.cross { margin-bottom: 20px; color: #a86f71; font-size: 38px; }
-
-.christian h2, .save-date h2, .venue h2 {
-  color: #59464a;
-  font-size: clamp(40px, 6vw, 65px);
-  font-weight: 700;
-}
-
-.bible-verse {
-  max-width: 650px;
-  margin: 30px auto 12px;
-  color: #59464a;
-  font-size: clamp(25px, 4vw, 38px);
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.verse-reference, .final-reference {
-  color: #a16f6c;
-  font: 700 12px "Montserrat", sans-serif;
-  letter-spacing: 3px;
-}
-
-/* ==================== DATE ==================== */
+/* DATE */
 
 .save-date {
   padding: 110px 20px;
@@ -424,704 +386,28 @@ img { display: block; max-width: 100%; }
   background: var(--cream);
 }
 
-.save-date h2 { margin-top: 18px; }
+.save-date h2 {
+  margin-top: 18px;
+  color: #59464a;
+  font-size: clamp(40px,6vw,62px);
+  font-weight: 700;
+}
 
 .big-date {
   margin-top: 35px;
   color: #9b6267;
-  font-size: clamp(42px, 7vw, 80px);
+  font-size: clamp(42px,7vw,80px);
   font-weight: 700;
+}
+
+.weekday {
+  margin-top: 18px;
+  color: #a16f6c;
+  font: 700 12px "Montserrat",sans-serif;
+  letter-spacing: 4px;
 }
 
 .big-time {
   margin-top: 12px;
   color: #604c50;
-  font: 700 18px "Montserrat", sans-serif;
-  letter-spacing: 3px;
-}
-
-/* ==================== INVITATION IMAGE ==================== */
-
-.invitation {
-  padding: 110px 20px;
-  text-align: center;
-  background: #f7eee9;
-}
-
-.invitation-title {
-  margin-bottom: 35px;
-  font-size: clamp(55px, 8vw, 90px);
-}
-
-.invitation-image {
-  width: min(850px, 100%);
-  margin: auto;
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(80,50,50,.15);
-}
-
-/* ==================== VENUE ==================== */
-
-.venue {
-  padding: 110px 20px;
-  text-align: center;
-  background: #eef1e8;
-}
-
-.venue h2 { margin-top: 15px; color: var(--sage); }
-
-.venue-name {
-  margin-top: 35px;
-  color: var(--sage);
-  font: 700 clamp(22px, 4vw, 34px) "Montserrat", sans-serif;
-  letter-spacing: 4px;
-}
-
-.address {
-  margin: 20px auto;
-  color: #4f5a4e;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.55;
-}
-
-.map-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 32px;
-  border: 1px solid var(--sage);
-  border-radius: 30px;
-  color: var(--sage);
-  text-decoration: none;
-  font: 700 12px "Montserrat", sans-serif;
-  letter-spacing: 2px;
-  transition: .3s ease;
-}
-
-.map-button:hover { background: var(--sage); color: white; }
-
-.qr-container { margin: 40px auto 0; }
-
-.qr-container img {
-  width: 160px;
-  height: 160px;
-  margin: auto;
-  padding: 8px;
-  background: white;
-}
-
-.qr-text {
-  margin-top: 12px;
-  color: var(--sage);
-  font: 700 10px "Montserrat", sans-serif;
-  letter-spacing: 3px;
-}
-
-/* ==================== COUNTDOWN ==================== */
-
-.countdown-section {
-  padding: 100px 20px;
-  text-align: center;
-  background: #f7eee9;
-}
-
-.countdown-card {
-  width: min(760px, 100%);
-  margin: auto;
-  padding: 45px 20px;
-  border: 1px solid #e2c2b8;
-  border-radius: 16px;
-  background: var(--cream);
-}
-
-.countdown-date {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-
-.countdown-day {
-  color: var(--rose);
-  font-size: 62px;
-  line-height: .9;
-}
-
-.countdown-month { color: var(--rose); text-align: left; }
-.countdown-month strong { display: block; font-size: 19px; letter-spacing: 2px; }
-.countdown-month span { display: block; margin-top: 2px; color: #806064; font-size: 17px; }
-
-.countdown-weekday {
-  margin-top: 24px;
-  color: #a16f6c;
-  font: 700 11px "Montserrat", sans-serif;
-  letter-spacing: 4px;
-}
-
-.countdown-event-time { margin-top: 12px; color: #79595d; font-size: 18px; font-weight: 700; }
-
-.countdown-boxes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.count-box {
-  width: 74px;
-  min-height: 70px;
-  padding: 9px 5px;
-  border-radius: 10px;
-  background: var(--pink);
-  color: var(--cream);
-}
-
-.count-number { display: block; font-size: 28px; line-height: 1.1; }
-.count-label { display: block; margin-top: 5px; font: 700 8px "Montserrat", sans-serif; letter-spacing: 1px; }
-
-.calendar-button, .share-button {
-  display: inline-block;
-  margin-top: 28px;
-  padding: 14px 30px;
-  border: 1px solid var(--rose);
-  border-radius: 30px;
-  background: transparent;
-  color: var(--rose);
-  font: 700 11px "Montserrat", sans-serif;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: .3s ease;
-}
-
-.calendar-button:hover, .share-button:hover { background: var(--rose); color: white; }
-
-/* ==================== CLOSING ==================== */
-
-.final-closing {
-  padding: 110px 20px 80px;
-  text-align: center;
-  background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.5), transparent 22%), #eadbd4;
-}
-
-.final-ornament { margin-bottom: 25px; color: #a87572; font-size: 38px; }
-
-.final-message {
-  max-width: 650px;
-  margin: auto;
-  color: #59464a;
-  font-size: clamp(24px, 4vw, 34px);
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.final-names {
-  margin-top: 32px;
-  color: #a56d70;
-  font: clamp(44px, 7vw, 72px)/1.15 "Great Vibes", cursive;
-}
-
-.final-bible {
-  max-width: 650px;
-  margin: 35px auto 8px;
-  color: #604e52;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.final-divider { width: 90px; height: 1px; margin: 32px auto; background: #c38f8b; }
-
-.with-love { font-size: 46px; }
-
-.closing-names {
-  margin-top: 15px;
-  color: #59464a;
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 1.55;
-}
-
-/* Parents' names appear once in the main invitation and once in the closing */
-.closing-date {
-  margin-top: 24px;
-  color: #76575a;
-  font: 700 11px "Montserrat", sans-serif;
-  letter-spacing: 2px;
-}
-
-.closing-cross { margin-top: 30px; color: #a56d70; font-size: 28px; }
-.crafted { margin-top: 40px; color: #9a7775; font-size: 14px; letter-spacing: 1px; }
-
-/* ==================== MOBILE ==================== */
-
-@media (max-width: 600px) {
-  .opening-content { padding: 18px 10px; }
-  .envelope { height: 215px; }
-  .seal { width: 68px; height: 68px; }
-  .hero { min-height: 90vh; }
-  .names { flex-direction: column; gap: 3px; }
-  .names span:nth-child(2) { line-height: 1; }
-  .address { font-size: 19px; }
-  .countdown-card { padding: 30px 12px 35px; }
-  .countdown-day { font-size: 52px; }
-  .count-box { width: 67px; }
-  .final-closing { padding-top: 85px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- OPENING VERSE AND ENVELOPE -->
-
-<div id="opening">
-  <div class="opening-content">
-
-    <div class="wedding-verse">
-      “Therefore what God has joined together,
-      let no one separate.”
-      <div class="wedding-verse-reference">MARK 10:9</div>
-    </div>
-
-    <div class="opening-divider"></div>
-
-    <div class="envelope-wrapper">
-
-      <div class="corner-petal corner-one"></div>
-      <div class="corner-petal corner-two"></div>
-      <div class="corner-petal corner-three"></div>
-      <div class="corner-petal corner-four"></div>
-
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the anniversary invitation">
-        <div class="envelope-back"></div>
-
-        <div class="inner-card">
-          <div>
-            <div class="inner-small">SILVER JUBILEE</div>
-            <div class="inner-25">25</div>
-            <div class="inner-text">Wedding Anniversary</div>
-          </div>
-        </div>
-
-        <div class="envelope-left"></div>
-        <div class="envelope-right"></div>
-        <div class="envelope-bottom"></div>
-        <div class="envelope-top"></div>
-        <div class="envelope-border"></div>
-
-        <div class="seal">
-          <img src="./IMG_3688.jpeg" alt="Holy Family">
-        </div>
-      </div>
-
-      <div class="tap-text">Tap to Open</div>
-      <div class="tap-subtext">A celebration of 25 beautiful years</div>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN INVITATION -->
-
-<div id="main">
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">SILVER JUBILEE ANNIVERSARY</div>
-      <h1>25th</h1>
-      <div class="hero-script">Wedding Anniversary</div>
-      <div class="divider"></div>
-
-      <div class="names">
-        <span>GA Arokiaraj Ravi</span>
-        <span>&amp;</span>
-        <span>A Mary Francina</span>
-      </div>
-
-      <div class="hero-date">18 OCTOBER 2026 • 6:00 PM ONWARDS</div>
-    </div>
-  </section>
-
-  <section class="christian">
-    <div class="section-inner">
-      <div class="cross">✝</div>
-      <h2>A Love Blessed by God</h2>
-      <div class="bible-verse">
-        “Let all that you do
-        be done in love.”
-      </div>
-      <div class="verse-reference">1 CORINTHIANS 16:14</div>
-    </div>
-  </section>
-
-  <section class="save-date">
-    <div class="section-inner">
-      <div class="section-label">Save the Date</div>
-      <h2>A Day to Remember</h2>
-      <div class="big-date">18 OCTOBER 2026</div>
-      <div class="countdown-weekday">SUNDAY</div>
-      <div class="big-time">6:00 PM ONWARDS</div>
-    </div>
-  </section>
-
-  <section class="invitation">
-    <div class="section-inner">
-      <div class="invitation-title">You Are Invited</div>
-      <img
-        class="invitation-image"
-        src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
-        alt="Silver Jubilee 25th Wedding Anniversary Invitation">
-    </div>
-  </section>
-
-  <section class="venue">
-    <div class="section-inner">
-      <div class="section-label">The Celebration</div>
-      <h2>Join Us</h2>
-      <div class="venue-name">ARIMA THUMBI</div>
-
-      <div class="address">
-        1/38, N Parade Rd,<br>
-        Chakrapani Colony,<br>
-        Ramapuram, St. Thomas Mount,<br>
-        Chennai, Tamil Nadu 600016
-      </div>
-
-      <a
-        class="map-button"
-        href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI+1%2F38+N+Parade+Rd+Chakrapani+Colony+Ramapuram+St+Thomas+Mount+Chennai+Tamil+Nadu+600016"
-        target="_blank"
-        rel="noopener noreferrer">
-        GET DIRECTIONS
-      </a>
-
-      <div class="qr-container">
-        <img
-          src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2B1%252F38%2BN%2BParade%2BRd%2BChakrapani%2BColony%2BRamapuram%2BSt%2BThomas%2BMount%2BChennai%2BTamil%2BNadu%2B600016"
-          alt="QR code for the venue location">
-        <div class="qr-text">SCAN FOR LOCATION</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="countdown-section">
-    <div class="countdown-card">
-
-      <div class="countdown-date">
-        <div class="countdown-day">18</div>
-        <div class="countdown-month">
-          <strong>OCTOBER</strong>
-          <span>2026</span>
-        </div>
-      </div>
-
-      <div class="countdown-weekday">SUNDAY</div>
-      <div class="countdown-event-time">6:00 PM ONWARDS</div>
-
-      <div class="countdown-boxes">
-        <div class="count-box">
-          <span class="count-number" id="days">00</span>
-          <span class="count-label">DAYS</span>
-        </div>
-        <div class="count-box">
-          <span class="count-number" id="hours">00</span>
-          <span class="count-label">HOURS</span>
-        </div>
-        <div class="count-box">
-          <span class="count-number" id="minutes">00</span>
-          <span class="count-label">MINS</span>
-        </div>
-        <div class="count-box">
-          <span class="count-number" id="seconds">00</span>
-          <span class="count-label">SECS</span>
-        </div>
-      </div>
-
-      <button class="calendar-button" id="calendarButton">
-        + &nbsp; ADD TO CALENDAR
-      </button>
-    </div>
-  </section>
-
-  <section class="final-closing">
-    <div class="section-inner">
-
-      <div class="final-ornament">✝</div>
-
-      <div class="final-message">
-        With hearts full of gratitude,
-        we joyfully celebrate 25 beautiful years
-        of love, faith and God's grace.
-      </div>
-
-      <div class="final-names">
-        GA Arokiaraj Ravi<br>
-        &amp;<br>
-        A Mary Francina
-      </div>
-
-      <div class="final-bible">
-        “Many waters cannot quench love;
-        rivers cannot sweep it away.”
-      </div>
-
-      <div class="final-reference">SONG OF SOLOMON 8:7</div>
-      <div class="final-divider"></div>
-
-      <div class="with-love">With Love</div>
-
-      <div class="closing-names">
-        Mary Princy A<br>
-        &amp;<br>
-        Mary Prathiba A
-      </div>
-
-      <div class="closing-date">
-        18 OCTOBER 2026 • 6:00 PM ONWARDS
-      </div>
-
-      <div class="closing-cross">✝</div>
-
-      <button class="share-button" id="shareButton">
-        SHARE THIS INVITATION
-      </button>
-
-      <div class="crafted">Celebrating love, faith &amp; God's grace</div>
-    </div>
-  </section>
-
-</div>
-
-<!-- MUSIC FILE: KEEP THIS NAME EXACTLY THE SAME -->
-
-<audio id="music" preload="auto">
-  <source src="Music.mp3.mpeg" type="audio/mpeg">
-</audio>
-
-<script>
-/* ==================== OPEN ENVELOPE ==================== */
-
-const envelope = document.getElementById("envelope");
-const opening = document.getElementById("opening");
-const main = document.getElementById("main");
-const music = document.getElementById("music");
-
-let opened = false;
-let petalTimer = null;
-let petalSpeedTimer = null;
-let petalStage = 0;
-
-const colors = [
-  "#f9e3e8",
-  "#f6d1da",
-  "#f2becb",
-  "#edacbd",
-  "#e49aaa",
-  "#d98799",
-  "#f7d9e0",
-  "#eab4c1"
-];
-
-const shapes = [
-  "75% 25% 65% 35% / 60% 40% 60% 40%",
-  "55% 45% 75% 25% / 65% 35% 65% 35%",
-  "80% 20% 55% 45% / 55% 45% 70% 30%",
-  "65% 35% 80% 20% / 45% 55% 45% 55%",
-  "50% 50% 65% 35% / 75% 25% 75% 25%"
-];
-
-function randomItem(items) {
-  return items[Math.floor(Math.random() * items.length)];
-}
-
-function openInvitation() {
-  if (opened) return;
-  opened = true;
-
-  envelope.classList.add("open");
-
-  music.volume = 0.7;
-  music.play().catch(() => {
-    // Some browsers may require another tap to start audio.
-  });
-
-  createPetalBurst();
-  startPetalRain();
-
-  setTimeout(() => {
-    opening.classList.add("hide");
-    main.classList.add("show");
-  }, 1100);
-}
-
-envelope.addEventListener("click", openInvitation);
-
-envelope.addEventListener("keydown", event => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    openInvitation();
-  }
-});
-
-/* ==================== CONTROLLED PETAL BURST ==================== */
-
-function createPetalBurst() {
-  // One burst of 85 petals instead of hundreds of overlapping elements.
-  const total = 85;
-
-  for (let i = 0; i < total; i++) {
-    const petal = document.createElement("div");
-    petal.className = "burst-petal";
-
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 120 + Math.random() * 360;
-
-    petal.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
-    petal.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
-    petal.style.setProperty("--size", `${5 + Math.random() * 12}px`);
-    petal.style.setProperty("--petal-color", randomItem(colors));
-    petal.style.setProperty("--shape", randomItem(shapes));
-    petal.style.setProperty("--rotation", `${Math.random() * 720 - 360}deg`);
-    petal.style.setProperty("--duration", `${1.8 + Math.random() * 1.2}s`);
-
-    document.body.appendChild(petal);
-    setTimeout(() => petal.remove(), 3300);
-  }
-}
-
-/* ==================== GENTLE FALLING PETALS ==================== */
-
-function createFallingPetal() {
-  const petal = document.createElement("div");
-  petal.className = "petal";
-
-  petal.style.left = `${Math.random() * 100}vw`;
-  petal.style.setProperty("--size", `${6 + Math.random() * 10}px`);
-  petal.style.setProperty("--petal-color", randomItem(colors));
-  petal.style.setProperty("--shape", randomItem(shapes));
-  petal.style.setProperty("--drift", `${Math.random() * 180 - 90}px`);
-  petal.style.setProperty("--drift-mid", `${Math.random() * 100 - 50}px`);
-  petal.style.setProperty("--duration", `${7 + Math.random() * 4}s`);
-
-  document.body.appendChild(petal);
-  setTimeout(() => petal.remove(), 12000);
-}
-
-function setPetalSpeed(interval) {
-  if (petalTimer) clearInterval(petalTimer);
-
-  petalTimer = setInterval(() => {
-    if (opened) createFallingPetal();
-  }, interval);
-}
-
-function startPetalRain() {
-  // Initial shower: a limited number of petals, spaced out.
-  for (let i = 0; i < 45; i++) {
-    setTimeout(createFallingPetal, i * 65);
-  }
-
-  // Fast initially, then slower, then a gentle ongoing fall.
-  setPetalSpeed(100);
-
-  petalSpeedTimer = setTimeout(() => {
-    setPetalSpeed(190);
-
-    petalSpeedTimer = setTimeout(() => {
-      setPetalSpeed(450);
-    }, 5000);
-  }, 3500);
-}
-
-/* ==================== COUNTDOWN ==================== */
-
-// October 18, 2026 at 6:00 PM India Standard Time.
-const eventDate = new Date("2026-10-18T18:00:00+05:30").getTime();
-
-function updateCountdown() {
-  const difference = Math.max(0, eventDate - Date.now());
-
-  const days = Math.floor(difference / 86400000);
-  const hours = Math.floor((difference % 86400000) / 3600000);
-  const minutes = Math.floor((difference % 3600000) / 60000);
-  const seconds = Math.floor((difference % 60000) / 1000);
-
-  document.getElementById("days").textContent = String(days).padStart(2, "0");
-  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-/* ==================== ADD TO CALENDAR ==================== */
-
-document.getElementById("calendarButton").addEventListener("click", () => {
-  const title = "25th Wedding Anniversary - GA Arokiaraj Ravi & A Mary Francina";
-  const location = "ARIMA THUMBI, 1/38, N Parade Rd, Chakrapani Colony, Ramapuram, St. Thomas Mount, Chennai, Tamil Nadu 600016";
-
-  const calendarText = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//25th Wedding Anniversary//EN",
-    "BEGIN:VEVENT",
-    "UID:anniversary-20261018@example.com",
-    "DTSTAMP:20261011T000000Z",
-    "DTSTART:20261018T123000Z",
-    "DTEND:20261018T153000Z",
-    `SUMMARY:${title}`,
-    `LOCATION:${location}`,
-    "DESCRIPTION:Silver Jubilee 25th Wedding Anniversary celebration.",
-    "END:VEVENT",
-    "END:VCALENDAR"
-  ].join("\r\n");
-
-  const blob = new Blob([calendarText], { type: "text/calendar;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-
-  link.href = url;
-  link.download = "25th-Wedding-Anniversary.ics";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-});
-
-/* ==================== SHARE INVITATION ==================== */
-
-document.getElementById("shareButton").addEventListener("click", async () => {
-  const shareData = {
-    title: "25th Wedding Anniversary",
-    text: "You are invited to celebrate the 25th Wedding Anniversary of GA Arokiaraj Ravi & A Mary Francina.",
-    url: window.location.href
-  };
-
-  if (navigator.share) {
-    try {
-      await navigator.share(shareData);
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        console.error("Sharing failed:", error);
-      }
-    }
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(window.location.href);
-    alert("Invitation link copied!");
-  } catch (error) {
-    window.prompt("Copy your invitation link:", window.location.href);
-  }
-});
-</script>
-
-</body>
-</html>
+  font: 700
