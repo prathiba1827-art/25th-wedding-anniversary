@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff8f4">
-<title>Silver Jubilee | Arokiaraj Ravi & Mary Francina</title>
+<title>Silver Jubilee | GA Arokiaraj Ravi &amp; A Mary Francina</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,11 @@
 <style>
 :root {
   --cream: #fff8f4;
-  --rose: #bd7181;
-  --dark: #49313a;
-  --sage: #798b70;
-  --peach: #f4ded4;
+  --blush: #f3dfd9;
+  --rose: #b87583;
+  --dark: #49343b;
+  --sage: #78866f;
+  --gold: #c8a17d;
 }
 
 * { box-sizing: border-box; }
@@ -28,147 +29,403 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--dark);
-  font-family: 'Cormorant Garamond', serif;
-  text-align: center;
+  font-family: "Cormorant Garamond", serif;
   overflow-x: hidden;
 }
 
-button, a { -webkit-tap-highlight-color: transparent; }
-
-.hero {
-  min-height: 100svh;
-  padding: 60px 20px 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 0% 0%, #f4dfdc 0%, transparent 40%),
-    radial-gradient(ellipse at 100% 100%, #e5eadf 0%, transparent 40%),
-    var(--cream);
-}
-
-.hero::before, .hero::after {
-  content: "❧";
-  position: absolute;
-  color: #bd7181;
-  opacity: .20;
-  font-size: 130px;
-  pointer-events: none;
-}
-
-.hero::before { top: 0; left: -20px; transform: rotate(-35deg); }
-.hero::after { bottom: 0; right: -20px; transform: rotate(145deg); }
-
-.hero-content {
-  width: min(100%, 760px);
-  position: relative;
-  z-index: 1;
-  padding: 38px 22px;
-  border: 1px solid #d9b4b6;
-  outline: 1px solid #e9d4c9;
-  outline-offset: 7px;
-  background: rgba(255, 250, 247, .87);
-  box-shadow: 0 15px 50px rgba(104, 62, 72, .07);
-}
-
-.eyebrow {
-  font-size: 13px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #82656b;
-}
-
-.cross {
-  font-family: Georgia, serif;
-  font-size: 29px;
-  color: var(--rose);
-  margin: 15px 0;
-}
+button, a { font: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; }
 
 .script {
-  font-family: 'Great Vibes', cursive;
+  font-family: "Great Vibes", cursive;
   color: var(--rose);
   font-weight: 400;
 }
 
-.hero h1 {
-  font-size: clamp(44px, 9vw, 76px);
-  line-height: 1.12;
-  margin: 14px 0;
+.small-label {
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8d666a;
 }
 
-.subtitle {
-  font-size: clamp(16px, 3vw, 21px);
-  letter-spacing: 2px;
+.cross {
+  color: var(--rose);
+  font-family: Georgia, serif;
+  font-size: 30px;
   margin: 18px 0;
 }
 
-.verse {
-  max-width: 540px;
-  margin: 25px auto;
-  font-size: 21px;
-  line-height: 1.6;
-  font-style: italic;
+/* ENVELOPE OPENING SCREEN */
+#opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 25px 15px;
+  background:
+    radial-gradient(ellipse at top left, #f1dcd9, transparent 45%),
+    radial-gradient(ellipse at bottom right, #e5e9dc, transparent 45%),
+    #fffaf6;
+  transition: opacity 1.1s ease, visibility 1.1s ease;
 }
 
-.reference {
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 2px;
-  font-size: 12px;
+#opening.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.opening-content {
+  width: min(100%, 680px);
+  text-align: center;
+  padding: 22px 10px;
+}
+
+.opening-verse {
+  max-width: 540px;
+  margin: 0 auto 20px;
+  font-size: clamp(21px, 4vw, 28px);
+  line-height: 1.4;
   font-weight: 600;
-  color: #9d586a;
+}
+
+.verse-ref {
+  display: block;
+  margin-top: 10px;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--rose);
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 24px;
+  margin: 12px 0 24px;
+}
+
+.envelope-wrapper {
+  width: min(390px, 88vw);
+  margin: 35px auto 0;
+  position: relative;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 245px;
+  perspective: 1000px;
+  cursor: pointer;
+  filter: drop-shadow(0 15px 18px rgba(100, 61, 62, .16));
+  -webkit-tap-highlight-color: transparent;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #f9eae3;
+  border: 1px solid #dfbdb7;
+}
+
+.envelope-card {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  right: 8%;
+  bottom: 9%;
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fffdf9;
+  border: 1px solid #e8d2c8;
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.card-small {
+  font-family: "Playfair Display", serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #886c67;
+}
+
+.card-number {
+  font-family: "Great Vibes", cursive;
+  font-size: 90px;
+  color: var(--rose);
+  line-height: 1.05;
+}
+
+.card-caption {
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.envelope-left,
+.envelope-right,
+.envelope-bottom {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.envelope-left {
+  background: #f5e1db;
+  clip-path: polygon(0 0, 51% 50%, 0 100%);
+}
+
+.envelope-right {
+  background: #f0d9d3;
+  clip-path: polygon(100% 0, 49% 50%, 100% 100%);
+}
+
+.envelope-bottom {
+  background: #efd5ce;
+  clip-path: polygon(0 100%, 50% 39%, 100% 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  z-index: 7;
+  inset: 0 0 auto;
+  height: 62%;
+  background: #dbaea8;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform 1s ease, z-index 0s 0.5s;
+  backface-visibility: visible;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .envelope-card {
+  transform: translateY(-125px);
+}
+
+.envelope-border {
+  position: absolute;
+  z-index: 8;
+  inset: 7px;
+  border: 1px solid rgba(160, 110, 105, .28);
+  pointer-events: none;
+}
+
+.seal {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  width: 78px;
+  height: 78px;
+  transform: translate(-50%, -50%);
+  border: 4px solid #fff8f4;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff8f4;
+  box-shadow: 0 0 0 2px #d6a19a, 0 5px 15px #5d3b3b30;
+  transition: opacity .4s ease, transform .6s ease;
+}
+
+.seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.5);
+}
+
+.tap-text {
+  margin-top: 28px;
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #815c62;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.tap-subtext {
+  font-size: 16px;
+  color: #94787a;
+  margin-top: 8px;
+}
+
+@keyframes pulse {
+  50% { opacity: .55; }
+}
+
+/* PETALS: NATURAL PETAL SHAPES, NOT FLOWER ICONS */
+.petal {
+  position: fixed;
+  z-index: 2000;
+  top: -30px;
+  left: var(--left);
+  width: var(--size);
+  height: calc(var(--size) * 1.45);
+  border-radius: 80% 15% 75% 20%;
+  background: linear-gradient(135deg, #ffe9ef, var(--petal-color));
+  box-shadow: 0 1px 3px #79455315;
+  pointer-events: none;
+  animation: petal-fall var(--duration) linear forwards;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, -30px, 0) rotate(0);
+    opacity: 0;
+  }
+  12% { opacity: .85; }
+  50% {
+    transform: translate3d(var(--drift-mid), 50vh, 0) rotate(250deg);
+  }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(600deg);
+    opacity: .15;
+  }
+}
+
+.burst-petal {
+  position: fixed;
+  z-index: 2001;
+  left: 50%;
+  top: 50%;
+  width: var(--size);
+  height: calc(var(--size) * 1.45);
+  border-radius: 80% 15% 75% 20%;
+  background: linear-gradient(135deg, #ffe9ef, var(--petal-color));
+  pointer-events: none;
+  animation: burst 1.8s cubic-bezier(.1,.65,.3,1) forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: translate(-50%, -50%) scale(.2) rotate(0);
+    opacity: 0;
+  }
+  12% { opacity: .95; }
+  100% {
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(.7) rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+/* INVITATION CONTENT */
+#main {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease;
+}
+
+#main.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 85px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 15% 15%, #f4dfdc80, transparent 35%),
+    radial-gradient(ellipse at 85% 85%, #e1e8d880, transparent 35%),
+    var(--cream);
+}
+
+.hero-inner {
+  width: min(100%, 820px);
+  padding: 45px 24px;
+  border: 1px solid #d9b5b0;
+  outline: 1px solid #e9d6cc;
+  outline-offset: 7px;
+  background: #fffaf6c9;
+}
+
+.hero-number {
+  font-size: clamp(100px, 24vw, 200px);
+  line-height: .95;
+  font-weight: 500;
+  color: var(--rose);
+}
+
+.hero-script {
+  font-size: clamp(48px, 9vw, 84px);
+  margin: 0 0 10px;
+}
+
+.hero-subtitle {
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin: 20px 0;
 }
 
 .names {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(23px, 5vw, 38px);
-  line-height: 1.55;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(23px, 4.6vw, 39px);
+  line-height: 1.7;
   font-weight: 500;
-  margin: 25px auto;
+  margin: 25px 0;
 }
 
-.ampersand {
+.names .and {
   display: block;
   color: var(--rose);
-  font-family: 'Great Vibes', cursive;
-  font-size: 43px;
+  font: 40px "Great Vibes", cursive;
   line-height: 1.2;
 }
 
-.invite-line {
-  font-size: 21px;
-  margin: 15px 0 8px;
-}
-
-.date {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(21px, 4vw, 29px);
+.hero-date {
+  margin-top: 25px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(17px, 3.4vw, 24px);
   letter-spacing: 2px;
-  margin: 13px 0;
 }
 
-.event-time {
+.hero-time {
+  margin-top: 12px;
   font-size: 21px;
   letter-spacing: 1px;
 }
 
+.music-control {
+  margin-top: 25px;
+  padding: 11px 20px;
+  border: 1px solid #c99ca0;
+  background: #fffaf7;
+  color: #76535a;
+  font-size: 17px;
+}
+
 .section {
-  padding: 75px 22px;
-  position: relative;
+  padding: 80px 20px;
+  text-align: center;
 }
 
 .section-inner {
-  width: min(100%, 780px);
+  width: min(100%, 850px);
   margin: auto;
 }
 
 .section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 6vw, 42px);
+  margin: 18px 0 25px;
+  font-family: "Playfair Display", serif;
   font-weight: 500;
-  margin: 12px 0 25px;
+  font-size: clamp(30px, 6vw, 44px);
 }
 
 .section p {
@@ -176,28 +433,35 @@ button, a { -webkit-tap-highlight-color: transparent; }
   line-height: 1.7;
 }
 
-.save-date { background: #f7e8e3; }
+.save-date { background: #f5e7e2; }
+
+.big-date {
+  margin-top: 30px;
+  color: #995e6b;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(26px, 6vw, 48px);
+}
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  max-width: 540px;
+  width: min(100%, 560px);
   margin: 32px auto;
 }
 
 .time-box {
-  padding: 18px 5px;
-  border: 1px solid #d7b2b5;
-  background: rgba(255,255,255,.55);
+  padding: 17px 5px;
+  background: #fffaf7;
+  border: 1px solid #d8b8b5;
 }
 
 .time-box strong {
   display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(25px, 6vw, 39px);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(23px, 5vw, 38px);
   font-weight: 500;
-  color: #98566a;
+  color: #985c6b;
 }
 
 .time-box span {
@@ -206,38 +470,57 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: 1px;
 }
 
-.invitation-image {
-  display: block;
-  width: min(100%, 600px);
-  height: auto;
-  margin: 30px auto;
-  border: 8px solid #fffaf7;
-  outline: 1px solid #dfc4bb;
-  box-shadow: 0 12px 35px #583b3b13;
+.action-button {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 12px 20px;
+  border: 1px solid #c99ca0;
+  background: #fffaf7;
+  color: #754c55;
+  text-decoration: none;
+  font-size: 18px;
 }
 
-.image-note {
-  font-size: 15px !important;
-  color: #806c70;
+.invitation-image {
+  display: block;
+  width: min(100%, 580px);
+  height: auto;
+  margin: 35px auto 15px;
+  border: 8px solid #fffdf9;
+  outline: 1px solid #e0c5bc;
+  box-shadow: 0 12px 35px #60434316;
+}
+
+.image-warning {
+  display: none;
+  color: #865c64;
+  font-size: 16px !important;
 }
 
 .love-section {
-  background: linear-gradient(180deg, #fff8f4, #f5e5e0);
+  background: linear-gradient(180deg, #fff8f4, #f4e5df);
+}
+
+.verse {
+  max-width: 650px;
+  margin: 25px auto;
+  font-size: clamp(23px, 4vw, 30px);
+  font-style: italic;
+  line-height: 1.6;
 }
 
 .venue-card {
-  margin: 25px auto;
-  padding: 28px 22px;
-  max-width: 570px;
-  background: rgba(255,255,255,.62);
-  border: 1px solid #dec3bd;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  background: #fffaf7;
+  border: 1px solid #ddc1b9;
 }
 
 .venue-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  margin: 12px 0;
-  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  margin: 15px 0;
 }
 
 .address {
@@ -245,344 +528,438 @@ button, a { -webkit-tap-highlight-color: transparent; }
   line-height: 1.7 !important;
 }
 
-.map-link, .music-button, .calendar-button {
-  display: inline-block;
-  border: 1px solid #b87987;
-  color: #754653;
-  background: #fffaf7;
-  text-decoration: none;
-  padding: 13px 23px;
-  margin: 10px 5px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background .2s ease;
-}
-
-.map-link:hover, .music-button:hover, .calendar-button:hover {
-  background: #f1dedc;
+.qr {
+  width: 170px;
+  height: 170px;
+  margin: 20px auto 10px;
+  image-rendering: auto;
 }
 
 .closing {
-  background: #f4e4de;
-  padding: 70px 20px 80px;
+  padding: 75px 20px;
+  text-align: center;
+  background: #f3e2dc;
 }
 
-.closing .script {
-  font-size: clamp(48px, 10vw, 70px);
+.with-love {
+  font-size: clamp(55px, 11vw, 78px);
   margin: 15px 0;
 }
 
-.family-names {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 4vw, 27px);
-  line-height: 1.8;
+.closing-names {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(21px, 4vw, 28px);
+  line-height: 1.9;
 }
 
 footer {
-  background: #49313a;
-  color: #fff4ee;
   padding: 18px;
-  font-size: 14px;
+  text-align: center;
+  color: #fff5ef;
+  background: #49343b;
+  font-size: 15px;
   letter-spacing: 1px;
 }
 
-.petal {
-  position: fixed;
-  z-index: 20;
-  top: -35px;
-  width: 12px;
-  height: 18px;
-  border-radius: 80% 15% 80% 15%;
-  background: linear-gradient(135deg, #f6c5d1, #d9829a);
-  opacity: .8;
-  pointer-events: none;
-  animation: fall linear forwards;
-}
-
-@keyframes fall {
-  0% { transform: translate3d(0, -10px, 0) rotate(0deg); }
-  100% { transform: translate3d(var(--drift), 110vh, 0) rotate(520deg); }
-}
-
 @media (max-width: 480px) {
-  .hero { padding: 32px 16px; }
-  .hero-content { padding: 30px 15px; }
-  .eyebrow { letter-spacing: 2px; font-size: 11px; }
-  .verse { font-size: 19px; }
-  .section { padding: 55px 18px; }
-  .countdown { gap: 6px; }
-  .time-box { padding: 14px 2px; }
+  .envelope { height: 205px; }
+  .card-number { font-size: 72px; }
+  .seal { width: 66px; height: 66px; }
+  .hero-inner { padding: 35px 14px; }
+  .section { padding: 60px 17px; }
+  .countdown { gap: 5px; }
+  .time-box { padding: 13px 2px; }
   .time-box span { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <div class="eyebrow">A celebration of faith, love &amp; togetherness</div>
+<!-- OPENING ENVELOPE -->
+<section id="opening" aria-label="Open your invitation">
+  <div class="opening-content">
+    <div class="small-label">With grateful hearts, we invite you</div>
     <div class="cross">✝</div>
 
-    <div class="verse">
+    <div class="opening-verse">
       “Therefore what God has joined together, let no one separate.”
-      <div class="reference">MARK 10:9</div>
+      <span class="verse-ref">MARK 10:9</span>
     </div>
 
-    <h1 class="script">You Are Invited</h1>
-    <div class="subtitle">TO CELEBRATE A BEAUTIFUL MILESTONE</div>
+    <div class="ornament">— ❦ —</div>
 
-    <div class="names">
-      GA Arokiaraj Ravi
-      <span class="ampersand">&amp;</span>
-      A Mary Francina
+    <div class="envelope-wrapper">
+      <div class="envelope" id="envelope" role="button" tabindex="0"
+           aria-label="Open the wedding anniversary invitation">
+        <div class="envelope-back"></div>
+
+        <div class="envelope-card">
+          <div class="card-small">A CELEBRATION OF LOVE</div>
+          <div class="card-number">25</div>
+          <div class="card-caption">SILVER JUBILEE</div>
+        </div>
+
+        <div class="envelope-left"></div>
+        <div class="envelope-right"></div>
+        <div class="envelope-bottom"></div>
+        <div class="envelope-flap"></div>
+
+        <div class="seal">
+          <img src="./IMG_3688.jpeg" alt="Holy Family seal">
+        </div>
+        <div class="envelope-border"></div>
+      </div>
     </div>
 
-    <p class="invite-line">Celebrating 25 years of marriage</p>
-    <div class="script" style="font-size:52px;">Our Silver Jubilee</div>
-
-    <div class="cross">❦</div>
-    <div class="date">SUNDAY · OCTOBER 18, 2026</div>
-    <div class="event-time">6:00 PM onwards</div>
-
-    <button class="music-button" id="musicButton" type="button">
-      ♫ Play Celebration Music
-    </button>
-    <audio id="music" src="./music.mp3" preload="none" loop></audio>
+    <div class="tap-text" id="tapText">TAP TO OPEN YOUR INVITATION</div>
+    <div class="tap-subtext">A beautiful celebration awaits you</div>
   </div>
 </section>
 
-<section class="section save-date" id="save-date">
-  <div class="section-inner">
-    <div class="eyebrow">A special day is approaching</div>
-    <h2>Save the Date</h2>
-    <div class="script" style="font-size:48px;">25 years of God's grace</div>
+<!-- MAIN INVITATION -->
+<main id="main">
 
-    <div class="countdown" aria-label="Countdown to the anniversary">
-      <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
-      <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
-      <div class="time-box"><strong id="minutes">--</strong><span>Minutes</span></div>
-      <div class="time-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="small-label">Twenty-five years of love, faith &amp; grace</div>
+      <div class="hero-number">25</div>
+      <h1 class="script hero-script">You Are Invited</h1>
+      <div class="hero-subtitle">TO CELEBRATE OUR SILVER JUBILEE</div>
+
+      <div class="names">
+        GA Arokiaraj Ravi
+        <span class="and">&amp;</span>
+        A Mary Francina
+      </div>
+
+      <div class="ornament">— ❦ —</div>
+      <div class="hero-date">SUNDAY · OCTOBER 18, 2026</div>
+      <div class="hero-time">6:00 PM ONWARDS</div>
+
+      <button class="music-control" id="musicControl" type="button">
+        ♫ Play Celebration Music
+      </button>
+      <p id="musicStatus" style="font-size:15px;margin-top:8px;"></p>
     </div>
+  </section>
 
-    <button class="calendar-button" id="calendarButton" type="button">
-      ＋ Add to Calendar
-    </button>
-  </div>
-</section>
+  <section class="section save-date">
+    <div class="section-inner">
+      <div class="small-label">A day to remember</div>
+      <h2>Save the Date</h2>
+      <div class="script" style="font-size:48px;">A lifetime of blessings</div>
 
-<section class="section">
-  <div class="section-inner">
-    <div class="eyebrow">A cherished milestone</div>
-    <h2>Our Silver Jubilee Invitation</h2>
-    <p>Join us as we celebrate twenty-five beautiful years of marriage, memories and God's unfailing love.</p>
+      <div class="big-date">18 · 10 · 2026</div>
+      <p>Sunday · 6:00 PM onwards</p>
 
-    <img
-      class="invitation-image"
-      src="./Elegant%2025th%20Anniversary%20Invitation.png"
-      alt="Silver Jubilee wedding anniversary invitation"
-      onerror="this.style.display='none'; document.getElementById('imageNote').style.display='block';"
-    >
-    <p id="imageNote" class="image-note" style="display:none;">
-      The invitation image could not be found. Please check the image filename in your GitHub repository.
-    </p>
-  </div>
-</section>
+      <div class="countdown" aria-label="Countdown to the celebration">
+        <div class="time-box"><strong id="days">--</strong><span>Days</span></div>
+        <div class="time-box"><strong id="hours">--</strong><span>Hours</span></div>
+        <div class="time-box"><strong id="minutes">--</strong><span>Minutes</span></div>
+        <div class="time-box"><strong id="seconds">--</strong><span>Seconds</span></div>
+      </div>
 
-<section class="section love-section">
-  <div class="section-inner">
-    <div class="cross">✝</div>
-    <h2>A Love Blessed by God</h2>
-
-    <div class="verse">
-      “Let all that you do be done in love.”
-      <div class="reference">1 CORINTHIANS 16:14</div>
+      <button class="action-button" id="calendarButton" type="button">
+        ＋ Add to Calendar
+      </button>
     </div>
+  </section>
 
-    <p>
-      With hearts full of gratitude, we joyfully celebrate
-      25 beautiful years of love, faith and God's grace.
-    </p>
+  <section class="section">
+    <div class="section-inner">
+      <div class="small-label">A cherished milestone</div>
+      <h2>Our Silver Jubilee Invitation</h2>
+      <p>Twenty-five beautiful years, held together by love, faith and God's grace.</p>
 
-    <p>
-      Your presence and blessings will make this milestone
-      even more meaningful to us.
-    </p>
-  </div>
-</section>
+      <img
+        class="invitation-image"
+        src="./Vintage%20Floral%2025th%20Anniversary%20Invitation.png"
+        alt="Vintage floral Silver Jubilee anniversary invitation"
+        onerror="this.style.display='none';document.getElementById('imageWarning').style.display='block';"
+      >
 
-<section class="section" id="venue">
-  <div class="section-inner">
-    <div class="eyebrow">We look forward to celebrating with you</div>
-    <h2>Join Us for the Celebration</h2>
-
-    <div class="venue-card">
-      <div class="cross">❦</div>
-      <div class="venue-name">ARIMA THUMBI</div>
-      <p class="address">
-        1/38, N Parade Rd, Chakrapani Colony,<br>
-        Ramapuram, St. Thomas Mount,<br>
-        Chennai, Tamil Nadu 600016
+      <p class="image-warning" id="imageWarning">
+        The invitation image could not load. Please check its filename in the repository.
       </p>
-
-      <p><strong>Sunday, October 18, 2026</strong><br>6:00 PM onwards</p>
-
-      <a class="map-link"
-         href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI%2C+1%2F38+N+Parade+Rd%2C+Chennai+600016"
-         target="_blank" rel="noopener">
-        View Location ↗
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section love-section">
-  <div class="section-inner">
-    <div class="verse">
-      “Many waters cannot quench love; rivers cannot sweep it away.”
-      <div class="reference">SONG OF SOLOMON 8:7</div>
+  <section class="section love-section">
+    <div class="section-inner">
+      <div class="cross">✝</div>
+      <h2>A Love Blessed by God</h2>
+
+      <div class="verse">
+        “Let all that you do be done in love.”
+        <span class="verse-ref">1 CORINTHIANS 16:14</span>
+      </div>
+
+      <p>
+        With hearts full of gratitude, we joyfully celebrate
+        25 beautiful years of love, faith and God's grace.
+      </p>
+      <p>
+        Your presence and blessings will make this milestone
+        even more meaningful to us.
+      </p>
     </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="small-label">We would love to celebrate with you</div>
+      <h2>Join Us for the Celebration</h2>
+
+      <div class="venue-card">
+        <div class="cross">❦</div>
+        <div class="venue-name">ARIMA THUMBI</div>
+
+        <p class="address">
+          1/38, N Parade Rd, Chakrapani Colony,<br>
+          Ramapuram, St. Thomas Mount,<br>
+          Chennai, Tamil Nadu 600016
+        </p>
+
+        <p style="margin-top:20px;">
+          Sunday, October 18, 2026<br>
+          6:00 PM onwards
+        </p>
+
+        <a class="action-button"
+           href="https://www.google.com/maps/search/?api=1&query=ARIMA+THUMBI%2C+1%2F38+N+Parade+Rd%2C+Chennai+600016"
+           target="_blank" rel="noopener">
+          View Directions ↗
+        </a>
+
+        <p style="font-size:17px;margin-top:20px;">Scan for directions</p>
+        <img
+          class="qr"
+          alt="QR code for venue directions"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DARIMA%2BTHUMBI%2BChennai%2B600016"
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section love-section">
+    <div class="section-inner">
+      <div class="verse">
+        “Many waters cannot quench love; rivers cannot sweep it away.”
+        <span class="verse-ref">SONG OF SOLOMON 8:7</span>
+      </div>
+      <div class="cross">✝</div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="small-label">Thank you for being part of our joy</div>
+    <div class="script with-love">With Love</div>
+
+    <div class="closing-names">
+      Mary Princy A<br>
+      &amp; Mary Prathiba A
+    </div>
+
+    <p style="font-size:20px;line-height:1.8;margin-top:22px;">
+      Sunday, October 18, 2026<br>
+      6:00 PM onwards
+    </p>
     <div class="cross">✝</div>
-  </div>
-</section>
+  </section>
 
-<section class="closing">
-  <div class="eyebrow">A day made more special with you</div>
-  <div class="script">With Love</div>
+  <footer>Celebrating 25 years of love, faith &amp; God's grace</footer>
+</main>
 
-  <div class="family-names">
-    Mary Princy A<br>
-    &amp; Mary Prathiba A
-  </div>
-
-  <p>Sunday, October 18, 2026<br>6:00 PM onwards</p>
-  <div class="cross">✝</div>
-</section>
-
-<footer>
-  Celebrating 25 years of love, faith &amp; God's grace
-</footer>
+<audio id="celebrationMusic" preload="auto" loop>
+  <source src="./Music.mp3.mpeg" type="audio/mpeg">
+</audio>
 
 <script>
 (() => {
-  const music = document.getElementById('music');
-  const musicButton = document.getElementById('musicButton');
+  const opening = document.getElementById("opening");
+  const envelope = document.getElementById("envelope");
+  const tapText = document.getElementById("tapText");
+  const main = document.getElementById("main");
+  const music = document.getElementById("celebrationMusic");
+  const musicControl = document.getElementById("musicControl");
+  const musicStatus = document.getElementById("musicStatus");
 
-  musicButton.addEventListener('click', async () => {
-    if (music.paused) {
-      try {
-        await music.play();
-        musicButton.textContent = 'Ⅱ Pause Celebration Music';
-      } catch (error) {
-        musicButton.textContent = 'Music unavailable — check music.mp3';
-      }
-    } else {
-      music.pause();
-      musicButton.textContent = '♫ Play Celebration Music';
+  let opened = false;
+  let petalTimer = null;
+
+  const colors = ["#e8a4b5", "#f0b9c7", "#d9859d", "#f6cbd5", "#c97c94"];
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function makeBurst() {
+    // One large opening burst, with individual petals.
+    for (let i = 0; i < 75; i++) {
+      const petal = document.createElement("span");
+      petal.className = "burst-petal";
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = random(100, Math.max(180, window.innerWidth * 0.65));
+
+      petal.style.setProperty("--x", Math.cos(angle) * distance + "px");
+      petal.style.setProperty("--y", Math.sin(angle) * distance + "px");
+      petal.style.setProperty("--size", random(7, 14) + "px");
+      petal.style.setProperty("--rotation", random(180, 900) + "deg");
+      petal.style.setProperty("--petal-color", colors[Math.floor(Math.random() * colors.length)]);
+
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 2300);
+    }
+  }
+
+  function makeFallingPetal() {
+    const petal = document.createElement("span");
+    petal.className = "petal";
+
+    const size = random(7, 13);
+    const duration = random(7, 12);
+
+    petal.style.setProperty("--left", random(0, 100) + "vw");
+    petal.style.setProperty("--size", size + "px");
+    petal.style.setProperty("--duration", duration + "s");
+    petal.style.setProperty("--drift-mid", random(-55, 55) + "px");
+    petal.style.setProperty("--drift", random(-110, 110) + "px");
+    petal.style.setProperty("--petal-color", colors[Math.floor(Math.random() * colors.length)]);
+
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), duration * 1000 + 300);
+  }
+
+  function startPetals() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    makeBurst();
+
+    // The shower starts quickly, then settles into a gentle fall.
+    for (let i = 0; i < 18; i++) {
+      setTimeout(makeFallingPetal, i * 140);
+    }
+
+    setTimeout(() => {
+      petalTimer = setInterval(makeFallingPetal, 850);
+    }, 2600);
+  }
+
+  async function openInvitation() {
+    if (opened) return;
+    opened = true;
+
+    envelope.classList.add("open");
+    tapText.textContent = "OPENING YOUR INVITATION…";
+
+    startPetals();
+
+    // Music starts from the user's tap, because browsers restrict autoplay.
+    try {
+      await music.play();
+      musicControl.textContent = "Ⅱ Pause Celebration Music";
+      musicStatus.textContent = "";
+    } catch (error) {
+      musicStatus.textContent = "Tap “Play Celebration Music” if music doesn't start.";
+    }
+
+    setTimeout(() => {
+      opening.classList.add("hide");
+      main.classList.add("show");
+      document.body.style.overflowY = "auto";
+    }, 1900);
+  }
+
+  envelope.addEventListener("click", openInvitation);
+
+  envelope.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openInvitation();
     }
   });
 
-  // Event starts at 6:00 PM India Standard Time.
-  const eventDate = new Date('2026-10-18T18:00:00+05:30').getTime();
+  musicControl.addEventListener("click", async () => {
+    if (music.paused) {
+      try {
+        await music.play();
+        musicControl.textContent = "Ⅱ Pause Celebration Music";
+        musicStatus.textContent = "";
+      } catch (error) {
+        musicStatus.textContent = "Music could not load. Check that Music.mp3.mpeg exists in your repository.";
+      }
+    } else {
+      music.pause();
+      musicControl.textContent = "♫ Play Celebration Music";
+    }
+  });
+
+  // Countdown uses Chennai / India Standard Time.
+  const eventTime = new Date("2026-10-18T18:00:00+05:30").getTime();
 
   function updateCountdown() {
-    const difference = eventDate - Date.now();
+    const difference = eventTime - Date.now();
 
     if (difference <= 0) {
-      document.getElementById('days').textContent = '0';
-      document.getElementById('hours').textContent = '0';
-      document.getElementById('minutes').textContent = '0';
-      document.getElementById('seconds').textContent = '0';
+      ["days", "hours", "minutes", "seconds"].forEach(id => {
+        document.getElementById(id).textContent = "0";
+      });
       return;
     }
 
-    document.getElementById('days').textContent =
+    document.getElementById("days").textContent =
       Math.floor(difference / 86400000);
 
-    document.getElementById('hours').textContent =
+    document.getElementById("hours").textContent =
       Math.floor((difference % 86400000) / 3600000);
 
-    document.getElementById('minutes').textContent =
+    document.getElementById("minutes").textContent =
       Math.floor((difference % 3600000) / 60000);
 
-    document.getElementById('seconds').textContent =
+    document.getElementById("seconds").textContent =
       Math.floor((difference % 60000) / 1000);
   }
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  document.getElementById('calendarButton').addEventListener('click', () => {
-    const calendarEvent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Silver Jubilee Invitation//EN',
-      'BEGIN:VEVENT',
-      'UID:silver-jubilee-20261018@example.com',
-      'DTSTAMP:20260101T000000Z',
-      'DTSTART:20261018T123000Z',
-      'DTEND:20261018T153000Z',
-      'SUMMARY:Silver Jubilee - Arokiaraj Ravi & Mary Francina',
-      'LOCATION:ARIMA THUMBI, Chennai, Tamil Nadu 600016',
-      'DESCRIPTION:Celebrating 25 beautiful years of love, faith and God\\'s grace.',
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
+  document.getElementById("calendarButton").addEventListener("click", () => {
+    const event = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Silver Jubilee Invitation//EN",
+      "CALSCALE:GREGORIAN",
+      "BEGIN:VEVENT",
+      "UID:silver-jubilee-20261018@example.com",
+      "DTSTAMP:20261001T000000Z",
+      "DTSTART:20261018T123000Z",
+      "DTEND:20261018T153000Z",
+      "SUMMARY:Silver Jubilee - GA Arokiaraj Ravi & A Mary Francina",
+      "LOCATION:ARIMA THUMBI, Chennai, Tamil Nadu 600016",
+      "DESCRIPTION:Celebrating 25 beautiful years of love, faith and God's grace.",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
 
-    const blob = new Blob([calendarEvent], {
-      type: 'text/calendar;charset=utf-8'
-    });
+    const blob = new Blob([event], { type: "text/calendar;charset=utf-8" });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = url;
-    link.download = 'Silver-Jubilee-October-18-2026.ics';
+    link.download = "Silver-Jubilee-October-18-2026.ics";
     document.body.appendChild(link);
     link.click();
     link.remove();
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
-
-  // One gentle stream of individual petals; no flower emojis.
-  const reducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
-
-  if (!reducedMotion) {
-    function createPetal() {
-      const petal = document.createElement('span');
-      petal.className = 'petal';
-      petal.setAttribute('aria-hidden', 'true');
-
-      const size = 7 + Math.random() * 8;
-      const duration = 7 + Math.random() * 6;
-
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.width = size + 'px';
-      petal.style.height = size * 1.45 + 'px';
-      petal.style.opacity = (0.35 + Math.random() * 0.45).toFixed(2);
-      petal.style.setProperty(
-        '--drift',
-        (Math.random() * 160 - 80) + 'px'
-      );
-      petal.style.animationDuration = duration + 's';
-
-      document.body.appendChild(petal);
-      setTimeout(() => petal.remove(), duration * 1000 + 500);
-    }
-
-    // Small opening shower, followed by a gentle continuous fall.
-    for (let i = 0; i < 18; i++) {
-      setTimeout(createPetal, i * 120);
-    }
-
-    setInterval(createPetal, 850);
-  }
 })();
 </script>
 
